@@ -1,0 +1,13 @@
+@startuml Simpleflow
+!theme mars
+skinparam linetype ortho
+
+package "Default Execution Pipeline"  {
+    Script -right- [Cache Component]
+    [Cache Component] -right-> [Compiler Component]  
+    [Cache Component] -right-> [Execution Component]  
+    [Compiler Component] -right-> [Execution Component] 
+
+    [Execution Component] - Output
+}
+@enduml    
