@@ -1,0 +1,56 @@
+token literal names:
+null
+'.'
+'and'
+'or'
+'>'
+'>='
+'<'
+'<='
+'=='
+'!='
+'contains'
+'('
+')'
+null
+null
+null
+'none'
+null
+'+'
+'-'
+'*'
+'/'
+'^'
+
+token symbolic names:
+null
+null
+And
+Or
+GreaterThan
+GreaterThanEqual
+LessThan
+LessThanEqual
+Equal
+NotEqual
+Contains
+OpenParen
+CloseParen
+Number
+String
+Bool
+None
+Identifier
+Plus
+Minus
+Times
+Div
+Pow
+
+rule names:
+objectIdentifier
+
+
+atn:
+[4, 1, 22, 11, 2, 0, 7, 0, 1, 0, 1, 0, 1, 0, 5, 0, 6, 8, 0, 10, 0, 12, 0, 9, 9, 0, 1, 0, 0, 0, 1, 0, 0, 0, 10, 0, 2, 1, 0, 0, 0, 2, 7, 5, 17, 0, 0, 3, 4, 5, 1, 0, 0, 4, 6, 5, 17, 0, 0, 5, 3, 1, 0, 0, 0, 6, 9, 1, 0, 0, 0, 7, 5, 1, 0, 0, 0, 7, 8, 1, 0, 0, 0, 8, 1, 1, 0, 0, 0, 9, 7, 1, 0, 0, 0, 1, 7]

@@ -1,0 +1,43 @@
+﻿/* Declare variable */
+let a        = 2
+let b        = 5
+let text     = "Hello, विश्वम्‌"
+let liberate = true 
+
+/* 5 x 233 -1.5 = 1163.5*/
+let value   = ( 2 + 3 ) * arg.Id - 1.5  
+
+let date    = $GetCurrentDate()
+let date1   = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
+
+
+/* Rules */
+rule when  a == 2 then
+    message "Valid-1"
+
+rule when  "x" == text then
+    message "Valid-xy"
+            
+rule when arg.Id == 233 and a == 2 then
+    message "Valid-2"
+    message "Valid-3"
+end rule
+
+/* Statements outside of the rules */
+message "It works all the time"
+message date
+message date1
+
+/* Change variable */
+mutate a = 3  
+
+/* Output objects */
+output a
+output text
+output b
+output arg.Id
+output value
+
+/* Rules */
+rule when (arg.Id == 233 and a == 3) or 2 == 3 then
+        error "Invalid-"
