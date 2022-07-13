@@ -17,9 +17,6 @@
             <param name="string"></param>
             <returns></returns>
         </member>
-        <member name="M:Simpleflow.CodeGenerator.SimpleflowCompiler.Compile``1(System.String,Simpleflow.IFunctionRegister)">
-            
-        </member>
         <member name="T:Simpleflow.Exceptions.DuplicateActivityException">
             <summary>
             

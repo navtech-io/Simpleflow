@@ -213,16 +213,9 @@ It supports only one style of comment can be used for single or multiline using 
 
 #### Simpleflow Execution
 <a name="simpleflow-pipeline"></a>
-```plantuml
-    !theme lightgray
-    package "Default Execution Pipeline" {
-        Script -right- [Cache Component]
-        [Cache Component] -right-> [Compiler Component]  
-        
-        [Compiler Component] -right-> [Execution Component] 
-        [Execution Component] - Output
-    }
-```
+
+<!-- ![Simpleflow Pipeline](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://github.com/navtech-io/Simpleflow/blob/main/SimpleflowDiagram.puml) -->
+
 Sample code to create, build and run pipeline
 ```csharp
 
