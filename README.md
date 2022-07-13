@@ -19,7 +19,7 @@ var flowScript =
 ";
 
 // Execute Script
-FlowOutput output = SimpleflowEngine.Run(flowScript, new {UID = 2, New=true} /*script argument. This object is available as parameter arg*/);
+FlowOutput output = SimpleflowEngine.Run(flowScript, new {UID = 2, New=true} );
 
 // Access Output
 Console.WriteLine(output.Messages[0]); //output.Errors output.Output
