@@ -17,7 +17,7 @@ var flowScript =
     let text  = ""Hello, विश्वम्‌""
     let today = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
 
-    /* Comment: Message when UniversalId is 2 and New is true */
+    /* comment: check condition  */
     rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
          message text
     end rule
