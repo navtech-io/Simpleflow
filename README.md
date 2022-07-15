@@ -319,7 +319,7 @@ catch(SimpleflowException exception)
 
 ```csharp
 /* Declare and initialize variables */
-let user        = none
+let userId      = none
 let currentDate = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
 
 /* Define Rules */
