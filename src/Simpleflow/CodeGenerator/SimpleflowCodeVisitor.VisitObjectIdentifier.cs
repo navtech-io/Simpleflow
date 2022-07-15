@@ -17,10 +17,9 @@ namespace Simpleflow.CodeGenerator
         public override Expression VisitObjectIdentifier(SimpleflowParser.ObjectIdentifierContext context)
         {
             var objectPathProperties = context.GetText().Split('.');
-
-            // Check in identifiable variable collection
-            // Variable names are not case sensitive
-            Expression identifier = GetVariable(objectPathProperties[0]);
+            
+            var propName = objectPathProperties[0];
+            Expression identifier = GetVariable(propName) ?? GetSmartVariable(propName)?.VariableExpression?.Left;
 
             if (identifier == null)
             {

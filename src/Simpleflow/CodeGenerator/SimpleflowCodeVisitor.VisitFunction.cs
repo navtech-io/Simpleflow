@@ -8,7 +8,6 @@ using System.Linq.Expressions;
 using System.Reflection;
 
 using Antlr4.Runtime.Misc;
-using Antlr4.Runtime.Tree;
 
 using Simpleflow.Exceptions;
 using Simpleflow.Parser;
@@ -130,70 +129,5 @@ namespace Simpleflow.CodeGenerator
 
             return CreateSmartVariableIfObjectIdentiferNotDefined(targetType, objectIdentieferText);
         }
-
-        private Expression CreateSmartVariableIfObjectIdentiferNotDefined(Type targetType, string name)
-        {
-            // Variable names are not case sensitive
-            var smartVar = GetSmartVariable(name);
-
-            if (smartVar == null)
-            {
-                throw new InvalidFunctionParameterNameException(name);
-            }
-
-            // Return if already created
-            if (smartVar.VariableExpression != null)
-            {
-                return smartVar.VariableExpression;
-            }
-
-            // Create
-            var pairs = smartVar.Context.jsonObj().pair();
-            var memberBindings = new List<MemberBinding>();
-
-            foreach (var pair in pairs)
-            {
-                // Property name
-                var prop = pair.Identifier().GetText();
-
-                // Property Type
-                var member = targetType.GetProperty(prop);
-
-                // Property Value
-                var value = pair.value().GetChild(0);
-
-                // Create Property Expression
-                Expression valueExpression;
-                if (value is SimpleflowParser.ObjectIdentifierContext oic)
-                {
-                    valueExpression = VisitParameterObjectIdentifer(oic, member.PropertyType);
-                }
-                else
-                {
-                    valueExpression = VisitWithType(value, member.PropertyType);
-                }
-
-                // Bind member
-                memberBindings.Add(Expression.Bind(member, valueExpression));
-            }
-
-            // Create new instance and assign member bindings
-            Expression membersInitialization = Expression.MemberInit(Expression.New(targetType),memberBindings);
-
-            // Store created smart variable to further reuse and replace.
-            smartVar.VariableExpression = Expression.Assign(Expression.Variable(targetType), membersInitialization);
-
-            return membersInitialization;
-        }
-
-        private Expression VisitWithType(IParseTree tree, Type type)
-        {
-            TargetTypeParserContextAnnotation.Put(tree, type);
-            var expression = Visit(tree);
-            TargetTypeParserContextAnnotation.RemoveFrom(tree);
-
-            return expression;
-        }
-
     }
 }

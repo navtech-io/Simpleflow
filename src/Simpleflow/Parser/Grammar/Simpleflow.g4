@@ -42,7 +42,7 @@ letStmt
     ;
 
 setStmt
-    : Set Identifier Assign expression LineBreak  
+    : (Partial)? Set Identifier Assign expression LineBreak  
     ;
 
 messageStmt
@@ -69,7 +69,7 @@ expression
     : boolLeteral | noneLiteral | function | jsonObj | arithmeticExpression | stringLiteral
     ;
 
-// Lexer       
+// Lexer
        
 Rule
     : 'rule';
@@ -90,6 +90,9 @@ Let
     : 'let';
 Set
     : 'set';
+
+Partial
+    : 'partial';
 
 Assign
    : '=' ;

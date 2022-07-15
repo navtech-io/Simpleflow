@@ -45,21 +45,6 @@ namespace Simpleflow.Tests.Scripting
         {
             return s.ToString();
         }
-
-        class MethodArgument
-        {
-            public int Id { get; set; }
-            public decimal Value { get; set; }
-            public string Text { get; set; }
-            public bool IsValid { get; set; }
-            public string NullCheck { get; set; }
-            public int CheckIdentifer { get; set; }
-            public override string ToString()
-            {
-                return $"{Id}-{Value}-{Text}-{IsValid}-{NullCheck??"NULL"}-{CheckIdentifer}";
-            }
-        }
-
     }
 
    

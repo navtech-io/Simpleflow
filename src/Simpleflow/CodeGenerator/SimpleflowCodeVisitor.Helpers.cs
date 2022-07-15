@@ -54,7 +54,7 @@ namespace Simpleflow.CodeGenerator
             for (int index = startIndex; index < propertiesHierarchy.Length; index++)
             {
                 var propertyName = propertiesHierarchy[index];
-                var prop = GetProperty(rootObjectExp.Type, propertyName);
+                var prop = GetPropertyInfo(rootObjectExp.Type, propertyName);
 
                 if (prop == null)
                 {
@@ -77,7 +77,7 @@ namespace Simpleflow.CodeGenerator
             return SmartJsonVariables.SingleOrDefault(s => string.Equals(s.Name, name, StringComparison.OrdinalIgnoreCase));
         }
 
-        public System.Reflection.PropertyInfo GetProperty(Type type, string name)
+        private System.Reflection.PropertyInfo GetPropertyInfo(Type type, string name)
         {
            return  type.GetProperties().FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.OrdinalIgnoreCase));
         }

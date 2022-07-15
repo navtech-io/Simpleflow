@@ -5,7 +5,7 @@ using System;
 
 namespace Simpleflow.Exceptions
 {
-    public class ValueTypeMismatchException : Exception
+    public class ValueTypeMismatchException : SimpleflowException
     {
         public ValueTypeMismatchException(string message) : base(message) { }
 

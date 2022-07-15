@@ -8,7 +8,7 @@ namespace Simpleflow.Exceptions
     /// <summary>
     /// 
     /// </summary>
-    public class DuplicateVariableDeclarationException : Exception
+    public class DuplicateVariableDeclarationException : SimpleflowException
     {
         /// <summary>
         /// 

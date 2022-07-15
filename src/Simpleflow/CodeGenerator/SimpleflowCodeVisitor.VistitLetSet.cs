@@ -34,28 +34,32 @@ namespace Simpleflow.CodeGenerator
         {
             // Find variable and assign it 
             var variableName = context.Identifier().GetText();
-            Expression variableExpression = GetVariable(variableName);
+
+            // Assume that SmartVariable has already created as part of function invocation if available
+            Expression variableExpression = GetVariable(variableName) ?? GetSmartVariable(variableName)?.VariableExpression?.Left;
 
             if (variableExpression == null)
             {
                 throw new UndeclaredVariableException(variableName);
             }
 
+            if (context.Partial() != null)
+            {
+                return VisitPartialSet(context, variableExpression);
+            }
+            
             return VisitVariableExpression(context.expression(), variableName, variable: variableExpression, completeExpForErrorOut: context.GetText());
         }
 
         private Expression VisitVariableExpression(SimpleflowParser.ExpressionContext context, string variableName, Expression variable, string completeExpForErrorOut)
         {
-            // TODO check for reserve keywords, liberate, context, etc...
-
-            if (context.jsonObj() != null) 
+            if (context.jsonObj() != null)
             {
                 return new SmartJsonObjectParameterExpression(context, variableName);
             }
 
             var expression = Visit(context.GetChild(0));
             return Expression.Assign(variable ?? Expression.Variable(expression.Type, variableName), expression);
-
         }
         
     }

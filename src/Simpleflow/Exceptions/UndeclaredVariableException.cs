@@ -8,7 +8,7 @@ namespace Simpleflow.Exceptions
     /// <summary>
     /// 
     /// </summary>
-    public class UndeclaredVariableException : Exception
+    public class UndeclaredVariableException : SimpleflowException
     {
         // TODO
 

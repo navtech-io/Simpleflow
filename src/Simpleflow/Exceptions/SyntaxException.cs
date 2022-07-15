@@ -8,13 +8,13 @@ namespace Simpleflow.Exceptions
     /// <summary>
     /// 
     /// </summary>
-    public class SyntaxErrorException : Exception
+    public class SyntaxException : SimpleflowException
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="message"></param>
-        public SyntaxErrorException(string message) : base(message)
+        public SyntaxException(string message) : base(message)
         {
         }
     }

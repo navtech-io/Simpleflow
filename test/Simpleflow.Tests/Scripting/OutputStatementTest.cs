@@ -64,7 +64,7 @@ namespace Simpleflow.Tests.Scripting
                 ";
 
             // Act  & Assert
-            Assert.Throws<SyntaxErrorException>(() => SimpleflowEngine.Run(script, new object()));
+            Assert.Throws<SyntaxException>(() => SimpleflowEngine.Run(script, new object()));
         }
     }
 }

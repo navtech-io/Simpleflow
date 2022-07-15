@@ -8,7 +8,7 @@ namespace Simpleflow.Exceptions
     /// <summary>
     /// 
     /// </summary>
-    public class DuplicateActivityException : Exception
+    public class DuplicateActivityException : SimpleflowException
     {
         // TODO
 

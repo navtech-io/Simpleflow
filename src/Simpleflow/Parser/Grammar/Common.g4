@@ -3,10 +3,6 @@ grammar Common;
 objectIdentifier 
     : Identifier ('.' Identifier)* ;
 
-// variable
-//     : Identifier
-//     ;
-
 stringLiteral
     : String
     ;
@@ -54,6 +50,7 @@ CloseParen
 // operands
 Number  //Signed number (integer/decimal)
     : ('+'|'-')?[0-9]+('.'[0-9]+)?;
+
 String
     : '"' ( '\\"' | ~["\r\n] )*? '"';
 

@@ -5,7 +5,7 @@ using System;
 
 namespace Simpleflow.Exceptions
 {
-    public class DuplicateParametersException : Exception
+    public class DuplicateParametersException : SimpleflowException
     {
         // TODO
 

@@ -67,12 +67,12 @@
             </summary>
             <param name="name"></param>
         </member>
-        <member name="T:Simpleflow.Exceptions.SyntaxErrorException">
+        <member name="T:Simpleflow.Exceptions.SyntaxException">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Simpleflow.Exceptions.SyntaxErrorException.#ctor(System.String)">
+        <member name="M:Simpleflow.Exceptions.SyntaxException.#ctor(System.String)">
             <summary>
             
             </summary>
@@ -1807,6 +1807,11 @@
         <member name="P:Simpleflow.Resources.Message.InvalidInput">
             <summary>
               Looks up a localized string similar to Invalid input.
+            </summary>
+        </member>
+        <member name="P:Simpleflow.Resources.Message.InvalidPartialKeywordUsage">
+            <summary>
+              Looks up a localized string similar to &quot;&apos;partial&apos; keyword can only be used with JSON object to update properties.&quot;.
             </summary>
         </member>
         <member name="P:Simpleflow.Resources.Message.RegisterNonStaticMethodError">

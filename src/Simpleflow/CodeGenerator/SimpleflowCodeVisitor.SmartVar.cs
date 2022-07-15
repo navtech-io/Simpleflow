@@ -1,0 +1,116 @@
+﻿// Copyright (c) navtech.io. All rights reserved.
+// See License in the project root for license information.
+
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Reflection;
+using Antlr4.Runtime.Tree;
+
+using Simpleflow.Exceptions;
+using Simpleflow.Parser;
+
+
+namespace Simpleflow.CodeGenerator
+{
+    partial class SimpleflowCodeVisitor<TArg>
+    {
+        private Expression CreateSmartVariableIfObjectIdentiferNotDefined(Type targetType, string name)
+        {
+            // Variable names are not case sensitive
+            var smartVar = GetSmartVariable(name);
+
+            if (smartVar == null)
+            {
+                throw new InvalidFunctionParameterNameException(name);
+            }
+
+            // Return if already created
+            if (smartVar.VariableExpression != null)
+            {
+                return smartVar.VariableExpression;
+            }
+
+            // Create
+            var pairs = smartVar.Context.jsonObj().pair();
+            var memberBindings = new List<MemberBinding>();
+
+            // set values to each declared property
+            SetValuesToProperties(targetType, pairs, (propInfo, valueExp) => memberBindings.Add(Expression.Bind(propInfo, valueExp)));
+
+            // Create new instance and assign member bindings
+            Expression membersInitialization = Expression.MemberInit(Expression.New(targetType), memberBindings);
+
+            // Store created smart variable to further reuse and replace.
+            smartVar.VariableExpression = Expression.Assign(Expression.Variable(targetType), membersInitialization);
+
+            return membersInitialization;
+        }
+
+        private void SetValuesToProperties(Type targetType, SimpleflowParser.PairContext[] pairs, Action<PropertyInfo, Expression> pairCallback)
+        {
+            foreach (var pair in pairs)
+            {
+                // Property name
+                var prop = pair.Identifier().GetText();
+
+                // Property Type
+                var member = GetPropertyInfo(targetType, prop);
+
+                if (member == null)
+                {
+                    throw new InvalidPropertyException(prop);
+                }
+
+                // Property Value
+                var value = pair.value().GetChild(0);
+
+
+                // Create Property Expression
+                Expression valueExpression;
+                if (value is SimpleflowParser.ObjectIdentifierContext oic)
+                {
+                    valueExpression = VisitParameterObjectIdentifer(oic, member.PropertyType);
+                }
+                else
+                {
+                    valueExpression = VisitWithType(value, member.PropertyType);
+                }
+
+                // Bind member
+                pairCallback(member, valueExpression);
+            }
+        }
+
+        private Expression VisitWithType(IParseTree tree, Type type)
+        {
+            TargetTypeParserContextAnnotation.Put(tree, type);
+            var expression = Visit(tree);
+            TargetTypeParserContextAnnotation.RemoveFrom(tree);
+
+            return expression;
+        }
+
+
+        private Expression VisitPartialSet(SimpleflowParser.SetStmtContext context, Expression variable)
+        {
+            if (context.expression().jsonObj() == null)
+            {
+                throw new SimpleflowException(Resources.Message.InvalidPartialKeywordUsage);
+            }
+
+            // variable.Left.Type
+            var pairs = context.expression().jsonObj().pair();
+            List<Expression> propExpressions = new List<Expression>();
+
+            // set values to each declared property
+            SetValuesToProperties(variable.Type, 
+                                 pairs, 
+                                 (propInfo, valueExp) => 
+                                        propExpressions.Add(Expression.Assign(Expression.Property(variable, propInfo), valueExp)));
+
+            // context.expression
+            return Expression.Block(propExpressions);
+        }
+    }
+}

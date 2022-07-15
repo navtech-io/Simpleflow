@@ -120,6 +120,9 @@
   <data name="InvalidInput" xml:space="preserve">
     <value>Invalid input</value>
   </data>
+  <data name="InvalidPartialKeywordUsage" xml:space="preserve">
+    <value>"'partial' keyword can only be used with JSON object to update properties."</value>
+  </data>
   <data name="RegisterNonStaticMethodError" xml:space="preserve">
     <value>Provide static method only. It does not support non-static method.</value>
   </data>

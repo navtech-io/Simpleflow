@@ -70,6 +70,15 @@ namespace Simpleflow.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;&apos;partial&apos; keyword can only be used with JSON object to update properties.&quot;.
+        /// </summary>
+        internal static string InvalidPartialKeywordUsage {
+            get {
+                return ResourceManager.GetString("InvalidPartialKeywordUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provide static method only. It does not support non-static method..
         /// </summary>
         internal static string RegisterNonStaticMethodError {

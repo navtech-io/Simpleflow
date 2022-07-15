@@ -5,7 +5,7 @@ using System;
 
 namespace Simpleflow.Exceptions
 {
-    public class InvalidFunctionParameterNameException : Exception
+    public class InvalidFunctionParameterNameException : SimpleflowException
     {
         // TODO
 

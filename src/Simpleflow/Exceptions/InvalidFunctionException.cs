@@ -8,7 +8,7 @@ namespace Simpleflow.Exceptions
     /// <summary>
     /// 
     /// </summary>
-    public class InvalidFunctionException : Exception
+    public class InvalidFunctionException : SimpleflowException
     {
         
         public InvalidFunctionException(string functionName) : base($"Invalid function '{functionName}'")

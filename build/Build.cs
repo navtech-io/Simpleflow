@@ -27,7 +27,7 @@ class Build : NukeBuild
     ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
     ///   - Microsoft VSCode           https://nuke.build/vscode
 
-    public static int Main () => Execute<Build>(x => x.Compile);
+    public static int Main() => Execute<Build>(x => x.Compile);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
@@ -37,7 +37,7 @@ class Build : NukeBuild
     //[GitVersion] readonly GitVersion GitVersion;
 
     [Parameter] string NugetApiUrl = "https://api.nuget.org/v3/index.json";
-    [Parameter] [Secret] string NugetApiKey;
+    [Parameter][Secret] string NugetApiKey;
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath TestsDirectory => RootDirectory / "test";
@@ -48,7 +48,7 @@ class Build : NukeBuild
         .Before(Restore)
         .Executes(() =>
         {
-            
+
             SourceDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
             TestsDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
             EnsureCleanDirectory(ArtifactsDirectory);
@@ -113,14 +113,14 @@ class Build : NukeBuild
                 .SetTitle("Simpleflow")
                 .SetAuthors("navtech.io")
                 .SetCopyright("navtech.io")
-                // .AddProperty("PackageLicenseFile", @"C:\Navtech\Opensource\Simpleflow\LICENSE.txt")
-                .AddProperty("PackageLicenseExpression", "MIT")
+                .SetPackageProjectUrl("https://github.com/navtech-io/Simpleflow")
+                .AddProperty("PackageLicenseExpression", "Apache-2.0")
                 .SetIncludeSymbols(true)
-                .SetVersion("0.1.0-beta02" /*NuGetVersionCustom*/)
+                .SetVersion("0.1.0-beta03" /*NuGetVersionCustom*/)
                 .SetDescription("Lightweight rule engine")
-                .SetPackageTags("Simpleflow Workflow RuleEngine DynamicExpressionEvaluator")
+                .SetPackageTags("Simpleflow.NET Workflow RuleEngine DynamicExpressionEvaluator")
                 .SetNoDependencies(true)
-                .SetOutputDirectory(ArtifactsDirectory / "nuget")); 
+                .SetOutputDirectory(ArtifactsDirectory / "nuget"));
         });
 
     Target Push => _ => _

@@ -2,7 +2,7 @@
 
 Simpleflow is a lightweight dynamic rule engine to build workflow with intuitive script concepts. Simpleflow allows access to the process objects or methods in script securely. Methods can be registered as activities with Simpleflow engine, which is extensible to enrich or monitor the execution flow. Simpleflow is secure and efficient to run dynamic rules and workflow. 
 
-**Simpleflow Script**
+**Try Simpleflow Script**
 
 ```csharp
 
@@ -12,22 +12,27 @@ var flowScript =
     let text  = ""Hello, विश्वम्‌""
     let today = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
 
-    /* Comment: Message when UID is 2 and New is true */
-    rule when arg.UID == 2 and arg.New then
+    /* Comment: Message when UniversalId is 2 and New is true */
+    rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
          message text
-    	 message today
+    end rule
+    
+    output today
 ";
 
 // Execute Script
-FlowOutput output = SimpleflowEngine.Run(flowScript, new {UID = 2, New=true} );
+FlowOutput result = SimpleflowEngine.Run(flowScript, new {UniversalId = 2, New=true, Verified=false} );
 
-// Access Output
-Console.WriteLine(output.Messages[0]); //output.Errors output.Output
+// Access result
+Console.WriteLine(result.Messages[0]); 
+Console.WriteLine(result.Output["today"]);
+
 ```
 **Output**
 
 ```
 Hello, विश्वम्‌
+<current system date and time>
 ```
 Please see [this](#examples) example with most of the simpleflow script features.
 
@@ -49,7 +54,7 @@ Please see [this](#examples) example with most of the simpleflow script features
 * All `let` statements (declare and initialize variables) must be declared in the beginning of the script.
 * Each statement must end with a new line and each statement can be written in single line only.
 * `set` statement can be used to modify the value of variable that has been declared using let statement. 
-* All keywords should be small (case sensitive) (`let, set, message, error, output, rule, when, then, exit, end rule `)
+* All keywords should be small (case sensitive) (`let, set, message, error, output, rule, when, then, exit, end rule, partial `)
  * variable names and function names are not case sensitive.
  * `end rule` can be used to terminate the rule scope.
  * `exit` can be used to terminate the script execution.
@@ -81,8 +86,9 @@ let <variablename> = expression
 **Modify value of a variable**
 $\color{skyblue}{Syntax}$
 ```csharp
-set <variablename> = expression
+[partial] set <variablename> = expression
 ```
+
 
 #### Data Types
 **Simple Types:**
@@ -107,7 +113,7 @@ set <variablename> = expression
     let birthday = $date(y:1980, m: 1, d: 1 )
     ```
 **Complex Types:**
-Object type can be defined using JSON format. It does not support nested object, but in order to set nested object, you can set to a variable and use it.
+Object type can be defined using JSON format. It does not support nested object syntax, but in order to set nested object, you can set to a variable and use it.
 ```csharp
 let address = {city: 'ny'}
 let member =  {name: 'alex', address: address }
@@ -120,7 +126,7 @@ Relational Operators: `<, <=, >, >=, == , !=`
 
 #### Expressions
 ```csharp
-   let v = 2 + 3; 
+   let v = 2 + 3 * (3 * arg.value); 
 ```
 
 #### Script Parameters
@@ -210,6 +216,7 @@ It supports only one style of comment can be used for single or multiline using 
 1. [Flowoutput](#flowoutput)
 1. [Register Custom Functions](#register-custom-functions)
 1. [Extensibility](#extensibility)
+1. [Compile Script]
 
 #### Simpleflow Execution
 <a name="simpleflow-pipeline"></a>
@@ -279,12 +286,43 @@ public class LoggingService : IFlowPipelineService
 }
 ```
 
+#### Compile Script
+By adding only CompilerService to build pipeline, script can be compiled and reported if there are any errors.
+```csharp
+    public static class SimpleflowScriptCompile
+    {
+        static readonly ISimpleflow Simpleflow;
+
+        static SimpleflowCompilerApiService()
+        {
+            var engine
+                = new SimpleflowPipelineBuilder()
+                    .AddPipelineServices(new Services.CompilerService(FunctionRegister.Default));
+
+            Simpleflow = engine.Build();
+        }
+
+        public static (bool succeeded, string errorMessage) Compile<TInput>(string script, TInput context)
+        {
+            try {
+                Simpleflow.Run(script, context);
+                return (true, null);
+            } 
+            catch(SimpleflowException exception)
+            {
+                return (false, exception.Message);
+            }
+        }
+    }
+```
+
 ## Examples
 <a name="examples"></a>
 
 ```csharp
 /* Declare and initialize variables */
-let user     = none
+let user        = none
+let currentDate = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
 
 /* Define Rules */
 rule when  arg.Name == "" then
@@ -304,18 +342,33 @@ rule when context.HasErrors then
     exit
 end rule
 
-/* Set current time */
-set arg.RegistrationDate = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
-/* Save */
-set user = $RegisterUser(user: arg) /* User defined function*/
+/* Set current date time */
+partial set arg = { RegistrationDate: currentDate, IsActive: true }
 
-output user  /*access this output using result.Output["user"]*/
+/* Save */
+set userId = $CustomerService.RegisterUser(user: arg) /* User defined function*/
+
+output userId  /*access this output using result.Output["user"]*/
 
 ```
 
 ```csharp
+class User { 
+    public string Name {get;set;}
+    public int Age {get;set;}
+    public string Country {get;set;}
+    public bool IsActive {get;set;}
+    public DateTime RegistrationDate {get;set;} 
+}
+
+// Register custom function
+var register = 
+    FunctionRegister.Default
+        .Add("CustomerService.RegisterUser", (Func<User, int>)RegisterUser);
+
+// Execute Dynamic Script
 FlowOutput result = SimpleflowEngine.Run(rules /*above script*/, 
-                                         new {Name = "John", Age=22, Country='US'} );
+                                         new User {Name = "John", Age=22, Country='US' } );
 
 // Log messages
 Logger.Info(result.Messages.ToCsv());
@@ -328,7 +381,7 @@ if (result.Errors.Count > 0 )
 }
 
 // Capture registered user
-var user =  result.Output["user"];
+var userId =  result.Output["userId"];
 
 ```
 

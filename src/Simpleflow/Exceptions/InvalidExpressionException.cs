@@ -8,7 +8,7 @@ namespace Simpleflow.Exceptions
     /// <summary>
     /// 
     /// </summary>
-    public class InvalidExpressionException : Exception
+    public class InvalidExpressionException : SimpleflowException
     {
         // TODO
 

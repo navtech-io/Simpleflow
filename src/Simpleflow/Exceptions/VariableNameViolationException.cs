@@ -6,7 +6,7 @@ using System;
 namespace Simpleflow.Exceptions
 {
 
-    public class VariableNameViolationException : Exception
+    public class VariableNameViolationException : SimpleflowException
     {
         public VariableNameViolationException(string name) 
             : base(String.Format(Resources.Message.ReservedWordException, name) ) { }

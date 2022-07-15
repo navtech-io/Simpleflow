@@ -40,7 +40,7 @@ namespace Simpleflow.CodeGenerator
             // Find error if any detected
             if (errorListener.Errors.Count > 0)
             {
-                throw new SyntaxErrorException(errorListener.GetAggregateMessages());
+                throw new SyntaxException(errorListener.GetAggregateMessages());
             }
 
             // Generate code

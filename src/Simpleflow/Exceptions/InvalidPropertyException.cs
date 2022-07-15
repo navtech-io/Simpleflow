@@ -5,7 +5,7 @@ using System;
 
 namespace Simpleflow.Exceptions
 {
-    public class InvalidPropertyException : Exception
+    public class InvalidPropertyException : SimpleflowException
     {
         public InvalidPropertyException(string message): base(message)
         {

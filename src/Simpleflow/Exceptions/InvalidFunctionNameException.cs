@@ -5,7 +5,7 @@ using System;
 
 namespace Simpleflow.Exceptions
 {
-    public class InvalidFunctionNameException : Exception
+    public class InvalidFunctionNameException : SimpleflowException
     {
         public InvalidFunctionNameException(string functionName) : base($"Invalid function name '{functionName}'")
         {
