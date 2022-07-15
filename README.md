@@ -74,7 +74,7 @@ Please see [this](#examples) example with most of the simpleflow script features
 1. [Data Types](#data-types)
 1. [Operators](#operators)
 1. [Expressions](#expressions)
-1. [Script Parameters](#argument)
+1. [Script Parameters](#script-parameters)
 1. [Rule Control Flow](#rule-control-flow)
 1. [Emitters](#emitters)
 1. [Functions](#functions)
@@ -97,27 +97,28 @@ $\color{skyblue}{Syntax}$
 
 #### Data Types
 **Simple Types:**
-* Number
-    ```csharp
-    let x = 1
-    let y = 2.3
-    let z = -442.33
-    ```
-* String
-    ```csharp
-    let name = "test"
-    ```
-* Boolean
-    ```csharp
-    let hasValue = true
-    let allow = false
-    ```
-* Date 
-<small>Simpleflow does not recognize date type directly, but this can be declared by using built-in date function</small>
-    ```csharp
-    let birthday = $date(y:1980, m: 1, d: 1 )
-    ```
+###### Number
+```csharp
+let x = 1
+let y = 2.3
+let z = -442.33
+```
+###### String
+```csharp
+let name = "test"
+```
+###### Boolean
+```csharp
+let hasValue = true
+let allow = false
+```
+###### Date 
+Simpleflow does not recognize date type directly, but this can be declared by using built-in date function.
+```csharp
+let birthday = $date(y:1980, m: 1, d: 1 )
+```
 **Complex Types:**
+
 Object type can be defined using JSON format. It does not support nested object syntax, but in order to set nested object, you can set to a variable and use it.
 ```csharp
 let address = {city: 'ny'}
@@ -125,26 +126,25 @@ let member =  {name: 'alex', address: address }
 ```
 
 #### Operators
-Arithmetic Operators: `+,-,*,/`
-Logical Operators: `and, or, not`
-Relational Operators: `<, <=, >, >=, == , !=`
+
+Arithmetic Operators: `+,-,*,/**` <br>
+Logical Operators:    `and, or, not`  <br>
+Relational Operators: `<, <=, >, >=, == , !=` 
 
 #### Expressions
 ```csharp
-   let v = 2 + 3 * (3 * arg.value); 
+let v = 2 + 3 * (3 * arg.value); 
 ```
 
 #### Script Parameters
 `arg` and `context`
-
 `arg` represents the input to the script.
 
-```
-context Properties:
-    context.HasErrors
-    context.HasMessages
-    context.HasOutput
-```
+Context Properties:
+* context.HasErrors
+* context.HasMessages
+* context.HasOutput
+
 
 #### Rule Control Flow
 $\color{skyblue}{Syntax}$
@@ -173,42 +173,43 @@ exit    /*exit will terminate the execution*/
 #### Functions
 $\color{skyblue}{Syntax}$
 ```csharp
-let/set varname = $<function_name>(param_name1: value1, param_name2: value2, ...)
+$<function_name>(param_name1: value1, param_name2: value2, ...)
 ```
   Function parameters can be written in any order. and if you omit a parameter it takes a default value of that type.
   Function cannot be an argument to another function. Store output of a function in a variable and use it.
 
-* Date Functions	
-    * $\color{green}{\$Date(y: int, m: int, d: int, [h:int, mn: int, s: int])}$
-        ```csharp        
-        // Examples
-        let d1 = $Date(y: 2022, m: 7, d:11)
-        let d2 = $Date(m: 10, d:25, y: 2022 )
-        let t1 = $Date(m: 10, d:25, y: 2022, h:13, mn:30 )
-        ```        
-    * $\color{green}{\$GetCurrentDate()}$
-    * $\color{green}{\$GetCurrentTime()}$
-    * $\color{green}{\$GetCurrentDateTime(timeZone: "")}$
-    Check supported time zones here:
-    https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11#time-zones
-        ```csharp
-        let today    = $GetCurrentDateTime()
-        let todayEst = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
-        ```
+###### Date Functions	
 
-* String Functions
-    * $\color{green}{\$Substring(input: string,  startIndex:int, length: int)}$ 
-    * $\color{green}{\$IndexOf(input: string,  value:string, startIndex: int) }$
-    * $\color{green}{\$Length(input: string) }$
-    * $\color{green}{\$Contains(input: string,  value:string) }$ 
-    * $\color{green}{\$StartsWith(input: string,  value:string) }$
-    * $\color{green}{\$EndsWith(input: string,  value:string) }$
-    * $\color{green}{\$Trim(input: string,  value:string) }$
-    * $\color{green}{\$Match(input: string,  pattern:string) }$
-    * $\color{green}{\$Concat(value1: string,  value2:string,  value3:string,  value4:string,  value5:string)}$ 
-        ```csharp
-        let value = $Concat ( value1: "I ", value2: "got it" )
-        ```
+* $\color{green}{\$Date(y: int, m: int, d: int, [h:int, mn: int, s: int])}$
+    ```csharp        
+    // Examples
+    let d1 = $Date(y: 2022, m: 7, d:11)
+    let d2 = $Date(m: 10, d:25, y: 2022 )
+    let t1 = $Date(m: 10, d:25, y: 2022, h:13, mn:30 )
+    ```        
+* $\color{green}{\$GetCurrentDate()}$
+* $\color{green}{\$GetCurrentTime()}$
+* $\color{green}{\$GetCurrentDateTime(timeZone: "")}$
+Check supported time zones here:
+https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11#time-zones
+    ```csharp
+    let today    = $GetCurrentDateTime()
+    let todayEst = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
+    ```
+
+###### String Functions
+* $\color{green}{\$Substring(input: string,  startIndex:int, length: int)}$ 
+* $\color{green}{\$IndexOf(input: string,  value:string, startIndex: int) }$
+* $\color{green}{\$Length(input: string) }$
+* $\color{green}{\$Contains(input: string,  value:string) }$ 
+* $\color{green}{\$StartsWith(input: string,  value:string) }$
+* $\color{green}{\$EndsWith(input: string,  value:string) }$
+* $\color{green}{\$Trim(input: string,  value:string) }$
+* $\color{green}{\$Match(input: string,  pattern:string) }$
+* $\color{green}{\$Concat(value1: string,  value2:string,  value3:string,  value4:string,  value5:string)}$ 
+    ```csharp
+    let value = $Concat ( value1: "I ", value2: "got it" )
+    ```
 #### Comment
 It supports only one style of comment can be used for single or multiline using /* .. */
 ```csharp
@@ -221,12 +222,12 @@ It supports only one style of comment can be used for single or multiline using 
 1. [Flowoutput](#flowoutput)
 1. [Register Custom Functions](#register-custom-functions)
 1. [Extensibility](#extensibility)
-1. [Compile Script]
+1. [Compile Script](#compile-script)
 
 #### Simpleflow Execution
 <a name="simpleflow-pipeline"></a>
 
-<!-- ![Simpleflow Pipeline](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://github.com/navtech-io/Simpleflow/blob/main/SimpleflowDiagram.puml) -->
+<!-- ![Simpleflow Pipeline](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/navtech-io/Simpleflow/main/SimpleflowDiagram.puml) -->
 
 Sample code to create, build and run pipeline
 ```csharp
@@ -266,7 +267,7 @@ Emitters (`message, error, output`) produce output from script that will be avai
 
 ```csharp
 FunctionRegister.Default
-    .Add("DerivativeOfXPowN", (Func<int, int, int>)CalcDerivativeOfXPowN) //Don't add prefix $
+    .Add("DerivativeOfXPowN", (Func<int, int, int>)CalcDerivativeOfXPowN)
 
 static int CalcDerivativeOfXPowN(int x, int n)
 {
@@ -278,7 +279,7 @@ static int CalcDerivativeOfXPowN(int x, int n)
 
 #### Extensibility
 
-###### Create Middleware
+Create middleware and add it to pipeline.
 
 ```csharp
 public class LoggingService : IFlowPipelineService
@@ -294,31 +295,23 @@ public class LoggingService : IFlowPipelineService
 #### Compile Script
 By adding only CompilerService to build pipeline, script can be compiled and reported if there are any errors.
 ```csharp
-    public static class SimpleflowScriptCompile
-    {
-        static readonly ISimpleflow Simpleflow;
+    
+var engine
+    = new SimpleflowPipelineBuilder()
+        .AddPipelineServices(new Services.CompilerService(FunctionRegister.Default));
 
-        static SimpleflowCompilerApiService()
-        {
-            var engine
-                = new SimpleflowPipelineBuilder()
-                    .AddPipelineServices(new Services.CompilerService(FunctionRegister.Default));
+var simpleflow = engine.Build();
+   
+try 
+{
+    simpleflow.Run(script, context);
+    return (true, null);
+} 
+catch(SimpleflowException exception)
+{
+    //Handle script errors
+}
 
-            Simpleflow = engine.Build();
-        }
-
-        public static (bool succeeded, string errorMessage) Compile<TInput>(string script, TInput context)
-        {
-            try {
-                Simpleflow.Run(script, context);
-                return (true, null);
-            } 
-            catch(SimpleflowException exception)
-            {
-                return (false, exception.Message);
-            }
-        }
-    }
 ```
 
 ## Examples
