@@ -8,7 +8,7 @@ namespace Simpleflow.Exceptions
     /// <summary>
     /// 
     /// </summary>
-    public class DuplicateActivityException : SimpleflowException
+    public class DuplicateFunctionException : SimpleflowException
     {
         // TODO
 
@@ -16,6 +16,10 @@ namespace Simpleflow.Exceptions
         /// 
         /// </summary>
         /// <param name="name"></param>
-        public DuplicateActivityException(string name) : base($"Activity '{name}' cannot be duplicated.") {}
+        public DuplicateFunctionException(string name) : base($"Function '{name}' is already registered, cannot be duplicated.") {
+            FunctionName = name;
+        }
+
+        public string FunctionName { get; }
     }
 }

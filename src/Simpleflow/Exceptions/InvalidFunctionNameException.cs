@@ -9,7 +9,9 @@ namespace Simpleflow.Exceptions
     {
         public InvalidFunctionNameException(string functionName) : base($"Invalid function name '{functionName}'")
         {
-
+            FunctionName = functionName;
         }
+
+        public string FunctionName { get; }
     }
 }

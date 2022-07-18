@@ -7,12 +7,12 @@ namespace Simpleflow
     public class FlowOptions : IOptions
     {
         /// <inheritdoc />
-        public bool ReadOnlyExecution { get; set; }
+        public bool AllowArgumentToMutate { get; set; }
 
         /// <inheritdoc />
-        public bool RunFunctions { get; set; }
+        public string[] AllowFunctions { get; set; }
 
         /// <inheritdoc />
-        public string[] PermitFunctions { get; set; }
+        public string[] DenyFunctions { get; set; }
     }
 }

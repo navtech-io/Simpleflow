@@ -17,7 +17,12 @@ namespace Simpleflow.Exceptions
         public DuplicateVariableDeclarationException(string name) 
             : base(string.Format(Resources.Message.VariableAlreadyDefined, name))
         {
-
+            VariableName = name;
         }
+
+        /// <summary>
+        /// Gets name of the variable that has been declared more than once
+        /// </summary>
+        public string VariableName { get; }
     }
 }

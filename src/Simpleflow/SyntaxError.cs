@@ -10,12 +10,13 @@ namespace Simpleflow
     /// </summary>
     public readonly struct SyntaxError
     {
-        public readonly IRecognizer Recognizer;
+        internal readonly IRecognizer Recognizer;
+        internal readonly RecognitionException Exception;
+
         public readonly IToken OffendingSymbol;
         public readonly int Line;
         public readonly int CharPositionInLine;
         public readonly string Message;
-        public readonly RecognitionException Exception;
 
         public SyntaxError(IRecognizer recognizer, IToken offendingSymbol, int line,
             int charPositionInLine, string message, RecognitionException exception)

@@ -1,7 +1,7 @@
 ﻿// Copyright (c) navtech.io. All rights reserved.
 // See License in the project root for license information.
 
-using System;
+using System.Collections.Generic;
 
 namespace Simpleflow.Exceptions
 {
@@ -14,8 +14,12 @@ namespace Simpleflow.Exceptions
         /// 
         /// </summary>
         /// <param name="message"></param>
-        public SyntaxException(string message) : base(message)
+        /// <param name="errors"></param>
+        public SyntaxException(string message, IEnumerable<SyntaxError> errors) : base(message)
         {
+            Errors = errors;
         }
+
+        IEnumerable<SyntaxError> Errors { get; }
     }
 }

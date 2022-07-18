@@ -12,7 +12,7 @@ namespace Simpleflow
         {
             if (argument == null)
             {
-                if (paramName == null)
+                if (string.IsNullOrWhiteSpace(paramName))
                 {
                     throw new ArgumentNullException();
                 }
@@ -27,7 +27,7 @@ namespace Simpleflow
         {
             if (string.IsNullOrWhiteSpace(argument))
             {
-                if (paramName == null)
+                if (string.IsNullOrWhiteSpace(paramName))
                 {
                     throw new ArgumentNullException();
                 }

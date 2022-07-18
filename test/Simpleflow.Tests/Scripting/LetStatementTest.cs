@@ -20,7 +20,6 @@ namespace Simpleflow.Tests.Scripting
         public void InvalidVariableName(string value1)
         {
             // Arrange
-            var context = new SampleArgument { Id = 10 };
             var script =
                 @$"
                   let {value1} = 5
@@ -47,6 +46,38 @@ namespace Simpleflow.Tests.Scripting
             // Act & Assert
             var output = SimpleflowEngine.Run(script, arg);
             Assert.Equal("20", output.Messages[0]);
+        }
+
+
+        [Fact]
+        public void LetIncorrectSyntax()
+        {
+            // Arrange
+            var script =
+                @"
+                  let aa@a = 23
+                  message aa@a
+                ";
+            
+            // Act & Assert
+            Assert.Throws<SyntaxException>(() => SimpleflowEngine.Run(script, new SampleArgument()));
+        }
+
+        [Fact]
+        public void CheckDuplicateVariableDeclarationException()
+        {
+            // Arrange
+            var script =
+                @"
+                  let test = 23
+                  let test = true
+
+                ";
+
+            // Act & Assert
+            AssertEx.Throws<DuplicateVariableDeclarationException>(
+                ex => Assert.Equal("test", ex.VariableName),
+                () => SimpleflowEngine.Run(script, new SampleArgument()));
         }
 
         public static IEnumerable<object[]> Data() => SimpleflowKeywords.Keywords.Select(k => new object[] { k });

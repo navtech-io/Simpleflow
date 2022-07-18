@@ -104,7 +104,7 @@ namespace Simpleflow.CodeGenerator
                 return CallListAddMethod(strExp, outputProperty);
             }
 
-            throw new InvalidExpressionException(messageToken.GetText());
+            return null;
         }
 
 

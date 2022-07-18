@@ -16,4 +16,15 @@ namespace Simpleflow.Tests.Helpers
             return $"{Id}-{Value}-{Text}-{IsValid}-{NullCheck ?? "NULL"}-{CheckIdentifer}";
         }
     }
+
+    public class MethodSuperArgument
+    {
+        public string Uid { get; set; }
+        public MethodArgument Child { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Uid}-{Child}";
+        }
+    }
 }

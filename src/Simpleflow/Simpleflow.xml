@@ -17,12 +17,12 @@
             <param name="string"></param>
             <returns></returns>
         </member>
-        <member name="T:Simpleflow.Exceptions.DuplicateActivityException">
+        <member name="T:Simpleflow.Exceptions.DuplicateFunctionException">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Simpleflow.Exceptions.DuplicateActivityException.#ctor(System.String)">
+        <member name="M:Simpleflow.Exceptions.DuplicateFunctionException.#ctor(System.String)">
             <summary>
             
             </summary>
@@ -45,16 +45,10 @@
             </summary>
             <param name="name"></param>
         </member>
-        <member name="T:Simpleflow.Exceptions.InvalidExpressionException">
+        <member name="P:Simpleflow.Exceptions.DuplicateVariableDeclarationException.VariableName">
             <summary>
-            
+            Gets name of the variable that has been declared more than once
             </summary>
-        </member>
-        <member name="M:Simpleflow.Exceptions.InvalidExpressionException.#ctor(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="name"></param>
         </member>
         <member name="T:Simpleflow.Exceptions.InvalidFunctionException">
             <summary>
@@ -72,11 +66,12 @@
             
             </summary>
         </member>
-        <member name="M:Simpleflow.Exceptions.SyntaxException.#ctor(System.String)">
+        <member name="M:Simpleflow.Exceptions.SyntaxException.#ctor(System.String,System.Collections.Generic.IEnumerable{Simpleflow.SyntaxError})">
             <summary>
             
             </summary>
             <param name="message"></param>
+            <param name="errors"></param>
         </member>
         <member name="T:Simpleflow.Exceptions.UndeclaredVariableException">
             <summary>
@@ -166,13 +161,13 @@
         <member name="T:Simpleflow.FlowOptions">
             <inheritdoc />
         </member>
-        <member name="P:Simpleflow.FlowOptions.ReadOnlyExecution">
+        <member name="P:Simpleflow.FlowOptions.AllowArgumentToMutate">
             <inheritdoc />
         </member>
-        <member name="P:Simpleflow.FlowOptions.RunFunctions">
+        <member name="P:Simpleflow.FlowOptions.AllowFunctions">
             <inheritdoc />
         </member>
-        <member name="P:Simpleflow.FlowOptions.PermitFunctions">
+        <member name="P:Simpleflow.FlowOptions.DenyFunctions">
             <inheritdoc />
         </member>
         <member name="T:Simpleflow.FlowOutput">
@@ -270,20 +265,20 @@
             
             </summary>
         </member>
-        <member name="P:Simpleflow.IOptions.ReadOnlyExecution">
+        <member name="P:Simpleflow.IOptions.AllowArgumentToMutate">
             <summary>
-            Gets read-only execution setting
-            <br/>Mutate and function execution will be ignored if ReadOnlyExecution is true
+            Gets or sets AllowArgumentToMutate
             </summary>
         </member>
-        <member name="P:Simpleflow.IOptions.RunFunctions">
+        <member name="P:Simpleflow.IOptions.AllowFunctions">
             <summary>
-            Gets indicator whether function will run or not
+            Gets or sets AllowFunctions
             </summary>
         </member>
-        <member name="P:Simpleflow.IOptions.PermitFunctions">
+        <member name="P:Simpleflow.IOptions.DenyFunctions">
             <summary>
-            Gets permitted functions, this property depends on RunActivities
+            Gets or sets DenyFunctions
+            DenyFunctions overrides the <see cref="P:Simpleflow.IOptions.AllowFunctions"/>
             </summary>
         </member>
         <member name="T:Simpleflow.ISimpleflow">

@@ -46,7 +46,7 @@ namespace Simpleflow
 
             if (_bitmapIndex.ContainsKey(name))
             {
-                throw new DuplicateActivityException(name);
+                throw new DuplicateFunctionException(name);
             }
 
             int index;
@@ -82,7 +82,7 @@ namespace Simpleflow
 
             if (_bitmapIndex.ContainsKey(name))
             {
-                throw new DuplicateActivityException(name);
+                throw new DuplicateFunctionException(name);
             }
 
             int index;

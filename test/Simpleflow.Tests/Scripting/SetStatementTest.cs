@@ -58,6 +58,22 @@ namespace Simpleflow.Tests.Scripting
         }
 
         [Fact]
+        public void CheckUndeclaredVariableExceptionForSet()
+        {
+            // Arrange
+            var context = new SampleArgument { Id = 10 };
+            var script =
+                @"
+                  set x = 20
+                ";
+
+            // Act & Assert
+            AssertEx.Throws<UndeclaredVariableException>(
+                    ex => Assert.Equal("x", ex.VariableName), 
+                    () => SimpleflowEngine.Run(script, new SampleArgument()));
+        }
+
+        [Fact]
         public void PartialSet()
         {
             // Arrange

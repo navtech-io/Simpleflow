@@ -9,19 +9,20 @@ namespace Simpleflow
     public interface IOptions
     {
         /// <summary>
-        /// Gets read-only execution setting
-        /// <br/>Mutate and function execution will be ignored if ReadOnlyExecution is true
+        /// Gets or sets AllowArgumentToMutate
         /// </summary>
-        bool ReadOnlyExecution { get;  }
+        bool AllowArgumentToMutate { get;  }
 
         /// <summary>
-        /// Gets indicator whether function will run or not
+        /// Gets or sets AllowFunctions
         /// </summary>
-        bool RunFunctions { get; }
+        public string[] AllowFunctions { get; set; }
+
 
         /// <summary>
-        /// Gets permitted functions, this property depends on RunActivities
+        /// Gets or sets DenyFunctions
+        /// DenyFunctions overrides the <see cref="AllowFunctions"/>
         /// </summary>
-        string[] PermitFunctions { get; }
+        public string[] DenyFunctions { get; set; }
     }
 }

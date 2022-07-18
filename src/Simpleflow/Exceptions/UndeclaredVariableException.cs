@@ -16,6 +16,11 @@ namespace Simpleflow.Exceptions
         /// 
         /// </summary>
         /// <param name="name"></param>
-        public UndeclaredVariableException(string name) : base($"Variable '{name}' is not declared.") { }
+        public UndeclaredVariableException(string name) : base($"Variable '{name}' is not declared.")
+        {
+            VariableName = name;
+        }
+
+        public string VariableName { get; }
     }
 }

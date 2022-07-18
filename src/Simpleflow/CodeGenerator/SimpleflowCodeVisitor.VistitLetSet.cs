@@ -23,10 +23,11 @@ namespace Simpleflow.CodeGenerator
             // Validate variable name
             if (SimpleflowKeywords.Keywords.Any(keyword => string.Equals(keyword, letIdentifier, StringComparison.Ordinal)))
             {
-                throw new VariableNameViolationException(letIdentifier); 
+                throw new VariableNameViolationException(letIdentifier);
             }
 
-            return VisitVariableExpression(expression, letIdentifier, variable: null, completeExpForErrorOut: context.GetText());
+            return GetLetVariableExpression(expression, letIdentifier);
+
         }
 
         // Mutate statement
@@ -42,16 +43,32 @@ namespace Simpleflow.CodeGenerator
             {
                 throw new UndeclaredVariableException(variableName);
             }
+            
+            var expression = context.expression();
+            Expression rightSideSetExpression;
 
-            if (context.Partial() != null)
+            if (context.Partial() != null) // visit complex type partially
             {
+                if (expression.jsonObj() == null)
+                {
+                    throw new SimpleflowException(Resources.Message.InvalidPartialKeywordUsage);
+                }
                 return VisitPartialSet(context, variableExpression);
             }
-            
-            return VisitVariableExpression(context.expression(), variableName, variable: variableExpression, completeExpForErrorOut: context.GetText());
+
+            else if (expression.jsonObj() != null) // visit complex type fully - complete replace of reference
+            {
+                rightSideSetExpression = CreateNewInstanceWithProps(variableExpression.Type, expression.jsonObj().pair());
+            }
+            else // visit simple type
+            {
+                rightSideSetExpression = Visit(expression.GetChild(0));
+            }
+            return Expression.Assign(variableExpression, rightSideSetExpression);
         }
 
-        private Expression VisitVariableExpression(SimpleflowParser.ExpressionContext context, string variableName, Expression variable, string completeExpForErrorOut)
+
+        private Expression GetLetVariableExpression(SimpleflowParser.ExpressionContext context, string variableName)
         {
             if (context.jsonObj() != null)
             {
@@ -59,8 +76,8 @@ namespace Simpleflow.CodeGenerator
             }
 
             var expression = Visit(context.GetChild(0));
-            return Expression.Assign(variable ?? Expression.Variable(expression.Type, variableName), expression);
+            return Expression.Assign(Expression.Variable(expression.Type, variableName), expression);
         }
-        
+
     }
 }

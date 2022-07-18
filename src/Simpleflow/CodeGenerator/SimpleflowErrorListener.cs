@@ -24,7 +24,7 @@ namespace Simpleflow.CodeGenerator
 
         public string GetAggregateMessages()
         {
-            return string.Join(';', Errors);
+            return string.Join(";\r\n", Errors);
         }
     }
 }

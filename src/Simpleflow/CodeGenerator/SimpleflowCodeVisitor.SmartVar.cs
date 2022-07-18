@@ -33,6 +33,16 @@ namespace Simpleflow.CodeGenerator
 
             // Create
             var pairs = smartVar.Context.jsonObj().pair();
+            var membersInitialization = CreateNewInstanceWithProps(targetType,  pairs);
+
+            // Store created smart variable to further reuse and replace.
+            smartVar.VariableExpression = Expression.Assign(Expression.Variable(targetType), membersInitialization);
+
+            return membersInitialization;
+        }
+
+        private Expression CreateNewInstanceWithProps(Type targetType,  SimpleflowParser.PairContext[] pairs)
+        {
             var memberBindings = new List<MemberBinding>();
 
             // set values to each declared property
@@ -40,9 +50,6 @@ namespace Simpleflow.CodeGenerator
 
             // Create new instance and assign member bindings
             Expression membersInitialization = Expression.MemberInit(Expression.New(targetType), memberBindings);
-
-            // Store created smart variable to further reuse and replace.
-            smartVar.VariableExpression = Expression.Assign(Expression.Variable(targetType), membersInitialization);
 
             return membersInitialization;
         }
@@ -94,11 +101,6 @@ namespace Simpleflow.CodeGenerator
 
         private Expression VisitPartialSet(SimpleflowParser.SetStmtContext context, Expression variable)
         {
-            if (context.expression().jsonObj() == null)
-            {
-                throw new SimpleflowException(Resources.Message.InvalidPartialKeywordUsage);
-            }
-
             // variable.Left.Type
             var pairs = context.expression().jsonObj().pair();
             List<Expression> propExpressions = new List<Expression>();
