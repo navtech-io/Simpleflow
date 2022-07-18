@@ -127,7 +127,7 @@ let member =  {name: 'alex', address: address }
 
 #### Operators
 
-Arithmetic Operators: `+,-,*,/**` <br>
+Arithmetic Operators: `+,-,*,/` <br>
 Logical Operators:    `and, or, not`  <br>
 Relational Operators: `<, <=, >, >=, == , !=` 
 
@@ -190,6 +190,7 @@ $<function_name>(param_name1: value1, param_name2: value2, ...)
 * $\color{green}{\$GetCurrentDate()}$
 * $\color{green}{\$GetCurrentTime()}$
 * $\color{green}{\$GetCurrentDateTime(timeZone: "")}$
+<br>
 Check supported time zones here:
 https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11#time-zones
     ```csharp
@@ -305,7 +306,6 @@ var simpleflow = engine.Build();
 try 
 {
     simpleflow.Run(script, context);
-    return (true, null);
 } 
 catch(SimpleflowException exception)
 {
@@ -346,7 +346,7 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
 /* Save */
 set userId = $CustomerService.RegisterUser(user: arg) /* User defined function*/
 
-output userId  /*access this output using result.Output["user"]*/
+output userId  /*access this output using result.Output["userId"]*/
 
 ```
 
