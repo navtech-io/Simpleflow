@@ -39,6 +39,12 @@ bld/
 # Nuke cache directory
 .nuke/
 
+# Exclude .antlr token files
+.antlr/
+.gen/
+src/Simpleflow/Parser/Grammar/.antlr/
+src/Simpleflow/Parser/Grammar/.gen/
+
 # Visual Studio 2017 auto generated files
 Generated\ Files/
 
