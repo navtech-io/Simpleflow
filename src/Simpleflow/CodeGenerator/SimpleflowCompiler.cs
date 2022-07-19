@@ -15,7 +15,9 @@ namespace Simpleflow.CodeGenerator
     internal class SimpleflowCompiler
     {
 
-        public static Action<FlowInput<TArg>, FlowOutput, ScriptHelperContext> Compile<TArg>(string code, IFunctionRegister activityRegister)
+        public static Action<FlowInput<TArg>, FlowOutput, ScriptHelperContext> Compile<TArg>(string code, 
+            IFunctionRegister activityRegister, 
+            ParserEventPublisher eventPublisher)
         {
             var inputStream = new AntlrInputStream(code);
 
@@ -43,8 +45,9 @@ namespace Simpleflow.CodeGenerator
                 throw new SyntaxException(errorListener.GetAggregateMessages(), errorListener.Errors);
             }
 
+            
             // Generate code
-            var visitor = new SimpleflowCodeVisitor<TArg>(activityRegister);
+            var visitor = new SimpleflowCodeVisitor<TArg>(activityRegister, eventPublisher);
             var program = visitor.Visit(programContext);
 
             // Compile

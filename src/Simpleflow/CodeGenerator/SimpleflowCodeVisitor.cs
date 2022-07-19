@@ -27,9 +27,12 @@ namespace Simpleflow.CodeGenerator
         protected readonly ParameterExpression Output; // script main function parameter 2
         protected readonly ParameterExpression ScriptHelperContext; //script main function  parameter 3
 
-        public SimpleflowCodeVisitor(IFunctionRegister functionRegister)
+        protected readonly ParserEventPublisher EventPublisher;
+
+        public SimpleflowCodeVisitor(IFunctionRegister functionRegister, ParserEventPublisher eventPublisher)
         {
             FunctionRegister = functionRegister ?? throw new ArgumentNullException(nameof(functionRegister));
+            EventPublisher = eventPublisher;
 
             /* Initialize smart variables and smart json variables */
             Variables = new List<ParameterExpression>();

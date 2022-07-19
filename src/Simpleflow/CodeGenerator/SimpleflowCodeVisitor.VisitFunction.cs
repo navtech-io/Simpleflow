@@ -21,15 +21,18 @@ namespace Simpleflow.CodeGenerator
 
         public override Expression VisitFunction([NotNull] SimpleflowParser.FunctionContext context)
         {
-            var functionName = context.FunctionName().GetText();
+            var functionName = context.FunctionName().GetText().Substring(1); // Remove $ symbol
 
             // Get registered function
-            var function = FunctionRegister.GetFunction(functionName.Substring(1)); // Remove $ symbol
+            var function = FunctionRegister.GetFunction(functionName); 
 
             if (function == null)
             {
                 throw new InvalidFunctionException(functionName);
             }
+
+            // Publish event once function is available to compile
+            EventPublisher.Publish(EventType.VisitFunctionOnAvail, functionName);
 
             // Get actual method meta-data info and parameters
             var methodInfo = function.GetMethodInfo();

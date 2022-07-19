@@ -2,7 +2,9 @@
 // See License in the project root for license information.
 
 using System;
+using System.Linq;
 using Simpleflow.CodeGenerator;
+using Simpleflow.Exceptions;
 
 namespace Simpleflow.Services
 {
@@ -34,7 +36,10 @@ namespace Simpleflow.Services
 
             if (context.Internals.CompiledScript == null)
             {
-                context.Internals.CompiledScript = SimpleflowCompiler.Compile<TArg>(context.Script, _activityRegister);
+                var eventPublisher = new ParserEventPublisher();
+                CheckFunctionExecutionPermissions(context, eventPublisher);
+
+                context.Internals.CompiledScript = SimpleflowCompiler.Compile<TArg>(context.Script, _activityRegister, eventPublisher);
 
                 context.Trace.Write("Compiled");
             }
@@ -45,5 +50,33 @@ namespace Simpleflow.Services
             
             next?.Invoke(context);
         }
+
+        private static void CheckFunctionExecutionPermissions<TArg>(FlowContext<TArg> context, ParserEventPublisher eventPublisher)
+        {
+            eventPublisher.OnVisit = (type, data) =>
+            {
+                if (type == EventType.VisitFunctionOnAvail 
+                    && context.Options?.DenyFunctions != null)
+                {
+                    var functionName = data.ToString();
+                    if (context.Options.DenyFunctions.Contains(functionName, StringComparer.OrdinalIgnoreCase))
+                    {
+                        throw new AccessDeniedException($"Function '{functionName}' cannot be allowed to run in this context.");
+                    }
+                }
+
+                if (type == EventType.VisitFunctionOnAvail
+                    && context.Options?.AllowFunctions != null)
+                {
+                    var functionName = data.ToString();
+                    if (!context.Options.AllowFunctions.Contains(functionName, StringComparer.OrdinalIgnoreCase))
+                    {
+                        throw new AccessDeniedException($"Function '{functionName}' cannot be allowed to run in this context.");
+                    }
+                }
+            };
+        }
+
+
     }
 }

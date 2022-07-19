@@ -106,8 +106,8 @@ namespace Simpleflow.Services
         private string GetFlowContextOptionsId(IContextOptions options)
         {
             if (options.AllowArgumentToMutate == false 
-                && (options.AllowOnlyFunctions == null || options.AllowOnlyFunctions.Length == 0)
-                && (options.DenyOnlyFunctions == null  || options.DenyOnlyFunctions.Length == 0)
+                && (options.AllowFunctions == null || options.AllowFunctions.Length == 0)
+                && (options.DenyFunctions == null  || options.DenyFunctions.Length == 0)
                 )
             {
                 return string.Empty;
@@ -116,16 +116,16 @@ namespace Simpleflow.Services
             StringBuilder sb = new StringBuilder();
             sb.Append(string.Join(' ', options.AllowArgumentToMutate));
             
-            if (options.AllowOnlyFunctions != null && options.AllowOnlyFunctions.Length > 0)
+            if (options.AllowFunctions != null && options.AllowFunctions.Length > 0)
             {
                 sb.Append("Allow"); //ensure add this to avoid collisions
-                sb.Append(string.Join(' ', options.AllowOnlyFunctions));
+                sb.Append(string.Join(' ', options.AllowFunctions));
             }
 
-            if (options.DenyOnlyFunctions != null && options.DenyOnlyFunctions.Length > 0)
+            if (options.DenyFunctions != null && options.DenyFunctions.Length > 0)
             {
                 sb.Append("Deny"); //ensure add this to avoid collisions
-                sb.Append(string.Join(' ', options.DenyOnlyFunctions ));
+                sb.Append(string.Join(' ', options.DenyFunctions ));
             }
 
             return GetScriptUniqueId(sb.ToString());
