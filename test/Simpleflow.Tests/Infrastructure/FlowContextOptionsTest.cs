@@ -15,6 +15,7 @@ namespace Simpleflow.Tests.Infrastructure
                               message ""test""
                             ";
             string id = System.Guid.NewGuid().ToString();
+            var options = new FlowContextOptions { Id = id };
 
             // Act
             FlowOutput result = new SimpleflowPipelineBuilder()
@@ -22,14 +23,44 @@ namespace Simpleflow.Tests.Infrastructure
                                     .AddPipelineServices(new LoggingService())
                                     .Build()
                                     .Run(script, 
-                                         new object(), 
-                                         new FlowContextOptions { Id = id });
+                                         new object(),
+                                         options);
 
             // Assert
             SimpleflowTrace trace = (SimpleflowTrace)result.Output["Trace"];
             var logs = trace.GetLogs();
 
             Assert.Contains(expectedSubstring: id , actualString: logs);
+        }
+
+        [Fact]
+        public void CheckFlowContextOptionWithDenyFunction()
+        {
+            // Arrange
+            string script = @"
+                              message ""test""
+                            ";
+            string id = System.Guid.NewGuid().ToString();
+            var options = new FlowContextOptions 
+                                    { 
+                                      Id = id, 
+                                      DenyOnlyFunctions=  new string[] { "GetCurrentDateTime" }
+                                    };
+
+            // Act
+            FlowOutput result = new SimpleflowPipelineBuilder()
+                                    .AddCorePipelineServices(FunctionRegister.Default)
+                                    .AddPipelineServices(new LoggingService())
+                                    .Build()
+                                    .Run(script,
+                                         new object(),
+                                         options);
+
+            // Assert
+            SimpleflowTrace trace = (SimpleflowTrace)result.Output["Trace"];
+            var logs = trace.GetLogs();
+
+            Assert.Contains(expectedSubstring: id, actualString: logs);
         }
 
         class LoggingService : IFlowPipelineService

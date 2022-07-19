@@ -15,22 +15,57 @@ namespace Simpleflow.Services
     public class CacheService : IFlowPipelineService
     {
         private readonly IMemoryCache _cache;
+        private readonly string _hashingAlgToIdentifyScriptInCacheUniquely;
+        private readonly TimeSpan _cacheSlidingExpiration;
 
         /// <summary>
         /// 
         /// </summary>
-        public CacheService()
+        /// <param name="hashingAlgToIdentifyScriptInCacheUniquely">
+        /// Check hash algorithm names here: https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hashalgorithm.create?view=net-6.0
+        /// </param>
+        public CacheService(string hashingAlgToIdentifyScriptInCacheUniquely = "MD5")
         {
             //MemoryCache
             _cache = new MemoryCache( new MemoryCacheOptions() { });
+
+            // Set hashing algorithm for unique id generation
+            if (string.IsNullOrWhiteSpace(hashingAlgToIdentifyScriptInCacheUniquely))
+            {
+                throw new ArgumentNullException(nameof(hashingAlgToIdentifyScriptInCacheUniquely));
+            }
+            _hashingAlgToIdentifyScriptInCacheUniquely = hashingAlgToIdentifyScriptInCacheUniquely;
+
+
+            // Set default expiration time
+            _cacheSlidingExpiration = TimeSpan.FromMinutes(3);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hashingAlgToIdentifyScriptInCacheUniquely"></param>
+        /// <param name="cacheSlidingExpiration"></param>
+        public CacheService(TimeSpan cacheSlidingExpiration, string hashingAlgToIdentifyScriptInCacheUniquely = "MD5")
+            :this(hashingAlgToIdentifyScriptInCacheUniquely)
+        {
+            _cacheSlidingExpiration = cacheSlidingExpiration;
+        }
+
+        
         /// <inheritdoc />
         public void Run<TArg>(FlowContext<TArg> context, NextPipelineService<TArg> next)
         {
             // Create unique id for script to identify in cache store
             var id = string.IsNullOrWhiteSpace(context.Options?.Id) ?  
                         GetScriptUniqueId(context.Script) : context.Options.Id;
+
+            // GetFlowContextOptionsId helps to identify script uniquely along with options
+            // in order to allow or deny functions 
+            if (context.Options != null)
+            {
+                id += "_" + GetFlowContextOptionsId(context.Options);
+            }
 
             context.Trace.Write($"Cache-Key {id}");
 
@@ -57,15 +92,43 @@ namespace Simpleflow.Services
         }
 
         /// <summary>
-        /// Gets script unique id by creating hash for the input script
+        /// Gets script unique id by creating hash (SHA256) for the input script
         /// </summary>
         /// <param name="script"></param>
         /// <returns></returns>
         protected virtual string GetScriptUniqueId(string script)
         {
             // Calculate id for script
-            using var sha1 = SHA1.Create();
+            using var sha1 = HashAlgorithm.Create(_hashingAlgToIdentifyScriptInCacheUniquely);
             return System.Convert.ToBase64String(sha1.ComputeHash(Encoding.UTF8.GetBytes(script)));
+        }
+
+        private string GetFlowContextOptionsId(IContextOptions options)
+        {
+            if (options.AllowArgumentToMutate == false 
+                && (options.AllowOnlyFunctions == null || options.AllowOnlyFunctions.Length == 0)
+                && (options.DenyOnlyFunctions == null  || options.DenyOnlyFunctions.Length == 0)
+                )
+            {
+                return string.Empty;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(string.Join(' ', options.AllowArgumentToMutate));
+            
+            if (options.AllowOnlyFunctions != null && options.AllowOnlyFunctions.Length > 0)
+            {
+                sb.Append("Allow"); //ensure add this to avoid collisions
+                sb.Append(string.Join(' ', options.AllowOnlyFunctions));
+            }
+
+            if (options.DenyOnlyFunctions != null && options.DenyOnlyFunctions.Length > 0)
+            {
+                sb.Append("Deny"); //ensure add this to avoid collisions
+                sb.Append(string.Join(' ', options.DenyOnlyFunctions ));
+            }
+
+            return GetScriptUniqueId(sb.ToString());
         }
     }
 

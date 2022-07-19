@@ -15,11 +15,11 @@ namespace Simpleflow
         /// <summary>
         /// Gets or sets AllowFunctions
         /// </summary>
-        public string[] AllowFunctions { get; set; }
+        public string[] AllowOnlyFunctions { get; set; }
 
         /// <summary>
         /// Gets or sets DenyFunctions
         /// </summary>
-        public string[] DenyFunctions { get; set; }
+        public string[] DenyOnlyFunctions { get; set; }
     }
 }
