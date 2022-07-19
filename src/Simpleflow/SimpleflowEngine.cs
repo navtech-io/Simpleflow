@@ -29,6 +29,12 @@ namespace Simpleflow
         {
             return Simpleflow.Run(script, context);
         }
+
+        public static FlowOutput Run<TInput>(string script, TInput context, IContextOptions options)
+        {
+            return Simpleflow.Run(script, context, options);
+        }
+       
     }
 
    

@@ -147,6 +147,18 @@
             
             </summary>
         </member>
+        <member name="T:Simpleflow.FlowContextOptions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Simpleflow.FlowContextOptions.Id">
+            <summary>
+            Gets or sets unique id of the script
+            If Id is supplied, <see cref="T:Simpleflow.Services.CacheService"/> will use it to identify the compiled object
+            in cache otherwise it creates a hash id for that script.
+            </summary>
+        </member>
         <member name="T:Simpleflow.FlowInput`1">
             <summary>
             Represents input object to simple flow
@@ -162,13 +174,19 @@
             <inheritdoc />
         </member>
         <member name="P:Simpleflow.FlowOptions.AllowArgumentToMutate">
-            <inheritdoc />
+            <summary>
+            Gets or sets AllowArgumentToMutate
+            </summary>
         </member>
         <member name="P:Simpleflow.FlowOptions.AllowFunctions">
-            <inheritdoc />
+            <summary>
+            Gets or sets AllowFunctions
+            </summary>
         </member>
         <member name="P:Simpleflow.FlowOptions.DenyFunctions">
-            <inheritdoc />
+            <summary>
+            Gets or sets DenyFunctions
+            </summary>
         </member>
         <member name="T:Simpleflow.FlowOutput">
             <summary>
@@ -247,6 +265,16 @@
             <param name="name"></param>
             <returns></returns>
         </member>
+        <member name="T:Simpleflow.IContextOptions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Simpleflow.IContextOptions.Id">
+            <summary>
+            Gets unique id of the script
+            </summary>
+        </member>
         <member name="T:Simpleflow.IFlowPipelineService">
             <summary>
             Represents middleware abstraction for pipeline configuration.
@@ -277,8 +305,7 @@
         </member>
         <member name="P:Simpleflow.IOptions.DenyFunctions">
             <summary>
-            Gets or sets DenyFunctions
-            DenyFunctions overrides the <see cref="P:Simpleflow.IOptions.AllowFunctions"/>
+            Gets or sets DenyFunctions.
             </summary>
         </member>
         <member name="T:Simpleflow.ISimpleflow">
@@ -1834,13 +1861,30 @@
             A service to cache the generate code instructions
             </summary>
         </member>
-        <member name="M:Simpleflow.Services.CacheService.#ctor">
+        <member name="M:Simpleflow.Services.CacheService.#ctor(System.String)">
             <summary>
             
             </summary>
+            <param name="hashingAlgToIdentifyScriptInCacheUniquely">
+            Check hash algorithm names here: https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hashalgorithm.create?view=net-6.0
+            </param>
+        </member>
+        <member name="M:Simpleflow.Services.CacheService.#ctor(System.TimeSpan,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="hashingAlgToIdentifyScriptInCacheUniquely"></param>
+            <param name="cacheSlidingExpiration"></param>
         </member>
         <member name="M:Simpleflow.Services.CacheService.Run``1(Simpleflow.FlowContext{``0},Simpleflow.NextPipelineService{``0})">
             <inheritdoc />
+        </member>
+        <member name="M:Simpleflow.Services.CacheService.GetScriptUniqueId(System.String)">
+            <summary>
+            Gets script unique id by creating hash (SHA256) for the input script
+            </summary>
+            <param name="script"></param>
+            <returns></returns>
         </member>
         <member name="T:Simpleflow.Services.CompilerService">
             <summary>
@@ -1874,13 +1918,13 @@
         <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0)">
             <inheritdoc />
         </member>
-        <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0,Simpleflow.IOptions)">
+        <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0,Simpleflow.IContextOptions)">
             <inheritdoc />
         </member>
         <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0,Simpleflow.IFunctionRegister)">
             <inheritdoc />
         </member>
-        <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0,Simpleflow.IOptions,Simpleflow.IFunctionRegister)">
+        <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0,Simpleflow.IContextOptions,Simpleflow.IFunctionRegister)">
             <inheritdoc />
         </member>
         <member name="T:Simpleflow.SimpleflowEngine">

@@ -20,8 +20,7 @@ namespace Simpleflow
 
 
         /// <summary>
-        /// Gets or sets DenyFunctions
-        /// DenyFunctions overrides the <see cref="AllowFunctions"/>
+        /// Gets or sets DenyFunctions.
         /// </summary>
         public string[] DenyFunctions { get; set; }
     }

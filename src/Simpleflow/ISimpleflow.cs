@@ -8,12 +8,9 @@ namespace Simpleflow
     /// </summary>
     public interface ISimpleflow
     {
-        
-        //FlowOutput Run(FlowInput flowInput);
-
         FlowOutput Run<TArg>(string script, TArg argument);
-        FlowOutput Run<TArg>(string script, TArg argument, IOptions options);
+        FlowOutput Run<TArg>(string script, TArg argument, IContextOptions options);
         FlowOutput Run<TArg>(string script, TArg argument, IFunctionRegister config);
-        FlowOutput Run<TArg>(string script, TArg argument, IOptions options, IFunctionRegister config);
+        FlowOutput Run<TArg>(string script, TArg argument, IContextOptions options, IFunctionRegister config);
     }
 }

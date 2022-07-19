@@ -3,7 +3,6 @@
 
 using Xunit;
 
-using Simpleflow.CodeGenerator;
 using Simpleflow.Exceptions;
 using Simpleflow.Tests.Helpers;
 
