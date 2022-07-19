@@ -29,7 +29,9 @@ namespace Simpleflow.Services
         public void Run<TArg>(FlowContext<TArg> context, NextPipelineService<TArg> next)
         {
             // Create unique id for script to identify in cache store
-            var id = GetScriptUniqueId(context.Script);
+            var id = string.IsNullOrWhiteSpace(context.Options?.Id) ?  
+                        GetScriptUniqueId(context.Script) : context.Options.Id;
+
             context.Trace.Write($"Cache-Key {id}");
 
             // Get compiled script from cache
@@ -54,6 +56,11 @@ namespace Simpleflow.Services
             }
         }
 
+        /// <summary>
+        /// Gets script unique id by creating hash for the input script
+        /// </summary>
+        /// <param name="script"></param>
+        /// <returns></returns>
         protected virtual string GetScriptUniqueId(string script)
         {
             // Calculate id for script

@@ -147,6 +147,18 @@
             
             </summary>
         </member>
+        <member name="T:Simpleflow.FlowContextOptions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Simpleflow.FlowContextOptions.Id">
+            <summary>
+            Gets or sets unique id of the script
+            If Id is supplied, <see cref="T:Simpleflow.Services.CacheService"/> will use it to identify the compiled object
+            in cache otherwise it creates a hash id for that script.
+            </summary>
+        </member>
         <member name="T:Simpleflow.FlowInput`1">
             <summary>
             Represents input object to simple flow
@@ -162,13 +174,19 @@
             <inheritdoc />
         </member>
         <member name="P:Simpleflow.FlowOptions.AllowArgumentToMutate">
-            <inheritdoc />
+            <summary>
+            Gets or sets AllowArgumentToMutate
+            </summary>
         </member>
         <member name="P:Simpleflow.FlowOptions.AllowFunctions">
-            <inheritdoc />
+            <summary>
+            Gets or sets AllowFunctions
+            </summary>
         </member>
         <member name="P:Simpleflow.FlowOptions.DenyFunctions">
-            <inheritdoc />
+            <summary>
+            Gets or sets DenyFunctions
+            </summary>
         </member>
         <member name="T:Simpleflow.FlowOutput">
             <summary>
@@ -246,6 +264,16 @@
             </summary>
             <param name="name"></param>
             <returns></returns>
+        </member>
+        <member name="T:Simpleflow.IContextOptions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Simpleflow.IContextOptions.Id">
+            <summary>
+            Gets unique id of the script
+            </summary>
         </member>
         <member name="T:Simpleflow.IFlowPipelineService">
             <summary>
@@ -330,6 +358,2162 @@
             Represents a function to execute next middleware in the pipeline. 
             </summary>
             <param name="context"></param>
+        </member>
+        <member name="T:Simpleflow.Parser.CommonBaseListener">
+            <summary>
+            This class provides an empty implementation of <see cref="T:Simpleflow.Parser.ICommonListener"/>,
+            which can be extended to create a listener which only needs to handle a subset
+            of the available methods.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.EnterObjectIdentifier(Simpleflow.Parser.CommonParser.ObjectIdentifierContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.objectIdentifier"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.ExitObjectIdentifier(Simpleflow.Parser.CommonParser.ObjectIdentifierContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.objectIdentifier"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.EnterStringLiteral(Simpleflow.Parser.CommonParser.StringLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.stringLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.ExitStringLiteral(Simpleflow.Parser.CommonParser.StringLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.stringLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.EnterNumberLiteral(Simpleflow.Parser.CommonParser.NumberLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.numberLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.ExitNumberLiteral(Simpleflow.Parser.CommonParser.NumberLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.numberLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.EnterBoolLeteral(Simpleflow.Parser.CommonParser.BoolLeteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.boolLeteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.ExitBoolLeteral(Simpleflow.Parser.CommonParser.BoolLeteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.boolLeteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.EnterNoneLiteral(Simpleflow.Parser.CommonParser.NoneLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.noneLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.ExitNoneLiteral(Simpleflow.Parser.CommonParser.NoneLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.noneLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.EnterEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.ExitEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseListener.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="T:Simpleflow.Parser.CommonBaseVisitor`1">
+            <summary>
+            This class provides an empty implementation of <see cref="T:Simpleflow.Parser.ICommonVisitor`1"/>,
+            which can be extended to create a visitor which only needs to handle a subset
+            of the available methods.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseVisitor`1.VisitObjectIdentifier(Simpleflow.Parser.CommonParser.ObjectIdentifierContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.objectIdentifier"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseVisitor`1.VisitStringLiteral(Simpleflow.Parser.CommonParser.StringLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.stringLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseVisitor`1.VisitNumberLiteral(Simpleflow.Parser.CommonParser.NumberLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.numberLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseVisitor`1.VisitBoolLeteral(Simpleflow.Parser.CommonParser.BoolLeteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.boolLeteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.CommonBaseVisitor`1.VisitNoneLiteral(Simpleflow.Parser.CommonParser.NoneLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.noneLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="T:Simpleflow.Parser.ICommonListener">
+            <summary>
+            This interface defines a complete listener for a parse tree produced by
+            <see cref="T:Simpleflow.Parser.CommonParser"/>.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonListener.EnterObjectIdentifier(Simpleflow.Parser.CommonParser.ObjectIdentifierContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonListener.ExitObjectIdentifier(Simpleflow.Parser.CommonParser.ObjectIdentifierContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonListener.EnterStringLiteral(Simpleflow.Parser.CommonParser.StringLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonListener.ExitStringLiteral(Simpleflow.Parser.CommonParser.StringLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonListener.EnterNumberLiteral(Simpleflow.Parser.CommonParser.NumberLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonListener.ExitNumberLiteral(Simpleflow.Parser.CommonParser.NumberLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonListener.EnterBoolLeteral(Simpleflow.Parser.CommonParser.BoolLeteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonListener.ExitBoolLeteral(Simpleflow.Parser.CommonParser.BoolLeteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonListener.EnterNoneLiteral(Simpleflow.Parser.CommonParser.NoneLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonListener.ExitNoneLiteral(Simpleflow.Parser.CommonParser.NoneLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="T:Simpleflow.Parser.ICommonVisitor`1">
+            <summary>
+            This interface defines a complete generic visitor for a parse tree produced
+            by <see cref="T:Simpleflow.Parser.CommonParser"/>.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonVisitor`1.VisitObjectIdentifier(Simpleflow.Parser.CommonParser.ObjectIdentifierContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonVisitor`1.VisitStringLiteral(Simpleflow.Parser.CommonParser.StringLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonVisitor`1.VisitNumberLiteral(Simpleflow.Parser.CommonParser.NumberLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonVisitor`1.VisitBoolLeteral(Simpleflow.Parser.CommonParser.BoolLeteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ICommonVisitor`1.VisitNoneLiteral(Simpleflow.Parser.CommonParser.NoneLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.CommonParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="T:Simpleflow.Parser.ExpressionBaseListener">
+            <summary>
+            This class provides an empty implementation of <see cref="T:Simpleflow.Parser.IExpressionListener"/>,
+            which can be extended to create a listener which only needs to handle a subset
+            of the available methods.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterArithmeticExpression(Simpleflow.Parser.ExpressionParser.ArithmeticExpressionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.arithmeticExpression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitArithmeticExpression(Simpleflow.Parser.ExpressionParser.ArithmeticExpressionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.arithmeticExpression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterAtom(Simpleflow.Parser.ExpressionParser.AtomContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.atom"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitAtom(Simpleflow.Parser.ExpressionParser.AtomContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.atom"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterFunction(Simpleflow.Parser.ExpressionParser.FunctionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.function"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitFunction(Simpleflow.Parser.ExpressionParser.FunctionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.function"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterFunctionParameter(Simpleflow.Parser.ExpressionParser.FunctionParameterContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameter"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitFunctionParameter(Simpleflow.Parser.ExpressionParser.FunctionParameterContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameter"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterFunctionParameterValue(Simpleflow.Parser.ExpressionParser.FunctionParameterValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameterValue"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitFunctionParameterValue(Simpleflow.Parser.ExpressionParser.FunctionParameterValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameterValue"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterObjectIdentifier(Simpleflow.Parser.ExpressionParser.ObjectIdentifierContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.objectIdentifier"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitObjectIdentifier(Simpleflow.Parser.ExpressionParser.ObjectIdentifierContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.objectIdentifier"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterStringLiteral(Simpleflow.Parser.ExpressionParser.StringLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.stringLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitStringLiteral(Simpleflow.Parser.ExpressionParser.StringLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.stringLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterNumberLiteral(Simpleflow.Parser.ExpressionParser.NumberLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.numberLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitNumberLiteral(Simpleflow.Parser.ExpressionParser.NumberLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.numberLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterBoolLeteral(Simpleflow.Parser.ExpressionParser.BoolLeteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.boolLeteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitBoolLeteral(Simpleflow.Parser.ExpressionParser.BoolLeteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.boolLeteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterNoneLiteral(Simpleflow.Parser.ExpressionParser.NoneLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.noneLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitNoneLiteral(Simpleflow.Parser.ExpressionParser.NoneLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.noneLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterJsonObj(Simpleflow.Parser.ExpressionParser.JsonObjContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.jsonObj"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitJsonObj(Simpleflow.Parser.ExpressionParser.JsonObjContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.jsonObj"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterPair(Simpleflow.Parser.ExpressionParser.PairContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.pair"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitPair(Simpleflow.Parser.ExpressionParser.PairContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.pair"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterValue(Simpleflow.Parser.ExpressionParser.ValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.value"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitValue(Simpleflow.Parser.ExpressionParser.ValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.value"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.EnterEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.ExitEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseListener.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="T:Simpleflow.Parser.ExpressionBaseVisitor`1">
+            <summary>
+            This class provides an empty implementation of <see cref="T:Simpleflow.Parser.IExpressionVisitor`1"/>,
+            which can be extended to create a visitor which only needs to handle a subset
+            of the available methods.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitArithmeticExpression(Simpleflow.Parser.ExpressionParser.ArithmeticExpressionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.arithmeticExpression"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitAtom(Simpleflow.Parser.ExpressionParser.AtomContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.atom"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitFunction(Simpleflow.Parser.ExpressionParser.FunctionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.function"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitFunctionParameter(Simpleflow.Parser.ExpressionParser.FunctionParameterContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameter"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitFunctionParameterValue(Simpleflow.Parser.ExpressionParser.FunctionParameterValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameterValue"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitObjectIdentifier(Simpleflow.Parser.ExpressionParser.ObjectIdentifierContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.objectIdentifier"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitStringLiteral(Simpleflow.Parser.ExpressionParser.StringLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.stringLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitNumberLiteral(Simpleflow.Parser.ExpressionParser.NumberLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.numberLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitBoolLeteral(Simpleflow.Parser.ExpressionParser.BoolLeteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.boolLeteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitNoneLiteral(Simpleflow.Parser.ExpressionParser.NoneLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.noneLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitJsonObj(Simpleflow.Parser.ExpressionParser.JsonObjContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.jsonObj"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitPair(Simpleflow.Parser.ExpressionParser.PairContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.pair"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ExpressionBaseVisitor`1.VisitValue(Simpleflow.Parser.ExpressionParser.ValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.value"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="T:Simpleflow.Parser.IExpressionListener">
+            <summary>
+            This interface defines a complete listener for a parse tree produced by
+            <see cref="T:Simpleflow.Parser.ExpressionParser"/>.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterArithmeticExpression(Simpleflow.Parser.ExpressionParser.ArithmeticExpressionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.arithmeticExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitArithmeticExpression(Simpleflow.Parser.ExpressionParser.ArithmeticExpressionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.arithmeticExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterAtom(Simpleflow.Parser.ExpressionParser.AtomContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.atom"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitAtom(Simpleflow.Parser.ExpressionParser.AtomContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.atom"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterFunction(Simpleflow.Parser.ExpressionParser.FunctionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.function"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitFunction(Simpleflow.Parser.ExpressionParser.FunctionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.function"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterFunctionParameter(Simpleflow.Parser.ExpressionParser.FunctionParameterContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameter"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitFunctionParameter(Simpleflow.Parser.ExpressionParser.FunctionParameterContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameter"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterFunctionParameterValue(Simpleflow.Parser.ExpressionParser.FunctionParameterValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameterValue"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitFunctionParameterValue(Simpleflow.Parser.ExpressionParser.FunctionParameterValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameterValue"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterObjectIdentifier(Simpleflow.Parser.ExpressionParser.ObjectIdentifierContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitObjectIdentifier(Simpleflow.Parser.ExpressionParser.ObjectIdentifierContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterStringLiteral(Simpleflow.Parser.ExpressionParser.StringLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitStringLiteral(Simpleflow.Parser.ExpressionParser.StringLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterNumberLiteral(Simpleflow.Parser.ExpressionParser.NumberLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitNumberLiteral(Simpleflow.Parser.ExpressionParser.NumberLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterBoolLeteral(Simpleflow.Parser.ExpressionParser.BoolLeteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitBoolLeteral(Simpleflow.Parser.ExpressionParser.BoolLeteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterNoneLiteral(Simpleflow.Parser.ExpressionParser.NoneLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitNoneLiteral(Simpleflow.Parser.ExpressionParser.NoneLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterJsonObj(Simpleflow.Parser.ExpressionParser.JsonObjContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.jsonObj"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitJsonObj(Simpleflow.Parser.ExpressionParser.JsonObjContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.jsonObj"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterPair(Simpleflow.Parser.ExpressionParser.PairContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.pair"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitPair(Simpleflow.Parser.ExpressionParser.PairContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.pair"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.EnterValue(Simpleflow.Parser.ExpressionParser.ValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.value"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionListener.ExitValue(Simpleflow.Parser.ExpressionParser.ValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.value"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="T:Simpleflow.Parser.IExpressionVisitor`1">
+            <summary>
+            This interface defines a complete generic visitor for a parse tree produced
+            by <see cref="T:Simpleflow.Parser.ExpressionParser"/>.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitArithmeticExpression(Simpleflow.Parser.ExpressionParser.ArithmeticExpressionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.arithmeticExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitAtom(Simpleflow.Parser.ExpressionParser.AtomContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.atom"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitFunction(Simpleflow.Parser.ExpressionParser.FunctionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.function"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitFunctionParameter(Simpleflow.Parser.ExpressionParser.FunctionParameterContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameter"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitFunctionParameterValue(Simpleflow.Parser.ExpressionParser.FunctionParameterValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.functionParameterValue"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitObjectIdentifier(Simpleflow.Parser.ExpressionParser.ObjectIdentifierContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitStringLiteral(Simpleflow.Parser.ExpressionParser.StringLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitNumberLiteral(Simpleflow.Parser.ExpressionParser.NumberLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitBoolLeteral(Simpleflow.Parser.ExpressionParser.BoolLeteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitNoneLiteral(Simpleflow.Parser.ExpressionParser.NoneLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitJsonObj(Simpleflow.Parser.ExpressionParser.JsonObjContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.jsonObj"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitPair(Simpleflow.Parser.ExpressionParser.PairContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.pair"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IExpressionVisitor`1.VisitValue(Simpleflow.Parser.ExpressionParser.ValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.ExpressionParser.value"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="T:Simpleflow.Parser.JsonBaseListener">
+            <summary>
+            This class provides an empty implementation of <see cref="T:Simpleflow.Parser.IJsonListener"/>,
+            which can be extended to create a listener which only needs to handle a subset
+            of the available methods.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.EnterJsonObj(Simpleflow.Parser.JsonParser.JsonObjContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.jsonObj"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.ExitJsonObj(Simpleflow.Parser.JsonParser.JsonObjContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.jsonObj"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.EnterPair(Simpleflow.Parser.JsonParser.PairContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.pair"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.ExitPair(Simpleflow.Parser.JsonParser.PairContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.pair"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.EnterValue(Simpleflow.Parser.JsonParser.ValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.value"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.ExitValue(Simpleflow.Parser.JsonParser.ValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.value"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.EnterObjectIdentifier(Simpleflow.Parser.JsonParser.ObjectIdentifierContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.objectIdentifier"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.ExitObjectIdentifier(Simpleflow.Parser.JsonParser.ObjectIdentifierContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.objectIdentifier"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.EnterStringLiteral(Simpleflow.Parser.JsonParser.StringLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.stringLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.ExitStringLiteral(Simpleflow.Parser.JsonParser.StringLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.stringLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.EnterNumberLiteral(Simpleflow.Parser.JsonParser.NumberLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.numberLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.ExitNumberLiteral(Simpleflow.Parser.JsonParser.NumberLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.numberLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.EnterBoolLeteral(Simpleflow.Parser.JsonParser.BoolLeteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.boolLeteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.ExitBoolLeteral(Simpleflow.Parser.JsonParser.BoolLeteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.boolLeteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.EnterNoneLiteral(Simpleflow.Parser.JsonParser.NoneLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.noneLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.ExitNoneLiteral(Simpleflow.Parser.JsonParser.NoneLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.noneLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.EnterEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.ExitEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseListener.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="T:Simpleflow.Parser.JsonBaseVisitor`1">
+            <summary>
+            This class provides an empty implementation of <see cref="T:Simpleflow.Parser.IJsonVisitor`1"/>,
+            which can be extended to create a visitor which only needs to handle a subset
+            of the available methods.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseVisitor`1.VisitJsonObj(Simpleflow.Parser.JsonParser.JsonObjContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.jsonObj"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseVisitor`1.VisitPair(Simpleflow.Parser.JsonParser.PairContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.pair"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseVisitor`1.VisitValue(Simpleflow.Parser.JsonParser.ValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.value"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseVisitor`1.VisitObjectIdentifier(Simpleflow.Parser.JsonParser.ObjectIdentifierContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.objectIdentifier"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseVisitor`1.VisitStringLiteral(Simpleflow.Parser.JsonParser.StringLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.stringLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseVisitor`1.VisitNumberLiteral(Simpleflow.Parser.JsonParser.NumberLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.numberLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseVisitor`1.VisitBoolLeteral(Simpleflow.Parser.JsonParser.BoolLeteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.boolLeteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.JsonBaseVisitor`1.VisitNoneLiteral(Simpleflow.Parser.JsonParser.NoneLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.noneLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="T:Simpleflow.Parser.IJsonListener">
+            <summary>
+            This interface defines a complete listener for a parse tree produced by
+            <see cref="T:Simpleflow.Parser.JsonParser"/>.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.EnterJsonObj(Simpleflow.Parser.JsonParser.JsonObjContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.jsonObj"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.ExitJsonObj(Simpleflow.Parser.JsonParser.JsonObjContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.jsonObj"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.EnterPair(Simpleflow.Parser.JsonParser.PairContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.pair"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.ExitPair(Simpleflow.Parser.JsonParser.PairContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.pair"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.EnterValue(Simpleflow.Parser.JsonParser.ValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.value"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.ExitValue(Simpleflow.Parser.JsonParser.ValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.value"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.EnterObjectIdentifier(Simpleflow.Parser.JsonParser.ObjectIdentifierContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.ExitObjectIdentifier(Simpleflow.Parser.JsonParser.ObjectIdentifierContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.EnterStringLiteral(Simpleflow.Parser.JsonParser.StringLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.ExitStringLiteral(Simpleflow.Parser.JsonParser.StringLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.EnterNumberLiteral(Simpleflow.Parser.JsonParser.NumberLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.ExitNumberLiteral(Simpleflow.Parser.JsonParser.NumberLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.EnterBoolLeteral(Simpleflow.Parser.JsonParser.BoolLeteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.ExitBoolLeteral(Simpleflow.Parser.JsonParser.BoolLeteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.EnterNoneLiteral(Simpleflow.Parser.JsonParser.NoneLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonListener.ExitNoneLiteral(Simpleflow.Parser.JsonParser.NoneLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="T:Simpleflow.Parser.IJsonVisitor`1">
+            <summary>
+            This interface defines a complete generic visitor for a parse tree produced
+            by <see cref="T:Simpleflow.Parser.JsonParser"/>.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonVisitor`1.VisitJsonObj(Simpleflow.Parser.JsonParser.JsonObjContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.jsonObj"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonVisitor`1.VisitPair(Simpleflow.Parser.JsonParser.PairContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.pair"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonVisitor`1.VisitValue(Simpleflow.Parser.JsonParser.ValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.value"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonVisitor`1.VisitObjectIdentifier(Simpleflow.Parser.JsonParser.ObjectIdentifierContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonVisitor`1.VisitStringLiteral(Simpleflow.Parser.JsonParser.StringLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonVisitor`1.VisitNumberLiteral(Simpleflow.Parser.JsonParser.NumberLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonVisitor`1.VisitBoolLeteral(Simpleflow.Parser.JsonParser.BoolLeteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IJsonVisitor`1.VisitNoneLiteral(Simpleflow.Parser.JsonParser.NoneLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.JsonParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="T:Simpleflow.Parser.PredicateBaseListener">
+            <summary>
+            This class provides an empty implementation of <see cref="T:Simpleflow.Parser.IPredicateListener"/>,
+            which can be extended to create a listener which only needs to handle a subset
+            of the available methods.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterPredicate(Simpleflow.Parser.PredicateParser.PredicateContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.predicate"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitPredicate(Simpleflow.Parser.PredicateParser.PredicateContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.predicate"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterTestExpression(Simpleflow.Parser.PredicateParser.TestExpressionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.testExpression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitTestExpression(Simpleflow.Parser.PredicateParser.TestExpressionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.testExpression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterLogicalOperator(Simpleflow.Parser.PredicateParser.LogicalOperatorContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.logicalOperator"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitLogicalOperator(Simpleflow.Parser.PredicateParser.LogicalOperatorContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.logicalOperator"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterRelationalOperator(Simpleflow.Parser.PredicateParser.RelationalOperatorContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.relationalOperator"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitRelationalOperator(Simpleflow.Parser.PredicateParser.RelationalOperatorContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.relationalOperator"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterOperand(Simpleflow.Parser.PredicateParser.OperandContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.operand"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitOperand(Simpleflow.Parser.PredicateParser.OperandContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.operand"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterUnaryOperand(Simpleflow.Parser.PredicateParser.UnaryOperandContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.unaryOperand"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitUnaryOperand(Simpleflow.Parser.PredicateParser.UnaryOperandContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.unaryOperand"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterObjectIdentifier(Simpleflow.Parser.PredicateParser.ObjectIdentifierContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.objectIdentifier"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitObjectIdentifier(Simpleflow.Parser.PredicateParser.ObjectIdentifierContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.objectIdentifier"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterStringLiteral(Simpleflow.Parser.PredicateParser.StringLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.stringLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitStringLiteral(Simpleflow.Parser.PredicateParser.StringLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.stringLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterNumberLiteral(Simpleflow.Parser.PredicateParser.NumberLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.numberLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitNumberLiteral(Simpleflow.Parser.PredicateParser.NumberLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.numberLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterBoolLeteral(Simpleflow.Parser.PredicateParser.BoolLeteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.boolLeteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitBoolLeteral(Simpleflow.Parser.PredicateParser.BoolLeteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.boolLeteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterNoneLiteral(Simpleflow.Parser.PredicateParser.NoneLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.noneLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitNoneLiteral(Simpleflow.Parser.PredicateParser.NoneLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.noneLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterArithmeticExpression(Simpleflow.Parser.PredicateParser.ArithmeticExpressionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.arithmeticExpression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitArithmeticExpression(Simpleflow.Parser.PredicateParser.ArithmeticExpressionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.arithmeticExpression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterAtom(Simpleflow.Parser.PredicateParser.AtomContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.atom"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitAtom(Simpleflow.Parser.PredicateParser.AtomContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.atom"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterFunction(Simpleflow.Parser.PredicateParser.FunctionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.function"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitFunction(Simpleflow.Parser.PredicateParser.FunctionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.function"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterFunctionParameter(Simpleflow.Parser.PredicateParser.FunctionParameterContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameter"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitFunctionParameter(Simpleflow.Parser.PredicateParser.FunctionParameterContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameter"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterFunctionParameterValue(Simpleflow.Parser.PredicateParser.FunctionParameterValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameterValue"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitFunctionParameterValue(Simpleflow.Parser.PredicateParser.FunctionParameterValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameterValue"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterJsonObj(Simpleflow.Parser.PredicateParser.JsonObjContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.jsonObj"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitJsonObj(Simpleflow.Parser.PredicateParser.JsonObjContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.jsonObj"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterPair(Simpleflow.Parser.PredicateParser.PairContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.pair"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitPair(Simpleflow.Parser.PredicateParser.PairContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.pair"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterValue(Simpleflow.Parser.PredicateParser.ValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.value"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitValue(Simpleflow.Parser.PredicateParser.ValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.value"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.EnterEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.ExitEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseListener.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="T:Simpleflow.Parser.PredicateBaseVisitor`1">
+            <summary>
+            This class provides an empty implementation of <see cref="T:Simpleflow.Parser.IPredicateVisitor`1"/>,
+            which can be extended to create a visitor which only needs to handle a subset
+            of the available methods.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitPredicate(Simpleflow.Parser.PredicateParser.PredicateContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.predicate"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitTestExpression(Simpleflow.Parser.PredicateParser.TestExpressionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.testExpression"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitLogicalOperator(Simpleflow.Parser.PredicateParser.LogicalOperatorContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.logicalOperator"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitRelationalOperator(Simpleflow.Parser.PredicateParser.RelationalOperatorContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.relationalOperator"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitOperand(Simpleflow.Parser.PredicateParser.OperandContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.operand"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitUnaryOperand(Simpleflow.Parser.PredicateParser.UnaryOperandContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.unaryOperand"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitObjectIdentifier(Simpleflow.Parser.PredicateParser.ObjectIdentifierContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.objectIdentifier"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitStringLiteral(Simpleflow.Parser.PredicateParser.StringLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.stringLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitNumberLiteral(Simpleflow.Parser.PredicateParser.NumberLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.numberLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitBoolLeteral(Simpleflow.Parser.PredicateParser.BoolLeteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.boolLeteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitNoneLiteral(Simpleflow.Parser.PredicateParser.NoneLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.noneLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitArithmeticExpression(Simpleflow.Parser.PredicateParser.ArithmeticExpressionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.arithmeticExpression"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitAtom(Simpleflow.Parser.PredicateParser.AtomContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.atom"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitFunction(Simpleflow.Parser.PredicateParser.FunctionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.function"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitFunctionParameter(Simpleflow.Parser.PredicateParser.FunctionParameterContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameter"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitFunctionParameterValue(Simpleflow.Parser.PredicateParser.FunctionParameterValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameterValue"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitJsonObj(Simpleflow.Parser.PredicateParser.JsonObjContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.jsonObj"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitPair(Simpleflow.Parser.PredicateParser.PairContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.pair"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.PredicateBaseVisitor`1.VisitValue(Simpleflow.Parser.PredicateParser.ValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.value"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="T:Simpleflow.Parser.IPredicateListener">
+            <summary>
+            This interface defines a complete listener for a parse tree produced by
+            <see cref="T:Simpleflow.Parser.PredicateParser"/>.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterPredicate(Simpleflow.Parser.PredicateParser.PredicateContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.predicate"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitPredicate(Simpleflow.Parser.PredicateParser.PredicateContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.predicate"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterTestExpression(Simpleflow.Parser.PredicateParser.TestExpressionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.testExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitTestExpression(Simpleflow.Parser.PredicateParser.TestExpressionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.testExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterLogicalOperator(Simpleflow.Parser.PredicateParser.LogicalOperatorContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.logicalOperator"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitLogicalOperator(Simpleflow.Parser.PredicateParser.LogicalOperatorContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.logicalOperator"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterRelationalOperator(Simpleflow.Parser.PredicateParser.RelationalOperatorContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.relationalOperator"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitRelationalOperator(Simpleflow.Parser.PredicateParser.RelationalOperatorContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.relationalOperator"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterOperand(Simpleflow.Parser.PredicateParser.OperandContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.operand"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitOperand(Simpleflow.Parser.PredicateParser.OperandContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.operand"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterUnaryOperand(Simpleflow.Parser.PredicateParser.UnaryOperandContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.unaryOperand"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitUnaryOperand(Simpleflow.Parser.PredicateParser.UnaryOperandContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.unaryOperand"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterObjectIdentifier(Simpleflow.Parser.PredicateParser.ObjectIdentifierContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitObjectIdentifier(Simpleflow.Parser.PredicateParser.ObjectIdentifierContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterStringLiteral(Simpleflow.Parser.PredicateParser.StringLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitStringLiteral(Simpleflow.Parser.PredicateParser.StringLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterNumberLiteral(Simpleflow.Parser.PredicateParser.NumberLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitNumberLiteral(Simpleflow.Parser.PredicateParser.NumberLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterBoolLeteral(Simpleflow.Parser.PredicateParser.BoolLeteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitBoolLeteral(Simpleflow.Parser.PredicateParser.BoolLeteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterNoneLiteral(Simpleflow.Parser.PredicateParser.NoneLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitNoneLiteral(Simpleflow.Parser.PredicateParser.NoneLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterArithmeticExpression(Simpleflow.Parser.PredicateParser.ArithmeticExpressionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.arithmeticExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitArithmeticExpression(Simpleflow.Parser.PredicateParser.ArithmeticExpressionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.arithmeticExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterAtom(Simpleflow.Parser.PredicateParser.AtomContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.atom"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitAtom(Simpleflow.Parser.PredicateParser.AtomContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.atom"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterFunction(Simpleflow.Parser.PredicateParser.FunctionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.function"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitFunction(Simpleflow.Parser.PredicateParser.FunctionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.function"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterFunctionParameter(Simpleflow.Parser.PredicateParser.FunctionParameterContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameter"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitFunctionParameter(Simpleflow.Parser.PredicateParser.FunctionParameterContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameter"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterFunctionParameterValue(Simpleflow.Parser.PredicateParser.FunctionParameterValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameterValue"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitFunctionParameterValue(Simpleflow.Parser.PredicateParser.FunctionParameterValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameterValue"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterJsonObj(Simpleflow.Parser.PredicateParser.JsonObjContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.jsonObj"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitJsonObj(Simpleflow.Parser.PredicateParser.JsonObjContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.jsonObj"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterPair(Simpleflow.Parser.PredicateParser.PairContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.pair"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitPair(Simpleflow.Parser.PredicateParser.PairContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.pair"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.EnterValue(Simpleflow.Parser.PredicateParser.ValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.value"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateListener.ExitValue(Simpleflow.Parser.PredicateParser.ValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.value"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="T:Simpleflow.Parser.IPredicateVisitor`1">
+            <summary>
+            This interface defines a complete generic visitor for a parse tree produced
+            by <see cref="T:Simpleflow.Parser.PredicateParser"/>.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitPredicate(Simpleflow.Parser.PredicateParser.PredicateContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.predicate"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitTestExpression(Simpleflow.Parser.PredicateParser.TestExpressionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.testExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitLogicalOperator(Simpleflow.Parser.PredicateParser.LogicalOperatorContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.logicalOperator"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitRelationalOperator(Simpleflow.Parser.PredicateParser.RelationalOperatorContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.relationalOperator"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitOperand(Simpleflow.Parser.PredicateParser.OperandContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.operand"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitUnaryOperand(Simpleflow.Parser.PredicateParser.UnaryOperandContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.unaryOperand"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitObjectIdentifier(Simpleflow.Parser.PredicateParser.ObjectIdentifierContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.objectIdentifier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitStringLiteral(Simpleflow.Parser.PredicateParser.StringLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.stringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitNumberLiteral(Simpleflow.Parser.PredicateParser.NumberLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.numberLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitBoolLeteral(Simpleflow.Parser.PredicateParser.BoolLeteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.boolLeteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitNoneLiteral(Simpleflow.Parser.PredicateParser.NoneLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitArithmeticExpression(Simpleflow.Parser.PredicateParser.ArithmeticExpressionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.arithmeticExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitAtom(Simpleflow.Parser.PredicateParser.AtomContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.atom"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitFunction(Simpleflow.Parser.PredicateParser.FunctionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.function"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitFunctionParameter(Simpleflow.Parser.PredicateParser.FunctionParameterContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameter"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitFunctionParameterValue(Simpleflow.Parser.PredicateParser.FunctionParameterValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.functionParameterValue"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitJsonObj(Simpleflow.Parser.PredicateParser.JsonObjContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.jsonObj"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitPair(Simpleflow.Parser.PredicateParser.PairContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.pair"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.IPredicateVisitor`1.VisitValue(Simpleflow.Parser.PredicateParser.ValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.PredicateParser.value"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
         </member>
         <member name="T:Simpleflow.Parser.SimpleflowBaseListener">
             <summary>
@@ -1874,13 +4058,13 @@
         <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0)">
             <inheritdoc />
         </member>
-        <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0,Simpleflow.IOptions)">
+        <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0,Simpleflow.IContextOptions)">
             <inheritdoc />
         </member>
         <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0,Simpleflow.IFunctionRegister)">
             <inheritdoc />
         </member>
-        <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0,Simpleflow.IOptions,Simpleflow.IFunctionRegister)">
+        <member name="M:Simpleflow.Simpleflow.Run``1(System.String,``0,Simpleflow.IContextOptions,Simpleflow.IFunctionRegister)">
             <inheritdoc />
         </member>
         <member name="T:Simpleflow.SimpleflowEngine">

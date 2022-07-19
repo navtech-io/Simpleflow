@@ -29,7 +29,7 @@ namespace Simpleflow
         public IFunctionRegister ActivityRegister { get; set; }
 
         /// 
-        public IOptions Options { get; set; }
+        public IContextOptions Options { get; set; }
 
         /// <summary>
         /// Gets or sets output.

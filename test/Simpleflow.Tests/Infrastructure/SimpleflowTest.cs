@@ -85,7 +85,7 @@ namespace Simpleflow.Tests
             Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1 }, config: null));
             Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1, Abc=2 }, options: null));
             Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1 }, options: null, config: null));
-            Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1 }, options: new FlowOptions(), config: null));
+            Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1 }, options: new FlowContextOptions(), config: null));
             Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1 }, options: null, config: new FunctionRegister()));
         }
 

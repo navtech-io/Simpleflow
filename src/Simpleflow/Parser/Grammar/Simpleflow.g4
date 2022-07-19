@@ -1,6 +1,10 @@
 grammar Simpleflow;
 import Predicate, Expression, Json; 
- 
+
+// options {
+//     superClass=SimpleflowParserBase;
+// }
+
 program
     :
      LineBreak*
@@ -108,4 +112,4 @@ fragment SPACES
     : [ \t]+  ;
 
 fragment COMMENT
-    : '/*' .*? '*/' ([\r\n]*) ;     
+    : '/*' .*? '*/' ([\r\n]*) ;

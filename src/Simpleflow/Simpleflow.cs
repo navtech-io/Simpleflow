@@ -27,7 +27,7 @@ namespace Simpleflow
         }
 
         /// <inheritdoc />
-        public FlowOutput Run<TArg>(string script, TArg argument, IOptions options)
+        public FlowOutput Run<TArg>(string script, TArg argument, IContextOptions options)
         {
             ArgumentException.ThrowIfNullOrEmpty(script);
             ArgumentException.ThrowIfNull(argument);
@@ -47,7 +47,7 @@ namespace Simpleflow
         }
 
         /// <inheritdoc />
-        public FlowOutput Run<TArg>(string script, TArg argument, IOptions options, IFunctionRegister config)
+        public FlowOutput Run<TArg>(string script, TArg argument, IContextOptions options, IFunctionRegister config)
         {
 
             ArgumentException.ThrowIfNullOrEmpty(script);
@@ -58,7 +58,7 @@ namespace Simpleflow
             return RunInternal(script, argument, options, config);
         }
 
-        private FlowOutput RunInternal<TArg>(string script, TArg argument, IOptions options, IFunctionRegister config)
+        private FlowOutput RunInternal<TArg>(string script, TArg argument, IContextOptions options, IFunctionRegister config)
         {
             var context = new FlowContext<TArg>()
             {
