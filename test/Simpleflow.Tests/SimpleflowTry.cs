@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+﻿using Xunit;
+using Simpleflow.Tests.Helpers;
 
 namespace Simpleflow.Tests
 {
@@ -12,9 +10,9 @@ namespace Simpleflow.Tests
         {
             // Arrange
             var flowScript =
-            @" 
+            @$" 
                 let text  = ""Hello, विश्वम्‌""
-                let today = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
+                let today = $GetCurrentDateTime ( timezone: ""{TestsHelper.Timezone}"" )
 
                 /* Comment: Message when UniversalId is 2 and New is true */
                 rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
@@ -34,9 +32,9 @@ namespace Simpleflow.Tests
         {
             // Arrange
             var flowScript =
-            @" 
+            @$" 
                 let text  = ""Hello, विश्वम्‌""
-                let today = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
+                let today = $GetCurrentDateTime ( timezone: ""{TestsHelper.Timezone}"" )
 
                 /* Comment: Message when UniversalId is 2 and New is true */
                 rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then

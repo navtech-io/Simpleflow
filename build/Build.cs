@@ -16,9 +16,6 @@ using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 
-[AppVeyor(
-    AppVeyorImage.VisualStudio2019,
-    InvokedTargets = new[] { nameof(Compile), nameof(Test) })]
 class Build : NukeBuild
 {
     /// Support plugins are available for:

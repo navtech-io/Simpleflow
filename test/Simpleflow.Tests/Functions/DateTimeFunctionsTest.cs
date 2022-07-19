@@ -57,11 +57,14 @@ namespace Simpleflow.Tests.Activities
         [Fact]
         public void CheckEstDate()
         {
+            //System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(
+            //    System.Runtime.InteropServices.RuntimeInformation.OS)
+            //Environment.OSVersion == OperatingSystem.
             // Arrange
             var arg = new SampleArgument();
             var script =
-                @"
-                    let date = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
+                @$"
+                    let date = $GetCurrentDateTime ( timezone: ""{TestsHelper.Timezone}"" )
                     output date 
                 ";
 
@@ -71,7 +74,7 @@ namespace Simpleflow.Tests.Activities
             // Assert
             var date = TimeZoneInfo.ConvertTimeFromUtc(
                         DateTime.UtcNow,
-                        TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time"));
+                        TimeZoneInfo.FindSystemTimeZoneById(TestsHelper.Timezone));
             var actualDate = (DateTime)output.Output["date"];
 
             Assert.Equal(actual: actualDate.Date, expected: date.Date);
