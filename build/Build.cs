@@ -113,7 +113,7 @@ class Build : NukeBuild
                 .SetPackageProjectUrl("https://github.com/navtech-io/Simpleflow")
                 .AddProperty("PackageLicenseExpression", "Apache-2.0")
                 .SetIncludeSymbols(true)
-                .SetVersion("0.1.0-beta03" /*NuGetVersionCustom*/)
+                .SetVersion("0.1.0-beta04" /*NuGetVersionCustom*/)
                 .SetDescription("Lightweight rule engine")
                 .SetPackageTags("Simpleflow.NET Workflow RuleEngine DynamicExpressionEvaluator")
                 .SetNoDependencies(true)
