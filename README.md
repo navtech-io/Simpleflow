@@ -228,7 +228,7 @@ It supports only one style of comment can be used for single or multiline using 
 #### Simpleflow Execution
 <a name="simpleflow-pipeline"></a>
 
-<!-- ![Simpleflow Pipeline](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/navtech-io/Simpleflow/main/SimpleflowDiagram.puml) -->
+![Simpleflow Pipeline](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/navtech-io/Simpleflow/main/SimpleflowDiagram.puml)
 
 Sample code to create, build and run pipeline
 ```csharp

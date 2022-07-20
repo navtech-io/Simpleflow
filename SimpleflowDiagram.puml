@@ -8,14 +8,14 @@ skinparam component {
   BorderColor black
   BackgroundColor white
   ArrowFontName Impact
-  ArrowColor #db691d
+  ArrowColor #1d3ddb
 }
 
 skinparam package {
   FontSize 15
   FontName Courier
   BorderColor white
-  BackgroundColor #fadd93
+  BackgroundColor #dee9fa
   ArrowFontName Impact
   
 }
