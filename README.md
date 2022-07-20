@@ -92,7 +92,6 @@ $\color{skyblue}{Syntax}$
 [partial] set <variablename> = expression
 ```
 
-
 #### Data Types
 **Simple Types:**
 ###### Number
@@ -111,7 +110,7 @@ let hasValue = true
 let allow = false
 ```
 ###### Date 
-Simpleflow does not recognize date type directly, but this can be declared by using built-in date function.
+Use date function to declare a variable as date type.
 ```csharp
 let birthday = $date(y:1980, m: 1, d: 1 )
 ```
@@ -157,6 +156,7 @@ rule when <predicate> then
 > <small> condition does not allow expression. If you need to write expression
 declare variable and write expression and use that variable in predicate. This does not support nested rules to avoid code complexity</small>
 
+
 #### Emitters
 
 $\color{skyblue}{Syntax}$
@@ -178,34 +178,36 @@ $<function_name>(param_name1: value1, param_name2: value2, ...)
 
 ###### Date Functions	
 
-* $\color{green}{\$Date(y: int, m: int, d: int, [h:int, mn: int, s: int])}$
+* $\color{#4686f2}{\$Date(y: int, m: int, d: int, [h:int, mn: int, s: int])}$
     ```csharp        
     // Examples
     let d1 = $Date(y: 2022, m: 7, d:11)
     let d2 = $Date(m: 10, d:25, y: 2022 )
     let t1 = $Date(m: 10, d:25, y: 2022, h:13, mn:30 )
     ```        
-* $\color{green}{\$GetCurrentDate()}$
-* $\color{green}{\$GetCurrentTime()}$
-* $\color{green}{\$GetCurrentDateTime(timeZone: "")}$
-<br>
-Check supported time zones here:
-https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11#time-zones
+* $\color{#4686f2}{\$GetCurrentDate()}$
+* $\color{#4686f2}{\$GetCurrentTime()}$
+* $\color{#4686f2}{\$GetCurrentDateTime(timeZone: "")}$
+
+    Check available list of time zones here: <br>
+    Windows: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11#time-zones <br>
+    Ubuntu: https://manpages.ubuntu.com/manpages/bionic/man3/DateTime::TimeZone::Catalog.3pm.html  <br>
+
     ```csharp
     let today    = $GetCurrentDateTime()
     let todayEst = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
     ```
 
 ###### String Functions
-* $\color{green}{\$Substring(input: string,  startIndex:int, length: int)}$ 
-* $\color{green}{\$IndexOf(input: string,  value:string, startIndex: int) }$
-* $\color{green}{\$Length(input: string) }$
-* $\color{green}{\$Contains(input: string,  value:string) }$ 
-* $\color{green}{\$StartsWith(input: string,  value:string) }$
-* $\color{green}{\$EndsWith(input: string,  value:string) }$
-* $\color{green}{\$Trim(input: string,  value:string) }$
-* $\color{green}{\$Match(input: string,  pattern:string) }$
-* $\color{green}{\$Concat(value1: string,  value2:string,  value3:string,  value4:string,  value5:string)}$ 
+* $\color{#4686f2}{\$Substring(input: string,  startIndex:int, length: int)}$ 
+* $\color{#4686f2}{\$IndexOf(input: string,  value:string, startIndex: int) }$
+* $\color{#4686f2}{\$Length(input: string) }$
+* $\color{#4686f2}{\$Contains(input: string,  value:string) }$ 
+* $\color{#4686f2}{\$StartsWith(input: string,  value:string) }$
+* $\color{#4686f2}{\$EndsWith(input: string,  value:string) }$
+* $\color{#4686f2}{\$Trim(input: string,  value:string) }$
+* $\color{#4686f2}{\$Match(input: string,  pattern:string) }$
+* $\color{#4686f2}{\$Concat(value1: string,  value2:string,  value3:string,  value4:string,  value5:string)}$ 
     ```csharp
     let value = $Concat ( value1: "I ", value2: "got it" )
     ```
@@ -226,7 +228,7 @@ It supports only one style of comment can be used for single or multiline using 
 #### Simpleflow Execution
 <a name="simpleflow-pipeline"></a>
 
-<!-- ![Simpleflow Pipeline](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/navtech-io/Simpleflow/main/SimpleflowDiagram.puml) -->
+![Simpleflow Pipeline](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/navtech-io/Simpleflow/main/SimpleflowDiagram.puml)
 
 Sample code to create, build and run pipeline
 ```csharp
@@ -397,9 +399,3 @@ Below statement throws exception:
     let address = {City: "Ny"}
     let o = {Id: 2, Name: "John", Address: address } 
     ```
-
-
-
-
-
-

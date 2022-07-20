@@ -173,11 +173,6 @@
         <member name="T:Simpleflow.FlowOptions">
             <inheritdoc />
         </member>
-        <member name="P:Simpleflow.FlowOptions.AllowArgumentToMutate">
-            <summary>
-            Gets or sets AllowArgumentToMutate
-            </summary>
-        </member>
         <member name="P:Simpleflow.FlowOptions.AllowFunctions">
             <summary>
             Gets or sets AllowFunctions
@@ -291,11 +286,6 @@
         <member name="T:Simpleflow.IOptions">
             <summary>
             
-            </summary>
-        </member>
-        <member name="P:Simpleflow.IOptions.AllowArgumentToMutate">
-            <summary>
-            Gets or sets AllowArgumentToMutate
             </summary>
         </member>
         <member name="P:Simpleflow.IOptions.AllowFunctions">

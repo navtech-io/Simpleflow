@@ -4,28 +4,27 @@ skinparam linetype ortho
 
 skinparam component {
   FontSize 15
-  
   FontName Courier
   BorderColor black
   BackgroundColor white
   ArrowFontName Impact
-  ArrowColor #db691d
+  ArrowColor #1d3ddb
 }
 
 skinparam package {
-  FontSize 13
+  FontSize 15
   FontName Courier
   BorderColor white
-  BackgroundColor #fadd93
+  BackgroundColor #dee9fa
   ArrowFontName Impact
   
 }
 
 package "Default Execution Pipeline"  {
     Script -right- [Cache Component]
-    [Cache Component] -right-> [Parser Component]  
-    [Cache Component] -right-> [Execution Component]  
-    [Parser Component] -right-> [Execution Component] 
+    [Cache Component] -right-> [Parser/Compiler Component]
+    [Cache Component] .right.> [Execution Component]  
+    [Parser/Compiler Component] -right-> [Execution Component] 
 
     [Execution Component] - Output
 }

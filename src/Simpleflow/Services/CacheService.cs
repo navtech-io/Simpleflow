@@ -105,8 +105,9 @@ namespace Simpleflow.Services
 
         private string GetFlowContextOptionsId(IContextOptions options)
         {
-            if (options.AllowArgumentToMutate == false 
-                && (options.AllowFunctions == null || options.AllowFunctions.Length == 0)
+            if (
+                //options.AllowArgumentToMutate == false &&
+                (options.AllowFunctions == null || options.AllowFunctions.Length == 0)
                 && (options.DenyFunctions == null  || options.DenyFunctions.Length == 0)
                 )
             {
@@ -114,7 +115,7 @@ namespace Simpleflow.Services
             }
 
             StringBuilder sb = new StringBuilder();
-            sb.Append(string.Join(' ', options.AllowArgumentToMutate));
+            //sb.Append(string.Join(' ', options.AllowArgumentToMutate));
             
             if (options.AllowFunctions != null && options.AllowFunctions.Length > 0)
             {

@@ -75,11 +75,7 @@ namespace Simpleflow.Tests.Infrastructure
 
             // Act & Assert
             Assert.Throws<AccessDeniedException>(
-                () => new SimpleflowPipelineBuilder()
-                            .AddCorePipelineServices(FunctionRegister.Default)
-                            .AddPipelineServices(new LoggingService())
-                            .Build()
-                            .Run(script, new object(), options));
+                () => SimpleflowEngine.Run(script, new object(), options));
         }
 
         [Fact]

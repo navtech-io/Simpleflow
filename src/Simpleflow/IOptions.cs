@@ -11,7 +11,7 @@ namespace Simpleflow
         /// <summary>
         /// Gets or sets AllowArgumentToMutate
         /// </summary>
-        bool AllowArgumentToMutate { get;  }
+        //bool AllowArgumentToMutate { get;  } // Implement in next release Check CacheService related impl
 
         /// <summary>
         /// Gets or sets AllowFunctions
