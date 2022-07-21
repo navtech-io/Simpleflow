@@ -82,14 +82,12 @@ Please see [this](#examples) example with most of the simpleflow script features
 
 
 ### Variables <a name="variables"></a>
-$\color{skyblue}{Syntax}$
 ```fsharp
 let <variablename> = expression
 ```
 > <small> Expressions can be used with only variable. Anywhere else you need expression then declare variable,  assign expression and use it.</small>
 
-**Modify value of a variable**
-$\color{skyblue}{Syntax}$
+**Modify value of a variable** <br>
 ```csharp
 [partial] set <variablename> = expression
 ```
@@ -164,7 +162,6 @@ let v = 2 + 3 * (3 * arg.value);
 **Context Properties:** context.HasErrors,  context.HasMessages context.HasOutput
 
 ### Rule Control Flow
-$\color{skyblue}{Syntax}$
 ```csharp
 rule when <predicate> then
 	<statement..1>	
@@ -186,7 +183,6 @@ declare variable and write expression and use that variable in predicate. This d
 | exit         | exit                        |
 
 ### Functions
-$\color{skyblue}{Syntax}$
 ```csharp
 $<function_name>(param_name1: value1, param_name2: value2, ...)
 ```
