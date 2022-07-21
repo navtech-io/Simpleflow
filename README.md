@@ -221,6 +221,8 @@ Function cannot be an argument to another function. Store output of a function i
         <td>GetCurrentDateTime</td>
         <td>
             $\color{#4686f2}{\$GetCurrentDateTime(timeZone: "")}$ <br>
+	    <a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11#time-zones">Windows Timezones List</a><br>
+	    <a href="https://manpages.ubuntu.com/manpages/bionic/man3/DateTime::TimeZone::Catalog.3pm.html">Ubuntu Timezones List</a><br>
             let today = $GetCurrentDateTime() <br>
             let todayEst = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
         </td>
