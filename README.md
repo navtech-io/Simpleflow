@@ -297,7 +297,7 @@ It supports only one style of comment can be used for single or multiline using 
 1. [Extensibility](#extensibility)
 1. [Compile Script](#compile-script)
 
-#### Simpleflow Execution
+### Simpleflow Execution
 <a name="simpleflow-pipeline"></a>
 
 ![Simpleflow Pipeline](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/navtech-io/Simpleflow/main/SimpleflowDiagram.puml)
@@ -330,13 +330,11 @@ ISimpleflow flow = engine.Build();
 FlowOutput result = flow.Run(script, new Member { Id = id});
 
 ```
-#### FlowOutput
+### FlowOutput
 
 Emitters (`message, error, output`) produce output from script that will be available in FlowOutput object.
 
-
-
-#### Register Custom Functions
+### Register Custom Functions
 
 ```csharp
 FunctionRegister.Default
@@ -347,10 +345,7 @@ static int CalcDerivativeOfXPowN(int x, int n)
     return n *  Math.Pow(x, n-1); //
 }
 ```
-
-
-
-#### Extensibility
+### Extensibility
 
 Create middleware and add it to pipeline.
 
@@ -365,7 +360,7 @@ public class LoggingService : IFlowPipelineService
 }
 ```
 
-#### Compile Script
+### Compile Script
 By adding only CompilerService to build pipeline, script can be compiled and reported if there are any errors.
 ```csharp
     
