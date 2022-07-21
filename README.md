@@ -19,6 +19,7 @@ Install-Package Simpleflow
 **Try following Simpleflow script:**
 
 ```csharp
+using Simpleflow;
 
 // Simpleflow Script
 var flowScript = 
@@ -35,7 +36,7 @@ var flowScript =
 ";
 
 // Execute Script
-Simpleflow.FlowOutput result = Simpleflow.SimpleflowEngine.Run(flowScript, new {UniversalId = 2, New=true, Verified=false} );
+FlowOutput result = SimpleflowEngine.Run(flowScript, new {UniversalId = 2, New=true, Verified=false} );
 
 // Access result
 Console.WriteLine(result.Messages[0]); 
