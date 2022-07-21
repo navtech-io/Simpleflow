@@ -1,4 +1,5 @@
-## Simpleflow
+## <table style="overflow:hideen"><tr style="border:none"><td style="border:none"> <img src="https://raw.githubusercontent.com/navtech-io/Simpleflow/develop/src/Simpleflow/PackageIcon.png" style="width:60px"> </td> <td style="border:none;">&nbsp;&nbsp;Simpleflow </td></tr></table>
+
 
 Simpleflow is a lightweight dynamic rule engine to build workflow with intuitive script concepts. Simpleflow allows access to the process objects or methods in script securely. Methods can be registered as activities with Simpleflow engine, which is extensible to enrich or monitor the execution flow. Simpleflow is secure and efficient to run dynamic rules and workflow. 
 
