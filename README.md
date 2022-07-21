@@ -102,10 +102,9 @@ let <variablename> = expression
     <tr>
         <td>Number</td>
         <td>
-            <div>
-                let x = 1 <br>
-                let y = 2.3 <br>
-                let z = -442.33 <br>
+                <code>let x = 1 </code><br>
+                <code>let y = 2.3 </code><br>
+                <code>let z = -442.33 </code><br>
             </div>
         </td>
     </tr>
@@ -118,15 +117,15 @@ let <variablename> = expression
     <tr>
         <td>Boolean</td>
         <td>
-            let hasValue = true <br>
-            let allow = false <br>
+            <code>let hasValue = true </code><br>
+            <code>let allow = false </code><br>
         </td>
     </tr>
     <tr>
         <td>Date</td>
         <td>
             Use date function to declare a variable as date type. <br>
-            let birthday = $date(y:1980, m: 1, d: 1 )
+            <code>let birthday = $date(y:1980, m: 1, d: 1 )</code>
         </td>
     </tr>
     <tr>
@@ -134,8 +133,8 @@ let <variablename> = expression
         <td>
             Object type can be defined using JSON format. It does not support nested object syntax, but in order to set
             nested object, you can set to a variable and use it. <br><br>
-            let address = {city: 'ny'} <br>
-            let member = {name: 'alex', address: address }
+            <code>let address = {city: 'ny'} </code><br>
+            <code>let member = {name: 'alex', address: address }</code>
         </td>
     </tr>
 </table>
@@ -199,9 +198,9 @@ Function cannot be an argument to another function. Store output of a function i
         <td>
             <div>
                 $\color{#4686f2}{\$Date(y: int, m: int, d: int, [h:int, mn: int, s: int])}$ <br>
-                let d1 = $Date(y: 2022, m: 7, d:11) <br>
-                let d2 = $Date(m: 10, d:25, y: 2022 ) <br>
-                let t1 = $Date(m: 10, d:25, y: 2022, h:13, mn:30 ) <br>
+                <code>let d1 = $Date(y: 2022, m: 7, d:11) </code><br>
+                <code>let d2 = $Date(m: 10, d:25, y: 2022 ) </code><br>
+                <code>let t1 = $Date(m: 10, d:25, y: 2022, h:13, mn:30 ) </code>
             </div>
         </td>
     </tr>
@@ -223,8 +222,8 @@ Function cannot be an argument to another function. Store output of a function i
             $\color{#4686f2}{\$GetCurrentDateTime(timeZone: "")}$ <br>
 	    <a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11#time-zones">Windows Timezones List</a><br>
 	    <a href="https://manpages.ubuntu.com/manpages/bionic/man3/DateTime::TimeZone::Catalog.3pm.html">Ubuntu Timezones List</a><br>
-            let today = $GetCurrentDateTime() <br>
-            let todayEst = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
+            <code>let today = $GetCurrentDateTime() </code> <br>
+            <code>let todayEst = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )</code>
         </td>
     </tr>
     <tr>
@@ -279,7 +278,7 @@ Function cannot be an argument to another function. Store output of a function i
         <td>Concat</td>
         <td>
             $\color{#4686f2}{\$Concat(value1: string, value2:string, value3:string, value4:string, value5:string)}$ <br>
-            let value = $Concat ( value1: "I ", value2: "got it" )
+            <code>let value = $Concat ( value1: "I ", value2: "got it" )</code>
         </td>
     </tr>
 </table>
