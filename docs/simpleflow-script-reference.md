@@ -255,12 +255,12 @@ It supports only one style of comment can be used for single or multiline using 
 * Expressions, Objects ([], {}) cannot be used directly while passing parameters to a function.	But it accepts variables. There's a trick to use array in a function, if a function returns an array and that variable can be used to pass to another function.
 * Arrays are not supported (planned in future releases).
 * Nested objects cannot be defined directly, but you can use variable to use nested object
-Below statement throws exception:
-    ```csharp
-    let o = {Id: 2, Name: "John", Address: {City: "Ny"} } 
-    ```
-    Alternate:
-    ```csharp
-    let address = {City: "Ny"}
-    let o = {Id: 2, Name: "John", Address: address } 
-    ```	
+Following syntax will not work, check alternate below:
+```csharp
+let o = {Id: 2, Name: "John", Address: {City: "Ny"} } 
+```
+Alternate:
+```csharp
+let address = {City: "Ny"}
+let o = {Id: 2, Name: "John", Address: address } 
+```	
