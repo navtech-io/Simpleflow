@@ -9,19 +9,3 @@ aux_links:
 
 plugins:
   - jekyll-seo-tag
-
-
-kramdown:
-  syntax_highlighter_opts:
-    block:
-      line_numbers: true
-
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  startings: []
-  blanklines: false
-  profile: false
-  # ignore:
-  #   envs: all
