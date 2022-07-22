@@ -17,6 +17,9 @@ nav_order: 2
 1. [Emitters](#emitters)
 1. [Functions](#functions)
 1. [Comment](#comment)
+1. [Comment](#comment)
+1. [Script Guidelines](#script-guidelines)
+1. [Limitations](#limitations)
 
 
 ### Script Outline
@@ -143,7 +146,7 @@ Function cannot be an argument to another function. Store output of a function i
         <td>Date</td>
         <td>
             <div>
-                $$\color{#4686f2}{\$Date(y: int, m: int, d: int, [h:int, mn: int, s: int])}$$ <br>
+                $Date(y: int, m: int, d: int, [h:int, mn: int, s: int]) {: .purple-000} <br>
                 <code>let d1 = $Date(y: 2022, m: 7, d:11) </code><br>
                 <code>let d2 = $Date(m: 10, d:25, y: 2022 ) </code><br>
                 <code>let t1 = $Date(m: 10, d:25, y: 2022, h:13, mn:30 ) </code>
@@ -153,19 +156,19 @@ Function cannot be an argument to another function. Store output of a function i
     <tr>
         <td>GetCurrentDate</td>
         <td>
-            $\color{#4686f2}{\$GetCurrentDate()}$
+            GetCurrentDate()
         </td>
     </tr>
     <tr>
         <td>GetCurrentTime</td>
         <td>
-            $\color{#4686f2}{\$GetCurrentTime()}$
+            GetCurrentTime()
         </td>
     </tr>
     <tr>
         <td>GetCurrentDateTime</td>
         <td>
-            $\color{#4686f2}{\$GetCurrentDateTime(timeZone: "")}$ <br>
+            GetCurrentDateTime(timeZone: "") <br>
 	    <a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11#time-zones">Windows Timezones List</a><br>
 	    <a href="https://manpages.ubuntu.com/manpages/bionic/man3/DateTime::TimeZone::Catalog.3pm.html">Ubuntu Timezones List</a><br>
             <code>let today = $GetCurrentDateTime() </code> <br>
@@ -175,55 +178,55 @@ Function cannot be an argument to another function. Store output of a function i
     <tr>
         <td>Substring</td>
         <td>
-            $\color{#4686f2}{\$Substring(input: string, startIndex:int, length: int)}$
+            Substring(input: string, startIndex:int, length: int)
         </td>
     </tr>
     <tr>
         <td>IndexOf</td>
         <td>
-            $\color{#4686f2}{\$IndexOf(input: string, value:string, startIndex: int) }$
+            IndexOf(input: string, value:string, startIndex: int) 
         </td>
     </tr>
     <tr>
         <td>Length</td>
         <td>
-            $\color{#4686f2}{\$Length(input: string) }$
+            Length(input: string) 
         </td>
     </tr>
     <tr>
         <td>Contains</td>
         <td>
-            $\color{#4686f2}{\$Contains(input: string, value:string) }$
+            Contains(input: string, value:string) 
         </td>
     </tr>
     <tr>
         <td>StartsWith</td>
         <td>
-            $\color{#4686f2}{\$StartsWith(input: string, value:string) }$
+            StartsWith(input: string, value:string) 
         </td>
     </tr>
     <tr>
         <td>EndsWith</td>
         <td>
-            $\color{#4686f2}{\$EndsWith(input: string, value:string) }$
+            EndsWith(input: string, value:string) 
         </td>
     </tr>
     <tr>
         <td>Trim</td>
         <td>
-            $\color{#4686f2}{\$Trim(input: string, value:string) }$
+            Trim(input: string, value:string) 
         </td>
     </tr>
     <tr>
         <td>Match</td>
         <td>
-            $\color{#4686f2}{\$Match(input: string, pattern:string) }$
+            Match(input: string, pattern:string) 
         </td>
     </tr>
     <tr>
         <td>Concat</td>
         <td>
-            $\color{#4686f2}{\$Concat(value1: string, value2:string, value3:string, value4:string, value5:string)}$ <br>
+            Concat(value1: string, value2:string, value3:string, value4:string, value5:string) <br>
             <code>let value = $Concat ( value1: "I ", value2: "got it" )</code>
         </td>
     </tr>
@@ -234,7 +237,6 @@ It supports only one style of comment can be used for single or multiline using 
 ```csharp
 /* Write your comment here */
 ```
-	
 	
 
 
@@ -249,7 +251,7 @@ It supports only one style of comment can be used for single or multiline using 
  * Function parameters need not be ordered as it defined. And function must prefix with $.
  
 
-## Limitations
+### Limitations
 * Each statement can only be written in singleline.	 Currently It does not support multiline statement.
 * Expressions, Objects ([], {}) cannot be used directly while passing parameters to a function.	But it accepts variables. There's a trick to use array in a function, if a function returns an array and that variable can be used to pass to another function.
 * Arrays are not supported (planned in future releases).
