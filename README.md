@@ -54,6 +54,6 @@ Hello, World! 🌄
 
 
 ## License
-The code is available as open source under the terms of the Apache 2.0 License. 
+The code is available as open source under the terms of the [Apache 2.0](https://github.com/navtech-io/Simpleflow/blob/main/LICENSE) License. 
 Please see the LICENSE file in this repository.
 
