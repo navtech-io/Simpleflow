@@ -7,6 +7,7 @@ nav_order: 2
 # Simpleflow Script Reference
 {: .fs-9 }
 
+1. [Script Outline](#script-outline)
 1. [Variables](#variables)
 1. [Data Types](#data-types)
 1. [Operators](#operators)
@@ -16,6 +17,14 @@ nav_order: 2
 1. [Emitters](#emitters)
 1. [Functions](#functions)
 1. [Comment](#comment)
+
+
+### Script Outline
+
+```
+<let statements>* 
+(<rule statements> or <emitters> or <functions> or <set>)* 
+```
 
 
 ### Variables <a name="variables"></a>
