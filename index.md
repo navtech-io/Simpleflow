@@ -39,17 +39,19 @@ var flowScript =
 ";
 
 // Execute Script
-FlowOutput result = SimpleflowEngine.Run(flowScript, new {UniversalId = 2, New=true, Verified=false} );
+FlowOutput result = SimpleflowEngine.Run(flowScript, 
+                                        new {UniversalId = 2, New=true, Verified=false});
 // Access result
 Console.WriteLine(result.Messages[0]); 
-Console.WriteLine(result.Output["today"]);
+var scriptExecutionTime =  result.Output["today"];
+
 ```
 
 **Output**
 
 ```
 Hello, World! 🌄
-<current system date and time>
+
 ```
 Please see [this](#examples) example with most of the simpleflow script features.
 
