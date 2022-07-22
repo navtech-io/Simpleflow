@@ -1,14 +1,15 @@
+---
+layout: default
+title: Examples
+nav_order: 2
+---
+
 remote_theme: just-the-docs/just-the-docs
 
 aux_links:
   "Simpleflow on GitHub":
     - "//github.com/navtech-io/Simpleflow"
     
----
-layout: default
-title: Examples
-nav_order: 2
----
 
 plugins:
   - jekyll-seo-tag
