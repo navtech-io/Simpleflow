@@ -1,9 +1,3 @@
----
-layout: default
-title: Examples
-nav_order: 2
----
-
 remote_theme: just-the-docs/just-the-docs
 
 aux_links:
