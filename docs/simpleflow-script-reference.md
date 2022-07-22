@@ -1,6 +1,6 @@
 ---
 layout: default
-title: SimpleflowScriptReference
+title: Simpleflow Script Reference
 nav_order: 2
 ---
 
