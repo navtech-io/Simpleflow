@@ -93,7 +93,7 @@ let <variablename> = expression
 
 | Operator Type | Operators             |
 |---------------|-----------------------|
-| Arithmetic    | +,-,*,/               |
+| Arithmetic    | +, -, *, /            |
 | Logical       | and, or, not          |
 | Relational    | <, <=, >, >=, == , != |
 
@@ -145,7 +145,7 @@ Function cannot be an argument to another function. Store output of a function i
         <td>Date</td>
         <td>
             <div>
-		<pre>$Date(y: int, m: int, d: int, [h:int, mn: int, s: int])</pre>  <br>
+		<pre>$Date(y: int, m: int, d: int, [h:int, mn: int, s: int])</pre>  
                 <code>let d1 = $Date(y: 2022, m: 7, d:11) </code><br>
                 <code>let d2 = $Date(m: 10, d:25, y: 2022 ) </code><br>
                 <code>let t1 = $Date(m: 10, d:25, y: 2022, h:13, mn:30 ) </code>
@@ -155,19 +155,19 @@ Function cannot be an argument to another function. Store output of a function i
     <tr>
         <td>GetCurrentDate</td>
         <td>
-            GetCurrentDate()
+		<pre>$GetCurrentDate()</pre>
         </td>
     </tr>
     <tr>
         <td>GetCurrentTime</td>
         <td>
-            GetCurrentTime()
+		<pre>$GetCurrentTime()</pre>
         </td>
     </tr>
     <tr>
         <td>GetCurrentDateTime</td>
         <td>
-            GetCurrentDateTime(timeZone: "") <br>
+		<pre>GetCurrentDateTime(timeZone: string)</pre> 
 	    <a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11#time-zones">Windows Timezones List</a><br>
 	    <a href="https://manpages.ubuntu.com/manpages/bionic/man3/DateTime::TimeZone::Catalog.3pm.html">Ubuntu Timezones List</a><br>
             <code>let today = $GetCurrentDateTime() </code> <br>
@@ -177,55 +177,55 @@ Function cannot be an argument to another function. Store output of a function i
     <tr>
         <td>Substring</td>
         <td>
-            Substring(input: string, startIndex:int, length: int)
+		<pre>$Substring(input: string, startIndex:int, length: int)</pre>
         </td>
     </tr>
     <tr>
         <td>IndexOf</td>
         <td>
-            IndexOf(input: string, value:string, startIndex: int) 
+            <pre>$IndexOf(input: string, value:string, startIndex: int) </pre>
         </td>
     </tr>
     <tr>
         <td>Length</td>
         <td>
-            Length(input: string) 
+            <pre>$Length(input: string) </pre>
         </td>
     </tr>
     <tr>
         <td>Contains</td>
         <td>
-            Contains(input: string, value:string) 
+            <pre>$Contains(input: string, value:string) </pre>
         </td>
     </tr>
     <tr>
         <td>StartsWith</td>
         <td>
-            StartsWith(input: string, value:string) 
+            <pre>$StartsWith(input: string, value:string) </pre>
         </td>
     </tr>
     <tr>
         <td>EndsWith</td>
         <td>
-            EndsWith(input: string, value:string) 
+            <pre>$EndsWith(input: string, value:string) </pre>
         </td>
     </tr>
     <tr>
         <td>Trim</td>
         <td>
-            Trim(input: string, value:string) 
+            <pre>$Trim(input: string, value:string)</pre> 
         </td>
     </tr>
     <tr>
         <td>Match</td>
         <td>
-            Match(input: string, pattern:string) 
+            <pre>$Match(input: string, pattern:string) </pre>
         </td>
     </tr>
     <tr>
         <td>Concat</td>
         <td>
-            Concat(value1: string, value2:string, value3:string, value4:string, value5:string) <br>
+            <pre>Concat(value1: string, value2:string, value3:string, value4:string, value5:string) </pre>
             <code>let value = $Concat ( value1: "I ", value2: "got it" )</code>
         </td>
     </tr>
