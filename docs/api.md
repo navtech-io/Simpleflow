@@ -86,7 +86,7 @@ catch(SimpleflowException exception)
 ```
 
 ## Control Functions Execution Permissions
-By setting FlowContextOptions, permit sepcific functions to be exucuted.
+By setting FlowContextOptions, you can permit specific functions to be executed.
 
 ```csharp
  string script = @"
@@ -98,7 +98,9 @@ var output = SimpleflowEngine.Run( script,
                                    new object(), 
                                    new FlowContextOptions
                                        {
-                                         AllowFunctions = new string[] { "GetCurrentDateTime" }
+                                         AllowFunctions = new string[] { 
+                                                    "GetCurrentDateTime" 
+                                            }
                                        }
                                  );
 ```
