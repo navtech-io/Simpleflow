@@ -1,5 +1,7 @@
 remote_theme: just-the-docs/just-the-docs
 
+permalink: pretty
+
 aux_links:
   "Simpleflow on GitHub":
     - "//github.com/navtech-io/Simpleflow"
