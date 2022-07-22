@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: Get Started
 nav_order: 1
 permalink: /
 ---
