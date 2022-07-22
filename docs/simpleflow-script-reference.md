@@ -40,6 +40,12 @@ let <variablename> = expression
 ```csharp
 [partial] set <variablename> = expression
 ```
+> `set` statement can be used to modify the value of variable that has been declared using let statement. `partial` keyword can be used to modify certain properties of an object.
+
+Change values of properrties of an object:
+```csharp
+partial set arg = { RegistrationDate: currentDate, IsActive: true }
+```
 
 ## Data Types
 
@@ -117,8 +123,8 @@ rule when <predicate> then
 [end rule]
 ```
 
-> <small> condition does not allow expression. If you need to write expression
-declare variable and write expression and use that variable in predicate. This does not support nested rules to avoid code complexity</small>
+> condition does not allow expression. If you need to write expression
+declare variable and write expression and use that variable in predicate. This does not support nested rules to avoid code complexity. `end rule` is optional and it can be used to terminate the rule scope.
 
 ## Emitters
 
@@ -128,6 +134,8 @@ declare variable and write expression and use that variable in predicate. This d
 | error        | `error <string/identifier>`    |
 | output       | `output <identifier>`    	|
 | exit         | `exit`                         |
+
+> `exit` can be used to terminate the script execution.
 
 ## Functions
 ```csharp
@@ -240,25 +248,12 @@ It supports only one style of comment can be used for single or multiline using 
 ## Script Guidelines
 * All `let` statements (declare and initialize variables) must be declared in the beginning of the script.
 * Each statement must end with a new line and each statement can be written in single line only.
-* `set` statement can be used to modify the value of variable that has been declared using let statement. 
 * All keywords should be small (case sensitive) (`let, set, message, error, output, rule, when, then, exit, end rule, partial `)
- * variable names and function names are not case sensitive.
- * `end rule` can be used to terminate the rule scope.
- * `exit` can be used to terminate the script execution.
- * Function parameters need not be ordered as it defined. And function must prefix with $.
- 
+* variable names and function names are not case sensitive.
+
 
 ## Limitations
 * Each statement can only be written in singleline.	 Currently It does not support multiline statement.
 * Expressions, Objects ([], {}) cannot be used directly while passing parameters to a function.	But it accepts variables. There's a trick to use array in a function, if a function returns an array and that variable can be used to pass to another function.
 * Arrays are not supported (planned in future releases).
-* Nested objects cannot be defined directly, but you can use variable to use nested object
-Following syntax will not work, check alternate below:
-```csharp
-let o = {Id: 2, Name: "John", Address: {City: "Ny"} } 
-```
-Alternate:
-```csharp
-let address = {City: "Ny"}
-let o = {Id: 2, Name: "John", Address: address } 
 ```	
