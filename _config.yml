@@ -3,3 +3,8 @@ remote_theme: just-the-docs/just-the-docs
 aux_links:
   "Simpleflow on GitHub":
     - "//github.com/navtech-io/Simpleflow"
+    
+    
+layout: default
+title: Customization
+nav_order: 4    
