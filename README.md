@@ -16,7 +16,7 @@ Install package via Nuget. Using the NuGet package manager console within Visual
 Install-Package Simpleflow	
 ```
 
-**Try following Simpleflow script:**
+**Try the following Simpleflow script:**
 
 ```csharp
 using Simpleflow;
