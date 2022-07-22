@@ -22,12 +22,10 @@ Sample code to create, build and run pipeline
 // Build Pipeline to get full control over execution
 ISimpleflowPipelineBuilder engine
     = new SimpleflowPipelineBuilder()
-
             // Add middleware services 
             .AddPipelineServices(
                     new MyPreprocessor(), 
                     new MyLoggingService());
-
             // Add core services - Cache, Compiler, Execution
             .AddCorePipelineServices(FunctionRegister.Default) // or
             /*
@@ -36,13 +34,10 @@ ISimpleflowPipelineBuilder engine
                     new CompilerService(ActivityRegister.Default),
                     new ExecutionService()); 
             */
-
 // Build
 ISimpleflow flow = engine.Build();
-
 // Run
 FlowOutput result = flow.Run(script, new Member { Id = id});
-
 ```
 ### FlowOutput
 
@@ -53,7 +48,6 @@ Emitters (`message, error, output`) produce output from script that will be avai
 ```csharp
 FunctionRegister.Default
     .Add("DerivativeOfXPowN", (Func<int, int, int>)CalcDerivativeOfXPowN)
-
 static int CalcDerivativeOfXPowN(int x, int n)
 {
     return n *  Math.Pow(x, n-1); //
@@ -81,9 +75,7 @@ By adding only CompilerService to build pipeline, script can be compiled and rep
 var engine
     = new SimpleflowPipelineBuilder()
         .AddPipelineServices(new Services.CompilerService(FunctionRegister.Default));
-
 var simpleflow = engine.Build();
-   
 try 
 {
     simpleflow.Run(script, context);
@@ -92,5 +84,4 @@ catch(SimpleflowException exception)
 {
     //Handle script errors
 }
-
 ```
