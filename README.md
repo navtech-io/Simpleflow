@@ -52,7 +52,6 @@ Hello, World! 🌄
 
 [Please see the full documentation](https://navtech-io.github.io/Simpleflow/) on how to use this library.
 
----
 
 ## License
 The code is available as open source under the terms of the Apache 2.0 License. 
