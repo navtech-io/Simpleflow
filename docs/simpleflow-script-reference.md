@@ -122,12 +122,12 @@ declare variable and write expression and use that variable in predicate. This d
 
 ### Emitters
 
-| Emitter Type | Syntax                      |
-|--------------|-----------------------------|
-| message      | message <string/identifier> |
-| error        | error <string/identifier>   |
-| output       | output 	<identifier>         |
-| exit         | exit                        |
+| Emitter Type | Syntax                      	|
+|--------------|--------------------------------|
+| message      | `message <string/identifier>`  |
+| error        | `error <string/identifier>`    |
+| output       | `output <identifier>`    	|
+| exit         | `exit`                         |
 
 ### Functions
 ```csharp
