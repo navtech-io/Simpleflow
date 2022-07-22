@@ -57,10 +57,10 @@ Please see [this](#examples) example with most of the simpleflow script features
 
 ---
 
-* [Script Outline](simpleflow-script-reference#script-outline)
-* [Reference](simpleflow-script-reference#script-outline)
-* [API](api)
-* [Examples](examples)
-* [Limitations](simpleflow-script-reference#limitations)
+* [Script Outline](simpleflow-script-reference/#script-outline)
+* [Reference](simpleflow-script-reference/#script-outline)
+* [API](api/)
+* [Examples](examples/)
+* [Limitations](simpleflow-script-reference/#limitations)
 
 
