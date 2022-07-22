@@ -34,13 +34,13 @@ nav_order: 2
 ```fsharp
 let <variablename> = expression
 ```
-> <small> Expressions can be used with only variable. Anywhere else you need expression then declare variable,  assign expression and use it.</small>
+Expressions can be used with only variable. Anywhere else you need expression then declare variable,  assign expression and use it.
 
 **Modify value of a variable** <br>
 ```csharp
 [partial] set <variablename> = expression
 ```
-> `set` statement can be used to modify the value of variable that has been declared using let statement. `partial` keyword can be used to modify certain properties of an object.
+`set` statement can be used to modify the value of variable that has been declared using let statement. `partial` keyword can be used to modify certain properties of an object.
 
 Change values of properrties of an object:
 ```csharp
@@ -123,8 +123,7 @@ rule when <predicate> then
 [end rule]
 ```
 
-> condition does not allow expression. If you need to write expression
-declare variable and write expression and use that variable in predicate. This does not support nested rules to avoid code complexity. `end rule` is optional and it can be used to terminate the rule scope.
+Condition does not allow expression. If you need to write expression declare variable and write expression and use that variable in predicate. This does not support nested rules to avoid code complexity. `end rule` is optional and it can be used to terminate the rule scope.
 
 ## Emitters
 
@@ -135,7 +134,7 @@ declare variable and write expression and use that variable in predicate. This d
 | output       | `output <identifier>`    	|
 | exit         | `exit`                         |
 
-> `exit` can be used to terminate the script execution.
+`exit` can be used to terminate the script execution.
 
 ## Functions
 ```csharp
