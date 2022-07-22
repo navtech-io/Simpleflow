@@ -22,10 +22,7 @@ Install package via Nuget. Using the NuGet package manager console within Visual
 Install-Package Simpleflow	
 ```
 
-**Try following Simpleflow script:**
-
-{% capture message %}
-{% highlight csharp linenos %}
+**Try the following Simpleflow script:**
 
 ```csharp
 using Simpleflow;
@@ -52,11 +49,6 @@ Console.WriteLine(result.Messages[0]);
 Console.WriteLine(result.Output["today"]);
 
 ```
-
-{% endhighlight %}
-{% endcapture %}
-{% include fix_linenos.html code=some_var %}
-
 
 **Output**
 
@@ -212,7 +204,7 @@ Function cannot be an argument to another function. Store output of a function i
         <td>Date</td>
         <td>
             <div>
-                $\color{#4686f2}{\$Date(y: int, m: int, d: int, [h:int, mn: int, s: int])}$ <br>
+                $$\color{#4686f2}{\$Date(y: int, m: int, d: int, [h:int, mn: int, s: int])}$$ <br>
                 <code>let d1 = $Date(y: 2022, m: 7, d:11) </code><br>
                 <code>let d2 = $Date(m: 10, d:25, y: 2022 ) </code><br>
                 <code>let t1 = $Date(m: 10, d:25, y: 2022, h:13, mn:30 ) </code>
