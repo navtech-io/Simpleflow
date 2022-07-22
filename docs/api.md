@@ -18,7 +18,6 @@ nav_order: 3
 
 Sample code to create, build and run pipeline
 ```csharp
-
 // Build Pipeline to get full control over execution
 ISimpleflowPipelineBuilder engine
     = new SimpleflowPipelineBuilder()
@@ -71,7 +70,6 @@ public class LoggingService : IFlowPipelineService
 ### Compile Script
 By adding only CompilerService to build pipeline, script can be compiled and reported if there are any errors.
 ```csharp
-    
 var engine
     = new SimpleflowPipelineBuilder()
         .AddPipelineServices(new Services.CompilerService(FunctionRegister.Default));
