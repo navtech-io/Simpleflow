@@ -54,13 +54,12 @@ let <variablename> = expression
                 <code>let x = 1 </code><br>
                 <code>let y = 2.3 </code><br>
                 <code>let z = -442.33 </code><br>
-            </div>
         </td>
     </tr>
     <tr>
         <td>String</td>
         <td>
-            let name = "test"
+            <code>let name = "test"</code>
         </td>
     </tr>
     <tr>
@@ -146,7 +145,7 @@ Function cannot be an argument to another function. Store output of a function i
         <td>Date</td>
         <td>
             <div>
-                $Date(y: int, m: int, d: int, [h:int, mn: int, s: int]) {: .purple-000} <br>
+		<pre>$Date(y: int, m: int, d: int, [h:int, mn: int, s: int])</pre>  <br>
                 <code>let d1 = $Date(y: 2022, m: 7, d:11) </code><br>
                 <code>let d2 = $Date(m: 10, d:25, y: 2022 ) </code><br>
                 <code>let t1 = $Date(m: 10, d:25, y: 2022, h:13, mn:30 ) </code>
