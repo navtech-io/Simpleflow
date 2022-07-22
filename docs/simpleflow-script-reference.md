@@ -17,7 +17,6 @@ nav_order: 2
 1. [Emitters](#emitters)
 1. [Functions](#functions)
 1. [Comment](#comment)
-1. [Comment](#comment)
 1. [Script Guidelines](#script-guidelines)
 1. [Limitations](#limitations)
 
@@ -232,8 +231,9 @@ Function cannot be an argument to another function. Store output of a function i
     <tr>
         <td>Concat</td>
         <td>
-            <pre>Concat(value1: string, value2:string, value3:string,
-                        value4:string, value5:string) </pre>
+<pre>Concat(value1: string, value2:string, value3:string,
+            value4:string, value5:string) 
+</pre>
             <code>let value = $Concat ( value1: "I ", value2: "got it" )</code>
         </td>
     </tr>
