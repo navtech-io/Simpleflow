@@ -26,28 +26,23 @@ Install-Package Simpleflow
 
 ```csharp
 using Simpleflow;
-
 // Simpleflow Script
 var flowScript = 
 @" 
     let text  = ""Hello, World! 🌄""
     let today = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
-
     /* comment: check condition  */
     rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
          message text
     end rule
-    
     output today
 ";
 
 // Execute Script
 FlowOutput result = SimpleflowEngine.Run(flowScript, new {UniversalId = 2, New=true, Verified=false} );
-
 // Access result
 Console.WriteLine(result.Messages[0]); 
 Console.WriteLine(result.Output["today"]);
-
 ```
 
 **Output**
