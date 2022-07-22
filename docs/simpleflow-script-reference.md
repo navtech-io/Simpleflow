@@ -22,7 +22,7 @@ nav_order: 2
 1. [Limitations](#limitations)
 
 
-### Script Outline
+## Script Outline
 
 ```
 <let statements>* 
@@ -30,7 +30,7 @@ nav_order: 2
 ```
 
 
-### Variables <a name="variables"></a>
+## Variables <a name="variables"></a>
 ```fsharp
 let <variablename> = expression
 ```
@@ -41,7 +41,7 @@ let <variablename> = expression
 [partial] set <variablename> = expression
 ```
 
-### Data Types
+## Data Types
 
 <table>
     <tr>
@@ -89,7 +89,7 @@ let <variablename> = expression
 
 
 
-### Operators
+## Operators
 
 | Operator Type | Operators             |
 |---------------|-----------------------|
@@ -97,18 +97,18 @@ let <variablename> = expression
 | Logical       | and, or, not          |
 | Relational    | <, <=, >, >=, == , != |
 
-### Expressions
+## Expressions
 ```csharp
 let v = 2 + 3 * (3 * arg.value); 
 ```
 
-### Script Parameters
+## Script Parameters
 `arg` and `context`
 `arg` represents the input to the script.
 
 **Context Properties:** context.HasErrors,  context.HasMessages context.HasOutput
 
-### Rule Control Flow
+## Rule Control Flow
 ```csharp
 rule when <predicate> then
 	<statement..1>	
@@ -120,7 +120,7 @@ rule when <predicate> then
 > <small> condition does not allow expression. If you need to write expression
 declare variable and write expression and use that variable in predicate. This does not support nested rules to avoid code complexity</small>
 
-### Emitters
+## Emitters
 
 | Emitter Type | Syntax                      	|
 |--------------|--------------------------------|
@@ -129,7 +129,7 @@ declare variable and write expression and use that variable in predicate. This d
 | output       | `output <identifier>`    	|
 | exit         | `exit`                         |
 
-### Functions
+## Functions
 ```csharp
 $<function_name>(param_name1: value1, param_name2: value2, ...)
 ```
@@ -231,15 +231,13 @@ Function cannot be an argument to another function. Store output of a function i
     </tr>
 </table>
     
-### Comment
+## Comment
 It supports only one style of comment can be used for single or multiline using /* .. */
 ```csharp
 /* Write your comment here */
 ```
 	
-
-
-### Script Guidelines
+## Script Guidelines
 * All `let` statements (declare and initialize variables) must be declared in the beginning of the script.
 * Each statement must end with a new line and each statement can be written in single line only.
 * `set` statement can be used to modify the value of variable that has been declared using let statement. 
@@ -250,7 +248,7 @@ It supports only one style of comment can be used for single or multiline using 
  * Function parameters need not be ordered as it defined. And function must prefix with $.
  
 
-### Limitations
+## Limitations
 * Each statement can only be written in singleline.	 Currently It does not support multiline statement.
 * Expressions, Objects ([], {}) cannot be used directly while passing parameters to a function.	But it accepts variables. There's a trick to use array in a function, if a function returns an array and that variable can be used to pass to another function.
 * Arrays are not supported (planned in future releases).
