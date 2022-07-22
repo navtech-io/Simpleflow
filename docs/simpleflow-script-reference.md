@@ -109,7 +109,7 @@ let v = 2 + 3 * (3 * arg.value);
 ```
 
 ## Script Parameters
-`arg` and `context`
+`arg` and `context` parameters available in script. <br>
 `arg` represents the input to the script.
 
 **Context Properties:** context.HasErrors,  context.HasMessages context.HasOutput
