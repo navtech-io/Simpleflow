@@ -6,6 +6,7 @@ nav_order: 99
 
 # Examples
 
+**Sample Simpleflow Script**
 
 ```csharp
 /* Declare and initialize variables */
@@ -39,6 +40,7 @@ set userId = $CustomerService.RegisterUser(user: arg) /* User defined function*/
 output userId  /*access this output using result.Output["userId"]*/
 
 ```
+**Sample simpleflow script execution from code**
 
 ```csharp
 class User { 
