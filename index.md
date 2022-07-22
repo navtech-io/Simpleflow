@@ -24,6 +24,9 @@ Install-Package Simpleflow
 
 **Try following Simpleflow script:**
 
+{% capture message %}
+{% highlight csharp linenos %}
+
 ```csharp
 using Simpleflow;
 
@@ -49,6 +52,12 @@ Console.WriteLine(result.Messages[0]);
 Console.WriteLine(result.Output["today"]);
 
 ```
+
+{% endhighlight %}
+{% endcapture %}
+{% include fix_linenos.html code=some_var %}
+
+
 **Output**
 
 ```
