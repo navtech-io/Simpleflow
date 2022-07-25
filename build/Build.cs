@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Nuke.Common;
 using Nuke.Common.CI.AppVeyor;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Execution;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
@@ -10,6 +11,7 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities.Collections;
+using Serilog;
 using static Nuke.Common.EnvironmentInfo;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
@@ -40,6 +42,15 @@ class Build : NukeBuild
     AbsolutePath TestsDirectory => RootDirectory / "test";
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
     AbsolutePath NugetDirectory => ArtifactsDirectory / "nuget";
+    GitHubActions GitHubActions => GitHubActions.Instance;
+    
+
+    Target Print => _ => _
+        .Executes(() =>
+        {
+            Log.Information("Branch = {Branch}", GitHubActions.Ref);
+            Log.Information("Commit = {Commit}", GitHubActions.Sha);
+        });
 
     Target Clean => _ => _
         .Before(Restore)
@@ -114,14 +125,14 @@ class Build : NukeBuild
                 .AddProperty("PackageLicenseExpression", "Apache-2.0")
                 .AddProperty("PackageIcon", @"PackageIcon.png")
                 .SetIncludeSymbols(true)
-                .SetVersion("0.1.0-beta05" /*NuGetVersionCustom*/)
-                .SetDescription("Lightweight rule engine")
+                .SetVersion("0.1.0-beta06")
+                .SetDescription("Build dynamic rules and workflows using script")
                 .SetPackageTags("Simpleflow.NET Workflow RuleEngine DynamicExpressionEvaluator")
                 .SetNoDependencies(true)
                 .SetOutputDirectory(ArtifactsDirectory / "nuget"));
         });
 
-    Target Push => _ => _
+    Target Publish => _ => _
         .Requires(() => NugetApiUrl)
         .Requires(() => NugetApiKey)
         .Requires(() => Configuration.Equals(Configuration.Release))
@@ -141,12 +152,5 @@ class Build : NukeBuild
                 });
         });
 
-    // Target PullRequest 
-
-    //Target Print => _ => _
-    //    .Executes(() =>
-    //    {
-    //        Log.Information("Branch = {Branch}", GitHubActions.Ref);
-    //        Log.Information("Commit = {Commit}", GitHubActions.Sha);
-    //    });
+    
 }
