@@ -98,6 +98,26 @@ namespace Simpleflow.Tests.Scripting
 
         }
 
+
+        [Fact]
+        public void CheckModulo()
+        {
+            // Arrange
+            var script =
+                @"
+                    let w = 10 % 3 
+                    
+                    output w
+                ";
+
+            
+            // Act
+            FlowOutput output = SimpleflowEngine.Run(script, new object());
+
+            Assert.Equal(expected: 1, actual: output.Output["w"]);
+
+        }
+
     }
 
 

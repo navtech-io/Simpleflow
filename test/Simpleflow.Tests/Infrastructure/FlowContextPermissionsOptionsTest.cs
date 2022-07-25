@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Simpleflow.Tests.Infrastructure
 {
-    public class FlowContextOptionsTest
+    public class FlowContextPermissionsOptionsTest
     {
         [Fact]
         public void CheckFlowContextOptionCacheId()

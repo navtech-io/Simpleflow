@@ -21,5 +21,10 @@ namespace Simpleflow
         /// Gets or sets DenyFunctions
         /// </summary>
         public string[] DenyFunctions { get; set; }
+
+        /// <summary>
+        /// Gets or sets CacheOptions
+        /// </summary>
+        public CacheOptions CacheOptions { get; set; }
     }
 }

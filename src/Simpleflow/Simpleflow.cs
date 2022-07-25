@@ -65,7 +65,7 @@ namespace Simpleflow
                 Script = script,
                 Argument = argument,
                 Options = options,
-                ActivityRegister = config
+                FunctionRegister = config
             };
 
             RunPipelineService<TArg>(_services.First, context);
@@ -83,11 +83,6 @@ namespace Simpleflow
 
             // Add trace for debugging
             input.Trace.CreateNewTracePoint(serviceNode.Value.GetType().FullName);
-
-            //TODO write Execution timeout to trace if its in debug mode
-            //System.Diagnostics.StackTrace t = new System.Diagnostics.StackTrace();
-            //t.GetFrames()
-            // Environment.StackTrace
 
             serviceNode.Value.Run(input, next);
         }

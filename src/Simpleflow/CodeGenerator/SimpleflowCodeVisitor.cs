@@ -126,7 +126,6 @@ namespace Simpleflow.CodeGenerator
 
         private void InjectSmartVariables(List<Expression> statementExpressions)
         {
-            // TODO write comments
             int index = 0;
             while (index < SmartJsonVariables.Count)
             {

@@ -40,7 +40,7 @@ namespace Simpleflow
             // TODO : able to invoke methods of the Type 
             // find all methods and add it
             // let customer = $customer.new()
-            // $MethodName (p1: value, ...) -> customer
+            // $MethodName (p1: value, ...) on customer
 
             ValidateFunctionName(name);
 
@@ -71,11 +71,10 @@ namespace Simpleflow
         /// <returns></returns>
         public IFunctionRegister Add(string name, Delegate @delegate)
         {
-            //TODO Allow only static methods
+            //Allow only static methods
             if (@delegate.Target != null)
             {
-                // TODO custom exception
-                throw new Exception(Resources.Message.RegisterNonStaticMethodError);
+                throw new SimpleflowException(Resources.Message.RegisterNonStaticMethodError);
             }
 
             ValidateFunctionName(name);

@@ -33,7 +33,7 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.10.1")]
 [System.CLSCompliant(false)]
-internal partial class SimpleflowParser : Parser {
+internal partial class SimpleflowParser : SimpleflowParserBase {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
@@ -42,7 +42,8 @@ internal partial class SimpleflowParser : Parser {
 		Partial=18, Assign=19, LineBreak=20, Skip_=21, And=22, Or=23, Not=24, 
 		GreaterThan=25, GreaterThanEqual=26, LessThan=27, LessThanEqual=28, Equal=29, 
 		NotEqual=30, Contains=31, OpenParen=32, CloseParen=33, Number=34, String=35, 
-		None=36, Identifier=37, PlusOp=38, MinusOp=39, TimesOp=40, DivOp=41, FunctionName=42;
+		None=36, Identifier=37, PlusOp=38, MinusOp=39, TimesOp=40, DivOp=41, ModuloOp=42, 
+		FunctionName=43;
 	public const int
 		RULE_program = 0, RULE_ruleStmt = 1, RULE_endRuleStmt = 2, RULE_exitStmt = 3, 
 		RULE_generalStatement = 4, RULE_letStmt = 5, RULE_setStmt = 6, RULE_messageStmt = 7, 
@@ -68,7 +69,7 @@ internal partial class SimpleflowParser : Parser {
 		"'}'", "'rule'", "'when'", "'then'", "'message'", "'error'", "'output'", 
 		"'let'", "'set'", "'partial'", "'='", null, null, "'and'", "'or'", "'not'", 
 		"'>'", "'>='", "'<'", "'<='", "'=='", "'!='", "'contains'", "'('", "')'", 
-		null, null, "'none'", null, "'+'", "'-'", "'*'", "'/'"
+		null, null, "'none'", null, "'+'", "'-'", "'*'", "'/'", "'%'"
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, null, null, null, null, null, null, null, null, null, "Rule", "When", 
@@ -76,7 +77,7 @@ internal partial class SimpleflowParser : Parser {
 		"LineBreak", "Skip_", "And", "Or", "Not", "GreaterThan", "GreaterThanEqual", 
 		"LessThan", "LessThanEqual", "Equal", "NotEqual", "Contains", "OpenParen", 
 		"CloseParen", "Number", "String", "None", "Identifier", "PlusOp", "MinusOp", 
-		"TimesOp", "DivOp", "FunctionName"
+		"TimesOp", "DivOp", "ModuloOp", "FunctionName"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -1911,6 +1912,7 @@ internal partial class SimpleflowParser : Parser {
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TimesOp() { return GetToken(SimpleflowParser.TimesOp, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DivOp() { return GetToken(SimpleflowParser.DivOp, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ModuloOp() { return GetToken(SimpleflowParser.ModuloOp, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PlusOp() { return GetToken(SimpleflowParser.PlusOp, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MinusOp() { return GetToken(SimpleflowParser.MinusOp, 0); }
 		public ArithmeticExpressionContext(ParserRuleContext parent, int invokingState)
@@ -1994,7 +1996,7 @@ internal partial class SimpleflowParser : Parser {
 						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
 						State = 227;
 						_la = TokenStream.LA(1);
-						if ( !(_la==TimesOp || _la==DivOp) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TimesOp) | (1L << DivOp) | (1L << ModuloOp))) != 0)) ) {
 						ErrorHandler.RecoverInline(this);
 						}
 						else {
@@ -2612,7 +2614,7 @@ internal partial class SimpleflowParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,42,294,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		4,1,43,294,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
 		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
 		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
 		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,28,
@@ -2635,7 +2637,7 @@ internal partial class SimpleflowParser : Parser {
 		275,9,29,1,29,1,29,1,29,1,29,3,29,281,8,29,1,30,1,30,1,30,1,30,1,31,1,
 		31,1,31,1,31,1,31,3,31,292,8,31,1,31,0,2,26,48,32,0,2,4,6,8,10,12,14,16,
 		18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,0,
-		5,1,0,22,23,1,0,25,31,1,0,4,5,1,0,40,41,1,0,38,39,313,0,67,1,0,0,0,2,85,
+		5,1,0,22,23,1,0,25,31,1,0,4,5,1,0,40,42,1,0,38,39,313,0,67,1,0,0,0,2,85,
 		1,0,0,0,4,104,1,0,0,0,6,108,1,0,0,0,8,117,1,0,0,0,10,119,1,0,0,0,12,126,
 		1,0,0,0,14,134,1,0,0,0,16,138,1,0,0,0,18,144,1,0,0,0,20,146,1,0,0,0,22,
 		150,1,0,0,0,24,159,1,0,0,0,26,170,1,0,0,0,28,181,1,0,0,0,30,185,1,0,0,
@@ -2691,7 +2693,7 @@ internal partial class SimpleflowParser : Parser {
 		3,0,0,230,231,7,4,0,0,231,233,3,48,24,4,232,226,1,0,0,0,232,229,1,0,0,
 		0,233,236,1,0,0,0,234,232,1,0,0,0,234,235,1,0,0,0,235,49,1,0,0,0,236,234,
 		1,0,0,0,237,241,1,0,0,0,238,241,5,34,0,0,239,241,3,38,19,0,240,237,1,0,
-		0,0,240,238,1,0,0,0,240,239,1,0,0,0,241,51,1,0,0,0,242,243,5,42,0,0,243,
+		0,0,240,238,1,0,0,0,240,239,1,0,0,0,241,51,1,0,0,0,242,243,5,43,0,0,243,
 		252,5,32,0,0,244,249,3,54,27,0,245,246,5,6,0,0,246,248,3,54,27,0,247,245,
 		1,0,0,0,248,251,1,0,0,0,249,247,1,0,0,0,249,250,1,0,0,0,250,253,1,0,0,
 		0,251,249,1,0,0,0,252,244,1,0,0,0,252,253,1,0,0,0,253,254,1,0,0,0,254,

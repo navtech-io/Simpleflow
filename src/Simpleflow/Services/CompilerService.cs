@@ -14,16 +14,16 @@ namespace Simpleflow.Services
     /// </summary>
     public class CompilerService : IFlowPipelineService
     {
-        private readonly IFunctionRegister _activityRegister;
+        private readonly IFunctionRegister _functionRegister;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="options"></param>
-        /// <param name="activityRegister"></param>
-        public CompilerService(IFunctionRegister activityRegister, IOptions options = null)
+        /// <param name="functionRegister"></param>
+        public CompilerService(IFunctionRegister functionRegister, IOptions options = null)
         {
-            _activityRegister = activityRegister ?? throw new ArgumentNullException(nameof(activityRegister));
+            _functionRegister = functionRegister ?? throw new ArgumentNullException(nameof(functionRegister));
         }
 
         /// <inheritdoc />
@@ -39,7 +39,10 @@ namespace Simpleflow.Services
                 var eventPublisher = new ParserEventPublisher();
                 CheckFunctionExecutionPermissions(context, eventPublisher);
 
-                context.Internals.CompiledScript = SimpleflowCompiler.Compile<TArg>(context.Script, _activityRegister, eventPublisher);
+                context.Internals.CompiledScript = 
+                    SimpleflowCompiler.Compile<TArg>(context.Script,
+                                                    new FunctionRegisterCoordinator(_functionRegister, context.FunctionRegister),
+                                                    eventPublisher);
 
                 context.Trace.Write("Compiled");
             }
@@ -47,7 +50,7 @@ namespace Simpleflow.Services
             {
                 context.Trace.Write("Compilation Skipped");
             }
-            
+
             next?.Invoke(context);
         }
 
@@ -55,7 +58,7 @@ namespace Simpleflow.Services
         {
             eventPublisher.OnVisit = (type, data) =>
             {
-                if (type == EventType.VisitFunctionOnAvail 
+                if (type == EventType.VisitFunctionOnAvail
                     && context.Options?.DenyFunctions != null)
                 {
                     var functionName = data.ToString();

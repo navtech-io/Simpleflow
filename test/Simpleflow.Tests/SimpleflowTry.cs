@@ -50,5 +50,64 @@ namespace Simpleflow.Tests
             // Assert
             Assert.Empty(output.Messages);
         }
+
+        [Fact]
+        public void Try3()
+        {
+            // Arrange
+            var flowScript =
+            @" 
+                /* Declare and initialize variables */
+                let userId      = none
+                let currentDate = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
+
+                /* Define Rules */
+                rule when  arg.Name == """" or arg.Name == none then
+                    error ""Name cannot be empty""
+
+
+                rule when not $match(input: arg.Name, pattern: ""^[a-zA-z]+$"") then
+                    error ""Invalid name. Name should contain only alphabets.""
+
+
+                rule when arg.Age < 18 and arg.Country == ""US"" then
+                    error ""You cannot register""
+                end rule
+
+                /* Statements outside of the rules */
+                message ""validations-completed""
+
+                rule when context.HasErrors then
+                    exit
+                end rule
+
+                /* Set current date time */
+                partial set arg = { RegistrationDate: currentDate, IsActive: true }
+
+            ";
+
+            // Act & Assert
+            var user = new User { Name = "John", Age = 22, Country = "US" };
+            FlowOutput output = SimpleflowEngine.Run(flowScript, user);
+            Assert.True(user.IsActive);
+
+            var user2 = new User { Name = "John", Age = 14, Country = "US" };
+            output = SimpleflowEngine.Run(flowScript, user2);
+            Assert.False(user2.IsActive);
+
+            var user3 = new User { Age = 14, Country = "US" };
+            output = SimpleflowEngine.Run(flowScript, user3);
+            Assert.Equal("Name cannot be empty", output.Errors[0]);
+
+        }
+
+        class User
+        {
+            public string Name { get; set; }
+            public int Age { get; set; }
+            public string Country { get; set; }
+            public bool IsActive { get; set; }
+            public System.DateTime RegistrationDate { get; set; }
+        }
     }
 }

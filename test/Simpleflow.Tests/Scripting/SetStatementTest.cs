@@ -14,8 +14,6 @@ namespace Simpleflow.Tests.Scripting
         [Fact]
         public void MutateStatement()
         {
-            // TODO support property value change : mutate  arg.Id = 30
-
             // Arrange
             var context = new SampleArgument { Id = 10 };
             var script =

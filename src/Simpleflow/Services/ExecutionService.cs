@@ -11,13 +11,6 @@ namespace Simpleflow.Services
         /// <inheritdoc />
         public void Run<TArg>(FlowContext<TArg> context, NextPipelineService<TArg> next)
         {
-            // TODO
-            // Does it have permission to mutate vars ?
-            // Send these privileges as an argument
-            // { ReadOnly = true, Context = '' ,  permissions = new [] {}  }
-            // if ActivityAllowed('sendmail', permissions) { sendmail () }
-
-            
             var flowInput = new FlowInput<TArg>( context.Argument, options:null );
             var scriptHelperContext = new ScriptHelperContext(context.Output);
 

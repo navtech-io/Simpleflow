@@ -69,8 +69,17 @@ namespace Simpleflow.CodeGenerator
                 return Expression.Divide(left, right);
             }
 
-            // TODO InvalidArithmeticExpression
-            throw new Exception("Invalid operator or expression");
+            if (context.ModuloOp() != null)
+            {
+                var left = Visit(context.arithmeticExpression()[0]);
+                var right = Visit(context.arithmeticExpression()[1]);
+
+                (left, right) = ConvertToBiggerNumberType(left, right);
+
+                return Expression.Modulo(left, right);
+            }
+
+            throw new Exceptions.SimpleflowException("Invalid operator or expression");
         }
 
         private (Expression left, Expression right) ConvertToBiggerNumberType(Expression left, Expression right)

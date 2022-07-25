@@ -72,6 +72,9 @@ TimesOp
 DivOp
    : '/'   ;
 
+ModuloOp
+   : '%'   ;   
+
 
 fragment PLUS_FRAGMENT
    : '+'   ;

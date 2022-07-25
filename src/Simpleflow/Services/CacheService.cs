@@ -15,50 +15,41 @@ namespace Simpleflow.Services
     public class CacheService : IFlowPipelineService
     {
         private readonly IMemoryCache _cache;
-        private readonly string _hashingAlgToIdentifyScriptInCacheUniquely;
-        private readonly TimeSpan _cacheSlidingExpiration;
+        private readonly CacheOptions _cacheOptions;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="hashingAlgToIdentifyScriptInCacheUniquely">
-        /// Check hash algorithm names here: https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hashalgorithm.create?view=net-6.0
+        /// <param name="cacheOptions">
         /// </param>
-        public CacheService(string hashingAlgToIdentifyScriptInCacheUniquely = "MD5")
+        public CacheService(CacheOptions cacheOptions)
         {
-            //MemoryCache
-            _cache = new MemoryCache( new MemoryCacheOptions() { });
+            _cacheOptions = cacheOptions ?? throw new ArgumentNullException(nameof(cacheOptions)); 
 
-            // Set hashing algorithm for unique id generation
-            if (string.IsNullOrWhiteSpace(hashingAlgToIdentifyScriptInCacheUniquely))
+            // validate hashing algorithm for unique id generation
+            if (string.IsNullOrWhiteSpace(cacheOptions.HashingAlgToIdentifyScriptUniquely))
             {
-                throw new ArgumentNullException(nameof(hashingAlgToIdentifyScriptInCacheUniquely));
+                throw new ArgumentNullException(nameof(cacheOptions.HashingAlgToIdentifyScriptUniquely));
             }
-            _hashingAlgToIdentifyScriptInCacheUniquely = hashingAlgToIdentifyScriptInCacheUniquely;
 
+            //MemoryCache
+            _cache = new MemoryCache(new MemoryCacheOptions() { });
 
-            // Set default expiration time
-            _cacheSlidingExpiration = TimeSpan.FromMinutes(3);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="hashingAlgToIdentifyScriptInCacheUniquely"></param>
-        /// <param name="cacheSlidingExpiration"></param>
-        public CacheService(TimeSpan cacheSlidingExpiration, string hashingAlgToIdentifyScriptInCacheUniquely = "MD5")
-            :this(hashingAlgToIdentifyScriptInCacheUniquely)
+        public CacheService() : this(new CacheOptions())
         {
-            _cacheSlidingExpiration = cacheSlidingExpiration;
         }
-
         
         /// <inheritdoc />
         public void Run<TArg>(FlowContext<TArg> context, NextPipelineService<TArg> next)
         {
             // Create unique id for script to identify in cache store
             var id = string.IsNullOrWhiteSpace(context.Options?.Id) ?  
-                        GetScriptUniqueId(context.Script) : context.Options.Id;
+                            GetScriptUniqueId(context.Options?.CacheOptions, context.Script) : context.Options.Id;
 
             // GetFlowContextOptionsId helps to identify script uniquely along with options
             // in order to allow or deny functions 
@@ -85,7 +76,10 @@ namespace Simpleflow.Services
             {
                 _cache.Set(key: id,
                            value: context.Internals.CompiledScript,
-                           options: new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromMinutes(5)));
+                           options: new MemoryCacheEntryOptions { 
+                                AbsoluteExpiration = context.Options?.CacheOptions?.AbsoluteExpiration ?? _cacheOptions.AbsoluteExpiration,
+                                SlidingExpiration = context.Options?.CacheOptions?.SlidingExpiration ??  _cacheOptions.SlidingExpiration
+                           }); 
 
                 context.Trace.Write($"Saved into cache {id} - Succeeded");
             }
@@ -94,12 +88,13 @@ namespace Simpleflow.Services
         /// <summary>
         /// Gets script unique id by creating hash (SHA256) for the input script
         /// </summary>
+        /// <param name="contextCacheOptions"></param>
         /// <param name="script"></param>
         /// <returns></returns>
-        protected virtual string GetScriptUniqueId(string script)
+        protected virtual string GetScriptUniqueId(CacheOptions contextCacheOptions, string script)
         {
             // Calculate id for script
-            using var sha1 = HashAlgorithm.Create(_hashingAlgToIdentifyScriptInCacheUniquely);
+            using var sha1 = HashAlgorithm.Create(contextCacheOptions?.HashingAlgToIdentifyScriptUniquely ?? _cacheOptions.HashingAlgToIdentifyScriptUniquely);
             return System.Convert.ToBase64String(sha1.ComputeHash(Encoding.UTF8.GetBytes(script)));
         }
 
@@ -116,7 +111,7 @@ namespace Simpleflow.Services
 
             StringBuilder sb = new StringBuilder();
             //sb.Append(string.Join(' ', options.AllowArgumentToMutate));
-            
+
             if (options.AllowFunctions != null && options.AllowFunctions.Length > 0)
             {
                 sb.Append("Allow"); //ensure add this to avoid collisions
@@ -129,7 +124,7 @@ namespace Simpleflow.Services
                 sb.Append(string.Join(' ', options.DenyFunctions ));
             }
 
-            return GetScriptUniqueId(sb.ToString());
+            return GetScriptUniqueId(options.CacheOptions, sb.ToString());
         }
     }
 

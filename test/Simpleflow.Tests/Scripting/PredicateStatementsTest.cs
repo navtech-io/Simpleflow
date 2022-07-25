@@ -2,8 +2,6 @@
 // See License in the project root for license information.
 
 using Xunit;
-
-using Simpleflow.CodeGenerator;
 using Simpleflow.Tests.Helpers;
 
 
@@ -30,20 +28,7 @@ namespace Simpleflow.Tests.Scripting
             Assert.Equal(actual: output.Messages[0], expected: "1==1");
         }
 
-        [Fact] // TODO
-        public void BoolPredicate()
-        {
-            // Arrange
-            var output = new FlowOutput();
-            var script =
-                @"
-                   rule when true then
-                      message ""true""
-                ";
-
-         
-        }
-
+       
         [Fact] 
         public void FunctionInPredicate()
         {
@@ -62,5 +47,27 @@ namespace Simpleflow.Tests.Scripting
 
         // TODO write test cases for all types of relational operators
         // TODO write test cases for all types of logical operators
+
+
+        [Fact]
+        public void CheckDateComparision()
+        {
+            // Arrange
+
+            var script =
+                @"
+                   let d1 = $date(y: 2012, m:10, d:10) 
+                   let d2 = $date(y: 2011, m:10, d:10) 
+                    
+                   rule when d2 < d1 then
+                       message ""correct"" 
+                
+                ";
+
+            FlowOutput output = SimpleflowEngine.Run(script, new object());
+
+            Assert.Single(output.Messages);
+        }
+
     }
 }
