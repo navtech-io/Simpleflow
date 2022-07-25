@@ -19,10 +19,10 @@ jobs:
             5.0.x
             6.0.x
     - name: Test
-      run: ./build.cmd Test --Configuration Release
+      run: ./build.cmd Test --configuration Release --root .
     - name: pack
-      run: ./build.cmd Pack --Configuration Release
+      run: ./build.cmd Pack --configuration Release --root .
     - name: Publish
-      run: ./build.cmd Publish 
+      run: ./build.cmd Publish --root .
       env:
         NuGetApiKey: ${{ secrets.NUGET_API_KEY }}
