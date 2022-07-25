@@ -47,5 +47,27 @@ namespace Simpleflow.Tests.Scripting
 
         // TODO write test cases for all types of relational operators
         // TODO write test cases for all types of logical operators
+
+
+        [Fact]
+        public void CheckDateComparision()
+        {
+            // Arrange
+
+            var script =
+                @"
+                   let d1 = $date(y: 2012, m:10, d:10) 
+                   let d2 = $date(y: 2011, m:10, d:10) 
+                    
+                   rule when d2 < d1 then
+                       message ""correct"" 
+                
+                ";
+
+            FlowOutput output = SimpleflowEngine.Run(script, new object());
+
+            Assert.Single(output.Messages);
+        }
+
     }
 }

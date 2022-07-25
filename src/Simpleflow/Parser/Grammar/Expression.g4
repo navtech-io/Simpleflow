@@ -2,7 +2,7 @@ grammar Expression;
 import Common, Json; 
 
 arithmeticExpression
-   :  arithmeticExpression  (TimesOp | DivOp)  arithmeticExpression
+   :  arithmeticExpression  (TimesOp | DivOp | ModuloOp)  arithmeticExpression
    |  arithmeticExpression  (PlusOp | MinusOp) arithmeticExpression
    |  OpenParen arithmeticExpression CloseParen
    |  atom

@@ -16,8 +16,13 @@ namespace Simpleflow.Tests.Infrastructure
                               message ""test""
                             ";
             string id = System.Guid.NewGuid().ToString();
+
             var options = new FlowContextOptions { 
-                    CacheOptions = new CacheOptions { AbsoluteExpiration = System.DateTimeOffset.Now.AddHours(1)}
+                    CacheOptions = new CacheOptions { 
+                        AbsoluteExpiration = System.DateTimeOffset.Now.AddHours(1),
+                        SlidingExpiration = System.TimeSpan.FromMinutes(3),
+                        HashingAlgToIdentifyScriptUniquely = "SHA256"
+                    }
             };
 
             // Act
