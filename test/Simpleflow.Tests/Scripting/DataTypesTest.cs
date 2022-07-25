@@ -14,28 +14,7 @@ namespace Simpleflow.Tests.Scripting
         [Fact]
         public void CheckAllDataTypes()
         {
-            //TODO
-            /* Number (positive/negative integer/float/decimal) default 0
-               String (default "")
-               Bool   (default false)
-               Array of integers, strings, booleans
-               (default type... (variable in script like context))
-               (type.number.empty/type.string.empty/type.bool.empty/type.array.integer.empty
-               /type.array.string.empty)
-
-               Object ( Determine its type ) = .. Determine automatically when its used in functions
-               // Object can be used only with functions, to determine its type  -- 
-               // otherwise object will be declared as dictionary to use in script
-               // due to script security, it will not allow to define type for object 
-
-               Access array a`1.id  a`2.id  
-               -- Maybe this way, create type without specify explicitly let o = type.object for func-param getdata-name, xyz
-
-               Auto typecasting when passing variable to function
-
-              TEST: Support without space 10+10 -- or throw proper exception
-            */
-            //
+           
             // Arrange
             var script =
                 @"

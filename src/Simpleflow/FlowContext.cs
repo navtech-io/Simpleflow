@@ -2,7 +2,6 @@
 // See License in the project root for license information.
 
 using System;
-using System.Collections.Generic;
 using System.Dynamic;
 
 namespace Simpleflow
@@ -46,17 +45,7 @@ namespace Simpleflow
         /// </summary>
         public FlowInternals Internals { get; } = new FlowInternals();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public string GetScriptHash()
-        {
-            // TODO
-            return "";
-        }
-
-
+        
         /// <summary>
         /// 
         /// </summary>
@@ -67,17 +56,10 @@ namespace Simpleflow
             /// </summary>
             public Action<FlowInput<TArg>, FlowOutput, ScriptHelperContext> CompiledScript { get; set; }
 
-            // Maintain flags by scanning the script in visitors classes
-            // HasMutates 
-            // HasActivities
-            // List<Activities> ActivitiesUsed
-
             /// <summary>
             /// 
             /// </summary>
             public dynamic Tag { get; } = new ExpandoObject();
-
-           
         }
     }
 }

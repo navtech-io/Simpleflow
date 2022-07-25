@@ -69,8 +69,7 @@ namespace Simpleflow.CodeGenerator
                 return Expression.Divide(left, right);
             }
 
-            // TODO InvalidArithmeticExpression
-            throw new Exception("Invalid operator or expression");
+            throw new Exceptions.SimpleflowException("Invalid operator or expression");
         }
 
         private (Expression left, Expression right) ConvertToBiggerNumberType(Expression left, Expression right)

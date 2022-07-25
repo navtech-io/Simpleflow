@@ -5,14 +5,15 @@ using System;
 
 namespace Simpleflow.Exceptions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DuplicateParametersException : SimpleflowException
     {
-        // TODO
-
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="message"></param>
         public DuplicateParametersException(string message) : base(message) { }
     }
 }

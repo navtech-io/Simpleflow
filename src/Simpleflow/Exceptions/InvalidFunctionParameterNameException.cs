@@ -5,14 +5,16 @@ using System;
 
 namespace Simpleflow.Exceptions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class InvalidFunctionParameterNameException : SimpleflowException
     {
-        // TODO
-
+        
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="message"></param>
         public InvalidFunctionParameterNameException(string message) : base(message) { }
     }
 }

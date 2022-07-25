@@ -2,8 +2,6 @@
 // See License in the project root for license information.
 
 using Xunit;
-
-using Simpleflow.CodeGenerator;
 using Simpleflow.Tests.Helpers;
 
 
@@ -30,20 +28,7 @@ namespace Simpleflow.Tests.Scripting
             Assert.Equal(actual: output.Messages[0], expected: "1==1");
         }
 
-        [Fact] // TODO
-        public void BoolPredicate()
-        {
-            // Arrange
-            var output = new FlowOutput();
-            var script =
-                @"
-                   rule when true then
-                      message ""true""
-                ";
-
-         
-        }
-
+       
         [Fact] 
         public void FunctionInPredicate()
         {

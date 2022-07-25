@@ -10,8 +10,6 @@ namespace Simpleflow.Exceptions
     /// </summary>
     public class DuplicateFunctionException : SimpleflowException
     {
-        // TODO
-
         /// <summary>
         /// 
         /// </summary>
@@ -20,6 +18,9 @@ namespace Simpleflow.Exceptions
             FunctionName = name;
         }
 
+        /// <summary>
+        /// Gets name of the function that has been duplicated.
+        /// </summary>
         public string FunctionName { get; }
     }
 }
