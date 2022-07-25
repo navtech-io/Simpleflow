@@ -56,10 +56,10 @@ namespace Simpleflow.Tests
         {
             // Arrange
             var flowScript =
-            @" 
+            @$" 
                 /* Declare and initialize variables */
                 let userId      = none
-                let currentDate = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
+                let currentDate = $GetCurrentDateTime ( timezone: ""{TestsHelper.Timezone}"" )
 
                 /* Define Rules */
                 rule when  arg.Name == """" or arg.Name == none then
@@ -82,7 +82,7 @@ namespace Simpleflow.Tests
                 end rule
 
                 /* Set current date time */
-                partial set arg = { RegistrationDate: currentDate, IsActive: true }
+                partial set arg = {{ RegistrationDate: currentDate, IsActive: true }}
 
             ";
 
