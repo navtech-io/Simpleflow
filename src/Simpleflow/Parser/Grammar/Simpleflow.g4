@@ -1,9 +1,9 @@
 grammar Simpleflow;
 import Predicate, Expression, Json; 
 
-// options {
-//     superClass=SimpleflowParserBase;
-// }
+options {
+    superClass=SimpleflowParserBase;
+}
 
 program
     :
@@ -113,3 +113,4 @@ fragment SPACES
 
 fragment COMMENT
     : '/*' .*? '*/' ([\r\n]*) ;
+

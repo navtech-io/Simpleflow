@@ -36,14 +36,10 @@ namespace Simpleflow
         /// <returns></returns>
         public ISimpleflowPipelineBuilder AddCorePipelineServices(IOptions options = null)
         {
-            AddPipelineServices(
-                new CacheService(),
-                new CompilerService(FunctionRegister.Default, options),
-                new ExecutionService()); 
+            AddCoreServicesInternal(FunctionRegister.Default, options);
 
             return this;
         }
-
 
         /// <summary>
         /// Adds default core services
@@ -59,10 +55,7 @@ namespace Simpleflow
                 throw  new ArgumentNullException(nameof(activityRegister));
             }
 
-            AddPipelineServices(
-                new CacheService(),
-                new CompilerService(activityRegister, options),
-                new ExecutionService());
+            AddCoreServicesInternal(activityRegister, options);
 
             return this;
         }
@@ -95,6 +88,22 @@ namespace Simpleflow
         public ISimpleflow Build()
         {
             return new Simpleflow(_pipelineServices);
+        }
+
+        private void AddCoreServicesInternal(IFunctionRegister activityRegister, IOptions options)
+        {
+            if (options != null && options.CacheOptions != null)
+            {
+                AddPipelineServices(new CacheService(options.CacheOptions));
+            }
+            else
+            {
+                AddPipelineServices(new CacheService());
+            }
+
+            AddPipelineServices(
+                new CompilerService(activityRegister, options),
+                new ExecutionService());
         }
     }
 }

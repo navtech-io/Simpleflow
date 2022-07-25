@@ -65,7 +65,7 @@ namespace Simpleflow
                 Script = script,
                 Argument = argument,
                 Options = options,
-                ActivityRegister = config
+                FunctionRegister = config
             };
 
             RunPipelineService<TArg>(_services.First, context);

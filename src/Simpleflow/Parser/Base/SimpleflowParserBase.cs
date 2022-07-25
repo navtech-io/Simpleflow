@@ -6,7 +6,13 @@ using Antlr4.Runtime;
 
 namespace Simpleflow.Parser
 {
-    internal abstract class SimpleflowParserBase : Antlr4.Runtime.Parser
+
+#if DEBUG
+    public
+#else
+    internal
+#endif
+    abstract class SimpleflowParserBase : Antlr4.Runtime.Parser
     {
         protected SimpleflowParserBase(ITokenStream input) : base(input)
         {

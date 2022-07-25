@@ -26,7 +26,7 @@ namespace Simpleflow
         public TArg Argument { get; set; }
 
         /// 
-        public IFunctionRegister ActivityRegister { get; set; }
+        public IFunctionRegister FunctionRegister { get; set; }
 
         /// 
         public IContextOptions Options { get; set; }

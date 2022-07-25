@@ -4,6 +4,28 @@
         <name>Simpleflow</name>
     </assembly>
     <members>
+        <member name="T:Simpleflow.CacheOptions">
+            <summary>
+            Represents the cache options that applied to <see cref="T:Simpleflow.Services.CacheService"/>
+            </summary>
+        </member>
+        <member name="P:Simpleflow.CacheOptions.SlidingExpiration">
+            <summary>
+            Gets or sets how long a cache entry can be inactive (e.g. not accessed) before it will be removed.
+            This will not extend the entry lifetime beyond the absolute expiration (if set).
+            </summary>
+        </member>
+        <member name="P:Simpleflow.CacheOptions.AbsoluteExpiration">
+            <summary>
+            Gets or sets an absolute expiration date for the cache entry.
+            </summary>
+        </member>
+        <member name="P:Simpleflow.CacheOptions.HashingAlgToIdentifyScriptUniquely">
+            <summary>
+            Gets or sets hashing algorithm to identify script compiled object uniquely
+            Check available hash algorithms and names here: https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hashalgorithm.create?view=net-6.0
+            </summary>
+        </member>
         <member name="T:Simpleflow.CodeGenerator.SimpleflowCodeVisitor`1">
             <summary>
              Handles Program, Let, Mutate and Rule 
@@ -105,7 +127,7 @@
         <member name="P:Simpleflow.FlowContext`1.Argument">
             There can be one argument can be passed and used as context in script
         </member>
-        <member name="P:Simpleflow.FlowContext`1.ActivityRegister">
+        <member name="P:Simpleflow.FlowContext`1.FunctionRegister">
             
         </member>
         <member name="P:Simpleflow.FlowContext`1.Options">
@@ -181,6 +203,11 @@
         <member name="P:Simpleflow.FlowOptions.DenyFunctions">
             <summary>
             Gets or sets DenyFunctions
+            </summary>
+        </member>
+        <member name="P:Simpleflow.FlowOptions.CacheOptions">
+            <summary>
+            Gets or sets CacheOptions
             </summary>
         </member>
         <member name="T:Simpleflow.FlowOutput">
@@ -295,7 +322,12 @@
         </member>
         <member name="P:Simpleflow.IOptions.DenyFunctions">
             <summary>
-            Gets or sets DenyFunctions.
+            Gets or sets DenyFunctions
+            </summary>
+        </member>
+        <member name="P:Simpleflow.IOptions.CacheOptions">
+            <summary>
+            Gets or sets cache options
             </summary>
         </member>
         <member name="T:Simpleflow.ISimpleflow">
@@ -1851,28 +1883,26 @@
             A service to cache the generate code instructions
             </summary>
         </member>
-        <member name="M:Simpleflow.Services.CacheService.#ctor(System.String)">
+        <member name="M:Simpleflow.Services.CacheService.#ctor(Simpleflow.CacheOptions)">
             <summary>
             
             </summary>
-            <param name="hashingAlgToIdentifyScriptInCacheUniquely">
-            Check hash algorithm names here: https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hashalgorithm.create?view=net-6.0
+            <param name="cacheOptions">
             </param>
         </member>
-        <member name="M:Simpleflow.Services.CacheService.#ctor(System.TimeSpan,System.String)">
+        <member name="M:Simpleflow.Services.CacheService.#ctor">
             <summary>
             
             </summary>
-            <param name="hashingAlgToIdentifyScriptInCacheUniquely"></param>
-            <param name="cacheSlidingExpiration"></param>
         </member>
         <member name="M:Simpleflow.Services.CacheService.Run``1(Simpleflow.FlowContext{``0},Simpleflow.NextPipelineService{``0})">
             <inheritdoc />
         </member>
-        <member name="M:Simpleflow.Services.CacheService.GetScriptUniqueId(System.String)">
+        <member name="M:Simpleflow.Services.CacheService.GetScriptUniqueId(Simpleflow.CacheOptions,System.String)">
             <summary>
             Gets script unique id by creating hash (SHA256) for the input script
             </summary>
+            <param name="contextCacheOptions"></param>
             <param name="script"></param>
             <returns></returns>
         </member>
@@ -1887,7 +1917,7 @@
             
             </summary>
             <param name="options"></param>
-            <param name="activityRegister"></param>
+            <param name="functionRegister"></param>
         </member>
         <member name="M:Simpleflow.Services.CompilerService.Run``1(Simpleflow.FlowContext{``0},Simpleflow.NextPipelineService{``0})">
             <inheritdoc />
