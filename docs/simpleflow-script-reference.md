@@ -98,7 +98,7 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
 
 | Operator Type | Operators             |
 |---------------|-----------------------|
-| Arithmetic    | +, -, *, /            |
+| Arithmetic    | + (Addition), - (Subtraction), * (Multiplication), / (Division), % (Modulo)|
 | Logical       | and, or, not          |
 | Relational    | <, <=, >, >=, == , != |
 

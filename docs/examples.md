@@ -14,13 +14,13 @@ let userId      = none
 let currentDate = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
 
 /* Define Rules */
-rule when  arg.Name == "" then
+rule when  arg.Name == "" or arg.Name == none then
     error "Name cannot be empty"
     
 rule when not $match(input: arg.Name, pattern: "^[a-zA-z]+$") then
     error "Invalid name. Name should contain only alphabets."
     
-rule when arg.Age < 18 and arg.Country == 'US' then
+rule when arg.Age < 18 and arg.Country == "US" then
     error "You cannot register"
 end rule
 
@@ -58,7 +58,7 @@ var register =
 
 // Execute Dynamic Script
 FlowOutput result = SimpleflowEngine.Run(rules /*above script*/, 
-                                         new User {Name = "John", Age=22, Country='US' } );
+                                         new User {Name = "John", Age=22, Country="US" } );
 
 // Log messages
 Logger.Info(result.Messages.ToCsv());

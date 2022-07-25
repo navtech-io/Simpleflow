@@ -10,7 +10,9 @@ nav_order: 3
 1. [Register Custom Functions](#register-custom-functions)
 1. [Extensibility](#extensibility)
 1. [Compile Script](#compile-script)
-1. [Control Functions Execution Permissions](#control-functions-execution-permissions)
+1. [Function Permissions](#function-permissions)
+1. [Register Functions at Context Level](#register-functions-at-context-level)
+1. [Cache Options](#cache-options)
 
 ## Simpleflow Execution
 <a name="simpleflow-pipeline"></a>
@@ -85,7 +87,7 @@ catch(SimpleflowException exception)
 }
 ```
 
-## Control Functions Execution Permissions
+## Functions Permissions
 By setting FlowContextOptions, you can permit specific functions to be executed.
 
 ```csharp
@@ -104,3 +106,45 @@ var output = SimpleflowEngine.Run( script,
                                        }
                                  );
 ```
+
+## Register Functions at Context Level
+
+```csharp
+string id = "7bfd56c8ca354307b6cb9e0805a7ae4c";
+
+var options = new FlowContextOptions { 
+    Id = id,
+};
+
+// Register additional function to this context only.
+var funcRegister = new FunctionRegister();
+funcRegister.Add("GetSysDate", (Func<string>)GetDate);
+            .Add("GetCurrentDate", (Func<string>)GetDate);  // Override Default Function
+
+
+FlowOutput result = new SimpleflowEngine.Run(script,
+                                            new object(),
+                                            options,
+                                            funcRegister);
+```
+
+
+## Cache Options
+Specify cache options that suit your requirement. Cache options can be specified Simpleflow builder level as well context level.
+
+```csharp
+string id = "7bfd56c8ca354307b6cb9e0805a7ae4c";
+
+var options = new FlowContextOptions { 
+    Id = id,
+    CacheOptions = new CacheOptions { 
+                        AbsoluteExpiration = System.DateTimeOffset.Now.AddHours(1),
+                        SlidingExpiration = System.TimeSpan.FromMinutes(3),
+                        HashingAlgToIdentifyScriptUniquely = "SHA256" // Default it uses MD5
+                    }
+};
+
+FlowOutput result = new SimpleflowEngine.Run(script, new object(), options);
+```
+
+            
