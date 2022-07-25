@@ -31,7 +31,7 @@ class Build : NukeBuild
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
-    [Solution] readonly Solution Solution;
+    [Solution("Simpleflow.sln")] readonly Solution Solution;
     //[GitRepository] readonly GitRepository GitRepository;
     //[GitVersion] readonly GitVersion GitVersion;
 
