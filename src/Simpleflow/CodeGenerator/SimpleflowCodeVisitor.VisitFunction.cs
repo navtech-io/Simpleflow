@@ -97,14 +97,14 @@ namespace Simpleflow.CodeGenerator
 
         private void CheckRepeatedParameters(SimpleflowParser.FunctionParameterContext[] parameters)
         {
-            var repeatedParameter = (from parameter in parameters
+            var repeatedParameters = (from parameter in parameters
                                      group parameter by parameter.Identifier().GetText() into g
                                      where g.Count() > 1
                                      select g.Key).ToList();
 
-            if (repeatedParameter.Count > 0)
+            if (repeatedParameters.Count > 0)
             {
-                throw new DuplicateParametersException(string.Join(',', repeatedParameter));
+                throw new DuplicateParametersException(repeatedParameters);
             }
         }
 

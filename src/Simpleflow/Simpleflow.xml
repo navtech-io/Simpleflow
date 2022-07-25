@@ -39,72 +39,202 @@
             <param name="string"></param>
             <returns></returns>
         </member>
+        <member name="T:Simpleflow.Exceptions.AccessDeniedException">
+            <summary>
+            This exception is thrown when a script uses a denied function.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Exceptions.AccessDeniedException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.AccessDeniedException"/> class with
+            a specified error message.
+            </summary>
+            <param name="message">The message that describes the error</param>
+        </member>
         <member name="T:Simpleflow.Exceptions.DuplicateFunctionException">
             <summary>
-            
+            The exception is thrown when a function with a name is already registered.
             </summary>
         </member>
-        <member name="M:Simpleflow.Exceptions.DuplicateFunctionException.#ctor(System.String)">
+        <member name="M:Simpleflow.Exceptions.DuplicateFunctionException.#ctor(System.String,System.String)">
             <summary>
-            
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.DuplicateFunctionException"/> class with
+            a specified function name.
             </summary>
-            <param name="name"></param>
+            <param name="functionName">The name of the function that caused the exception</param>
+            <param name="message">The message describes the exception</param>
         </member>
-        <member name="M:Simpleflow.Exceptions.DuplicateParametersException.#ctor(System.String)">
+        <member name="P:Simpleflow.Exceptions.DuplicateFunctionException.FunctionName">
             <summary>
-            
+            Gets name of the function that has been re-registered.
             </summary>
-            <param name="name"></param>
+        </member>
+        <member name="T:Simpleflow.Exceptions.DuplicateParametersException">
+            <summary>
+            The exception is thrown when same parameters are specified multiple times
+            while invoking a function in script
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Exceptions.DuplicateParametersException.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.DuplicateParametersException"/> class with
+            a specified function name.
+            </summary>
+            <param name="repeatedParameters">The repeated parameters that caused the exception.</param>
         </member>
         <member name="T:Simpleflow.Exceptions.DuplicateVariableDeclarationException">
             <summary>
-            
+            The exception is thrown when a same variable is defined more than once.
             </summary>
         </member>
         <member name="M:Simpleflow.Exceptions.DuplicateVariableDeclarationException.#ctor(System.String)">
             <summary>
-            
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.DuplicateVariableDeclarationException"/> class with
+            a specified variable name.
             </summary>
-            <param name="name"></param>
+            <param name="name">The variable name that caused the exception.</param>
         </member>
         <member name="P:Simpleflow.Exceptions.DuplicateVariableDeclarationException.VariableName">
             <summary>
-            Gets name of the variable that has been declared more than once
+            Gets name of the variable that has been declared more than once.
             </summary>
         </member>
         <member name="T:Simpleflow.Exceptions.InvalidFunctionException">
             <summary>
-            
+            The exception is thrown when function name is not registered with the Simpleflow runtime.
+            Please use <see cref="T:Simpleflow.FunctionRegister"/> or <see cref="T:Simpleflow.IFunctionRegister"/> appropriately to register functions.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Exceptions.InvalidFunctionException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.InvalidFunctionException"/> class with
+            a specified function name.
+            </summary>
+            <param name="functionName">The function name that caused the exception.</param>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="P:Simpleflow.Exceptions.InvalidFunctionException.FunctionName">
+            <summary>
+            Gets the name of the function that caused the error.
+            </summary>
+        </member>
+        <member name="T:Simpleflow.Exceptions.InvalidFunctionNameException">
+            <summary>
+            The exception is thrown when function name is not specified as per naming standards.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Exceptions.InvalidFunctionNameException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.InvalidFunctionNameException"/> class with
+            a specified variable name.
+            </summary>
+            <param name="functionName">The function name that caused the exception.</param>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="P:Simpleflow.Exceptions.InvalidFunctionNameException.FunctionName">
+            <summary>
+            Gets the name of the function that caused the error.
+            </summary>
+        </member>
+        <member name="T:Simpleflow.Exceptions.InvalidFunctionParameterNameException">
+            <summary>
+            The exception is thrown when function parameter is not valid type or not declared.
             </summary>
         </member>
         <member name="M:Simpleflow.Exceptions.InvalidFunctionParameterNameException.#ctor(System.String)">
             <summary>
-            
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.InvalidFunctionException"/> class with
+            a specified variable name.
             </summary>
-            <param name="name"></param>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="T:Simpleflow.Exceptions.InvalidPropertyException">
+            <summary>
+            The exception is thrown when unavailable property is specified to access.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Exceptions.InvalidPropertyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.InvalidPropertyException"/> class with
+            a specified variable name.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="T:Simpleflow.Exceptions.SimpleflowException">
+            <summary>
+            Represents base exception for all Simpleflow exceptions
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Exceptions.SimpleflowException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.SimpleflowException"/> class with
+            a specified variable name.
+            </summary>
+            <param name="message">The message that describes the error.</param>
         </member>
         <member name="T:Simpleflow.Exceptions.SyntaxException">
             <summary>
-            
+            The exception is thrown when any syntax errors are present in the Simpleflow script.
             </summary>
         </member>
         <member name="M:Simpleflow.Exceptions.SyntaxException.#ctor(System.String,System.Collections.Generic.IEnumerable{Simpleflow.SyntaxError})">
             <summary>
-            
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.SimpleflowException"/> class with
+            a specified variable name.
             </summary>
-            <param name="message"></param>
-            <param name="errors"></param>
+            <param name="message">The message that describes the error.</param>
+            <param name="errors">The list of syntax errors that caused the exception.</param>
         </member>
         <member name="T:Simpleflow.Exceptions.UndeclaredVariableException">
             <summary>
-            
+            The exception is thrown when a variable is used that has not been declared in the script.
             </summary>
         </member>
-        <member name="M:Simpleflow.Exceptions.UndeclaredVariableException.#ctor(System.String)">
+        <member name="M:Simpleflow.Exceptions.UndeclaredVariableException.#ctor(System.String,System.String)">
             <summary>
-            
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.UndeclaredVariableException"/> class with
+            a specified variable name.
             </summary>
-            <param name="name"></param>
+            <param name="message">The message that describes the error.</param>
+            <param name="name">The name of the variable that caused the exception.</param>
+        </member>
+        <member name="P:Simpleflow.Exceptions.UndeclaredVariableException.VariableName">
+            <summary>
+            Gets the name of the variable that has not been declared in script.
+            </summary>
+        </member>
+        <member name="T:Simpleflow.Exceptions.ValueTypeMismatchException">
+            <summary>
+            The exception is thrown when different type of value is specified than initially declared type.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Exceptions.ValueTypeMismatchException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.ValueTypeMismatchException"/> class with
+            a specified variable name.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Simpleflow.Exceptions.ValueTypeMismatchException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.ValueTypeMismatchException"/> class with
+            a specified variable name.
+            </summary>
+            <param name="value">The value that caused the exception.</param>
+            <param name="expectedType">The expected data type of value.</param>
+        </member>
+        <member name="T:Simpleflow.Exceptions.VariableNameViolationException">
+            <summary>
+            The exception is thrown when a keyword is used for a variable.
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Exceptions.VariableNameViolationException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.VariableNameViolationException"/> class with
+            a specified variable name.
+            </summary>
+            <param name="name">The name that caused the exception.</param>
+            <param name="message">The message describes the exception.</param>
         </member>
         <member name="T:Simpleflow.Extensions.SimpleflowExtensions">
             <summary>
@@ -147,12 +277,6 @@
             <summary>
             
             </summary>
-        </member>
-        <member name="M:Simpleflow.FlowContext`1.GetScriptHash">
-            <summary>
-            
-            </summary>
-            <returns></returns>
         </member>
         <member name="T:Simpleflow.FlowContext`1.FlowInternals">
             <summary>
