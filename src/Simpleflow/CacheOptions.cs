@@ -20,14 +20,10 @@ namespace Simpleflow
         public System.DateTimeOffset? AbsoluteExpiration { get; set; }
 
         /// <summary>
-        /// Gets or sets hashing algorithm to identify script compiled object uniquely
+        /// Gets or sets hashing algorithm to identify script compiled object uniquely. This method is used when no script id specified.
         /// Check available hash algorithms and names here: https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hashalgorithm.create?view=net-6.0
         /// </summary>
         public string HashingAlgToIdentifyScriptUniquely { get; set; } = "MD5";
 
-        /// <summary>
-        /// Reset allows to remove the item from cache if exists and add it once its compiled.
-        /// </summary>
-        public bool Reset { get; set; }
     }
 }

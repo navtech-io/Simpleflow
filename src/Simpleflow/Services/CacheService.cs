@@ -103,7 +103,7 @@ namespace Simpleflow.Services
 
             if (isAvailableInCache)
             {
-                if (context.Options?.CacheOptions?.Reset ?? false)
+                if (context.Options?.ResetCache ?? false)
                 {
                     _cache.Remove(key: id);
                     isAvailableInCache = false; // in order to save it back

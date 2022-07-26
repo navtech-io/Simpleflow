@@ -22,13 +22,8 @@
         </member>
         <member name="P:Simpleflow.CacheOptions.HashingAlgToIdentifyScriptUniquely">
             <summary>
-            Gets or sets hashing algorithm to identify script compiled object uniquely
+            Gets or sets hashing algorithm to identify script compiled object uniquely. This method is used when no script id specified.
             Check available hash algorithms and names here: https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hashalgorithm.create?view=net-6.0
-            </summary>
-        </member>
-        <member name="P:Simpleflow.CacheOptions.Reset">
-            <summary>
-            Reset allows to remove the item from cache if exists and add it once its compiled.
             </summary>
         </member>
         <member name="T:Simpleflow.CodeGenerator.SimpleflowCodeVisitor`1">
@@ -309,6 +304,9 @@
             in cache otherwise it creates a hash id for that script.
             </summary>
         </member>
+        <member name="P:Simpleflow.FlowContextOptions.ResetCache">
+            <inheritdoc/>
+        </member>
         <member name="T:Simpleflow.FlowInput`1">
             <summary>
             Represents input object to simple flow
@@ -423,6 +421,11 @@
         <member name="P:Simpleflow.IContextOptions.Id">
             <summary>
             Gets unique id of the script
+            </summary>
+        </member>
+        <member name="P:Simpleflow.IContextOptions.ResetCache">
+            <summary>
+            Reset cache allows to remove the item from cache if exists and add it once its compiled.
             </summary>
         </member>
         <member name="T:Simpleflow.IFlowPipelineService">
