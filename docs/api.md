@@ -136,11 +136,16 @@ Specify cache options that suit your requirement. Cache options can be specified
 string id = "7bfd56c8ca354307b6cb9e0805a7ae4c";
 
 var options = new FlowContextOptions { 
-    Id = id,
+    // This will be used as cache key, if not specified then
+    // it creates using hashing algorithm
+    Id = id, 
+    // This allows to reset the cache entry if script needs to recompile
+    // ResetCache = true 
     CacheOptions = new CacheOptions { 
                         AbsoluteExpiration = System.DateTimeOffset.Now.AddHours(1),
                         SlidingExpiration = System.TimeSpan.FromMinutes(3),
-                        HashingAlgToIdentifyScriptUniquely = "SHA256" // Default it uses MD5
+                        // Default it uses MD5
+                        HashingAlgToIdentifyScriptUniquely = "SHA256" 
                     }
 };
 
