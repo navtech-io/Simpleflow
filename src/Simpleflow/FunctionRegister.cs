@@ -4,8 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Net.Http.Headers;
-using Simpleflow.Functions;
+
 using Simpleflow.Exceptions;
 
 namespace Simpleflow
@@ -121,7 +120,7 @@ namespace Simpleflow
         /// <param name="name"></param>
         /// <returns></returns>
 
-        public bool? IsFunctionAvailableInClass(string name)
+        private bool? IsFunctionAvailableInClass(string name)
         {
             if (_bitmapIndex.ContainsKey(name))
             {
