@@ -20,8 +20,9 @@ namespace Simpleflow.Tests.Infrastructure
 
             // Act
             FlowOutput result = new SimpleflowPipelineBuilder()
-                                    .AddCorePipelineServices(FunctionRegister.Default)
                                     .AddPipelineServices(new LoggingService())
+                                    .AddCorePipelineServices(FunctionRegister.Default)
+                                    
                                     .Build()
                                     .Run(script,
                                          new object(),
@@ -108,7 +109,10 @@ namespace Simpleflow.Tests.Infrastructure
         {
             public void Run<TArg>(FlowContext<TArg> context, NextPipelineService<TArg> next)
             {
+                context.EnableTrace();
+                
                 context.Output.Output.Add("Trace", context.Trace);
+
                 next?.Invoke(context);
             }
         }

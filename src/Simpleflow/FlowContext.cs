@@ -2,13 +2,11 @@
 // See License in the project root for license information.
 
 using System;
-using System.Dynamic;
 
 namespace Simpleflow
 {
     /// <summary>
-    /// A <see cref="FlowContext"/> instance represents input, output, and which has
-    /// special property "Items" can be used by middleware to share data among.
+    /// A <see cref="FlowContext&lt;TArg&gt;"/> instance represents input and output.
     /// </summary>
     public sealed class FlowContext<TArg>
     {
@@ -36,16 +34,26 @@ namespace Simpleflow
         public FlowOutput Output { get; } = new FlowOutput(); 
         
         /// <summary>
-        /// Gets trace to verify the executed middleware
+        /// Gets trace to verify the middleware info
         /// </summary>
-        public SimpleflowTrace Trace { get; } = new SimpleflowTrace();
+        public SimpleflowTrace Trace { get; private set; } 
 
+        
         /// <summary>
         /// 
         /// </summary>
         public FlowInternals Internals { get; } = new FlowInternals();
 
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        public void EnableTrace()
+        {
+            Trace = new SimpleflowTrace();
+        }
+
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -55,11 +63,6 @@ namespace Simpleflow
             /// 
             /// </summary>
             public Action<FlowInput<TArg>, FlowOutput, ScriptHelperContext> CompiledScript { get; set; }
-
-            /// <summary>
-            /// 
-            /// </summary>
-            public dynamic Tag { get; } = new ExpandoObject();
         }
     }
 }

@@ -11,6 +11,10 @@ namespace Simpleflow.Services
         /// <inheritdoc />
         public void Run<TArg>(FlowContext<TArg> context, NextPipelineService<TArg> next)
         {
+            // Add trace for debugging
+            context.Trace?.CreateNewTracePoint(nameof(ExecutionService));
+
+
             var flowInput = new FlowInput<TArg>( context.Argument, options:null );
             var scriptHelperContext = new ScriptHelperContext(context.Output);
 

@@ -22,7 +22,7 @@
         </member>
         <member name="P:Simpleflow.CacheOptions.HashingAlgToIdentifyScriptUniquely">
             <summary>
-            Gets or sets hashing algorithm to identify script compiled object uniquely
+            Gets or sets hashing algorithm to identify script compiled object uniquely. This method is used when no script id specified.
             Check available hash algorithms and names here: https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hashalgorithm.create?view=net-6.0
             </summary>
         </member>
@@ -243,8 +243,7 @@
         </member>
         <member name="T:Simpleflow.FlowContext`1">
             <summary>
-            A <see cref="!:FlowContext"/> instance represents input, output, and which has
-            special property "Items" can be used by middleware to share data among.
+            A <see cref="T:Simpleflow.FlowContext`1"/> instance represents input and output.
             </summary>
         </member>
         <member name="P:Simpleflow.FlowContext`1.Script">
@@ -270,10 +269,15 @@
         </member>
         <member name="P:Simpleflow.FlowContext`1.Trace">
             <summary>
-            Gets trace to verify the executed middleware
+            Gets trace to verify the middleware info
             </summary>
         </member>
         <member name="P:Simpleflow.FlowContext`1.Internals">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Simpleflow.FlowContext`1.EnableTrace">
             <summary>
             
             </summary>
@@ -284,11 +288,6 @@
             </summary>
         </member>
         <member name="P:Simpleflow.FlowContext`1.FlowInternals.CompiledScript">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Simpleflow.FlowContext`1.FlowInternals.Tag">
             <summary>
             
             </summary>
@@ -304,6 +303,9 @@
             If Id is supplied, <see cref="T:Simpleflow.Services.CacheService"/> will use it to identify the compiled object
             in cache otherwise it creates a hash id for that script.
             </summary>
+        </member>
+        <member name="P:Simpleflow.FlowContextOptions.ResetCache">
+            <inheritdoc/>
         </member>
         <member name="T:Simpleflow.FlowInput`1">
             <summary>
@@ -419,6 +421,11 @@
         <member name="P:Simpleflow.IContextOptions.Id">
             <summary>
             Gets unique id of the script
+            </summary>
+        </member>
+        <member name="P:Simpleflow.IContextOptions.ResetCache">
+            <summary>
+            Reset cache allows to remove the item from cache if exists and add it once its compiled.
             </summary>
         </member>
         <member name="T:Simpleflow.IFlowPipelineService">

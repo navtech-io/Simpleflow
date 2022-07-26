@@ -12,5 +12,10 @@ namespace Simpleflow
         /// Gets unique id of the script
         /// </summary>
         string Id { get; }
+
+        /// <summary>
+        /// Reset cache allows to remove the item from cache if exists and add it once its compiled.
+        /// </summary>
+        public bool ResetCache { get; set; }
     }
 }

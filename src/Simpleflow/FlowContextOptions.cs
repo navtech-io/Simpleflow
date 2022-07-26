@@ -17,5 +17,7 @@ namespace Simpleflow
         /// </summary>
         public string Id { get; set; }
 
+        /// <inheritdoc/>
+        public bool ResetCache { get; set; }
     }
 }

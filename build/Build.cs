@@ -125,7 +125,6 @@ class Build : NukeBuild
                 .AddProperty("PackageLicenseExpression", "Apache-2.0")
                 .AddProperty("PackageIcon", @"PackageIcon.png")
                 .SetIncludeSymbols(true)
-                .SetVersion("0.1.0-beta06")
                 .SetDescription("Build dynamic rules and workflows using script")
                 .SetPackageTags("Simpleflow.NET Workflow RuleEngine DynamicExpressionEvaluator")
                 .SetNoDependencies(true)
