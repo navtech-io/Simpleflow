@@ -29,6 +29,10 @@ namespace Simpleflow.Services
         /// <inheritdoc />
         public void Run<TArg>(FlowContext<TArg> context, NextPipelineService<TArg> next)
         {
+
+            // Add trace for debugging
+            context.Trace?.CreateNewTracePoint(nameof(CompilerService));
+
             /* Compile if CompiledScript  is null,
                Not-null means, it might be supplied by cache service or 
                any other predecessor in pipeline.
@@ -39,16 +43,16 @@ namespace Simpleflow.Services
                 var eventPublisher = new ParserEventPublisher();
                 CheckFunctionExecutionPermissions(context, eventPublisher);
 
-                context.Internals.CompiledScript = 
+                context.Internals.CompiledScript =
                     SimpleflowCompiler.Compile<TArg>(context.Script,
                                                     new FunctionRegisterCoordinator(_functionRegister, context.FunctionRegister),
                                                     eventPublisher);
 
-                context.Trace.Write("Compiled");
+                context.Trace?.Write("Compiled");
             }
             else
             {
-                context.Trace.Write("Compilation Skipped");
+                context.Trace?.Write("Compilation Skipped");
             }
 
             next?.Invoke(context);

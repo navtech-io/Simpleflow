@@ -47,41 +47,25 @@ namespace Simpleflow.Services
         /// <inheritdoc />
         public void Run<TArg>(FlowContext<TArg> context, NextPipelineService<TArg> next)
         {
+            // Add trace for debugging
+            context.Trace?.CreateNewTracePoint(nameof(CacheService));
+
             // Create unique id for script to identify in cache store
-            var id = string.IsNullOrWhiteSpace(context.Options?.Id) ?  
+            var id = string.IsNullOrWhiteSpace(context.Options?.Id) ?
                             GetScriptUniqueId(context.Options?.CacheOptions, context.Script) : context.Options.Id;
 
-            // GetFlowContextOptionsId helps to identify script uniquely along with options
-            // in order to allow or deny functions 
-            if (context.Options != null)
-            {
-                id += "_" + GetFlowContextOptionsId(context.Options);
-            }
+            context.Trace?.Write($"Cache-Key {id}");
 
-            context.Trace.Write($"Cache-Key {id}");
-
-            // Get compiled script from cache
-            var compiledScript = _cache.Get< Action<FlowInput<TArg>, FlowOutput, ScriptHelperContext>>(key: id);
-            if (compiledScript != null)
-            {
-                context.Trace.Write($"Read from cache {id} - Succeeded");
-                context.Internals.CompiledScript = compiledScript;
-            }
+            // Get compiled script from cache and set it to context in order to avoid recompilation
+            var isAvailableInCache = GetAndSetToContextTheCompiledScript(context, id);
 
             // Invoke next service in pipeline
             next?.Invoke(context);
 
-            // Cache compiled script
-            if (compiledScript == null && context.Internals.CompiledScript != null)
+            // Cache the compiled script
+            if (!isAvailableInCache && context.Internals.CompiledScript != null)
             {
-                _cache.Set(key: id,
-                           value: context.Internals.CompiledScript,
-                           options: new MemoryCacheEntryOptions { 
-                                AbsoluteExpiration = context.Options?.CacheOptions?.AbsoluteExpiration ?? _cacheOptions.AbsoluteExpiration,
-                                SlidingExpiration = context.Options?.CacheOptions?.SlidingExpiration ??  _cacheOptions.SlidingExpiration
-                           }); 
-
-                context.Trace.Write($"Saved into cache {id} - Succeeded");
+                StoreIntoCacheCompiledScript(context, id);
             }
         }
 
@@ -98,34 +82,44 @@ namespace Simpleflow.Services
             return System.Convert.ToBase64String(sha1.ComputeHash(Encoding.UTF8.GetBytes(script)));
         }
 
-        private string GetFlowContextOptionsId(IContextOptions options)
+
+        private void StoreIntoCacheCompiledScript<TArg>(FlowContext<TArg> context, string id)
         {
-            if (
-                //options.AllowArgumentToMutate == false &&
-                (options.AllowFunctions == null || options.AllowFunctions.Length == 0)
-                && (options.DenyFunctions == null  || options.DenyFunctions.Length == 0)
-                )
-            {
-                return string.Empty;
-            }
+            _cache.Set(key: id,
+                                       value: context.Internals.CompiledScript,
+                                       options: new MemoryCacheEntryOptions
+                                       {
+                                           AbsoluteExpiration = context.Options?.CacheOptions?.AbsoluteExpiration ?? _cacheOptions.AbsoluteExpiration,
+                                           SlidingExpiration = context.Options?.CacheOptions?.SlidingExpiration ?? _cacheOptions.SlidingExpiration
+                                       });
 
-            StringBuilder sb = new StringBuilder();
-            //sb.Append(string.Join(' ', options.AllowArgumentToMutate));
-
-            if (options.AllowFunctions != null && options.AllowFunctions.Length > 0)
-            {
-                sb.Append("Allow"); //ensure add this to avoid collisions
-                sb.Append(string.Join(' ', options.AllowFunctions));
-            }
-
-            if (options.DenyFunctions != null && options.DenyFunctions.Length > 0)
-            {
-                sb.Append("Deny"); //ensure add this to avoid collisions
-                sb.Append(string.Join(' ', options.DenyFunctions ));
-            }
-
-            return GetScriptUniqueId(options.CacheOptions, sb.ToString());
+            context.Trace?.Write($"Saved into cache {id} - Succeeded");
         }
+
+        private bool GetAndSetToContextTheCompiledScript<TArg>(FlowContext<TArg> context, string id)
+        {
+            var compiledScript = _cache.Get<Action<FlowInput<TArg>, FlowOutput, ScriptHelperContext>>(key: id);
+            var isAvailableInCache = compiledScript != null;
+
+            if (isAvailableInCache)
+            {
+                if (context.Options?.CacheOptions?.Reset ?? false)
+                {
+                    _cache.Remove(key: id);
+                    isAvailableInCache = false; // in order to save it back
+
+                    context.Trace?.Write($"Reset cache entry '{id}' - Succeeded");
+                }
+                else
+                {
+                    context.Trace?.Write($"Read from cache {id} - Succeeded");
+                    context.Internals.CompiledScript = compiledScript;
+                }
+            }
+
+            return isAvailableInCache;
+        }
+
     }
 
 }

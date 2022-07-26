@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
     <PackageIcon>PackageIcon.png</PackageIcon>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <VersionSuffix>beta07</VersionSuffix>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

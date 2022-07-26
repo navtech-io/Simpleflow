@@ -21,8 +21,8 @@ namespace Simpleflow.Tests
 
             var engine
                 = new SimpleflowPipelineBuilder()
-                    .AddCorePipelineServices()
-                    .AddPipelineServices(new SimpleflowTest.LoggingService());
+                    .AddPipelineServices(new SimpleflowTest.LoggingService())
+                    .AddCorePipelineServices();
 
             _flow = engine.Build();
         }
@@ -50,16 +50,16 @@ namespace Simpleflow.Tests
             StringReader reader = new StringReader(trace.ToString());
 
             Assert.Equal(actual: reader.ReadLine(),
-                         expected: $"Simpleflow.Services.{nameof(CacheService)}");
+                         expected: $"{nameof(SimpleflowTest)}+{nameof(LoggingService)}");
 
             Assert.Equal(actual: reader.ReadLine(),
-                         expected: $"Simpleflow.Services.{nameof(CompilerService)}");
+                         expected: $"{nameof(CacheService)}");
 
             Assert.Equal(actual: reader.ReadLine(),
-                         expected: $"Simpleflow.Services.{nameof(ExecutionService)}");
+                         expected: $"{nameof(CompilerService)}");
 
             Assert.Equal(actual: reader.ReadLine(),
-                         expected: $"Simpleflow.Tests.{nameof(SimpleflowTest)}+{nameof(LoggingService)}");
+                         expected: $"{nameof(ExecutionService)}");
 
             Assert.Equal(actual: result.Output["Log-Output"],
                          expected: script);
@@ -95,11 +95,14 @@ namespace Simpleflow.Tests
         {
             public void Run<TArg>(FlowContext<TArg> context, NextPipelineService<TArg> next)
             {
-                context.Output.Output.Add("Log-Output", context.Script);
-                context.Output.Output.Add("Trace", context.Trace);
-               
+                context.EnableTrace();
+
+                context.Trace.CreateNewTracePoint($"{nameof(SimpleflowTest)}+{nameof(LoggingService)}");
 
                 next?.Invoke(context);
+
+                context.Output.Output.Add("Log-Output", context.Script);
+                context.Output.Output.Add("Trace", context.Trace);
             }
         }
 

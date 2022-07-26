@@ -81,9 +81,6 @@ namespace Simpleflow
                     (flowInput) => RunPipelineService<TArg>(serviceNode.Next, flowInput)
                     : default(NextPipelineService<TArg>);
 
-            // Add trace for debugging
-            input.Trace.CreateNewTracePoint(serviceNode.Value.GetType().FullName);
-
             serviceNode.Value.Run(input, next);
         }
     }
