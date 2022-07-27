@@ -193,6 +193,18 @@ internal partial class SimpleflowBaseListener : ISimpleflowListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitExpression([NotNull] SimpleflowParser.ExpressionContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterEos([NotNull] SimpleflowParser.EosContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitEos([NotNull] SimpleflowParser.EosContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.predicate"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

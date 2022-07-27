@@ -16,10 +16,15 @@ namespace Simpleflow.CodeGenerator
         public override void SyntaxError(TextWriter output, IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine,
             string msg, RecognitionException e)
         {
-            Errors.Add(new SyntaxError(recognizer, offendingSymbol, line, charPositionInLine, msg, e));
 
-
-            //base.SyntaxError(output, recognizer, offendingSymbol, line, charPositionInLine, msg, e);
+            if (recognizer.Atn.states[e.OffendingState].StateType == Antlr4.Runtime.Atn.StateType.BlockStart)
+            {
+                Errors.Add(new SyntaxError(recognizer, offendingSymbol, line, charPositionInLine, $"Unexpected token {offendingSymbol.Text}, a newline expected", e));
+            }
+            else
+            {
+                Errors.Add(new SyntaxError(recognizer, offendingSymbol, line, charPositionInLine, msg, e));
+            }
         }
 
         public string GetAggregateMessages()

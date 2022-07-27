@@ -111,6 +111,12 @@ internal interface ISimpleflowVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitExpression([NotNull] SimpleflowParser.ExpressionContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEos([NotNull] SimpleflowParser.EosContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.predicate"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
