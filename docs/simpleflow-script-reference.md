@@ -247,13 +247,12 @@ It supports only one style of comment can be used for single or multiline using 
 	
 ## Script Guidelines
 * All `let` statements (declare and initialize variables) must be declared in the beginning of the script.
-* Each statement must end with a new line and each statement can be written in single line only.
+* Each statement must end with a new line and a statement can be written in multiple lines.
 * All keywords should be small (case sensitive) (`let, set, message, error, output, rule, when, then, exit, end rule, partial `)
 * variable names and function names are not case sensitive.
 
 
 ## Limitations
-* Each statement can only be written in singleline.	 Currently It does not support multiline statement.
 * Expressions, Objects ([], {}) cannot be used directly while passing parameters to a function.	But it accepts variables. There's a trick to use array in a function, if a function returns an array and that variable can be used to pass to another function.
 * Arrays are not supported (planned in future releases).
 ```	

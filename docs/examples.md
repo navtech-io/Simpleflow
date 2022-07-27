@@ -14,7 +14,8 @@ let userId      = none
 let currentDate = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
 
 /* Define Rules */
-rule when  arg.Name == "" or arg.Name == none then
+rule when  arg.Name == "" 
+           or arg.Name == none then
     error "Name cannot be empty"
     
 rule when not $match(input: arg.Name, pattern: "^[a-zA-z]+$") then
@@ -32,7 +33,10 @@ rule when context.HasErrors then
 end rule
 
 /* Set current date time */
-partial set arg = { RegistrationDate: currentDate, IsActive: true }
+partial set arg = { 
+                    RegistrationDate: currentDate, 
+                    IsActive: true 
+                  }
 
 /* Save */
 set userId = $CustomerService.RegisterUser(user: arg) /* User defined function*/
