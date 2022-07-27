@@ -17,7 +17,7 @@ namespace Simpleflow.CodeGenerator
             string msg, RecognitionException e)
         {
 
-            if (recognizer.Atn.states[e.OffendingState].StateType == Antlr4.Runtime.Atn.StateType.BlockStart)
+            if (e != null && recognizer.Atn.states[e.OffendingState].StateType == Antlr4.Runtime.Atn.StateType.BlockStart)
             {
                 Errors.Add(new SyntaxError(recognizer, offendingSymbol, line, charPositionInLine, $"Unexpected token {offendingSymbol.Text}, a newline expected", e));
             }
