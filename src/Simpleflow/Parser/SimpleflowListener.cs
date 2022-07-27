@@ -162,6 +162,16 @@ internal interface ISimpleflowListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitExpression([NotNull] SimpleflowParser.ExpressionContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterEos([NotNull] SimpleflowParser.EosContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitEos([NotNull] SimpleflowParser.EosContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.predicate"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
