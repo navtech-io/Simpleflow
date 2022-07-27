@@ -6,14 +6,11 @@ options {
 }
 
 program
-    :
-     LineBreak*
-     letStmt* 
+    : letStmt* 
      (ruleStmt | generalStatement)* EOF; 
  
-
 ruleStmt
-    : Rule When predicate Then LineBreak 
+    : Rule When predicate Then eos 
           (  messageStmt  
            | errorStmt       
            | outputStmt  
@@ -25,11 +22,11 @@ ruleStmt
     ; 
 
 endRuleStmt
-    : 'end' 'rule' LineBreak
+    : 'end' 'rule' eos
     ;
 
 exitStmt
-    : 'exit' LineBreak
+    : 'exit' eos
     ;
 
 generalStatement
@@ -42,19 +39,19 @@ generalStatement
     ;
    
 letStmt
-    : Let Identifier Assign expression LineBreak  
+    : Let Identifier Assign expression eos  
     ;
 
 setStmt
-    : (Partial)? Set Identifier Assign expression LineBreak  
+    : (Partial)? Set Identifier Assign expression eos  
     ;
 
 messageStmt
-    : Message messageText LineBreak
+    : Message messageText eos
     ;
 
 errorStmt
-    : Error messageText LineBreak
+    : Error messageText eos
     ;
 
 messageText
@@ -62,15 +59,20 @@ messageText
     ;
 
 outputStmt
-    : Output objectIdentifier LineBreak
+    : Output objectIdentifier eos
     ;
 
 functionStmt
-    : function LineBreak
+    : function eos
     ;    
 
 expression
     : boolLeteral | noneLiteral | function | jsonObj | arithmeticExpression | stringLiteral
+    ;
+
+eos
+    : EOF
+    | {this.lineTerminatorAhead()}?
     ;
 
 // Lexer
@@ -101,15 +103,12 @@ Partial
 Assign
    : '=' ;
 
-LineBreak
-    : [\r\n]+[ \t\r\n]*
-    ;
+WhiteSpaces:              
+    [\t\u000B\u000C\u0020\u00A0]+ -> channel(HIDDEN);
 
-Skip_
-    : ( SPACES | COMMENT ) -> skip    ;
+LineTerminator:
+    [\r\n\u2028\u2029] -> channel(HIDDEN);
 
-fragment SPACES
-    : [ \t]+  ;
+MultiLineComment:   
+   '/*' .*? '*/'  -> channel(HIDDEN);
 
-fragment COMMENT
-    : '/*' .*? '*/' ([\r\n]*) ;

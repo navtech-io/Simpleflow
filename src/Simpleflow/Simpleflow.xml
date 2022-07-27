@@ -700,6 +700,20 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Simpleflow.Parser.SimpleflowBaseListener.EnterEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowBaseListener.ExitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
         <member name="M:Simpleflow.Parser.SimpleflowBaseListener.EnterPredicate(Simpleflow.Parser.SimpleflowParser.PredicateContext)">
             <summary>
             Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.predicate"/>.
@@ -1133,6 +1147,17 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
+        <member name="M:Simpleflow.Parser.SimpleflowBaseVisitor`1.VisitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
         <member name="M:Simpleflow.Parser.SimpleflowBaseVisitor`1.VisitPredicate(Simpleflow.Parser.SimpleflowParser.PredicateContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.predicate"/>.
@@ -1504,6 +1529,18 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowListener.EnterEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowListener.ExitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
         <member name="M:Simpleflow.Parser.ISimpleflowListener.EnterPredicate(Simpleflow.Parser.SimpleflowParser.PredicateContext)">
             <summary>
             Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.predicate"/>.
@@ -1826,6 +1863,13 @@
         <member name="M:Simpleflow.Parser.ISimpleflowVisitor`1.VisitExpression(Simpleflow.Parser.SimpleflowParser.ExpressionContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowVisitor`1.VisitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
             </summary>
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
