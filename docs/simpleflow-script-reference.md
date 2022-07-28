@@ -108,10 +108,27 @@ let v = 2 + 3 * (3 * arg.value);
 ```
 
 ## Script Parameters
-`arg` and `context` parameters available in script. <br>
+`arg` and `context` parameters available in Simpleflow script. 
 `arg` represents the input to the script.
 
-**Context Properties:** context.HasErrors,  context.HasMessages context.HasOutput
+**Context Properties:**
+
+ | Property                                          | Description                                                      |
+|---------------------------------------------------|------------------------------------------------------------------|
+| context.HasErrors                                 | Returns true if there are any errors emitted                     |
+| context.HasMessages                               | Returns true if there are any messages emitted                    |
+| context.HasOutputs                                 | Returns true if there are any outputs emitted                     |
+| context.CancellationToken                         | Returns cancellation token that has been supplied to a script    |
+| context.CancellationToken.IsCancellationRequested | Returns true if cancellation has been requested for that context |
+
+CancellationToken can be supplied through context options.
+Example:
+```csharp
+SimpleflowEngine.Run(script, <argument>, 
+                     new FlowContextOptions { 
+                        CancellationToken = <your cancellation token here>
+                     });
+```
 
 ## Rule Control Flow
 ```csharp
