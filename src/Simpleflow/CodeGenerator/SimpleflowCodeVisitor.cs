@@ -39,7 +39,7 @@ namespace Simpleflow.CodeGenerator
             SmartJsonVariables = new List<SmartJsonObjectParameterExpression>();
 
             /* Initialize Function parameters */
-            Input = Expression.Parameter(typeof(FlowInput<TArg>));
+            Input = Expression.Parameter(typeof(TArg));
             Output = Expression.Parameter(typeof(FlowOutput));
             // use context parameter name in order to access in script
             ScriptHelperContext = Expression.Parameter(typeof(ScriptHelperContext), "context");  
@@ -88,8 +88,8 @@ namespace Simpleflow.CodeGenerator
             Expression body = Expression.Block(Variables, statementExpressions);
 
             /* Create function with input and output parameters */
-            Expression<Action<FlowInput<TArg>, FlowOutput, ScriptHelperContext>> program =
-                Expression.Lambda<Action<FlowInput<TArg> /*input-context*/, FlowOutput, ScriptHelperContext>>(
+            Expression<Action<TArg, FlowOutput, ScriptHelperContext>> program =
+                Expression.Lambda<Action<TArg /*input-context*/, FlowOutput, ScriptHelperContext>>(
                     body,
                     new ParameterExpression[] { Input, Output, ScriptHelperContext }
                 );
@@ -170,7 +170,7 @@ namespace Simpleflow.CodeGenerator
 
             return new List<Expression>()
             {
-                Expression.Assign(argVar, Expression.Property(Input, "Argument"))
+                Expression.Assign(argVar, Input)
             };
         }
 

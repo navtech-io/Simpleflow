@@ -124,6 +124,7 @@ class Build : NukeBuild
                 .SetPackageProjectUrl("https://github.com/navtech-io/Simpleflow")
                 .AddProperty("PackageLicenseExpression", "Apache-2.0")
                 .AddProperty("PackageIcon", @"PackageIcon.png")
+                .SetPackageRequireLicenseAcceptance(true)
                 .SetIncludeSymbols(true)
                 .SetDescription("Build dynamic rules and workflows using script")
                 .SetPackageTags("Simpleflow.NET Workflow RuleEngine DynamicExpressionEvaluator")

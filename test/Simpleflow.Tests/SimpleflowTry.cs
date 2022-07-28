@@ -68,7 +68,8 @@ namespace Simpleflow.Tests
                     error ""Name cannot be empty""
 
 
-                rule when not $match(input: arg.Name, pattern: ""^[a-zA-z]+$"") then
+                rule when not $match(input: arg.Name , 
+                                     pattern: ""^[a-zA-z]+$"") then
                     error ""Invalid name. Name should contain only alphabets.""
 
 

@@ -21,12 +21,12 @@ namespace Simpleflow.Tests.Infrastructure
             
             // Act 
             var result = SimpleflowEngine.Run(script, new object());
-            var scriptHelperContext = new ScriptHelperContext(result);
+            var scriptHelperContext = new ScriptHelperContext(result, System.Threading.CancellationToken.None);
 
             // Assert
             Assert.True(scriptHelperContext.HasErrors);
             Assert.True(scriptHelperContext.HasMessages);
-            Assert.True(scriptHelperContext.HasOutput);
+            Assert.True(scriptHelperContext.HasOutputs);
 
         }
         [Fact]
@@ -41,12 +41,12 @@ namespace Simpleflow.Tests.Infrastructure
 
             // Act 
             var result = SimpleflowEngine.Run(script, new object());
-            var scriptHelperContext = new ScriptHelperContext(result);
+            var scriptHelperContext = new ScriptHelperContext(result, System.Threading.CancellationToken.None);
 
             // Assert
             Assert.False(scriptHelperContext.HasErrors);
             Assert.False(scriptHelperContext.HasMessages);
-            Assert.False(scriptHelperContext.HasOutput);
+            Assert.False(scriptHelperContext.HasOutputs);
 
         }
     }

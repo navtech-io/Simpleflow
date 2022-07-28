@@ -246,50 +246,9 @@
             A <see cref="T:Simpleflow.FlowContext`1"/> instance represents input and output.
             </summary>
         </member>
-        <member name="P:Simpleflow.FlowContext`1.Script">
-            <summary>
-            Gets or initializes input.
-            The purpose of init access modifier to retain the input as it is by preventing the changes
-            by middleware
-            </summary>
-        </member>
-        <member name="P:Simpleflow.FlowContext`1.Argument">
-            There can be one argument can be passed and used as context in script
-        </member>
-        <member name="P:Simpleflow.FlowContext`1.FunctionRegister">
-            
-        </member>
-        <member name="P:Simpleflow.FlowContext`1.Options">
-            
-        </member>
-        <member name="P:Simpleflow.FlowContext`1.Output">
-            <summary>
-            Gets or sets output.
-            </summary>
-        </member>
         <member name="P:Simpleflow.FlowContext`1.Trace">
             <summary>
-            Gets trace to verify the middleware info
-            </summary>
-        </member>
-        <member name="P:Simpleflow.FlowContext`1.Internals">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Simpleflow.FlowContext`1.EnableTrace">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Simpleflow.FlowContext`1.FlowInternals">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Simpleflow.FlowContext`1.FlowInternals.CompiledScript">
-            <summary>
-            
+            Gets the trace to verify the middleware info
             </summary>
         </member>
         <member name="T:Simpleflow.FlowContextOptions">
@@ -298,25 +257,13 @@
             </summary>
         </member>
         <member name="P:Simpleflow.FlowContextOptions.Id">
-            <summary>
-            Gets or sets unique id of the script
-            If Id is supplied, <see cref="T:Simpleflow.Services.CacheService"/> will use it to identify the compiled object
-            in cache otherwise it creates a hash id for that script.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Simpleflow.FlowContextOptions.ResetCache">
             <inheritdoc/>
         </member>
-        <member name="T:Simpleflow.FlowInput`1">
-            <summary>
-            Represents input object to simple flow
-            </summary>
-        </member>
-        <member name="P:Simpleflow.FlowInput`1.Argument">
-            There can be one argument can be passed and used as context in script
-        </member>
-        <member name="P:Simpleflow.FlowInput`1.Options">
-            
+        <member name="P:Simpleflow.FlowContextOptions.CancellationToken">
+            <inheritdoc/>
         </member>
         <member name="T:Simpleflow.FlowOptions">
             <inheritdoc />
@@ -420,12 +367,19 @@
         </member>
         <member name="P:Simpleflow.IContextOptions.Id">
             <summary>
-            Gets unique id of the script
+            Gets or sets unique id of the script
+            If Id is supplied, CacheService will use it to identify the compiled object
+            in cache otherwise it creates a hash id for that script.
             </summary>
         </member>
         <member name="P:Simpleflow.IContextOptions.ResetCache">
             <summary>
             Reset cache allows to remove the item from cache if exists and add it once its compiled.
+            </summary>
+        </member>
+        <member name="P:Simpleflow.IContextOptions.CancellationToken">
+            <summary>
+            Gets or sets <see cref="T:System.Threading.CancellationToken"/>
             </summary>
         </member>
         <member name="T:Simpleflow.IFlowPipelineService">

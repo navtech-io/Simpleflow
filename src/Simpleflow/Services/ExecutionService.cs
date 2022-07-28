@@ -14,11 +14,10 @@ namespace Simpleflow.Services
             // Add trace for debugging
             context.Trace?.CreateNewTracePoint(nameof(ExecutionService));
 
+            var scriptHelperContext = new ScriptHelperContext(context.Output, 
+                                                              context.Options?.CancellationToken ?? default);
 
-            var flowInput = new FlowInput<TArg>( context.Argument, options:null );
-            var scriptHelperContext = new ScriptHelperContext(context.Output);
-
-            context.Internals.CompiledScript?.Invoke(flowInput, context.Output, scriptHelperContext);
+            context.Internals.CompiledScript?.Invoke(context.Argument, context.Output, scriptHelperContext);
 
             next?.Invoke(context);
         }
