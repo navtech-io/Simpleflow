@@ -26,7 +26,7 @@ namespace Simpleflow.Tests.Infrastructure
             // Assert
             Assert.True(scriptHelperContext.HasErrors);
             Assert.True(scriptHelperContext.HasMessages);
-            Assert.True(scriptHelperContext.HasOutput);
+            Assert.True(scriptHelperContext.HasOutputs);
 
         }
         [Fact]
@@ -46,7 +46,7 @@ namespace Simpleflow.Tests.Infrastructure
             // Assert
             Assert.False(scriptHelperContext.HasErrors);
             Assert.False(scriptHelperContext.HasMessages);
-            Assert.False(scriptHelperContext.HasOutput);
+            Assert.False(scriptHelperContext.HasOutputs);
 
         }
     }

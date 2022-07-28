@@ -21,7 +21,7 @@ namespace Simpleflow
 
         public bool HasErrors => _flowOutput.Errors.Count > 0;
         public bool HasMessages => _flowOutput.Messages.Count > 0;
-        public bool HasOutput => _flowOutput.Output.Count > 0;
+        public bool HasOutputs => _flowOutput.Output.Count > 0;
         public CancellationToken CancellationToken => _token;
     }
 }
