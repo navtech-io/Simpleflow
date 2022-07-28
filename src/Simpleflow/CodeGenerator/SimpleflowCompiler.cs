@@ -15,7 +15,7 @@ namespace Simpleflow.CodeGenerator
     internal class SimpleflowCompiler
     {
 
-        public static Action<FlowInput<TArg>, FlowOutput, ScriptHelperContext> Compile<TArg>(string code, 
+        public static Action<TArg, FlowOutput, ScriptHelperContext> Compile<TArg>(string code, 
             IFunctionRegister activityRegister, 
             ParserEventPublisher eventPublisher)
         {
@@ -51,7 +51,7 @@ namespace Simpleflow.CodeGenerator
             var program = visitor.Visit(programContext);
 
             // Compile
-            var programExpression = (Expression<Action<FlowInput<TArg>, FlowOutput, ScriptHelperContext>>)program;
+            var programExpression = (Expression<Action<TArg, FlowOutput, ScriptHelperContext>>)program;
             return programExpression.CompileFast();
         }
     }
