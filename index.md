@@ -8,7 +8,7 @@ permalink: /
 # <img src="https://raw.githubusercontent.com/navtech-io/Simpleflow/develop/src/Simpleflow/PackageIcon.png" style="width:80px;vertical-align:middle" > Simpleflow .NET
 {: .fs-9 }
 
-Simpleflow is a .NET libraray to build dynamic rules and workflows with intuitive script concepts. Simpleflow allows access to the process objects or methods in script securely. Methods can be registered as activities with Simpleflow engine, which is extensible to enrich or monitor the execution flow. Simpleflow is secure and efficient to run dynamic rules and workflow. 
+Simpleflow is a .NET libraray to build dynamic rules and workflows with intuitive scripting language. Simpleflow allows you to pass an argument to the script and can access registered methods in the script securely. Methods can be registered as activities with Simpleflow engine, which is extensible to enrich or monitor the execution flow. Simpleflow is secure and efficient to run dynamic rules and workflows. 
 {: .fs-6 .fw-300 }
 
 [![NuGet version (Simpleflow)](https://img.shields.io/nuget/vpre/Simpleflow?style=for-the-badge)](https://www.nuget.org/packages/Simpleflow/)
@@ -31,10 +31,12 @@ var flowScript =
 @" 
     let text  = ""Hello, World! 🌄""
     let today = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
+
     /* comment: check condition  */
     rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
          message text
     end rule
+
     output today
 ";
 
