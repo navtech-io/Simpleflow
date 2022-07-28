@@ -74,14 +74,19 @@ namespace Simpleflow
 
 
         private void RunPipelineService<TArg>(LinkedListNode<IFlowPipelineService> serviceNode, 
-                                              FlowContext<TArg> input)
+                                              FlowContext<TArg> context)
         {
+            if (context.Options != null)
+            {
+                context.Options.CancellationToken.ThrowIfCancellationRequested();
+            }
+
             NextPipelineService<TArg> next =
                 serviceNode.Next != null ?
                     (flowInput) => RunPipelineService<TArg>(serviceNode.Next, flowInput)
                     : default(NextPipelineService<TArg>);
 
-            serviceNode.Value.Run(input, next);
+            serviceNode.Value.Run(context, next);
         }
     }
 }
