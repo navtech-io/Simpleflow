@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from c:\Navtech\Opensource\Simpleflow\src\Simpleflow\Parser\Grammar\Simpleflow.g4 by ANTLR 4.10.1
+// Generated from c:\Navtech\Opensource\Simpleflow\src\Simpleflow\Parser\Grammar\SimpleflowParser.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -37,48 +37,48 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		Rule=10, When=11, Then=12, Message=13, Error=14, Output=15, Let=16, Set=17, 
-		Partial=18, Assign=19, WhiteSpaces=20, LineTerminator=21, MultiLineComment=22, 
-		And=23, Or=24, Not=25, GreaterThan=26, GreaterThanEqual=27, LessThan=28, 
-		LessThanEqual=29, Equal=30, NotEqual=31, Contains=32, OpenParen=33, CloseParen=34, 
-		Number=35, String=36, None=37, Identifier=38, PlusOp=39, MinusOp=40, TimesOp=41, 
-		DivOp=42, ModuloOp=43, FunctionName=44;
+		End=1, Exit=2, Colon=3, Comma=4, True=5, False=6, Dot=7, OpenBrace=8, 
+		CloseBrace=9, Rule=10, When=11, Then=12, Message=13, Error=14, Output=15, 
+		Let=16, Set=17, Partial=18, Assign=19, WhiteSpaces=20, LineTerminator=21, 
+		MultiLineComment=22, And=23, Or=24, Not=25, GreaterThan=26, GreaterThanEqual=27, 
+		LessThan=28, LessThanEqual=29, Equal=30, NotEqual=31, Contains=32, OpenParen=33, 
+		CloseParen=34, Number=35, String=36, None=37, Identifier=38, PlusOp=39, 
+		MinusOp=40, TimesOp=41, DivOp=42, ModuloOp=43, FunctionName=44;
 	public const int
 		RULE_program = 0, RULE_ruleStmt = 1, RULE_endRuleStmt = 2, RULE_exitStmt = 3, 
 		RULE_generalStatement = 4, RULE_letStmt = 5, RULE_setStmt = 6, RULE_messageStmt = 7, 
 		RULE_errorStmt = 8, RULE_messageText = 9, RULE_outputStmt = 10, RULE_functionStmt = 11, 
-		RULE_expression = 12, RULE_eos = 13, RULE_predicate = 14, RULE_testExpression = 15, 
-		RULE_logicalOperator = 16, RULE_relationalOperator = 17, RULE_operand = 18, 
-		RULE_unaryOperand = 19, RULE_objectIdentifier = 20, RULE_stringLiteral = 21, 
-		RULE_numberLiteral = 22, RULE_boolLeteral = 23, RULE_noneLiteral = 24, 
-		RULE_arithmeticExpression = 25, RULE_atom = 26, RULE_function = 27, RULE_functionParameter = 28, 
-		RULE_functionParameterValue = 29, RULE_jsonObj = 30, RULE_pair = 31, RULE_value = 32;
+		RULE_eos = 12, RULE_expression = 13, RULE_arithmeticExpression = 14, RULE_atom = 15, 
+		RULE_function = 16, RULE_functionParameter = 17, RULE_functionParameterValue = 18, 
+		RULE_objectIdentifier = 19, RULE_stringLiteral = 20, RULE_numberLiteral = 21, 
+		RULE_boolLeteral = 22, RULE_noneLiteral = 23, RULE_jsonObj = 24, RULE_pair = 25, 
+		RULE_value = 26, RULE_predicate = 27, RULE_testExpression = 28, RULE_logicalOperator = 29, 
+		RULE_relationalOperator = 30, RULE_operand = 31, RULE_unaryOperand = 32;
 	public static readonly string[] ruleNames = {
 		"program", "ruleStmt", "endRuleStmt", "exitStmt", "generalStatement", 
 		"letStmt", "setStmt", "messageStmt", "errorStmt", "messageText", "outputStmt", 
-		"functionStmt", "expression", "eos", "predicate", "testExpression", "logicalOperator", 
-		"relationalOperator", "operand", "unaryOperand", "objectIdentifier", "stringLiteral", 
-		"numberLiteral", "boolLeteral", "noneLiteral", "arithmeticExpression", 
-		"atom", "function", "functionParameter", "functionParameterValue", "jsonObj", 
-		"pair", "value"
+		"functionStmt", "eos", "expression", "arithmeticExpression", "atom", "function", 
+		"functionParameter", "functionParameterValue", "objectIdentifier", "stringLiteral", 
+		"numberLiteral", "boolLeteral", "noneLiteral", "jsonObj", "pair", "value", 
+		"predicate", "testExpression", "logicalOperator", "relationalOperator", 
+		"operand", "unaryOperand"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'end'", "'exit'", "'.'", "'true'", "'false'", "','", "':'", "'{'", 
+		null, "'end'", "'exit'", "':'", "','", "'true'", "'false'", "'.'", "'{'", 
 		"'}'", "'rule'", "'when'", "'then'", "'message'", "'error'", "'output'", 
 		"'let'", "'set'", "'partial'", "'='", null, null, null, "'and'", "'or'", 
 		"'not'", "'>'", "'>='", "'<'", "'<='", "'=='", "'!='", "'contains'", "'('", 
 		"')'", null, null, "'none'", null, "'+'", "'-'", "'*'", "'/'", "'%'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, null, null, null, null, null, null, null, null, null, "Rule", "When", 
-		"Then", "Message", "Error", "Output", "Let", "Set", "Partial", "Assign", 
-		"WhiteSpaces", "LineTerminator", "MultiLineComment", "And", "Or", "Not", 
-		"GreaterThan", "GreaterThanEqual", "LessThan", "LessThanEqual", "Equal", 
-		"NotEqual", "Contains", "OpenParen", "CloseParen", "Number", "String", 
-		"None", "Identifier", "PlusOp", "MinusOp", "TimesOp", "DivOp", "ModuloOp", 
-		"FunctionName"
+		null, "End", "Exit", "Colon", "Comma", "True", "False", "Dot", "OpenBrace", 
+		"CloseBrace", "Rule", "When", "Then", "Message", "Error", "Output", "Let", 
+		"Set", "Partial", "Assign", "WhiteSpaces", "LineTerminator", "MultiLineComment", 
+		"And", "Or", "Not", "GreaterThan", "GreaterThanEqual", "LessThan", "LessThanEqual", 
+		"Equal", "NotEqual", "Contains", "OpenParen", "CloseParen", "Number", 
+		"String", "None", "Identifier", "PlusOp", "MinusOp", "TimesOp", "DivOp", 
+		"ModuloOp", "FunctionName"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -91,7 +91,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		}
 	}
 
-	public override string GrammarFileName { get { return "Simpleflow.g4"; } }
+	public override string GrammarFileName { get { return "SimpleflowParser.g4"; } }
 
 	public override string[] RuleNames { get { return ruleNames; } }
 
@@ -139,17 +139,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_program; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterProgram(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitProgram(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitProgram(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -180,7 +180,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 			State = 76;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << Rule) | (1L << Message) | (1L << Error) | (1L << Output) | (1L << Set) | (1L << Partial) | (1L << FunctionName))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Exit) | (1L << Rule) | (1L << Message) | (1L << Error) | (1L << Output) | (1L << Set) | (1L << Partial) | (1L << FunctionName))) != 0)) {
 				{
 				State = 74;
 				ErrorHandler.Sync(this);
@@ -191,7 +191,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 					ruleStmt();
 					}
 					break;
-				case T__1:
+				case Exit:
 				case Message:
 				case Error:
 				case Output:
@@ -282,17 +282,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_ruleStmt; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterRuleStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitRuleStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitRuleStmt(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -357,7 +357,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 						functionStmt();
 						}
 						break;
-					case T__1:
+					case Exit:
 						{
 						State = 91;
 						exitStmt();
@@ -375,7 +375,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 			State = 98;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==T__0) {
+			if (_la==End) {
 				{
 				State = 97;
 				endRuleStmt();
@@ -396,6 +396,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	}
 
 	internal partial class EndRuleStmtContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode End() { return GetToken(SimpleflowParser.End, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Rule() { return GetToken(SimpleflowParser.Rule, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public EosContext eos() {
 			return GetRuleContext<EosContext>(0);
@@ -407,17 +408,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_endRuleStmt; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterEndRuleStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitEndRuleStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitEndRuleStmt(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -431,7 +432,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 			EnterOuterAlt(_localctx, 1);
 			{
 			State = 100;
-			Match(T__0);
+			Match(End);
 			State = 101;
 			Match(Rule);
 			State = 102;
@@ -450,6 +451,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	}
 
 	internal partial class ExitStmtContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Exit() { return GetToken(SimpleflowParser.Exit, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public EosContext eos() {
 			return GetRuleContext<EosContext>(0);
 		}
@@ -460,17 +462,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_exitStmt; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterExitStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitExitStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExitStmt(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -484,7 +486,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 			EnterOuterAlt(_localctx, 1);
 			{
 			State = 104;
-			Match(T__1);
+			Match(Exit);
 			State = 105;
 			eos();
 			}
@@ -526,17 +528,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_generalStatement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterGeneralStatement(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitGeneralStatement(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitGeneralStatement(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -586,7 +588,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 				functionStmt();
 				}
 				break;
-			case T__1:
+			case Exit:
 				EnterOuterAlt(_localctx, 6);
 				{
 				State = 112;
@@ -625,17 +627,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_letStmt; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterLetStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitLetStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitLetStmt(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -689,17 +691,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_setStmt; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterSetStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitSetStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitSetStmt(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -761,17 +763,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_messageStmt; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterMessageStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitMessageStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitMessageStmt(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -818,17 +820,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_errorStmt; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterErrorStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitErrorStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitErrorStmt(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -872,17 +874,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_messageText; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterMessageText(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitMessageText(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitMessageText(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -941,17 +943,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_outputStmt; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterOutputStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitOutputStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitOutputStmt(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -997,17 +999,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_functionStmt; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterFunctionStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitFunctionStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitFunctionStmt(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1024,6 +1026,66 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 			function();
 			State = 147;
 			eos();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class EosContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Eof() { return GetToken(SimpleflowParser.Eof, 0); }
+		public EosContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_eos; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterEos(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitEos(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitEos(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public EosContext eos() {
+		EosContext _localctx = new EosContext(Context, State);
+		EnterRule(_localctx, 24, RULE_eos);
+		try {
+			State = 151;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,9,Context) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 149;
+				Match(Eof);
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 150;
+				if (!(this.lineTerminatorAhead())) throw new FailedPredicateException(this, "this.lineTerminatorAhead()");
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -1063,17 +1125,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_expression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterExpression(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitExpression(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpression(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1082,50 +1144,50 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public ExpressionContext expression() {
 		ExpressionContext _localctx = new ExpressionContext(Context, State);
-		EnterRule(_localctx, 24, RULE_expression);
+		EnterRule(_localctx, 26, RULE_expression);
 		try {
-			State = 155;
+			State = 159;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,9,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,10,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 149;
+				State = 153;
 				boolLeteral();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 150;
+				State = 154;
 				noneLiteral();
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 151;
+				State = 155;
 				function();
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 152;
+				State = 156;
 				jsonObj();
 				}
 				break;
 			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 153;
+				State = 157;
 				arithmeticExpression(0);
 				}
 				break;
 			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 154;
+				State = 158;
 				stringLiteral();
 				}
 				break;
@@ -1142,53 +1204,969 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		return _localctx;
 	}
 
-	internal partial class EosContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Eof() { return GetToken(SimpleflowParser.Eof, 0); }
-		public EosContext(ParserRuleContext parent, int invokingState)
+	internal partial class ArithmeticExpressionContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OpenParen() { return GetToken(SimpleflowParser.OpenParen, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ArithmeticExpressionContext[] arithmeticExpression() {
+			return GetRuleContexts<ArithmeticExpressionContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ArithmeticExpressionContext arithmeticExpression(int i) {
+			return GetRuleContext<ArithmeticExpressionContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CloseParen() { return GetToken(SimpleflowParser.CloseParen, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AtomContext atom() {
+			return GetRuleContext<AtomContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TimesOp() { return GetToken(SimpleflowParser.TimesOp, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DivOp() { return GetToken(SimpleflowParser.DivOp, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ModuloOp() { return GetToken(SimpleflowParser.ModuloOp, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PlusOp() { return GetToken(SimpleflowParser.PlusOp, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MinusOp() { return GetToken(SimpleflowParser.MinusOp, 0); }
+		public ArithmeticExpressionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_eos; } }
+		public override int RuleIndex { get { return RULE_arithmeticExpression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterEos(this);
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterArithmeticExpression(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitEos(this);
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitArithmeticExpression(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitEos(this);
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitArithmeticExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public EosContext eos() {
-		EosContext _localctx = new EosContext(Context, State);
-		EnterRule(_localctx, 26, RULE_eos);
+	public ArithmeticExpressionContext arithmeticExpression() {
+		return arithmeticExpression(0);
+	}
+
+	private ArithmeticExpressionContext arithmeticExpression(int _p) {
+		ParserRuleContext _parentctx = Context;
+		int _parentState = State;
+		ArithmeticExpressionContext _localctx = new ArithmeticExpressionContext(Context, _parentState);
+		ArithmeticExpressionContext _prevctx = _localctx;
+		int _startState = 28;
+		EnterRecursionRule(_localctx, 28, RULE_arithmeticExpression, _p);
+		int _la;
 		try {
-			State = 159;
+			int _alt;
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 167;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,10,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,11,Context) ) {
+			case 1:
+				{
+				State = 162;
+				Match(OpenParen);
+				State = 163;
+				arithmeticExpression(0);
+				State = 164;
+				Match(CloseParen);
+				}
+				break;
+			case 2:
+				{
+				State = 166;
+				atom();
+				}
+				break;
+			}
+			Context.Stop = TokenStream.LT(-1);
+			State = 177;
+			ErrorHandler.Sync(this);
+			_alt = Interpreter.AdaptivePredict(TokenStream,13,Context);
+			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					if ( ParseListeners!=null )
+						TriggerExitRuleEvent();
+					_prevctx = _localctx;
+					{
+					State = 175;
+					ErrorHandler.Sync(this);
+					switch ( Interpreter.AdaptivePredict(TokenStream,12,Context) ) {
+					case 1:
+						{
+						_localctx = new ArithmeticExpressionContext(_parentctx, _parentState);
+						PushNewRecursionContext(_localctx, _startState, RULE_arithmeticExpression);
+						State = 169;
+						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
+						State = 170;
+						_la = TokenStream.LA(1);
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TimesOp) | (1L << DivOp) | (1L << ModuloOp))) != 0)) ) {
+						ErrorHandler.RecoverInline(this);
+						}
+						else {
+							ErrorHandler.ReportMatch(this);
+						    Consume();
+						}
+						State = 171;
+						arithmeticExpression(5);
+						}
+						break;
+					case 2:
+						{
+						_localctx = new ArithmeticExpressionContext(_parentctx, _parentState);
+						PushNewRecursionContext(_localctx, _startState, RULE_arithmeticExpression);
+						State = 172;
+						if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
+						State = 173;
+						_la = TokenStream.LA(1);
+						if ( !(_la==PlusOp || _la==MinusOp) ) {
+						ErrorHandler.RecoverInline(this);
+						}
+						else {
+							ErrorHandler.ReportMatch(this);
+						    Consume();
+						}
+						State = 174;
+						arithmeticExpression(4);
+						}
+						break;
+					}
+					} 
+				}
+				State = 179;
+				ErrorHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(TokenStream,13,Context);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			UnrollRecursionContexts(_parentctx);
+		}
+		return _localctx;
+	}
+
+	internal partial class AtomContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Number() { return GetToken(SimpleflowParser.Number, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ObjectIdentifierContext objectIdentifier() {
+			return GetRuleContext<ObjectIdentifierContext>(0);
+		}
+		public AtomContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_atom; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterAtom(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitAtom(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitAtom(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public AtomContext atom() {
+		AtomContext _localctx = new AtomContext(Context, State);
+		EnterRule(_localctx, 30, RULE_atom);
+		try {
+			State = 183;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,14,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 157;
-				Match(Eof);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 158;
-				if (!(this.lineTerminatorAhead())) throw new FailedPredicateException(this, "this.lineTerminatorAhead()");
+				State = 181;
+				Match(Number);
 				}
 				break;
+			case 3:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 182;
+				objectIdentifier();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class FunctionContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FunctionName() { return GetToken(SimpleflowParser.FunctionName, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OpenParen() { return GetToken(SimpleflowParser.OpenParen, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CloseParen() { return GetToken(SimpleflowParser.CloseParen, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public FunctionParameterContext[] functionParameter() {
+			return GetRuleContexts<FunctionParameterContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public FunctionParameterContext functionParameter(int i) {
+			return GetRuleContext<FunctionParameterContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] Comma() { return GetTokens(SimpleflowParser.Comma); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Comma(int i) {
+			return GetToken(SimpleflowParser.Comma, i);
+		}
+		public FunctionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_function; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterFunction(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitFunction(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFunction(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public FunctionContext function() {
+		FunctionContext _localctx = new FunctionContext(Context, State);
+		EnterRule(_localctx, 32, RULE_function);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 185;
+			Match(FunctionName);
+			State = 186;
+			Match(OpenParen);
+			State = 195;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==Identifier) {
+				{
+				State = 187;
+				functionParameter();
+				State = 192;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==Comma) {
+					{
+					{
+					State = 188;
+					Match(Comma);
+					State = 189;
+					functionParameter();
+					}
+					}
+					State = 194;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				}
+			}
+
+			State = 197;
+			Match(CloseParen);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class FunctionParameterContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Identifier() { return GetToken(SimpleflowParser.Identifier, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Colon() { return GetToken(SimpleflowParser.Colon, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public FunctionParameterValueContext functionParameterValue() {
+			return GetRuleContext<FunctionParameterValueContext>(0);
+		}
+		public FunctionParameterContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_functionParameter; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterFunctionParameter(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitFunctionParameter(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFunctionParameter(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public FunctionParameterContext functionParameter() {
+		FunctionParameterContext _localctx = new FunctionParameterContext(Context, State);
+		EnterRule(_localctx, 34, RULE_functionParameter);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 199;
+			Match(Identifier);
+			State = 200;
+			Match(Colon);
+			State = 201;
+			functionParameterValue();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class FunctionParameterValueContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public NumberLiteralContext numberLiteral() {
+			return GetRuleContext<NumberLiteralContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public StringLiteralContext stringLiteral() {
+			return GetRuleContext<StringLiteralContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public BoolLeteralContext boolLeteral() {
+			return GetRuleContext<BoolLeteralContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public NoneLiteralContext noneLiteral() {
+			return GetRuleContext<NoneLiteralContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ObjectIdentifierContext objectIdentifier() {
+			return GetRuleContext<ObjectIdentifierContext>(0);
+		}
+		public FunctionParameterValueContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_functionParameterValue; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterFunctionParameterValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitFunctionParameterValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFunctionParameterValue(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public FunctionParameterValueContext functionParameterValue() {
+		FunctionParameterValueContext _localctx = new FunctionParameterValueContext(Context, State);
+		EnterRule(_localctx, 36, RULE_functionParameterValue);
+		try {
+			State = 208;
+			ErrorHandler.Sync(this);
+			switch (TokenStream.LA(1)) {
+			case Number:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 203;
+				numberLiteral();
+				}
+				break;
+			case String:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 204;
+				stringLiteral();
+				}
+				break;
+			case True:
+			case False:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 205;
+				boolLeteral();
+				}
+				break;
+			case None:
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 206;
+				noneLiteral();
+				}
+				break;
+			case Identifier:
+				EnterOuterAlt(_localctx, 5);
+				{
+				State = 207;
+				objectIdentifier();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class ObjectIdentifierContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] Identifier() { return GetTokens(SimpleflowParser.Identifier); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Identifier(int i) {
+			return GetToken(SimpleflowParser.Identifier, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] Dot() { return GetTokens(SimpleflowParser.Dot); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Dot(int i) {
+			return GetToken(SimpleflowParser.Dot, i);
+		}
+		public ObjectIdentifierContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_objectIdentifier; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterObjectIdentifier(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitObjectIdentifier(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitObjectIdentifier(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ObjectIdentifierContext objectIdentifier() {
+		ObjectIdentifierContext _localctx = new ObjectIdentifierContext(Context, State);
+		EnterRule(_localctx, 38, RULE_objectIdentifier);
+		try {
+			int _alt;
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 210;
+			Match(Identifier);
+			State = 215;
+			ErrorHandler.Sync(this);
+			_alt = Interpreter.AdaptivePredict(TokenStream,18,Context);
+			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					{
+					{
+					State = 211;
+					Match(Dot);
+					State = 212;
+					Match(Identifier);
+					}
+					} 
+				}
+				State = 217;
+				ErrorHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(TokenStream,18,Context);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class StringLiteralContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode String() { return GetToken(SimpleflowParser.String, 0); }
+		public StringLiteralContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_stringLiteral; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterStringLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitStringLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitStringLiteral(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public StringLiteralContext stringLiteral() {
+		StringLiteralContext _localctx = new StringLiteralContext(Context, State);
+		EnterRule(_localctx, 40, RULE_stringLiteral);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 218;
+			Match(String);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class NumberLiteralContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Number() { return GetToken(SimpleflowParser.Number, 0); }
+		public NumberLiteralContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_numberLiteral; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterNumberLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitNumberLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitNumberLiteral(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public NumberLiteralContext numberLiteral() {
+		NumberLiteralContext _localctx = new NumberLiteralContext(Context, State);
+		EnterRule(_localctx, 42, RULE_numberLiteral);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 220;
+			Match(Number);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class BoolLeteralContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode True() { return GetToken(SimpleflowParser.True, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode False() { return GetToken(SimpleflowParser.False, 0); }
+		public BoolLeteralContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_boolLeteral; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterBoolLeteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitBoolLeteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitBoolLeteral(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public BoolLeteralContext boolLeteral() {
+		BoolLeteralContext _localctx = new BoolLeteralContext(Context, State);
+		EnterRule(_localctx, 44, RULE_boolLeteral);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 222;
+			_la = TokenStream.LA(1);
+			if ( !(_la==True || _la==False) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class NoneLiteralContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode None() { return GetToken(SimpleflowParser.None, 0); }
+		public NoneLiteralContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_noneLiteral; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterNoneLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitNoneLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitNoneLiteral(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public NoneLiteralContext noneLiteral() {
+		NoneLiteralContext _localctx = new NoneLiteralContext(Context, State);
+		EnterRule(_localctx, 46, RULE_noneLiteral);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 224;
+			Match(None);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class JsonObjContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OpenBrace() { return GetToken(SimpleflowParser.OpenBrace, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public PairContext[] pair() {
+			return GetRuleContexts<PairContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public PairContext pair(int i) {
+			return GetRuleContext<PairContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CloseBrace() { return GetToken(SimpleflowParser.CloseBrace, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] Comma() { return GetTokens(SimpleflowParser.Comma); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Comma(int i) {
+			return GetToken(SimpleflowParser.Comma, i);
+		}
+		public JsonObjContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_jsonObj; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterJsonObj(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitJsonObj(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitJsonObj(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public JsonObjContext jsonObj() {
+		JsonObjContext _localctx = new JsonObjContext(Context, State);
+		EnterRule(_localctx, 48, RULE_jsonObj);
+		int _la;
+		try {
+			State = 239;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,20,Context) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 226;
+				Match(OpenBrace);
+				State = 227;
+				pair();
+				State = 232;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==Comma) {
+					{
+					{
+					State = 228;
+					Match(Comma);
+					State = 229;
+					pair();
+					}
+					}
+					State = 234;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 235;
+				Match(CloseBrace);
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 237;
+				Match(OpenBrace);
+				State = 238;
+				Match(CloseBrace);
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class PairContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Identifier() { return GetToken(SimpleflowParser.Identifier, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Colon() { return GetToken(SimpleflowParser.Colon, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ValueContext value() {
+			return GetRuleContext<ValueContext>(0);
+		}
+		public PairContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_pair; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterPair(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitPair(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitPair(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public PairContext pair() {
+		PairContext _localctx = new PairContext(Context, State);
+		EnterRule(_localctx, 50, RULE_pair);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 241;
+			Match(Identifier);
+			State = 242;
+			Match(Colon);
+			State = 243;
+			value();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class ValueContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public BoolLeteralContext boolLeteral() {
+			return GetRuleContext<BoolLeteralContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public NoneLiteralContext noneLiteral() {
+			return GetRuleContext<NoneLiteralContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public NumberLiteralContext numberLiteral() {
+			return GetRuleContext<NumberLiteralContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ObjectIdentifierContext objectIdentifier() {
+			return GetRuleContext<ObjectIdentifierContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public StringLiteralContext stringLiteral() {
+			return GetRuleContext<StringLiteralContext>(0);
+		}
+		public ValueContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_value; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitValue(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ValueContext value() {
+		ValueContext _localctx = new ValueContext(Context, State);
+		EnterRule(_localctx, 52, RULE_value);
+		try {
+			State = 250;
+			ErrorHandler.Sync(this);
+			switch (TokenStream.LA(1)) {
+			case True:
+			case False:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 245;
+				boolLeteral();
+				}
+				break;
+			case None:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 246;
+				noneLiteral();
+				}
+				break;
+			case Number:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 247;
+				numberLiteral();
+				}
+				break;
+			case Identifier:
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 248;
+				objectIdentifier();
+				}
+				break;
+			case String:
+				EnterOuterAlt(_localctx, 5);
+				{
+				State = 249;
+				stringLiteral();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1228,17 +2206,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_predicate; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterPredicate(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitPredicate(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitPredicate(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1254,50 +2232,50 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		int _parentState = State;
 		PredicateContext _localctx = new PredicateContext(Context, _parentState);
 		PredicateContext _prevctx = _localctx;
-		int _startState = 28;
-		EnterRecursionRule(_localctx, 28, RULE_predicate, _p);
+		int _startState = 54;
+		EnterRecursionRule(_localctx, 54, RULE_predicate, _p);
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 170;
+			State = 261;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,11,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,22,Context) ) {
 			case 1:
 				{
-				State = 162;
+				State = 253;
 				testExpression();
 				}
 				break;
 			case 2:
 				{
-				State = 163;
+				State = 254;
 				unaryOperand();
 				}
 				break;
 			case 3:
 				{
-				State = 164;
+				State = 255;
 				Match(OpenParen);
-				State = 165;
+				State = 256;
 				predicate(0);
-				State = 166;
+				State = 257;
 				Match(CloseParen);
 				}
 				break;
 			case 4:
 				{
-				State = 168;
+				State = 259;
 				Match(Not);
-				State = 169;
+				State = 260;
 				predicate(1);
 				}
 				break;
 			}
 			Context.Stop = TokenStream.LT(-1);
-			State = 178;
+			State = 269;
 			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,12,Context);
+			_alt = Interpreter.AdaptivePredict(TokenStream,23,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( ParseListeners!=null )
@@ -1307,18 +2285,18 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 					{
 					_localctx = new PredicateContext(_parentctx, _parentState);
 					PushNewRecursionContext(_localctx, _startState, RULE_predicate);
-					State = 172;
+					State = 263;
 					if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
-					State = 173;
+					State = 264;
 					logicalOperator();
-					State = 174;
+					State = 265;
 					predicate(4);
 					}
 					} 
 				}
-				State = 180;
+				State = 271;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,12,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,23,Context);
 			}
 			}
 		}
@@ -1350,17 +2328,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_testExpression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterTestExpression(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitTestExpression(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitTestExpression(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1369,15 +2347,15 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public TestExpressionContext testExpression() {
 		TestExpressionContext _localctx = new TestExpressionContext(Context, State);
-		EnterRule(_localctx, 30, RULE_testExpression);
+		EnterRule(_localctx, 56, RULE_testExpression);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 181;
+			State = 272;
 			operand();
-			State = 182;
+			State = 273;
 			relationalOperator();
-			State = 183;
+			State = 274;
 			operand();
 			}
 		}
@@ -1402,17 +2380,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_logicalOperator; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterLogicalOperator(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitLogicalOperator(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitLogicalOperator(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1421,12 +2399,12 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public LogicalOperatorContext logicalOperator() {
 		LogicalOperatorContext _localctx = new LogicalOperatorContext(Context, State);
-		EnterRule(_localctx, 32, RULE_logicalOperator);
+		EnterRule(_localctx, 58, RULE_logicalOperator);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 185;
+			State = 276;
 			_la = TokenStream.LA(1);
 			if ( !(_la==And || _la==Or) ) {
 			ErrorHandler.RecoverInline(this);
@@ -1463,17 +2441,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_relationalOperator; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterRelationalOperator(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitRelationalOperator(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitRelationalOperator(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1482,12 +2460,12 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public RelationalOperatorContext relationalOperator() {
 		RelationalOperatorContext _localctx = new RelationalOperatorContext(Context, State);
-		EnterRule(_localctx, 34, RULE_relationalOperator);
+		EnterRule(_localctx, 60, RULE_relationalOperator);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 187;
+			State = 278;
 			_la = TokenStream.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << GreaterThan) | (1L << GreaterThanEqual) | (1L << LessThan) | (1L << LessThanEqual) | (1L << Equal) | (1L << NotEqual) | (1L << Contains))) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -1535,17 +2513,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_operand; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterOperand(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitOperand(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitOperand(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1554,51 +2532,51 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public OperandContext operand() {
 		OperandContext _localctx = new OperandContext(Context, State);
-		EnterRule(_localctx, 36, RULE_operand);
+		EnterRule(_localctx, 62, RULE_operand);
 		try {
-			State = 195;
+			State = 286;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case Identifier:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 189;
+				State = 280;
 				objectIdentifier();
 				}
 				break;
 			case String:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 190;
+				State = 281;
 				stringLiteral();
 				}
 				break;
 			case Number:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 191;
+				State = 282;
 				numberLiteral();
 				}
 				break;
-			case T__3:
-			case T__4:
+			case True:
+			case False:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 192;
+				State = 283;
 				boolLeteral();
 				}
 				break;
 			case None:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 193;
+				State = 284;
 				noneLiteral();
 				}
 				break;
 			case FunctionName:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 194;
+				State = 285;
 				function();
 				}
 				break;
@@ -1634,17 +2612,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		public override int RuleIndex { get { return RULE_unaryOperand; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.EnterUnaryOperand(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
 			if (typedListener != null) typedListener.ExitUnaryOperand(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitUnaryOperand(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1653,989 +2631,31 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public UnaryOperandContext unaryOperand() {
 		UnaryOperandContext _localctx = new UnaryOperandContext(Context, State);
-		EnterRule(_localctx, 38, RULE_unaryOperand);
+		EnterRule(_localctx, 64, RULE_unaryOperand);
 		try {
-			State = 200;
+			State = 291;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case T__3:
-			case T__4:
+			case True:
+			case False:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 197;
+				State = 288;
 				boolLeteral();
 				}
 				break;
 			case Identifier:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 198;
+				State = 289;
 				objectIdentifier();
 				}
 				break;
 			case FunctionName:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 199;
-				function();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class ObjectIdentifierContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] Identifier() { return GetTokens(SimpleflowParser.Identifier); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Identifier(int i) {
-			return GetToken(SimpleflowParser.Identifier, i);
-		}
-		public ObjectIdentifierContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_objectIdentifier; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterObjectIdentifier(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitObjectIdentifier(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitObjectIdentifier(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ObjectIdentifierContext objectIdentifier() {
-		ObjectIdentifierContext _localctx = new ObjectIdentifierContext(Context, State);
-		EnterRule(_localctx, 40, RULE_objectIdentifier);
-		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 202;
-			Match(Identifier);
-			State = 207;
-			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,15,Context);
-			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
-					{
-					{
-					State = 203;
-					Match(T__2);
-					State = 204;
-					Match(Identifier);
-					}
-					} 
-				}
-				State = 209;
-				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,15,Context);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class StringLiteralContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode String() { return GetToken(SimpleflowParser.String, 0); }
-		public StringLiteralContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_stringLiteral; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterStringLiteral(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitStringLiteral(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitStringLiteral(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public StringLiteralContext stringLiteral() {
-		StringLiteralContext _localctx = new StringLiteralContext(Context, State);
-		EnterRule(_localctx, 42, RULE_stringLiteral);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 210;
-			Match(String);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class NumberLiteralContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Number() { return GetToken(SimpleflowParser.Number, 0); }
-		public NumberLiteralContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_numberLiteral; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterNumberLiteral(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitNumberLiteral(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitNumberLiteral(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public NumberLiteralContext numberLiteral() {
-		NumberLiteralContext _localctx = new NumberLiteralContext(Context, State);
-		EnterRule(_localctx, 44, RULE_numberLiteral);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 212;
-			Match(Number);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class BoolLeteralContext : ParserRuleContext {
-		public BoolLeteralContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_boolLeteral; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterBoolLeteral(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitBoolLeteral(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitBoolLeteral(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public BoolLeteralContext boolLeteral() {
-		BoolLeteralContext _localctx = new BoolLeteralContext(Context, State);
-		EnterRule(_localctx, 46, RULE_boolLeteral);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 214;
-			_la = TokenStream.LA(1);
-			if ( !(_la==T__3 || _la==T__4) ) {
-			ErrorHandler.RecoverInline(this);
-			}
-			else {
-				ErrorHandler.ReportMatch(this);
-			    Consume();
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class NoneLiteralContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode None() { return GetToken(SimpleflowParser.None, 0); }
-		public NoneLiteralContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_noneLiteral; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterNoneLiteral(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitNoneLiteral(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitNoneLiteral(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public NoneLiteralContext noneLiteral() {
-		NoneLiteralContext _localctx = new NoneLiteralContext(Context, State);
-		EnterRule(_localctx, 48, RULE_noneLiteral);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 216;
-			Match(None);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class ArithmeticExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OpenParen() { return GetToken(SimpleflowParser.OpenParen, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ArithmeticExpressionContext[] arithmeticExpression() {
-			return GetRuleContexts<ArithmeticExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ArithmeticExpressionContext arithmeticExpression(int i) {
-			return GetRuleContext<ArithmeticExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CloseParen() { return GetToken(SimpleflowParser.CloseParen, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public AtomContext atom() {
-			return GetRuleContext<AtomContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TimesOp() { return GetToken(SimpleflowParser.TimesOp, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DivOp() { return GetToken(SimpleflowParser.DivOp, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ModuloOp() { return GetToken(SimpleflowParser.ModuloOp, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PlusOp() { return GetToken(SimpleflowParser.PlusOp, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MinusOp() { return GetToken(SimpleflowParser.MinusOp, 0); }
-		public ArithmeticExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_arithmeticExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterArithmeticExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitArithmeticExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitArithmeticExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ArithmeticExpressionContext arithmeticExpression() {
-		return arithmeticExpression(0);
-	}
-
-	private ArithmeticExpressionContext arithmeticExpression(int _p) {
-		ParserRuleContext _parentctx = Context;
-		int _parentState = State;
-		ArithmeticExpressionContext _localctx = new ArithmeticExpressionContext(Context, _parentState);
-		ArithmeticExpressionContext _prevctx = _localctx;
-		int _startState = 50;
-		EnterRecursionRule(_localctx, 50, RULE_arithmeticExpression, _p);
-		int _la;
-		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 224;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,16,Context) ) {
-			case 1:
-				{
-				State = 219;
-				Match(OpenParen);
-				State = 220;
-				arithmeticExpression(0);
-				State = 221;
-				Match(CloseParen);
-				}
-				break;
-			case 2:
-				{
-				State = 223;
-				atom();
-				}
-				break;
-			}
-			Context.Stop = TokenStream.LT(-1);
-			State = 234;
-			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,18,Context);
-			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
-					if ( ParseListeners!=null )
-						TriggerExitRuleEvent();
-					_prevctx = _localctx;
-					{
-					State = 232;
-					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,17,Context) ) {
-					case 1:
-						{
-						_localctx = new ArithmeticExpressionContext(_parentctx, _parentState);
-						PushNewRecursionContext(_localctx, _startState, RULE_arithmeticExpression);
-						State = 226;
-						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
-						State = 227;
-						_la = TokenStream.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TimesOp) | (1L << DivOp) | (1L << ModuloOp))) != 0)) ) {
-						ErrorHandler.RecoverInline(this);
-						}
-						else {
-							ErrorHandler.ReportMatch(this);
-						    Consume();
-						}
-						State = 228;
-						arithmeticExpression(5);
-						}
-						break;
-					case 2:
-						{
-						_localctx = new ArithmeticExpressionContext(_parentctx, _parentState);
-						PushNewRecursionContext(_localctx, _startState, RULE_arithmeticExpression);
-						State = 229;
-						if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
-						State = 230;
-						_la = TokenStream.LA(1);
-						if ( !(_la==PlusOp || _la==MinusOp) ) {
-						ErrorHandler.RecoverInline(this);
-						}
-						else {
-							ErrorHandler.ReportMatch(this);
-						    Consume();
-						}
-						State = 231;
-						arithmeticExpression(4);
-						}
-						break;
-					}
-					} 
-				}
-				State = 236;
-				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,18,Context);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			UnrollRecursionContexts(_parentctx);
-		}
-		return _localctx;
-	}
-
-	internal partial class AtomContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Number() { return GetToken(SimpleflowParser.Number, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ObjectIdentifierContext objectIdentifier() {
-			return GetRuleContext<ObjectIdentifierContext>(0);
-		}
-		public AtomContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_atom; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterAtom(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitAtom(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitAtom(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public AtomContext atom() {
-		AtomContext _localctx = new AtomContext(Context, State);
-		EnterRule(_localctx, 52, RULE_atom);
-		try {
-			State = 240;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,19,Context) ) {
-			case 1:
-				EnterOuterAlt(_localctx, 1);
-				{
-				}
-				break;
-			case 2:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 238;
-				Match(Number);
-				}
-				break;
-			case 3:
-				EnterOuterAlt(_localctx, 3);
-				{
-				State = 239;
-				objectIdentifier();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class FunctionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FunctionName() { return GetToken(SimpleflowParser.FunctionName, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OpenParen() { return GetToken(SimpleflowParser.OpenParen, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CloseParen() { return GetToken(SimpleflowParser.CloseParen, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public FunctionParameterContext[] functionParameter() {
-			return GetRuleContexts<FunctionParameterContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public FunctionParameterContext functionParameter(int i) {
-			return GetRuleContext<FunctionParameterContext>(i);
-		}
-		public FunctionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_function; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterFunction(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitFunction(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitFunction(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public FunctionContext function() {
-		FunctionContext _localctx = new FunctionContext(Context, State);
-		EnterRule(_localctx, 54, RULE_function);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 242;
-			Match(FunctionName);
-			State = 243;
-			Match(OpenParen);
-			State = 252;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			if (_la==Identifier) {
-				{
-				State = 244;
-				functionParameter();
-				State = 249;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				while (_la==T__5) {
-					{
-					{
-					State = 245;
-					Match(T__5);
-					State = 246;
-					functionParameter();
-					}
-					}
-					State = 251;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.LA(1);
-				}
-				}
-			}
-
-			State = 254;
-			Match(CloseParen);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class FunctionParameterContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Identifier() { return GetToken(SimpleflowParser.Identifier, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public FunctionParameterValueContext functionParameterValue() {
-			return GetRuleContext<FunctionParameterValueContext>(0);
-		}
-		public FunctionParameterContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_functionParameter; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterFunctionParameter(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitFunctionParameter(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitFunctionParameter(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public FunctionParameterContext functionParameter() {
-		FunctionParameterContext _localctx = new FunctionParameterContext(Context, State);
-		EnterRule(_localctx, 56, RULE_functionParameter);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 256;
-			Match(Identifier);
-			State = 257;
-			Match(T__6);
-			State = 258;
-			functionParameterValue();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class FunctionParameterValueContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public NumberLiteralContext numberLiteral() {
-			return GetRuleContext<NumberLiteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public StringLiteralContext stringLiteral() {
-			return GetRuleContext<StringLiteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public BoolLeteralContext boolLeteral() {
-			return GetRuleContext<BoolLeteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public NoneLiteralContext noneLiteral() {
-			return GetRuleContext<NoneLiteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ObjectIdentifierContext objectIdentifier() {
-			return GetRuleContext<ObjectIdentifierContext>(0);
-		}
-		public FunctionParameterValueContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_functionParameterValue; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterFunctionParameterValue(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitFunctionParameterValue(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitFunctionParameterValue(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public FunctionParameterValueContext functionParameterValue() {
-		FunctionParameterValueContext _localctx = new FunctionParameterValueContext(Context, State);
-		EnterRule(_localctx, 58, RULE_functionParameterValue);
-		try {
-			State = 265;
-			ErrorHandler.Sync(this);
-			switch (TokenStream.LA(1)) {
-			case Number:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 260;
-				numberLiteral();
-				}
-				break;
-			case String:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 261;
-				stringLiteral();
-				}
-				break;
-			case T__3:
-			case T__4:
-				EnterOuterAlt(_localctx, 3);
-				{
-				State = 262;
-				boolLeteral();
-				}
-				break;
-			case None:
-				EnterOuterAlt(_localctx, 4);
-				{
-				State = 263;
-				noneLiteral();
-				}
-				break;
-			case Identifier:
-				EnterOuterAlt(_localctx, 5);
-				{
-				State = 264;
-				objectIdentifier();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class JsonObjContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public PairContext[] pair() {
-			return GetRuleContexts<PairContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public PairContext pair(int i) {
-			return GetRuleContext<PairContext>(i);
-		}
-		public JsonObjContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_jsonObj; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterJsonObj(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitJsonObj(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitJsonObj(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public JsonObjContext jsonObj() {
-		JsonObjContext _localctx = new JsonObjContext(Context, State);
-		EnterRule(_localctx, 60, RULE_jsonObj);
-		int _la;
-		try {
-			State = 280;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,24,Context) ) {
-			case 1:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 267;
-				Match(T__7);
-				State = 268;
-				pair();
-				State = 273;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				while (_la==T__5) {
-					{
-					{
-					State = 269;
-					Match(T__5);
-					State = 270;
-					pair();
-					}
-					}
-					State = 275;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.LA(1);
-				}
-				State = 276;
-				Match(T__8);
-				}
-				break;
-			case 2:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 278;
-				Match(T__7);
-				State = 279;
-				Match(T__8);
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class PairContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Identifier() { return GetToken(SimpleflowParser.Identifier, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ValueContext value() {
-			return GetRuleContext<ValueContext>(0);
-		}
-		public PairContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_pair; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterPair(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitPair(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitPair(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public PairContext pair() {
-		PairContext _localctx = new PairContext(Context, State);
-		EnterRule(_localctx, 62, RULE_pair);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 282;
-			Match(Identifier);
-			State = 283;
-			Match(T__6);
-			State = 284;
-			value();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	internal partial class ValueContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public BoolLeteralContext boolLeteral() {
-			return GetRuleContext<BoolLeteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public NoneLiteralContext noneLiteral() {
-			return GetRuleContext<NoneLiteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public NumberLiteralContext numberLiteral() {
-			return GetRuleContext<NumberLiteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ObjectIdentifierContext objectIdentifier() {
-			return GetRuleContext<ObjectIdentifierContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public StringLiteralContext stringLiteral() {
-			return GetRuleContext<StringLiteralContext>(0);
-		}
-		public ValueContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_value; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.EnterValue(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ISimpleflowListener typedListener = listener as ISimpleflowListener;
-			if (typedListener != null) typedListener.ExitValue(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ISimpleflowVisitor<TResult> typedVisitor = visitor as ISimpleflowVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitValue(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ValueContext value() {
-		ValueContext _localctx = new ValueContext(Context, State);
-		EnterRule(_localctx, 64, RULE_value);
-		try {
-			State = 291;
-			ErrorHandler.Sync(this);
-			switch (TokenStream.LA(1)) {
-			case T__3:
-			case T__4:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 286;
-				boolLeteral();
-				}
-				break;
-			case None:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 287;
-				noneLiteral();
-				}
-				break;
-			case Number:
-				EnterOuterAlt(_localctx, 3);
-				{
-				State = 288;
-				numberLiteral();
-				}
-				break;
-			case Identifier:
-				EnterOuterAlt(_localctx, 4);
-				{
-				State = 289;
-				objectIdentifier();
-				}
-				break;
-			case String:
-				EnterOuterAlt(_localctx, 5);
-				{
 				State = 290;
-				stringLiteral();
+				function();
 				}
 				break;
 			default:
@@ -2655,9 +2675,9 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 
 	public override bool Sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 13: return eos_sempred((EosContext)_localctx, predIndex);
-		case 14: return predicate_sempred((PredicateContext)_localctx, predIndex);
-		case 25: return arithmeticExpression_sempred((ArithmeticExpressionContext)_localctx, predIndex);
+		case 12: return eos_sempred((EosContext)_localctx, predIndex);
+		case 14: return arithmeticExpression_sempred((ArithmeticExpressionContext)_localctx, predIndex);
+		case 27: return predicate_sempred((PredicateContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -2667,15 +2687,15 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		}
 		return true;
 	}
-	private bool predicate_sempred(PredicateContext _localctx, int predIndex) {
+	private bool arithmeticExpression_sempred(ArithmeticExpressionContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 1: return Precpred(Context, 3);
+		case 1: return Precpred(Context, 4);
+		case 2: return Precpred(Context, 3);
 		}
 		return true;
 	}
-	private bool arithmeticExpression_sempred(ArithmeticExpressionContext _localctx, int predIndex) {
+	private bool predicate_sempred(PredicateContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 2: return Precpred(Context, 4);
 		case 3: return Precpred(Context, 3);
 		}
 		return true;
@@ -2692,92 +2712,92 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		1,2,1,2,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,4,3,4,114,8,4,1,5,1,5,1,5,1,
 		5,1,5,1,5,1,6,3,6,123,8,6,1,6,1,6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,8,
 		1,8,1,8,1,8,1,9,1,9,3,9,141,8,9,1,10,1,10,1,10,1,10,1,11,1,11,1,11,1,12,
-		1,12,1,12,1,12,1,12,1,12,3,12,156,8,12,1,13,1,13,3,13,160,8,13,1,14,1,
-		14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,3,14,171,8,14,1,14,1,14,1,14,1,14,
-		5,14,177,8,14,10,14,12,14,180,9,14,1,15,1,15,1,15,1,15,1,16,1,16,1,17,
-		1,17,1,18,1,18,1,18,1,18,1,18,1,18,3,18,196,8,18,1,19,1,19,1,19,3,19,201,
-		8,19,1,20,1,20,1,20,5,20,206,8,20,10,20,12,20,209,9,20,1,21,1,21,1,22,
-		1,22,1,23,1,23,1,24,1,24,1,25,1,25,1,25,1,25,1,25,1,25,3,25,225,8,25,1,
-		25,1,25,1,25,1,25,1,25,1,25,5,25,233,8,25,10,25,12,25,236,9,25,1,26,1,
-		26,1,26,3,26,241,8,26,1,27,1,27,1,27,1,27,1,27,5,27,248,8,27,10,27,12,
-		27,251,9,27,3,27,253,8,27,1,27,1,27,1,28,1,28,1,28,1,28,1,29,1,29,1,29,
-		1,29,1,29,3,29,266,8,29,1,30,1,30,1,30,1,30,5,30,272,8,30,10,30,12,30,
-		275,9,30,1,30,1,30,1,30,1,30,3,30,281,8,30,1,31,1,31,1,31,1,31,1,32,1,
-		32,1,32,1,32,1,32,3,32,292,8,32,1,32,0,2,28,50,33,0,2,4,6,8,10,12,14,16,
-		18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,
-		0,5,1,0,23,24,1,0,26,32,1,0,4,5,1,0,41,43,1,0,39,40,312,0,69,1,0,0,0,2,
-		81,1,0,0,0,4,100,1,0,0,0,6,104,1,0,0,0,8,113,1,0,0,0,10,115,1,0,0,0,12,
-		122,1,0,0,0,14,130,1,0,0,0,16,134,1,0,0,0,18,140,1,0,0,0,20,142,1,0,0,
-		0,22,146,1,0,0,0,24,155,1,0,0,0,26,159,1,0,0,0,28,170,1,0,0,0,30,181,1,
-		0,0,0,32,185,1,0,0,0,34,187,1,0,0,0,36,195,1,0,0,0,38,200,1,0,0,0,40,202,
-		1,0,0,0,42,210,1,0,0,0,44,212,1,0,0,0,46,214,1,0,0,0,48,216,1,0,0,0,50,
-		224,1,0,0,0,52,240,1,0,0,0,54,242,1,0,0,0,56,256,1,0,0,0,58,265,1,0,0,
-		0,60,280,1,0,0,0,62,282,1,0,0,0,64,291,1,0,0,0,66,68,3,10,5,0,67,66,1,
-		0,0,0,68,71,1,0,0,0,69,67,1,0,0,0,69,70,1,0,0,0,70,76,1,0,0,0,71,69,1,
-		0,0,0,72,75,3,2,1,0,73,75,3,8,4,0,74,72,1,0,0,0,74,73,1,0,0,0,75,78,1,
-		0,0,0,76,74,1,0,0,0,76,77,1,0,0,0,77,79,1,0,0,0,78,76,1,0,0,0,79,80,5,
-		0,0,1,80,1,1,0,0,0,81,82,5,10,0,0,82,83,5,11,0,0,83,84,3,28,14,0,84,85,
-		5,12,0,0,85,94,3,26,13,0,86,93,3,14,7,0,87,93,3,16,8,0,88,93,3,20,10,0,
-		89,93,3,12,6,0,90,93,3,22,11,0,91,93,3,6,3,0,92,86,1,0,0,0,92,87,1,0,0,
-		0,92,88,1,0,0,0,92,89,1,0,0,0,92,90,1,0,0,0,92,91,1,0,0,0,93,96,1,0,0,
-		0,94,92,1,0,0,0,94,95,1,0,0,0,95,98,1,0,0,0,96,94,1,0,0,0,97,99,3,4,2,
-		0,98,97,1,0,0,0,98,99,1,0,0,0,99,3,1,0,0,0,100,101,5,1,0,0,101,102,5,10,
-		0,0,102,103,3,26,13,0,103,5,1,0,0,0,104,105,5,2,0,0,105,106,3,26,13,0,
-		106,7,1,0,0,0,107,114,3,14,7,0,108,114,3,16,8,0,109,114,3,20,10,0,110,
-		114,3,12,6,0,111,114,3,22,11,0,112,114,3,6,3,0,113,107,1,0,0,0,113,108,
-		1,0,0,0,113,109,1,0,0,0,113,110,1,0,0,0,113,111,1,0,0,0,113,112,1,0,0,
-		0,114,9,1,0,0,0,115,116,5,16,0,0,116,117,5,38,0,0,117,118,5,19,0,0,118,
-		119,3,24,12,0,119,120,3,26,13,0,120,11,1,0,0,0,121,123,5,18,0,0,122,121,
-		1,0,0,0,122,123,1,0,0,0,123,124,1,0,0,0,124,125,5,17,0,0,125,126,5,38,
-		0,0,126,127,5,19,0,0,127,128,3,24,12,0,128,129,3,26,13,0,129,13,1,0,0,
-		0,130,131,5,13,0,0,131,132,3,18,9,0,132,133,3,26,13,0,133,15,1,0,0,0,134,
-		135,5,14,0,0,135,136,3,18,9,0,136,137,3,26,13,0,137,17,1,0,0,0,138,141,
-		5,36,0,0,139,141,3,40,20,0,140,138,1,0,0,0,140,139,1,0,0,0,141,19,1,0,
-		0,0,142,143,5,15,0,0,143,144,3,40,20,0,144,145,3,26,13,0,145,21,1,0,0,
-		0,146,147,3,54,27,0,147,148,3,26,13,0,148,23,1,0,0,0,149,156,3,46,23,0,
-		150,156,3,48,24,0,151,156,3,54,27,0,152,156,3,60,30,0,153,156,3,50,25,
-		0,154,156,3,42,21,0,155,149,1,0,0,0,155,150,1,0,0,0,155,151,1,0,0,0,155,
-		152,1,0,0,0,155,153,1,0,0,0,155,154,1,0,0,0,156,25,1,0,0,0,157,160,5,0,
-		0,1,158,160,4,13,0,0,159,157,1,0,0,0,159,158,1,0,0,0,160,27,1,0,0,0,161,
-		162,6,14,-1,0,162,171,3,30,15,0,163,171,3,38,19,0,164,165,5,33,0,0,165,
-		166,3,28,14,0,166,167,5,34,0,0,167,171,1,0,0,0,168,169,5,25,0,0,169,171,
-		3,28,14,1,170,161,1,0,0,0,170,163,1,0,0,0,170,164,1,0,0,0,170,168,1,0,
-		0,0,171,178,1,0,0,0,172,173,10,3,0,0,173,174,3,32,16,0,174,175,3,28,14,
-		4,175,177,1,0,0,0,176,172,1,0,0,0,177,180,1,0,0,0,178,176,1,0,0,0,178,
-		179,1,0,0,0,179,29,1,0,0,0,180,178,1,0,0,0,181,182,3,36,18,0,182,183,3,
-		34,17,0,183,184,3,36,18,0,184,31,1,0,0,0,185,186,7,0,0,0,186,33,1,0,0,
-		0,187,188,7,1,0,0,188,35,1,0,0,0,189,196,3,40,20,0,190,196,3,42,21,0,191,
-		196,3,44,22,0,192,196,3,46,23,0,193,196,3,48,24,0,194,196,3,54,27,0,195,
-		189,1,0,0,0,195,190,1,0,0,0,195,191,1,0,0,0,195,192,1,0,0,0,195,193,1,
-		0,0,0,195,194,1,0,0,0,196,37,1,0,0,0,197,201,3,46,23,0,198,201,3,40,20,
-		0,199,201,3,54,27,0,200,197,1,0,0,0,200,198,1,0,0,0,200,199,1,0,0,0,201,
-		39,1,0,0,0,202,207,5,38,0,0,203,204,5,3,0,0,204,206,5,38,0,0,205,203,1,
-		0,0,0,206,209,1,0,0,0,207,205,1,0,0,0,207,208,1,0,0,0,208,41,1,0,0,0,209,
-		207,1,0,0,0,210,211,5,36,0,0,211,43,1,0,0,0,212,213,5,35,0,0,213,45,1,
-		0,0,0,214,215,7,2,0,0,215,47,1,0,0,0,216,217,5,37,0,0,217,49,1,0,0,0,218,
-		219,6,25,-1,0,219,220,5,33,0,0,220,221,3,50,25,0,221,222,5,34,0,0,222,
-		225,1,0,0,0,223,225,3,52,26,0,224,218,1,0,0,0,224,223,1,0,0,0,225,234,
-		1,0,0,0,226,227,10,4,0,0,227,228,7,3,0,0,228,233,3,50,25,5,229,230,10,
-		3,0,0,230,231,7,4,0,0,231,233,3,50,25,4,232,226,1,0,0,0,232,229,1,0,0,
-		0,233,236,1,0,0,0,234,232,1,0,0,0,234,235,1,0,0,0,235,51,1,0,0,0,236,234,
-		1,0,0,0,237,241,1,0,0,0,238,241,5,35,0,0,239,241,3,40,20,0,240,237,1,0,
-		0,0,240,238,1,0,0,0,240,239,1,0,0,0,241,53,1,0,0,0,242,243,5,44,0,0,243,
-		252,5,33,0,0,244,249,3,56,28,0,245,246,5,6,0,0,246,248,3,56,28,0,247,245,
-		1,0,0,0,248,251,1,0,0,0,249,247,1,0,0,0,249,250,1,0,0,0,250,253,1,0,0,
-		0,251,249,1,0,0,0,252,244,1,0,0,0,252,253,1,0,0,0,253,254,1,0,0,0,254,
-		255,5,34,0,0,255,55,1,0,0,0,256,257,5,38,0,0,257,258,5,7,0,0,258,259,3,
-		58,29,0,259,57,1,0,0,0,260,266,3,44,22,0,261,266,3,42,21,0,262,266,3,46,
-		23,0,263,266,3,48,24,0,264,266,3,40,20,0,265,260,1,0,0,0,265,261,1,0,0,
-		0,265,262,1,0,0,0,265,263,1,0,0,0,265,264,1,0,0,0,266,59,1,0,0,0,267,268,
-		5,8,0,0,268,273,3,62,31,0,269,270,5,6,0,0,270,272,3,62,31,0,271,269,1,
-		0,0,0,272,275,1,0,0,0,273,271,1,0,0,0,273,274,1,0,0,0,274,276,1,0,0,0,
-		275,273,1,0,0,0,276,277,5,9,0,0,277,281,1,0,0,0,278,279,5,8,0,0,279,281,
-		5,9,0,0,280,267,1,0,0,0,280,278,1,0,0,0,281,61,1,0,0,0,282,283,5,38,0,
-		0,283,284,5,7,0,0,284,285,3,64,32,0,285,63,1,0,0,0,286,292,3,46,23,0,287,
-		292,3,48,24,0,288,292,3,44,22,0,289,292,3,40,20,0,290,292,3,42,21,0,291,
-		286,1,0,0,0,291,287,1,0,0,0,291,288,1,0,0,0,291,289,1,0,0,0,291,290,1,
-		0,0,0,292,65,1,0,0,0,26,69,74,76,92,94,98,113,122,140,155,159,170,178,
-		195,200,207,224,232,234,240,249,252,265,273,280,291
+		1,12,3,12,152,8,12,1,13,1,13,1,13,1,13,1,13,1,13,3,13,160,8,13,1,14,1,
+		14,1,14,1,14,1,14,1,14,3,14,168,8,14,1,14,1,14,1,14,1,14,1,14,1,14,5,14,
+		176,8,14,10,14,12,14,179,9,14,1,15,1,15,1,15,3,15,184,8,15,1,16,1,16,1,
+		16,1,16,1,16,5,16,191,8,16,10,16,12,16,194,9,16,3,16,196,8,16,1,16,1,16,
+		1,17,1,17,1,17,1,17,1,18,1,18,1,18,1,18,1,18,3,18,209,8,18,1,19,1,19,1,
+		19,5,19,214,8,19,10,19,12,19,217,9,19,1,20,1,20,1,21,1,21,1,22,1,22,1,
+		23,1,23,1,24,1,24,1,24,1,24,5,24,231,8,24,10,24,12,24,234,9,24,1,24,1,
+		24,1,24,1,24,3,24,240,8,24,1,25,1,25,1,25,1,25,1,26,1,26,1,26,1,26,1,26,
+		3,26,251,8,26,1,27,1,27,1,27,1,27,1,27,1,27,1,27,1,27,1,27,3,27,262,8,
+		27,1,27,1,27,1,27,1,27,5,27,268,8,27,10,27,12,27,271,9,27,1,28,1,28,1,
+		28,1,28,1,29,1,29,1,30,1,30,1,31,1,31,1,31,1,31,1,31,1,31,3,31,287,8,31,
+		1,32,1,32,1,32,3,32,292,8,32,1,32,0,2,28,54,33,0,2,4,6,8,10,12,14,16,18,
+		20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,0,
+		5,1,0,41,43,1,0,39,40,1,0,5,6,1,0,23,24,1,0,26,32,312,0,69,1,0,0,0,2,81,
+		1,0,0,0,4,100,1,0,0,0,6,104,1,0,0,0,8,113,1,0,0,0,10,115,1,0,0,0,12,122,
+		1,0,0,0,14,130,1,0,0,0,16,134,1,0,0,0,18,140,1,0,0,0,20,142,1,0,0,0,22,
+		146,1,0,0,0,24,151,1,0,0,0,26,159,1,0,0,0,28,167,1,0,0,0,30,183,1,0,0,
+		0,32,185,1,0,0,0,34,199,1,0,0,0,36,208,1,0,0,0,38,210,1,0,0,0,40,218,1,
+		0,0,0,42,220,1,0,0,0,44,222,1,0,0,0,46,224,1,0,0,0,48,239,1,0,0,0,50,241,
+		1,0,0,0,52,250,1,0,0,0,54,261,1,0,0,0,56,272,1,0,0,0,58,276,1,0,0,0,60,
+		278,1,0,0,0,62,286,1,0,0,0,64,291,1,0,0,0,66,68,3,10,5,0,67,66,1,0,0,0,
+		68,71,1,0,0,0,69,67,1,0,0,0,69,70,1,0,0,0,70,76,1,0,0,0,71,69,1,0,0,0,
+		72,75,3,2,1,0,73,75,3,8,4,0,74,72,1,0,0,0,74,73,1,0,0,0,75,78,1,0,0,0,
+		76,74,1,0,0,0,76,77,1,0,0,0,77,79,1,0,0,0,78,76,1,0,0,0,79,80,5,0,0,1,
+		80,1,1,0,0,0,81,82,5,10,0,0,82,83,5,11,0,0,83,84,3,54,27,0,84,85,5,12,
+		0,0,85,94,3,24,12,0,86,93,3,14,7,0,87,93,3,16,8,0,88,93,3,20,10,0,89,93,
+		3,12,6,0,90,93,3,22,11,0,91,93,3,6,3,0,92,86,1,0,0,0,92,87,1,0,0,0,92,
+		88,1,0,0,0,92,89,1,0,0,0,92,90,1,0,0,0,92,91,1,0,0,0,93,96,1,0,0,0,94,
+		92,1,0,0,0,94,95,1,0,0,0,95,98,1,0,0,0,96,94,1,0,0,0,97,99,3,4,2,0,98,
+		97,1,0,0,0,98,99,1,0,0,0,99,3,1,0,0,0,100,101,5,1,0,0,101,102,5,10,0,0,
+		102,103,3,24,12,0,103,5,1,0,0,0,104,105,5,2,0,0,105,106,3,24,12,0,106,
+		7,1,0,0,0,107,114,3,14,7,0,108,114,3,16,8,0,109,114,3,20,10,0,110,114,
+		3,12,6,0,111,114,3,22,11,0,112,114,3,6,3,0,113,107,1,0,0,0,113,108,1,0,
+		0,0,113,109,1,0,0,0,113,110,1,0,0,0,113,111,1,0,0,0,113,112,1,0,0,0,114,
+		9,1,0,0,0,115,116,5,16,0,0,116,117,5,38,0,0,117,118,5,19,0,0,118,119,3,
+		26,13,0,119,120,3,24,12,0,120,11,1,0,0,0,121,123,5,18,0,0,122,121,1,0,
+		0,0,122,123,1,0,0,0,123,124,1,0,0,0,124,125,5,17,0,0,125,126,5,38,0,0,
+		126,127,5,19,0,0,127,128,3,26,13,0,128,129,3,24,12,0,129,13,1,0,0,0,130,
+		131,5,13,0,0,131,132,3,18,9,0,132,133,3,24,12,0,133,15,1,0,0,0,134,135,
+		5,14,0,0,135,136,3,18,9,0,136,137,3,24,12,0,137,17,1,0,0,0,138,141,5,36,
+		0,0,139,141,3,38,19,0,140,138,1,0,0,0,140,139,1,0,0,0,141,19,1,0,0,0,142,
+		143,5,15,0,0,143,144,3,38,19,0,144,145,3,24,12,0,145,21,1,0,0,0,146,147,
+		3,32,16,0,147,148,3,24,12,0,148,23,1,0,0,0,149,152,5,0,0,1,150,152,4,12,
+		0,0,151,149,1,0,0,0,151,150,1,0,0,0,152,25,1,0,0,0,153,160,3,44,22,0,154,
+		160,3,46,23,0,155,160,3,32,16,0,156,160,3,48,24,0,157,160,3,28,14,0,158,
+		160,3,40,20,0,159,153,1,0,0,0,159,154,1,0,0,0,159,155,1,0,0,0,159,156,
+		1,0,0,0,159,157,1,0,0,0,159,158,1,0,0,0,160,27,1,0,0,0,161,162,6,14,-1,
+		0,162,163,5,33,0,0,163,164,3,28,14,0,164,165,5,34,0,0,165,168,1,0,0,0,
+		166,168,3,30,15,0,167,161,1,0,0,0,167,166,1,0,0,0,168,177,1,0,0,0,169,
+		170,10,4,0,0,170,171,7,0,0,0,171,176,3,28,14,5,172,173,10,3,0,0,173,174,
+		7,1,0,0,174,176,3,28,14,4,175,169,1,0,0,0,175,172,1,0,0,0,176,179,1,0,
+		0,0,177,175,1,0,0,0,177,178,1,0,0,0,178,29,1,0,0,0,179,177,1,0,0,0,180,
+		184,1,0,0,0,181,184,5,35,0,0,182,184,3,38,19,0,183,180,1,0,0,0,183,181,
+		1,0,0,0,183,182,1,0,0,0,184,31,1,0,0,0,185,186,5,44,0,0,186,195,5,33,0,
+		0,187,192,3,34,17,0,188,189,5,4,0,0,189,191,3,34,17,0,190,188,1,0,0,0,
+		191,194,1,0,0,0,192,190,1,0,0,0,192,193,1,0,0,0,193,196,1,0,0,0,194,192,
+		1,0,0,0,195,187,1,0,0,0,195,196,1,0,0,0,196,197,1,0,0,0,197,198,5,34,0,
+		0,198,33,1,0,0,0,199,200,5,38,0,0,200,201,5,3,0,0,201,202,3,36,18,0,202,
+		35,1,0,0,0,203,209,3,42,21,0,204,209,3,40,20,0,205,209,3,44,22,0,206,209,
+		3,46,23,0,207,209,3,38,19,0,208,203,1,0,0,0,208,204,1,0,0,0,208,205,1,
+		0,0,0,208,206,1,0,0,0,208,207,1,0,0,0,209,37,1,0,0,0,210,215,5,38,0,0,
+		211,212,5,7,0,0,212,214,5,38,0,0,213,211,1,0,0,0,214,217,1,0,0,0,215,213,
+		1,0,0,0,215,216,1,0,0,0,216,39,1,0,0,0,217,215,1,0,0,0,218,219,5,36,0,
+		0,219,41,1,0,0,0,220,221,5,35,0,0,221,43,1,0,0,0,222,223,7,2,0,0,223,45,
+		1,0,0,0,224,225,5,37,0,0,225,47,1,0,0,0,226,227,5,8,0,0,227,232,3,50,25,
+		0,228,229,5,4,0,0,229,231,3,50,25,0,230,228,1,0,0,0,231,234,1,0,0,0,232,
+		230,1,0,0,0,232,233,1,0,0,0,233,235,1,0,0,0,234,232,1,0,0,0,235,236,5,
+		9,0,0,236,240,1,0,0,0,237,238,5,8,0,0,238,240,5,9,0,0,239,226,1,0,0,0,
+		239,237,1,0,0,0,240,49,1,0,0,0,241,242,5,38,0,0,242,243,5,3,0,0,243,244,
+		3,52,26,0,244,51,1,0,0,0,245,251,3,44,22,0,246,251,3,46,23,0,247,251,3,
+		42,21,0,248,251,3,38,19,0,249,251,3,40,20,0,250,245,1,0,0,0,250,246,1,
+		0,0,0,250,247,1,0,0,0,250,248,1,0,0,0,250,249,1,0,0,0,251,53,1,0,0,0,252,
+		253,6,27,-1,0,253,262,3,56,28,0,254,262,3,64,32,0,255,256,5,33,0,0,256,
+		257,3,54,27,0,257,258,5,34,0,0,258,262,1,0,0,0,259,260,5,25,0,0,260,262,
+		3,54,27,1,261,252,1,0,0,0,261,254,1,0,0,0,261,255,1,0,0,0,261,259,1,0,
+		0,0,262,269,1,0,0,0,263,264,10,3,0,0,264,265,3,58,29,0,265,266,3,54,27,
+		4,266,268,1,0,0,0,267,263,1,0,0,0,268,271,1,0,0,0,269,267,1,0,0,0,269,
+		270,1,0,0,0,270,55,1,0,0,0,271,269,1,0,0,0,272,273,3,62,31,0,273,274,3,
+		60,30,0,274,275,3,62,31,0,275,57,1,0,0,0,276,277,7,3,0,0,277,59,1,0,0,
+		0,278,279,7,4,0,0,279,61,1,0,0,0,280,287,3,38,19,0,281,287,3,40,20,0,282,
+		287,3,42,21,0,283,287,3,44,22,0,284,287,3,46,23,0,285,287,3,32,16,0,286,
+		280,1,0,0,0,286,281,1,0,0,0,286,282,1,0,0,0,286,283,1,0,0,0,286,284,1,
+		0,0,0,286,285,1,0,0,0,287,63,1,0,0,0,288,292,3,44,22,0,289,292,3,38,19,
+		0,290,292,3,32,16,0,291,288,1,0,0,0,291,289,1,0,0,0,291,290,1,0,0,0,292,
+		65,1,0,0,0,26,69,74,76,92,94,98,113,122,140,151,159,167,175,177,183,192,
+		195,208,215,232,239,250,261,269,286,291
 	};
 
 	public static readonly ATN _ATN =
