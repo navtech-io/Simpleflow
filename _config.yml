@@ -1,5 +1,5 @@
 title: Simpleflow .NET
-description: A .NET library to build dynamic rules and simple workflows with intuitive script concepts.
+description: A .NET library and a runtime engine to build dynamic rules and workflows with intuitive and simple Simpleflow scripting language.
 
 remote_theme: just-the-docs/just-the-docs
 
