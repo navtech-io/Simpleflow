@@ -120,6 +120,38 @@ namespace Simpleflow.Tests.Scripting
         }
 
 
+        [Fact]
+        public void CheckNestedObjectSyntax()
+        {
+            // Arrange  
+            var script =
+                @"
+                    
+                    let w = { 
+                              Uid: ""S123"",  
+                              child:{ 
+                                      Id : 20 
+                                    },
+                              child2: {value: 10.5}  
+                            }
+                    
+                    let y = $MethodWithObjSuperArg ( s: w )
+                    
+                    output w
+                ";
+
+            var context = new SampleArgument();
+            var register = new FunctionRegister().Add("MethodWithObjSuperArg", (Func<MethodSuperArgument, string>)MethodWithObjSuperArg);
+
+            // Act
+            FlowOutput output = new SimpleflowPipelineBuilder().AddCorePipelineServices(register).Build().Run(script, context);
+
+            // Assert
+            Assert.Equal(expected: "S123-20-0--False-NULL-0", actual: output.Output["w"].ToString());
+        }
+
+
+
         private static string MethodWithObjArg(MethodArgument s)
         {
             return s.ToString();

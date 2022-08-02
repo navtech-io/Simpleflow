@@ -1,9 +1,9 @@
 ﻿// Copyright (c) navtech.io. All rights reserved.
 // See License in the project root for license information.
 
-using System;
 using System.Linq;
 using System.Linq.Expressions;
+
 using Simpleflow.Parser;
 
 namespace Simpleflow.CodeGenerator
@@ -16,7 +16,15 @@ namespace Simpleflow.CodeGenerator
             // call visit (number) as a term
             if (context.atom()?.Number() != null)
             {
-                return GetNumberExpression(context.atom().Number().GetText());
+                var type = TargetTypeParserContextAnnotation.Get(context);
+                if (type != null)
+                {
+                    return GetNumberExpression(context.atom().Number().GetText(), type);
+                }
+                else
+                {
+                    return GetNumberExpression(context.atom().Number().GetText());
+                }
             }
 
             if (context.atom()?.objectIdentifier() != null)

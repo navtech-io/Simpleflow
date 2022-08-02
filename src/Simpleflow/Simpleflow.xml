@@ -840,20 +840,6 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterValue(Simpleflow.Parser.SimpleflowParser.ValueContext)">
-            <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.value"/>.
-            <para>The default implementation does nothing.</para>
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitValue(Simpleflow.Parser.SimpleflowParser.ValueContext)">
-            <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.value"/>.
-            <para>The default implementation does nothing.</para>
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterPredicate(Simpleflow.Parser.SimpleflowParser.PredicateContext)">
             <summary>
             Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.predicate"/>.
@@ -1248,17 +1234,6 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitValue(Simpleflow.Parser.SimpleflowParser.ValueContext)">
-            <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.value"/>.
-            <para>
-            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
-            on <paramref name="context"/>.
-            </para>
-            </summary>
-            <param name="context">The parse tree.</param>
-            <return>The visitor result.</return>
-        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitPredicate(Simpleflow.Parser.SimpleflowParser.PredicateContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.predicate"/>.
@@ -1643,18 +1618,6 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterValue(Simpleflow.Parser.SimpleflowParser.ValueContext)">
-            <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.value"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitValue(Simpleflow.Parser.SimpleflowParser.ValueContext)">
-            <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.value"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
         <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterPredicate(Simpleflow.Parser.SimpleflowParser.PredicateContext)">
             <summary>
             Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.predicate"/>.
@@ -1912,13 +1875,6 @@
         <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitPair(Simpleflow.Parser.SimpleflowParser.PairContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.pair"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-            <return>The visitor result.</return>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitValue(Simpleflow.Parser.SimpleflowParser.ValueContext)">
-            <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.value"/>.
             </summary>
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>

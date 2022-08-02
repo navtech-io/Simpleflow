@@ -292,16 +292,6 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitPair([NotNull] SimpleflowParser.PairContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SimpleflowParser.value"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterValue([NotNull] SimpleflowParser.ValueContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SimpleflowParser.value"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitValue([NotNull] SimpleflowParser.ValueContext context);
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.predicate"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
