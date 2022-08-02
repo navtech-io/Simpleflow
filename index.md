@@ -29,14 +29,16 @@ using Simpleflow;
 // Simpleflow Script
 var flowScript = 
 @" 
+    # Declare and initialize variables
     let text  = ""Hello, World! 🌄""
     let today = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
 
-    /* comment: check condition  */
+    # Write rules
     rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
          message text
     end rule
 
+    # Output
     output today
 ";
 

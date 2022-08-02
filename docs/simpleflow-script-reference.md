@@ -16,7 +16,7 @@ nav_order: 2
 1. [Rule Control Flow](#rule-control-flow)
 1. [Emitters](#emitters)
 1. [Functions](#functions)
-1. [Comment](#comment)
+1. [Comments](#comments)
 1. [Script Guidelines](#script-guidelines)
 1. [Limitations](#limitations)
 
@@ -84,10 +84,8 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
     <tr>
         <td>Object Type</td>
         <td>
-            Object type can be defined using JSON format. It does not support nested object syntax, but in order to set
-            nested object, you can set to a variable and use it. <br><br>
-            <code>let address = {city: 'ny'} </code><br>
-            <code>let member = {name: 'alex', address: address }</code>
+            Object type can be defined using JSON format. 
+            <code>let member = {name: 'alex', address: {city: 'ny'} }</code>
         </td>
     </tr>
 </table>
@@ -256,8 +254,14 @@ Function cannot be an argument to another function. Store output of a function i
     </tr>
 </table>
     
-## Comment
-It supports only one style of comment can be used for single or multiline using /* .. */
+## Comments
+It supports single line and multi line comments 
+Single line comment using hash symbol: # ***your comment here***
+Multi line comment using /* ... */ :  
+/*
+     ***your comment here***   
+*/
+
 ```csharp
 /* Write your comment here */
 ```
@@ -266,7 +270,7 @@ It supports only one style of comment can be used for single or multiline using 
 * All `let` statements (declare and initialize variables) must be declared in the beginning of the script.
 * Each statement must end with a new line and a statement can be written in multiple lines.
 * All keywords should be small (case sensitive) (`let, set, message, error, output, rule, when, then, exit, end rule, partial `)
-* variable names and function names are not case sensitive.
+* variable, property and function names are not case sensitive.
 
 
 ## Limitations
