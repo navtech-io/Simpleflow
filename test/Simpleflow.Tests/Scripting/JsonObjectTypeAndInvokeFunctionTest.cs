@@ -8,7 +8,7 @@ using Simpleflow.Tests.Helpers;
 
 namespace Simpleflow.Tests.Scripting
 {
-    public class JsonObjectTypeTest
+    public class JsonObjectTypeAndInvokeFunctionTest
     {
 
         [Fact]
