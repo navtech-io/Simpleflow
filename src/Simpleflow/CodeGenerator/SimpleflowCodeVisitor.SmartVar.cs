@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
+using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 
 using Simpleflow.Exceptions;
@@ -15,6 +16,13 @@ namespace Simpleflow.CodeGenerator
 {
     partial class SimpleflowCodeVisitor<TArg>
     {
+
+        public override Expression VisitJsonObj([NotNull] SimpleflowParser.JsonObjContext context)
+        {
+            var type = TargetTypeParserContextAnnotation.Get(context);
+            return CreateJsonObjectWithDotNetType(type, context);
+        }
+
         private Expression CreateSmartVariableIfObjectIdentiferNotDefined(Type targetType, string name)
         {
             // Variable names are not case sensitive
@@ -31,12 +39,18 @@ namespace Simpleflow.CodeGenerator
                 return smartVar.VariableExpression;
             }
 
-            // Create
-            var pairs = smartVar.Context.jsonObj().pair();
-            var membersInitialization = CreateNewInstanceWithProps(targetType,  pairs);
+            var instanceExpressionWithMembers = CreateJsonObjectWithDotNetType(targetType, smartVar.Context.jsonObj());
 
             // Store created smart variable to further reuse and replace.
-            smartVar.VariableExpression = Expression.Assign(Expression.Variable(targetType), membersInitialization);
+            return smartVar.VariableExpression = Expression.Assign(Expression.Variable(targetType), instanceExpressionWithMembers);
+        }
+
+        private Expression CreateJsonObjectWithDotNetType(Type targetType, SimpleflowParser.JsonObjContext jsonObj)
+        {
+            // Create
+            var pairs = jsonObj.pair();
+            var membersInitialization = CreateNewInstanceWithProps(targetType, pairs);
+
 
             return membersInitialization;
         }
@@ -70,8 +84,7 @@ namespace Simpleflow.CodeGenerator
                 }
 
                 // Property Value
-                var value = pair.value().GetChild(0);
-
+                var value = pair.expression().GetChild(0);
 
                 // Create Property Expression
                 Expression valueExpression;

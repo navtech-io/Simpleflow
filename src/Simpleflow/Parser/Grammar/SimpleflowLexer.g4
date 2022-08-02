@@ -29,10 +29,9 @@ Partial:            'partial';
 Assign:             '=' ;
 
 WhiteSpaces:        [\t\u000B\u000C\u0020\u00A0]+ -> channel(HIDDEN);
-
 LineTerminator:     [\r\n\u2028\u2029] -> channel(HIDDEN);
-
 MultiLineComment:   '/*' .*? '*/'  -> channel(HIDDEN);
+SingleLineComment:  '#' ~[\r\n\u2028\u2029]*  -> channel(HIDDEN);
 
 And:                'and';
 Or:                 'or';
@@ -63,19 +62,6 @@ DivOp:              '/';
 ModuloOp:           '%'   ;   
 
 FunctionName:       '$' NAME ('.' NAME)*;
-
-// BackTick
-//    : '`' {this.IncreaseTemplateDepth();} -> pushMode(TEMPLATE);
-
-// TemplateCloseBrace
-//    :  {this.IsInTemplateString()}? '}' -> popMode;
-
-// mode TEMPLATE;
-
-// BackTickInside:                 '`' {this.DecreaseTemplateDepth();} -> type(BackTick), popMode;
-// TemplateStringStartExpression:  '{' -> pushMode(DEFAULT_MODE);
-// TemplateStringAtom:             ~[`];
-
 
 fragment NAME
     : [_]*[a-zA-Z][_a-zA-Z0-9]* ;

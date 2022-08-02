@@ -5,7 +5,6 @@ options {
     superClass=SimpleflowParserBase;
 }
 
-
 program
     : letStmt* 
      (ruleStmt | generalStatement)* EOF; 
@@ -74,31 +73,31 @@ eos
 
 
 expression
-    : boolLeteral | noneLiteral | function | jsonObj | arithmeticExpression | stringLiteral
+    : boolLeteral 
+    | noneLiteral 
+    | function 
+    | jsonObj 
+    | objectIdentifier
+    | arithmeticExpression 
+    | stringLiteral 
     ;
 
 
-// templateStringLiteral
-//     : BackTick templateStringAtom* BackTick
-//     ;
-
-// templateStringAtom
-//     : TemplateStringAtom
-//     | TemplateStringStartExpression expression TemplateCloseBrace
-//     ;
-
+/** Arithmetic Expression */
 
 arithmeticExpression
-   :  arithmeticExpression  (TimesOp | DivOp | ModuloOp)  arithmeticExpression
-   |  arithmeticExpression  (PlusOp | MinusOp) arithmeticExpression
-   |  OpenParen arithmeticExpression CloseParen
-   |  atom
+   :  arithmeticExpression  (TimesOp | DivOp | ModuloOp)  arithmeticExpression  
+   |  arithmeticExpression  (PlusOp | MinusOp) arithmeticExpression             
+   |  OpenParen arithmeticExpression CloseParen                                 
+   |  atom                                                                      
    ;
 
 atom:
    | Number
    | objectIdentifier
    ;
+
+/** Function */
 
 function
     : FunctionName OpenParen (functionParameter (Comma functionParameter)*)? CloseParen
@@ -146,7 +145,7 @@ jsonObj
    ;
 
 pair
-   : Identifier Colon value
+   : Identifier Colon expression
    ;
 
 // arr
@@ -154,17 +153,15 @@ pair
 //    | '[' ']'
 //    ;
 
-value
-   : boolLeteral
-   | noneLiteral
-   | numberLiteral
-   | objectIdentifier
-   | stringLiteral
-   //| obj
-   //| arr
-   ;
-
-
+// value
+//    : boolLeteral
+//    | noneLiteral
+//    | numberLiteral
+//    | objectIdentifier
+//    | stringLiteral
+//    | jsonObj
+//    // | arr
+//    ;
 
 /**************************** */
 /** predicate - recursive rule */

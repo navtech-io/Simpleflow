@@ -26,20 +26,6 @@ namespace Simpleflow.Parser
         {
 
         }
-
-        public bool IsInTemplateString()
-        {
-            return _templateDepth > 0;
-        }
-
-        public void IncreaseTemplateDepth()
-        {
-            _templateDepth++;
-        }
-
-        public void DecreaseTemplateDepth()
-        {
-            _templateDepth--;
-        }
+      
     }
 }
