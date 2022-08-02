@@ -256,11 +256,9 @@ Function cannot be an argument to another function. Store output of a function i
     
 ## Comments
 It supports single line and multi line comments 
-Single line comment using hash symbol: # ***your comment here***
-Multi line comment using /* ... */ :  
-/*
-     ***your comment here***   
-*/
+Single line comment using hash symbol   # *your comment here*
+Multi line comment using /* *your comment here* */  
+
 
 ```csharp
 /* Write your comment here */
