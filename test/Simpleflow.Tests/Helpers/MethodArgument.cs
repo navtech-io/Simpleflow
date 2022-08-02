@@ -21,6 +21,7 @@ namespace Simpleflow.Tests.Helpers
     {
         public string Uid { get; set; }
         public MethodArgument Child { get; set; }
+        public MethodArgument Child2 { get; set; }
 
         public override string ToString()
         {

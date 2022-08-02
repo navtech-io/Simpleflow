@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from c:\Navtech\Opensource\Simpleflow\src\Simpleflow\Parser\Grammar\Simpleflow.g4 by ANTLR 4.10.1
+// Generated from c:\Navtech\Opensource\Simpleflow\src\Simpleflow\Parser\Grammar\SimpleflowParser.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -31,7 +31,7 @@ using IToken = Antlr4.Runtime.IToken;
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.10.1")]
 [System.CLSCompliant(false)]
-internal interface ISimpleflowVisitor<Result> : IParseTreeVisitor<Result> {
+internal interface ISimpleflowParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.program"/>.
 	/// </summary>
@@ -105,17 +105,89 @@ internal interface ISimpleflowVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitFunctionStmt([NotNull] SimpleflowParser.FunctionStmtContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEos([NotNull] SimpleflowParser.EosContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitExpression([NotNull] SimpleflowParser.ExpressionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.arithmeticExpression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitEos([NotNull] SimpleflowParser.EosContext context);
+	Result VisitArithmeticExpression([NotNull] SimpleflowParser.ArithmeticExpressionContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.atom"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAtom([NotNull] SimpleflowParser.AtomContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.function"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFunction([NotNull] SimpleflowParser.FunctionContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.functionParameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFunctionParameter([NotNull] SimpleflowParser.FunctionParameterContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.functionParameterValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFunctionParameterValue([NotNull] SimpleflowParser.FunctionParameterValueContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.objectIdentifier"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitObjectIdentifier([NotNull] SimpleflowParser.ObjectIdentifierContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.stringLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitStringLiteral([NotNull] SimpleflowParser.StringLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.numberLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitNumberLiteral([NotNull] SimpleflowParser.NumberLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.boolLeteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitBoolLeteral([NotNull] SimpleflowParser.BoolLeteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.noneLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitNoneLiteral([NotNull] SimpleflowParser.NoneLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.jsonObj"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitJsonObj([NotNull] SimpleflowParser.JsonObjContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.pair"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPair([NotNull] SimpleflowParser.PairContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.predicate"/>.
 	/// </summary>
@@ -152,83 +224,5 @@ internal interface ISimpleflowVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitUnaryOperand([NotNull] SimpleflowParser.UnaryOperandContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.objectIdentifier"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitObjectIdentifier([NotNull] SimpleflowParser.ObjectIdentifierContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.stringLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitStringLiteral([NotNull] SimpleflowParser.StringLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.numberLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitNumberLiteral([NotNull] SimpleflowParser.NumberLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.boolLeteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitBoolLeteral([NotNull] SimpleflowParser.BoolLeteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.noneLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitNoneLiteral([NotNull] SimpleflowParser.NoneLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.arithmeticExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitArithmeticExpression([NotNull] SimpleflowParser.ArithmeticExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.atom"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitAtom([NotNull] SimpleflowParser.AtomContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.function"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFunction([NotNull] SimpleflowParser.FunctionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.functionParameter"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFunctionParameter([NotNull] SimpleflowParser.FunctionParameterContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.functionParameterValue"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFunctionParameterValue([NotNull] SimpleflowParser.FunctionParameterValueContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.jsonObj"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitJsonObj([NotNull] SimpleflowParser.JsonObjContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.pair"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitPair([NotNull] SimpleflowParser.PairContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.value"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitValue([NotNull] SimpleflowParser.ValueContext context);
 }
 } // namespace Simpleflow.Parser

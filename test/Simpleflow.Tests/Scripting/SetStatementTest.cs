@@ -115,7 +115,44 @@ namespace Simpleflow.Tests.Scripting
 
         }
 
+        [Fact]
+        public void CheckNestedObjectSyntaxWithPartialSet()
+        {
+            // Arrange  
+            var script =
+                @"
+                     let w = { 
+                              Uid: ""S123"",  
+                              child:{ 
+                                      Id : 20 
+                                    }
+                            }
+                    
+                    $MethodWithObjArg ( s: w )
+
+                    partial set w = { 
+                                        child2: { value: 10.5 }  
+                                    }
+                    output w
+                ";
+
+            var context = new SampleArgument() { Id = 25 };
+            var register = new FunctionRegister().Add("MethodWithObjArg", (Func<MethodSuperArgument, string>)MethodWithObjSuperArg);
+
+            // Act
+            FlowOutput output = new SimpleflowPipelineBuilder().AddCorePipelineServices(register).Build().Run(script, context);
+
+            // Assert
+            Assert.Equal(expected: "0-10.5--False-NULL-0", actual: (output.Output["w"] as MethodSuperArgument).Child2.ToString());
+
+        }
+
         private static string MethodWithObjArg(MethodArgument s)
+        {
+            return s.ToString();
+        }
+
+        private static string MethodWithObjSuperArg(MethodSuperArgument s)
         {
             return s.ToString();
         }

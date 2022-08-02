@@ -15,7 +15,7 @@ namespace Simpleflow.CodeGenerator
     ///  Handles Program, Let, Mutate and Rule 
     /// </summary>
     /// <typeparam name="TArg"></typeparam>
-    internal partial class SimpleflowCodeVisitor<TArg> : SimpleflowBaseVisitor<Expression>
+    internal partial class SimpleflowCodeVisitor<TArg> : SimpleflowParserBaseVisitor<Expression>
     {
         protected readonly IFunctionRegister FunctionRegister;
         protected readonly LabelTarget TargetLabelToExitFunction;
