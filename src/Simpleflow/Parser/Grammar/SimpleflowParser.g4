@@ -114,6 +114,7 @@ functionParameterValue
     | boolLeteral
     | noneLiteral
     | objectIdentifier
+    | arithmeticExpression
     ; 
 
 // Literals
@@ -153,15 +154,6 @@ pair
 //    | '[' ']'
 //    ;
 
-// value
-//    : boolLeteral
-//    | noneLiteral
-//    | numberLiteral
-//    | objectIdentifier
-//    | stringLiteral
-//    | jsonObj
-//    // | arr
-//    ;
 
 /**************************** */
 /** predicate - recursive rule */
@@ -200,6 +192,7 @@ operand
     | boolLeteral
     | noneLiteral
     | function
+    | arithmeticExpression
     ;
 
 unaryOperand
