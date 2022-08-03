@@ -12,6 +12,7 @@ nav_order: 2
 1. [Data Types](#data-types)
 1. [Operators](#operators)
 1. [Expressions](#expressions)
+1. [Template Strings](#string-template)
 1. [Script Parameters](#script-parameters)
 1. [Rule Control Flow](#rule-control-flow)
 1. [Emitters](#emitters)
@@ -25,15 +26,16 @@ nav_order: 2
 
 ```
 <let statements>* 
-(<rule statements> or <emitters> or <functions> or <set>)* 
+( <rule statements> 
+ or <emitters> 
+ or <functions> 
+ or <set statements> )* 
 ```
-
 
 ## Variables <a name="variables"></a>
 ```fsharp
 let <variablename> = expression
 ```
-Expressions can be used with only variable. Anywhere else you need expression then declare variable,  assign expression and use it.
 
 **Modify value of a variable** <br>
 ```csharp
@@ -41,7 +43,7 @@ Expressions can be used with only variable. Anywhere else you need expression th
 ```
 `set` statement can be used to modify the value of variable that has been declared using let statement. `partial` keyword can be used to modify certain properties of an object.
 
-Change values of properrties of an object:
+Update properties of an object:
 ```csharp
 partial set arg = { RegistrationDate: currentDate, IsActive: true }
 ```
@@ -84,14 +86,19 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
     <tr>
         <td>Object Type</td>
         <td>
-            Object type can be defined using JSON format. 
+            Object type can be defined using JSON format. <br>
             <code>let member = {name: 'alex', address: {city: 'ny'} }</code>
         </td>
     </tr>
 </table>
+If a value cannot be assigned while declaring you can assign <code>none</code> and then you can set value to it using <code>set</code> statement.
 
+```csharp
+# Example
+let user = none
 
-
+set user = 2
+```
 ## Operators
 
 | Operator Type | Operators             |
@@ -104,6 +111,23 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
 ```csharp
 let v = 2 + 3 * (3 * arg.value); 
 ```
+Use a space between each operand and operator.
+
+## Template Strings
+Template strings are strings delimited with backtick (`) characters, allowing for multi-line strings for string interpolation with embedded object identifiers.
+
+```csharp
+let to   = "John"; 
+let from = "Chris"; 
+
+let v    = ` Hi {to},
+             .....
+             .....
+             Thanks,
+             {from}
+           `
+```
+
 
 ## Script Parameters
 `arg` and `context` parameters available in Simpleflow script. 
@@ -151,11 +175,16 @@ Condition does not allow expression. If you need to write expression declare var
 `exit` can be used to terminate the script execution.
 
 ## Functions
+Functions can be invoked from script that have been registered with engine in host language, but you cannot create functions in this script.
+
 ```csharp
 $<function_name>(param_name1: value1, param_name2: value2, ...)
 ```
 Function parameters can be written in any order. and if you omit a parameter it takes a default value of that type.
 Function cannot be an argument to another function. Store output of a function in a variable and use it.
+
+> When you write custom functions, use POCO classes, and primitive types as a data type of parameters.
+<!-- List<POCO/Primitive>, ExpandoObject -->
 
 <table>
     <tr>
@@ -255,13 +284,13 @@ Function cannot be an argument to another function. Store output of a function i
 </table>
     
 ## Comments
-It supports single line and multi line comments 
-Single line comment using hash symbol   # *your comment here*
-Multi line comment using /* *your comment here* */  
-
-
+It supports single line and multi line comments.
 ```csharp
-/* Write your comment here */
+# Single line comment using hash symbol
+
+/*  
+    Multi-line comment
+*/
 ```
 	
 ## Script Guidelines
@@ -274,4 +303,4 @@ Multi line comment using /* *your comment here* */
 ## Limitations
 * Expressions, Objects ([], {}) cannot be used directly while passing parameters to a function.	But it accepts variables. There's a trick to use array in a function, if a function returns an array and that variable can be used to pass to another function.
 * Arrays are not supported (planned in future releases).
-```	
+
