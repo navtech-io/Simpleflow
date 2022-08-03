@@ -23,8 +23,7 @@ namespace Simpleflow.Parser
         {
         }
 
-
-        protected bool lineTerminatorAhead()
+        protected bool LineTerminatorAhead()
         {
             // Get the token ahead of the current index.
             int possibleIndexEosToken = CurrentToken.TokenIndex -1 ;

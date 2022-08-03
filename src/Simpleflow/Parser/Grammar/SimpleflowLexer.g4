@@ -3,40 +3,30 @@ lexer grammar SimpleflowLexer;
 channels { ERROR }
 options { superClass=SimpleflowLexerBase; }
 
-End:                'end';
-Exit :              'exit';
-Colon:              ':' ;
-Comma :             ',';
-True:               'true';
-False:              'false';
-Dot:                '.';
-OpenBrace:          '{';
-CloseBrace:         '}';
-
-Rule:               'rule';
-When:               'when';
-Then:               'then';
-
-Message:            'message';
-Error:              'error';
-Output:             'output';
-
-Let:                'let';
-Set:                'set';
-
-Partial:            'partial';
-
-Assign:             '=' ;
-
 WhiteSpaces:        [\t\u000B\u000C\u0020\u00A0]+ -> channel(HIDDEN);
 LineTerminator:     [\r\n\u2028\u2029] -> channel(HIDDEN);
 MultiLineComment:   '/*' .*? '*/'  -> channel(HIDDEN);
 SingleLineComment:  '#' ~[\r\n\u2028\u2029]*  -> channel(HIDDEN);
 
-And:                'and';
-Or:                 'or';
-Not:                'not';
-    
+OpenBrace:          '{';
+TemplateCloseBrace: {this.IsInTemplateString()}? '}' -> popMode;
+CloseBrace:         '}';
+OpenParen:          '(';
+CloseParen:         ')'; 
+
+Colon:              ':' ;
+Comma :             ',';
+Dot:                '.';
+
+Assign:             '=' ;
+
+PlusOp:             '+';
+MinusOp:            '-';
+TimesOp:            '*';
+DivOp:              '/';
+ModuloOp:           '%'   ;   
+
+   
 // operators 
 GreaterThan:        '>';
 GreaterThanEqual:   '>=';
@@ -45,23 +35,50 @@ LessThanEqual:      '<=';
 Equal:              '==';
 NotEqual:           '!=';
 Contains:           'contains';
-OpenParen:          '(';
-CloseParen:         ')'; 
 
-//Signed number (integer/decimal)
+
+// keywords
+
+Let:                'let';
+Set:                'set';
+Partial:            'partial';
+
+Rule:               'rule';
+When:               'when';
+Then:               'then';
+
+End:                'end';
+Exit :              'exit';
+
+Message:            'message';
+Error:              'error';
+Output:             'output';
+
+// relational operators
+
+And:                'and';
+Or:                 'or';
+Not:                'not';
+
+// Literals
+True:               'true';
+False:              'false';
 Number:             ('+'|'-')?[0-9]+('.'[0-9]+)?;
 String:             '"' ( '\\"' | ~["\r\n] )*? '"';
-
 None:               'none' ;
 Identifier:         [_]*[a-zA-Z][_a-zA-Z0-9]* ;
 
-PlusOp:             '+';
-MinusOp:            '-';
-TimesOp:            '*';
-DivOp:              '/';
-ModuloOp:           '%'   ;   
 
 FunctionName:       '$' NAME ('.' NAME)*;
+BackTick:           '`' {this.IncreaseTemplateDepth();} -> pushMode(TEMPLATE);
+
+mode TEMPLATE;
+
+BackTickInside:                 '`' {this.DecreaseTemplateDepth();} -> type(BackTick), popMode;
+TemplateStringStartExpression:  '{' -> pushMode(DEFAULT_MODE);
+TemplateStringAtom: ~[`];
+
+// Fragment rules
 
 fragment NAME
     : [_]*[a-zA-Z][_a-zA-Z0-9]* ;

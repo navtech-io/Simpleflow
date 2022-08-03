@@ -14,8 +14,6 @@ namespace Simpleflow.Parser
 #endif
     abstract class SimpleflowLexerBase : Lexer
     {
-        /// templateDepth will be 2. This variable is needed to determine if a `}` is a
-        /// plain CloseBrace, or one that closes an expression inside a template string.
         private int _templateDepth = 0;
 
         protected SimpleflowLexerBase(ICharStream input) : base(input)
@@ -26,6 +24,22 @@ namespace Simpleflow.Parser
         {
 
         }
-      
+
+        public bool IsInTemplateString()
+        {
+            return _templateDepth > 0;
+        }
+
+        public void IncreaseTemplateDepth()
+        {
+            _templateDepth++;
+        }
+
+        public void DecreaseTemplateDepth()
+        {
+            _templateDepth--;
+        }
+
+
     }
 }

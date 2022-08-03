@@ -1,10 +1,8 @@
 ﻿// Copyright (c) navtech.io. All rights reserved.
 // See License in the project root for license information.
 
-using System;
 using Xunit;
 
-using Simpleflow.CodeGenerator;
 using Simpleflow.Tests.Helpers;
 
 namespace Simpleflow.Tests.Scripting
@@ -38,5 +36,22 @@ namespace Simpleflow.Tests.Scripting
 
         }
 
+        [Fact]
+        public void StringEscapeSequence()
+        {
+
+            // Arrange
+            var script = @"
+                
+                let text = ""\TEXT\""ABC\r\nXYZ""
+                message text
+            ";
+
+            // Act
+            FlowOutput output = SimpleflowEngine.Run(script, new SampleArgument());
+
+            // Assert TODO
+            // Assert.Equal("\\TEXT\"ABC\r\nXYZ", output.Messages[0]);
+        }
     }
 }

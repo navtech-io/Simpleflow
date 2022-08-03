@@ -465,10 +465,6 @@
             </summary>
             <param name="context"></param>
         </member>
-        <member name="F:Simpleflow.Parser.SimpleflowLexerBase._templateDepth">
-            templateDepth will be 2. This variable is needed to determine if a `}` is a
-            plain CloseBrace, or one that closes an expression inside a template string.
-        </member>
         <member name="T:Simpleflow.Parser.SimpleflowParserBaseListener">
             <summary>
             This class provides an empty implementation of <see cref="T:Simpleflow.Parser.ISimpleflowParserListener"/>,
@@ -668,6 +664,34 @@
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitExpression(Simpleflow.Parser.SimpleflowParser.ExpressionContext)">
             <summary>
             Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterTemplateStringLiteral(Simpleflow.Parser.SimpleflowParser.TemplateStringLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitTemplateStringLiteral(Simpleflow.Parser.SimpleflowParser.TemplateStringLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterTemplateStringAtom(Simpleflow.Parser.SimpleflowParser.TemplateStringAtomContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringAtom"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitTemplateStringAtom(Simpleflow.Parser.SimpleflowParser.TemplateStringAtomContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringAtom"/>.
             <para>The default implementation does nothing.</para>
             </summary>
             <param name="context">The parse tree.</param>
@@ -1102,6 +1126,28 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitTemplateStringLiteral(Simpleflow.Parser.SimpleflowParser.TemplateStringLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitTemplateStringAtom(Simpleflow.Parser.SimpleflowParser.TemplateStringAtomContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringAtom"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitArithmeticExpression(Simpleflow.Parser.SimpleflowParser.ArithmeticExpressionContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arithmeticExpression"/>.
@@ -1474,6 +1520,30 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterTemplateStringLiteral(Simpleflow.Parser.SimpleflowParser.TemplateStringLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitTemplateStringLiteral(Simpleflow.Parser.SimpleflowParser.TemplateStringLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterTemplateStringAtom(Simpleflow.Parser.SimpleflowParser.TemplateStringAtomContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringAtom"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitTemplateStringAtom(Simpleflow.Parser.SimpleflowParser.TemplateStringAtomContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringAtom"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
         <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterArithmeticExpression(Simpleflow.Parser.SimpleflowParser.ArithmeticExpressionContext)">
             <summary>
             Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arithmeticExpression"/>.
@@ -1791,6 +1861,20 @@
         <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitExpression(Simpleflow.Parser.SimpleflowParser.ExpressionContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitTemplateStringLiteral(Simpleflow.Parser.SimpleflowParser.TemplateStringLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitTemplateStringAtom(Simpleflow.Parser.SimpleflowParser.TemplateStringAtomContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.templateStringAtom"/>.
             </summary>
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>

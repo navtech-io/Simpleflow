@@ -90,7 +90,7 @@ namespace Simpleflow.CodeGenerator
                 var identifier = Visit(messageToken.objectIdentifier());
 
                 identifier = identifier.Type == typeof(string) ? 
-                             identifier : Expression.Call(identifier, "ToString", typeArguments: null, arguments: null);
+                             identifier : ToStringExpression(identifier);
 
                 return CallListAddMethod(identifier, outputProperty);
             }

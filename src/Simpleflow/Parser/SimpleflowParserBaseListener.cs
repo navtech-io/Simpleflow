@@ -205,6 +205,30 @@ internal partial class SimpleflowParserBaseListener : ISimpleflowParserListener 
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitExpression([NotNull] SimpleflowParser.ExpressionContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.templateStringLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterTemplateStringLiteral([NotNull] SimpleflowParser.TemplateStringLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.templateStringLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitTemplateStringLiteral([NotNull] SimpleflowParser.TemplateStringLiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.templateStringAtom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterTemplateStringAtom([NotNull] SimpleflowParser.TemplateStringAtomContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.templateStringAtom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitTemplateStringAtom([NotNull] SimpleflowParser.TemplateStringAtomContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.arithmeticExpression"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
