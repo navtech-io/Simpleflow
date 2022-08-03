@@ -28,7 +28,26 @@ namespace Simpleflow.Tests.Scripting
             Assert.Equal(actual: output.Messages[0], expected: "1==1");
         }
 
-       
+        [Fact]
+        public void EqualPredicateWithArithmenticExpressiion()
+        {
+            // Arrange
+
+            var script =
+                @"
+                   rule when 5 == 2 + 3 then
+                      message ""Arithmetic""
+                ";
+
+            // Act 
+            FlowOutput output = SimpleflowEngine.Run(script, new SampleArgument());
+
+            // Assert
+            Assert.Equal(actual: output.Messages.Count, expected: 1);
+            Assert.Equal(actual: output.Messages[0], expected: "Arithmetic");
+        }
+
+
         [Fact] 
         public void FunctionInPredicate()
         {

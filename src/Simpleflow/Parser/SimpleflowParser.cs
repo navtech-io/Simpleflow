@@ -37,50 +37,53 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
-		End=1, Exit=2, Colon=3, Comma=4, True=5, False=6, Dot=7, OpenBrace=8, 
-		CloseBrace=9, Rule=10, When=11, Then=12, Message=13, Error=14, Output=15, 
-		Let=16, Set=17, Partial=18, Assign=19, WhiteSpaces=20, LineTerminator=21, 
-		MultiLineComment=22, SingleLineComment=23, And=24, Or=25, Not=26, GreaterThan=27, 
-		GreaterThanEqual=28, LessThan=29, LessThanEqual=30, Equal=31, NotEqual=32, 
-		Contains=33, OpenParen=34, CloseParen=35, Number=36, String=37, None=38, 
-		Identifier=39, PlusOp=40, MinusOp=41, TimesOp=42, DivOp=43, ModuloOp=44, 
-		FunctionName=45;
+		WhiteSpaces=1, LineTerminator=2, MultiLineComment=3, SingleLineComment=4, 
+		OpenBrace=5, TemplateCloseBrace=6, CloseBrace=7, OpenParen=8, CloseParen=9, 
+		Colon=10, Comma=11, Dot=12, Assign=13, PlusOp=14, MinusOp=15, TimesOp=16, 
+		DivOp=17, ModuloOp=18, GreaterThan=19, GreaterThanEqual=20, LessThan=21, 
+		LessThanEqual=22, Equal=23, NotEqual=24, Contains=25, Let=26, Set=27, 
+		Partial=28, Rule=29, When=30, Then=31, End=32, Exit=33, Message=34, Error=35, 
+		Output=36, And=37, Or=38, Not=39, True=40, False=41, Number=42, String=43, 
+		None=44, Identifier=45, FunctionName=46, BackTick=47, TemplateStringStartExpression=48, 
+		TemplateStringAtom=49;
 	public const int
 		RULE_program = 0, RULE_ruleStmt = 1, RULE_endRuleStmt = 2, RULE_exitStmt = 3, 
 		RULE_generalStatement = 4, RULE_letStmt = 5, RULE_setStmt = 6, RULE_messageStmt = 7, 
 		RULE_errorStmt = 8, RULE_messageText = 9, RULE_outputStmt = 10, RULE_functionStmt = 11, 
-		RULE_eos = 12, RULE_expression = 13, RULE_arithmeticExpression = 14, RULE_atom = 15, 
-		RULE_function = 16, RULE_functionParameter = 17, RULE_functionParameterValue = 18, 
-		RULE_objectIdentifier = 19, RULE_stringLiteral = 20, RULE_numberLiteral = 21, 
-		RULE_boolLeteral = 22, RULE_noneLiteral = 23, RULE_jsonObj = 24, RULE_pair = 25, 
-		RULE_predicate = 26, RULE_testExpression = 27, RULE_logicalOperator = 28, 
-		RULE_relationalOperator = 29, RULE_operand = 30, RULE_unaryOperand = 31;
+		RULE_eos = 12, RULE_expression = 13, RULE_templateStringLiteral = 14, 
+		RULE_templateStringAtom = 15, RULE_arithmeticExpression = 16, RULE_atom = 17, 
+		RULE_function = 18, RULE_functionParameter = 19, RULE_functionParameterValue = 20, 
+		RULE_objectIdentifier = 21, RULE_stringLiteral = 22, RULE_numberLiteral = 23, 
+		RULE_boolLeteral = 24, RULE_noneLiteral = 25, RULE_jsonObj = 26, RULE_pair = 27, 
+		RULE_predicate = 28, RULE_testExpression = 29, RULE_logicalOperator = 30, 
+		RULE_relationalOperator = 31, RULE_operand = 32, RULE_unaryOperand = 33;
 	public static readonly string[] ruleNames = {
 		"program", "ruleStmt", "endRuleStmt", "exitStmt", "generalStatement", 
 		"letStmt", "setStmt", "messageStmt", "errorStmt", "messageText", "outputStmt", 
-		"functionStmt", "eos", "expression", "arithmeticExpression", "atom", "function", 
-		"functionParameter", "functionParameterValue", "objectIdentifier", "stringLiteral", 
-		"numberLiteral", "boolLeteral", "noneLiteral", "jsonObj", "pair", "predicate", 
-		"testExpression", "logicalOperator", "relationalOperator", "operand", 
-		"unaryOperand"
+		"functionStmt", "eos", "expression", "templateStringLiteral", "templateStringAtom", 
+		"arithmeticExpression", "atom", "function", "functionParameter", "functionParameterValue", 
+		"objectIdentifier", "stringLiteral", "numberLiteral", "boolLeteral", "noneLiteral", 
+		"jsonObj", "pair", "predicate", "testExpression", "logicalOperator", "relationalOperator", 
+		"operand", "unaryOperand"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'end'", "'exit'", "':'", "','", "'true'", "'false'", "'.'", "'{'", 
-		"'}'", "'rule'", "'when'", "'then'", "'message'", "'error'", "'output'", 
-		"'let'", "'set'", "'partial'", "'='", null, null, null, null, "'and'", 
-		"'or'", "'not'", "'>'", "'>='", "'<'", "'<='", "'=='", "'!='", "'contains'", 
-		"'('", "')'", null, null, "'none'", null, "'+'", "'-'", "'*'", "'/'", 
-		"'%'"
+		null, null, null, null, null, null, null, "'}'", "'('", "')'", "':'", 
+		"','", "'.'", "'='", "'+'", "'-'", "'*'", "'/'", "'%'", "'>'", "'>='", 
+		"'<'", "'<='", "'=='", "'!='", "'contains'", "'let'", "'set'", "'partial'", 
+		"'rule'", "'when'", "'then'", "'end'", "'exit'", "'message'", "'error'", 
+		"'output'", "'and'", "'or'", "'not'", "'true'", "'false'", null, null, 
+		"'none'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, "End", "Exit", "Colon", "Comma", "True", "False", "Dot", "OpenBrace", 
-		"CloseBrace", "Rule", "When", "Then", "Message", "Error", "Output", "Let", 
-		"Set", "Partial", "Assign", "WhiteSpaces", "LineTerminator", "MultiLineComment", 
-		"SingleLineComment", "And", "Or", "Not", "GreaterThan", "GreaterThanEqual", 
-		"LessThan", "LessThanEqual", "Equal", "NotEqual", "Contains", "OpenParen", 
-		"CloseParen", "Number", "String", "None", "Identifier", "PlusOp", "MinusOp", 
-		"TimesOp", "DivOp", "ModuloOp", "FunctionName"
+		null, "WhiteSpaces", "LineTerminator", "MultiLineComment", "SingleLineComment", 
+		"OpenBrace", "TemplateCloseBrace", "CloseBrace", "OpenParen", "CloseParen", 
+		"Colon", "Comma", "Dot", "Assign", "PlusOp", "MinusOp", "TimesOp", "DivOp", 
+		"ModuloOp", "GreaterThan", "GreaterThanEqual", "LessThan", "LessThanEqual", 
+		"Equal", "NotEqual", "Contains", "Let", "Set", "Partial", "Rule", "When", 
+		"Then", "End", "Exit", "Message", "Error", "Output", "And", "Or", "Not", 
+		"True", "False", "Number", "String", "None", "Identifier", "FunctionName", 
+		"BackTick", "TemplateStringStartExpression", "TemplateStringAtom"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -165,43 +168,43 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 67;
+			State = 71;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==Let) {
 				{
 				{
-				State = 64;
+				State = 68;
 				letStmt();
 				}
 				}
-				State = 69;
+				State = 73;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 74;
+			State = 78;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Exit) | (1L << Rule) | (1L << Message) | (1L << Error) | (1L << Output) | (1L << Set) | (1L << Partial) | (1L << FunctionName))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Set) | (1L << Partial) | (1L << Rule) | (1L << Exit) | (1L << Message) | (1L << Error) | (1L << Output) | (1L << FunctionName))) != 0)) {
 				{
-				State = 72;
+				State = 76;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
 				case Rule:
 					{
-					State = 70;
+					State = 74;
 					ruleStmt();
 					}
 					break;
+				case Set:
+				case Partial:
 				case Exit:
 				case Message:
 				case Error:
 				case Output:
-				case Set:
-				case Partial:
 				case FunctionName:
 					{
-					State = 71;
+					State = 75;
 					generalStatement();
 					}
 					break;
@@ -209,11 +212,11 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 					throw new NoViableAltException(this);
 				}
 				}
-				State = 76;
+				State = 80;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 77;
+			State = 81;
 			Match(Eof);
 			}
 		}
@@ -309,59 +312,59 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 79;
-			Match(Rule);
-			State = 80;
-			Match(When);
-			State = 81;
-			predicate(0);
-			State = 82;
-			Match(Then);
 			State = 83;
+			Match(Rule);
+			State = 84;
+			Match(When);
+			State = 85;
+			predicate(0);
+			State = 86;
+			Match(Then);
+			State = 87;
 			eos();
-			State = 92;
+			State = 96;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,4,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
-					State = 90;
+					State = 94;
 					ErrorHandler.Sync(this);
 					switch (TokenStream.LA(1)) {
 					case Message:
 						{
-						State = 84;
+						State = 88;
 						messageStmt();
 						}
 						break;
 					case Error:
 						{
-						State = 85;
+						State = 89;
 						errorStmt();
 						}
 						break;
 					case Output:
 						{
-						State = 86;
+						State = 90;
 						outputStmt();
 						}
 						break;
 					case Set:
 					case Partial:
 						{
-						State = 87;
+						State = 91;
 						setStmt();
 						}
 						break;
 					case FunctionName:
 						{
-						State = 88;
+						State = 92;
 						functionStmt();
 						}
 						break;
 					case Exit:
 						{
-						State = 89;
+						State = 93;
 						exitStmt();
 						}
 						break;
@@ -370,16 +373,16 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 					}
 					} 
 				}
-				State = 94;
+				State = 98;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,4,Context);
 			}
-			State = 96;
+			State = 100;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==End) {
 				{
-				State = 95;
+				State = 99;
 				endRuleStmt();
 				}
 			}
@@ -433,11 +436,11 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 98;
+			State = 102;
 			Match(End);
-			State = 99;
+			State = 103;
 			Match(Rule);
-			State = 100;
+			State = 104;
 			eos();
 			}
 		}
@@ -487,9 +490,9 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 102;
+			State = 106;
 			Match(Exit);
-			State = 103;
+			State = 107;
 			eos();
 			}
 		}
@@ -551,27 +554,27 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		GeneralStatementContext _localctx = new GeneralStatementContext(Context, State);
 		EnterRule(_localctx, 8, RULE_generalStatement);
 		try {
-			State = 111;
+			State = 115;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case Message:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 105;
+				State = 109;
 				messageStmt();
 				}
 				break;
 			case Error:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 106;
+				State = 110;
 				errorStmt();
 				}
 				break;
 			case Output:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 107;
+				State = 111;
 				outputStmt();
 				}
 				break;
@@ -579,21 +582,21 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 			case Partial:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 108;
+				State = 112;
 				setStmt();
 				}
 				break;
 			case FunctionName:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 109;
+				State = 113;
 				functionStmt();
 				}
 				break;
 			case Exit:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 110;
+				State = 114;
 				exitStmt();
 				}
 				break;
@@ -652,15 +655,15 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 113;
-			Match(Let);
-			State = 114;
-			Match(Identifier);
-			State = 115;
-			Match(Assign);
-			State = 116;
-			expression();
 			State = 117;
+			Match(Let);
+			State = 118;
+			Match(Identifier);
+			State = 119;
+			Match(Assign);
+			State = 120;
+			expression();
+			State = 121;
 			eos();
 			}
 		}
@@ -717,25 +720,25 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 120;
+			State = 124;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==Partial) {
 				{
-				State = 119;
+				State = 123;
 				Match(Partial);
 				}
 			}
 
-			State = 122;
-			Match(Set);
-			State = 123;
-			Match(Identifier);
-			State = 124;
-			Match(Assign);
-			State = 125;
-			expression();
 			State = 126;
+			Match(Set);
+			State = 127;
+			Match(Identifier);
+			State = 128;
+			Match(Assign);
+			State = 129;
+			expression();
+			State = 130;
 			eos();
 			}
 		}
@@ -788,11 +791,11 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 128;
+			State = 132;
 			Match(Message);
-			State = 129;
+			State = 133;
 			messageText();
-			State = 130;
+			State = 134;
 			eos();
 			}
 		}
@@ -845,11 +848,11 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 132;
+			State = 136;
 			Match(Error);
-			State = 133;
+			State = 137;
 			messageText();
-			State = 134;
+			State = 138;
 			eos();
 			}
 		}
@@ -899,18 +902,18 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 138;
+			State = 142;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case String:
 				{
-				State = 136;
+				State = 140;
 				Match(String);
 				}
 				break;
 			case Identifier:
 				{
-				State = 137;
+				State = 141;
 				objectIdentifier();
 				}
 				break;
@@ -968,11 +971,11 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 140;
+			State = 144;
 			Match(Output);
-			State = 141;
+			State = 145;
 			objectIdentifier();
-			State = 142;
+			State = 146;
 			eos();
 			}
 		}
@@ -1024,9 +1027,9 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 144;
+			State = 148;
 			function();
-			State = 145;
+			State = 149;
 			eos();
 			}
 		}
@@ -1071,21 +1074,21 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		EosContext _localctx = new EosContext(Context, State);
 		EnterRule(_localctx, 24, RULE_eos);
 		try {
-			State = 149;
+			State = 153;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,9,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 147;
+				State = 151;
 				Match(Eof);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 148;
-				if (!(this.lineTerminatorAhead())) throw new FailedPredicateException(this, "this.lineTerminatorAhead()");
+				State = 152;
+				if (!(this.LineTerminatorAhead())) throw new FailedPredicateException(this, "this.LineTerminatorAhead()");
 				}
 				break;
 			}
@@ -1123,6 +1126,9 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		[System.Diagnostics.DebuggerNonUserCode] public StringLiteralContext stringLiteral() {
 			return GetRuleContext<StringLiteralContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public TemplateStringLiteralContext templateStringLiteral() {
+			return GetRuleContext<TemplateStringLiteralContext>(0);
+		}
 		public ExpressionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -1151,58 +1157,209 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		ExpressionContext _localctx = new ExpressionContext(Context, State);
 		EnterRule(_localctx, 26, RULE_expression);
 		try {
-			State = 158;
+			State = 163;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,10,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 151;
+				State = 155;
 				boolLeteral();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 152;
+				State = 156;
 				noneLiteral();
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 153;
+				State = 157;
 				function();
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 154;
+				State = 158;
 				jsonObj();
 				}
 				break;
 			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 155;
+				State = 159;
 				objectIdentifier();
 				}
 				break;
 			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 156;
+				State = 160;
 				arithmeticExpression(0);
 				}
 				break;
 			case 7:
 				EnterOuterAlt(_localctx, 7);
 				{
-				State = 157;
+				State = 161;
 				stringLiteral();
 				}
 				break;
+			case 8:
+				EnterOuterAlt(_localctx, 8);
+				{
+				State = 162;
+				templateStringLiteral();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class TemplateStringLiteralContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BackTick() { return GetTokens(SimpleflowParser.BackTick); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BackTick(int i) {
+			return GetToken(SimpleflowParser.BackTick, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public TemplateStringAtomContext[] templateStringAtom() {
+			return GetRuleContexts<TemplateStringAtomContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public TemplateStringAtomContext templateStringAtom(int i) {
+			return GetRuleContext<TemplateStringAtomContext>(i);
+		}
+		public TemplateStringLiteralContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_templateStringLiteral; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterTemplateStringLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitTemplateStringLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTemplateStringLiteral(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public TemplateStringLiteralContext templateStringLiteral() {
+		TemplateStringLiteralContext _localctx = new TemplateStringLiteralContext(Context, State);
+		EnterRule(_localctx, 28, RULE_templateStringLiteral);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 165;
+			Match(BackTick);
+			State = 169;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==TemplateStringStartExpression || _la==TemplateStringAtom) {
+				{
+				{
+				State = 166;
+				templateStringAtom();
+				}
+				}
+				State = 171;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			State = 172;
+			Match(BackTick);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	internal partial class TemplateStringAtomContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TemplateStringAtom() { return GetToken(SimpleflowParser.TemplateStringAtom, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TemplateStringStartExpression() { return GetToken(SimpleflowParser.TemplateStringStartExpression, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ObjectIdentifierContext objectIdentifier() {
+			return GetRuleContext<ObjectIdentifierContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TemplateCloseBrace() { return GetToken(SimpleflowParser.TemplateCloseBrace, 0); }
+		public TemplateStringAtomContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_templateStringAtom; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.EnterTemplateStringAtom(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ISimpleflowParserListener typedListener = listener as ISimpleflowParserListener;
+			if (typedListener != null) typedListener.ExitTemplateStringAtom(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ISimpleflowParserVisitor<TResult> typedVisitor = visitor as ISimpleflowParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTemplateStringAtom(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public TemplateStringAtomContext templateStringAtom() {
+		TemplateStringAtomContext _localctx = new TemplateStringAtomContext(Context, State);
+		EnterRule(_localctx, 30, RULE_templateStringAtom);
+		try {
+			State = 179;
+			ErrorHandler.Sync(this);
+			switch (TokenStream.LA(1)) {
+			case TemplateStringAtom:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 174;
+				Match(TemplateStringAtom);
+				}
+				break;
+			case TemplateStringStartExpression:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 175;
+				Match(TemplateStringStartExpression);
+				State = 176;
+				objectIdentifier();
+				State = 177;
+				Match(TemplateCloseBrace);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1266,53 +1423,53 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		int _parentState = State;
 		ArithmeticExpressionContext _localctx = new ArithmeticExpressionContext(Context, _parentState);
 		ArithmeticExpressionContext _prevctx = _localctx;
-		int _startState = 28;
-		EnterRecursionRule(_localctx, 28, RULE_arithmeticExpression, _p);
+		int _startState = 32;
+		EnterRecursionRule(_localctx, 32, RULE_arithmeticExpression, _p);
 		int _la;
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 166;
+			State = 187;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,11,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,13,Context) ) {
 			case 1:
 				{
-				State = 161;
+				State = 182;
 				Match(OpenParen);
-				State = 162;
+				State = 183;
 				arithmeticExpression(0);
-				State = 163;
+				State = 184;
 				Match(CloseParen);
 				}
 				break;
 			case 2:
 				{
-				State = 165;
+				State = 186;
 				atom();
 				}
 				break;
 			}
 			Context.Stop = TokenStream.LT(-1);
-			State = 176;
+			State = 197;
 			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,13,Context);
+			_alt = Interpreter.AdaptivePredict(TokenStream,15,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( ParseListeners!=null )
 						TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 174;
+					State = 195;
 					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,12,Context) ) {
+					switch ( Interpreter.AdaptivePredict(TokenStream,14,Context) ) {
 					case 1:
 						{
 						_localctx = new ArithmeticExpressionContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_arithmeticExpression);
-						State = 168;
+						State = 189;
 						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
-						State = 169;
+						State = 190;
 						_la = TokenStream.LA(1);
 						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TimesOp) | (1L << DivOp) | (1L << ModuloOp))) != 0)) ) {
 						ErrorHandler.RecoverInline(this);
@@ -1321,7 +1478,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 							ErrorHandler.ReportMatch(this);
 						    Consume();
 						}
-						State = 170;
+						State = 191;
 						arithmeticExpression(5);
 						}
 						break;
@@ -1329,9 +1486,9 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 						{
 						_localctx = new ArithmeticExpressionContext(_parentctx, _parentState);
 						PushNewRecursionContext(_localctx, _startState, RULE_arithmeticExpression);
-						State = 171;
+						State = 192;
 						if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
-						State = 172;
+						State = 193;
 						_la = TokenStream.LA(1);
 						if ( !(_la==PlusOp || _la==MinusOp) ) {
 						ErrorHandler.RecoverInline(this);
@@ -1340,16 +1497,16 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 							ErrorHandler.ReportMatch(this);
 						    Consume();
 						}
-						State = 173;
+						State = 194;
 						arithmeticExpression(4);
 						}
 						break;
 					}
 					} 
 				}
-				State = 178;
+				State = 199;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,13,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,15,Context);
 			}
 			}
 		}
@@ -1395,11 +1552,11 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public AtomContext atom() {
 		AtomContext _localctx = new AtomContext(Context, State);
-		EnterRule(_localctx, 30, RULE_atom);
+		EnterRule(_localctx, 34, RULE_atom);
 		try {
-			State = 182;
+			State = 203;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,14,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,16,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
@@ -1408,14 +1565,14 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 180;
+				State = 201;
 				Match(Number);
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 181;
+				State = 202;
 				objectIdentifier();
 				}
 				break;
@@ -1472,42 +1629,42 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public FunctionContext function() {
 		FunctionContext _localctx = new FunctionContext(Context, State);
-		EnterRule(_localctx, 32, RULE_function);
+		EnterRule(_localctx, 36, RULE_function);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 184;
+			State = 205;
 			Match(FunctionName);
-			State = 185;
+			State = 206;
 			Match(OpenParen);
-			State = 194;
+			State = 215;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==Identifier) {
 				{
-				State = 186;
+				State = 207;
 				functionParameter();
-				State = 191;
+				State = 212;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==Comma) {
 					{
 					{
-					State = 187;
+					State = 208;
 					Match(Comma);
-					State = 188;
+					State = 209;
 					functionParameter();
 					}
 					}
-					State = 193;
+					State = 214;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
 				}
 			}
 
-			State = 196;
+			State = 217;
 			Match(CloseParen);
 			}
 		}
@@ -1554,15 +1711,15 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public FunctionParameterContext functionParameter() {
 		FunctionParameterContext _localctx = new FunctionParameterContext(Context, State);
-		EnterRule(_localctx, 34, RULE_functionParameter);
+		EnterRule(_localctx, 38, RULE_functionParameter);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 198;
+			State = 219;
 			Match(Identifier);
-			State = 199;
+			State = 220;
 			Match(Colon);
-			State = 200;
+			State = 221;
 			functionParameterValue();
 			}
 		}
@@ -1593,6 +1750,9 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		[System.Diagnostics.DebuggerNonUserCode] public ObjectIdentifierContext objectIdentifier() {
 			return GetRuleContext<ObjectIdentifierContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public ArithmeticExpressionContext arithmeticExpression() {
+			return GetRuleContext<ArithmeticExpressionContext>(0);
+		}
 		public FunctionParameterValueContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -1619,49 +1779,53 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public FunctionParameterValueContext functionParameterValue() {
 		FunctionParameterValueContext _localctx = new FunctionParameterValueContext(Context, State);
-		EnterRule(_localctx, 36, RULE_functionParameterValue);
+		EnterRule(_localctx, 40, RULE_functionParameterValue);
 		try {
-			State = 207;
+			State = 229;
 			ErrorHandler.Sync(this);
-			switch (TokenStream.LA(1)) {
-			case Number:
+			switch ( Interpreter.AdaptivePredict(TokenStream,19,Context) ) {
+			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 202;
+				State = 223;
 				numberLiteral();
 				}
 				break;
-			case String:
+			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 203;
+				State = 224;
 				stringLiteral();
 				}
 				break;
-			case True:
-			case False:
+			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 204;
+				State = 225;
 				boolLeteral();
 				}
 				break;
-			case None:
+			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 205;
+				State = 226;
 				noneLiteral();
 				}
 				break;
-			case Identifier:
+			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 206;
+				State = 227;
 				objectIdentifier();
 				}
 				break;
-			default:
-				throw new NoViableAltException(this);
+			case 6:
+				EnterOuterAlt(_localctx, 6);
+				{
+				State = 228;
+				arithmeticExpression(0);
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -1710,30 +1874,30 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public ObjectIdentifierContext objectIdentifier() {
 		ObjectIdentifierContext _localctx = new ObjectIdentifierContext(Context, State);
-		EnterRule(_localctx, 38, RULE_objectIdentifier);
+		EnterRule(_localctx, 42, RULE_objectIdentifier);
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 209;
+			State = 231;
 			Match(Identifier);
-			State = 214;
+			State = 236;
 			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,18,Context);
+			_alt = Interpreter.AdaptivePredict(TokenStream,20,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					State = 210;
+					State = 232;
 					Match(Dot);
-					State = 211;
+					State = 233;
 					Match(Identifier);
 					}
 					} 
 				}
-				State = 216;
+				State = 238;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,18,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,20,Context);
 			}
 			}
 		}
@@ -1776,11 +1940,11 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public StringLiteralContext stringLiteral() {
 		StringLiteralContext _localctx = new StringLiteralContext(Context, State);
-		EnterRule(_localctx, 40, RULE_stringLiteral);
+		EnterRule(_localctx, 44, RULE_stringLiteral);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 217;
+			State = 239;
 			Match(String);
 			}
 		}
@@ -1823,11 +1987,11 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public NumberLiteralContext numberLiteral() {
 		NumberLiteralContext _localctx = new NumberLiteralContext(Context, State);
-		EnterRule(_localctx, 42, RULE_numberLiteral);
+		EnterRule(_localctx, 46, RULE_numberLiteral);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 219;
+			State = 241;
 			Match(Number);
 			}
 		}
@@ -1871,12 +2035,12 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public BoolLeteralContext boolLeteral() {
 		BoolLeteralContext _localctx = new BoolLeteralContext(Context, State);
-		EnterRule(_localctx, 44, RULE_boolLeteral);
+		EnterRule(_localctx, 48, RULE_boolLeteral);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 221;
+			State = 243;
 			_la = TokenStream.LA(1);
 			if ( !(_la==True || _la==False) ) {
 			ErrorHandler.RecoverInline(this);
@@ -1926,11 +2090,11 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public NoneLiteralContext noneLiteral() {
 		NoneLiteralContext _localctx = new NoneLiteralContext(Context, State);
-		EnterRule(_localctx, 46, RULE_noneLiteral);
+		EnterRule(_localctx, 50, RULE_noneLiteral);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 223;
+			State = 245;
 			Match(None);
 			}
 		}
@@ -1984,45 +2148,45 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public JsonObjContext jsonObj() {
 		JsonObjContext _localctx = new JsonObjContext(Context, State);
-		EnterRule(_localctx, 48, RULE_jsonObj);
+		EnterRule(_localctx, 52, RULE_jsonObj);
 		int _la;
 		try {
-			State = 238;
+			State = 260;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,20,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,22,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 225;
+				State = 247;
 				Match(OpenBrace);
-				State = 226;
+				State = 248;
 				pair();
-				State = 231;
+				State = 253;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==Comma) {
 					{
 					{
-					State = 227;
+					State = 249;
 					Match(Comma);
-					State = 228;
+					State = 250;
 					pair();
 					}
 					}
-					State = 233;
+					State = 255;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 234;
+				State = 256;
 				Match(CloseBrace);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 236;
+				State = 258;
 				Match(OpenBrace);
-				State = 237;
+				State = 259;
 				Match(CloseBrace);
 				}
 				break;
@@ -2071,15 +2235,15 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public PairContext pair() {
 		PairContext _localctx = new PairContext(Context, State);
-		EnterRule(_localctx, 50, RULE_pair);
+		EnterRule(_localctx, 54, RULE_pair);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 240;
+			State = 262;
 			Match(Identifier);
-			State = 241;
+			State = 263;
 			Match(Colon);
-			State = 242;
+			State = 264;
 			expression();
 			}
 		}
@@ -2146,50 +2310,50 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		int _parentState = State;
 		PredicateContext _localctx = new PredicateContext(Context, _parentState);
 		PredicateContext _prevctx = _localctx;
-		int _startState = 52;
-		EnterRecursionRule(_localctx, 52, RULE_predicate, _p);
+		int _startState = 56;
+		EnterRecursionRule(_localctx, 56, RULE_predicate, _p);
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 253;
+			State = 275;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,21,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,23,Context) ) {
 			case 1:
 				{
-				State = 245;
+				State = 267;
 				testExpression();
 				}
 				break;
 			case 2:
 				{
-				State = 246;
+				State = 268;
 				unaryOperand();
 				}
 				break;
 			case 3:
 				{
-				State = 247;
+				State = 269;
 				Match(OpenParen);
-				State = 248;
+				State = 270;
 				predicate(0);
-				State = 249;
+				State = 271;
 				Match(CloseParen);
 				}
 				break;
 			case 4:
 				{
-				State = 251;
+				State = 273;
 				Match(Not);
-				State = 252;
+				State = 274;
 				predicate(1);
 				}
 				break;
 			}
 			Context.Stop = TokenStream.LT(-1);
-			State = 261;
+			State = 283;
 			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,22,Context);
+			_alt = Interpreter.AdaptivePredict(TokenStream,24,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( ParseListeners!=null )
@@ -2199,18 +2363,18 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 					{
 					_localctx = new PredicateContext(_parentctx, _parentState);
 					PushNewRecursionContext(_localctx, _startState, RULE_predicate);
-					State = 255;
+					State = 277;
 					if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
-					State = 256;
+					State = 278;
 					logicalOperator();
-					State = 257;
+					State = 279;
 					predicate(4);
 					}
 					} 
 				}
-				State = 263;
+				State = 285;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,22,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,24,Context);
 			}
 			}
 		}
@@ -2261,15 +2425,15 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public TestExpressionContext testExpression() {
 		TestExpressionContext _localctx = new TestExpressionContext(Context, State);
-		EnterRule(_localctx, 54, RULE_testExpression);
+		EnterRule(_localctx, 58, RULE_testExpression);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 264;
+			State = 286;
 			operand();
-			State = 265;
+			State = 287;
 			relationalOperator();
-			State = 266;
+			State = 288;
 			operand();
 			}
 		}
@@ -2313,12 +2477,12 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public LogicalOperatorContext logicalOperator() {
 		LogicalOperatorContext _localctx = new LogicalOperatorContext(Context, State);
-		EnterRule(_localctx, 56, RULE_logicalOperator);
+		EnterRule(_localctx, 60, RULE_logicalOperator);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 268;
+			State = 290;
 			_la = TokenStream.LA(1);
 			if ( !(_la==And || _la==Or) ) {
 			ErrorHandler.RecoverInline(this);
@@ -2374,12 +2538,12 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public RelationalOperatorContext relationalOperator() {
 		RelationalOperatorContext _localctx = new RelationalOperatorContext(Context, State);
-		EnterRule(_localctx, 58, RULE_relationalOperator);
+		EnterRule(_localctx, 62, RULE_relationalOperator);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 270;
+			State = 292;
 			_la = TokenStream.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << GreaterThan) | (1L << GreaterThanEqual) | (1L << LessThan) | (1L << LessThanEqual) | (1L << Equal) | (1L << NotEqual) | (1L << Contains))) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -2420,6 +2584,9 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		[System.Diagnostics.DebuggerNonUserCode] public FunctionContext function() {
 			return GetRuleContext<FunctionContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public ArithmeticExpressionContext arithmeticExpression() {
+			return GetRuleContext<ArithmeticExpressionContext>(0);
+		}
 		public OperandContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -2446,56 +2613,60 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public OperandContext operand() {
 		OperandContext _localctx = new OperandContext(Context, State);
-		EnterRule(_localctx, 60, RULE_operand);
+		EnterRule(_localctx, 64, RULE_operand);
 		try {
-			State = 278;
+			State = 301;
 			ErrorHandler.Sync(this);
-			switch (TokenStream.LA(1)) {
-			case Identifier:
+			switch ( Interpreter.AdaptivePredict(TokenStream,25,Context) ) {
+			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 272;
+				State = 294;
 				objectIdentifier();
 				}
 				break;
-			case String:
+			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 273;
+				State = 295;
 				stringLiteral();
 				}
 				break;
-			case Number:
+			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 274;
+				State = 296;
 				numberLiteral();
 				}
 				break;
-			case True:
-			case False:
+			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 275;
+				State = 297;
 				boolLeteral();
 				}
 				break;
-			case None:
+			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 276;
+				State = 298;
 				noneLiteral();
 				}
 				break;
-			case FunctionName:
+			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 277;
+				State = 299;
 				function();
 				}
 				break;
-			default:
-				throw new NoViableAltException(this);
+			case 7:
+				EnterOuterAlt(_localctx, 7);
+				{
+				State = 300;
+				arithmeticExpression(0);
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -2545,30 +2716,30 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	[RuleVersion(0)]
 	public UnaryOperandContext unaryOperand() {
 		UnaryOperandContext _localctx = new UnaryOperandContext(Context, State);
-		EnterRule(_localctx, 62, RULE_unaryOperand);
+		EnterRule(_localctx, 66, RULE_unaryOperand);
 		try {
-			State = 283;
+			State = 306;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case True:
 			case False:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 280;
+				State = 303;
 				boolLeteral();
 				}
 				break;
 			case Identifier:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 281;
+				State = 304;
 				objectIdentifier();
 				}
 				break;
 			case FunctionName:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 282;
+				State = 305;
 				function();
 				}
 				break;
@@ -2590,14 +2761,14 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	public override bool Sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
 		case 12: return eos_sempred((EosContext)_localctx, predIndex);
-		case 14: return arithmeticExpression_sempred((ArithmeticExpressionContext)_localctx, predIndex);
-		case 26: return predicate_sempred((PredicateContext)_localctx, predIndex);
+		case 16: return arithmeticExpression_sempred((ArithmeticExpressionContext)_localctx, predIndex);
+		case 28: return predicate_sempred((PredicateContext)_localctx, predIndex);
 		}
 		return true;
 	}
 	private bool eos_sempred(EosContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return this.lineTerminatorAhead();
+		case 0: return this.LineTerminatorAhead();
 		}
 		return true;
 	}
@@ -2616,99 +2787,107 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,45,286,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		4,1,49,309,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
 		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
 		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
 		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,28,
-		2,29,7,29,2,30,7,30,2,31,7,31,1,0,5,0,66,8,0,10,0,12,0,69,9,0,1,0,1,0,
-		5,0,73,8,0,10,0,12,0,76,9,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,5,1,91,8,1,10,1,12,1,94,9,1,1,1,3,1,97,8,1,1,2,1,2,1,2,1,2,1,
-		3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,4,3,4,112,8,4,1,5,1,5,1,5,1,5,1,5,1,5,
-		1,6,3,6,121,8,6,1,6,1,6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,8,1,8,1,8,1,
-		8,1,9,1,9,3,9,139,8,9,1,10,1,10,1,10,1,10,1,11,1,11,1,11,1,12,1,12,3,12,
-		150,8,12,1,13,1,13,1,13,1,13,1,13,1,13,1,13,3,13,159,8,13,1,14,1,14,1,
-		14,1,14,1,14,1,14,3,14,167,8,14,1,14,1,14,1,14,1,14,1,14,1,14,5,14,175,
-		8,14,10,14,12,14,178,9,14,1,15,1,15,1,15,3,15,183,8,15,1,16,1,16,1,16,
-		1,16,1,16,5,16,190,8,16,10,16,12,16,193,9,16,3,16,195,8,16,1,16,1,16,1,
-		17,1,17,1,17,1,17,1,18,1,18,1,18,1,18,1,18,3,18,208,8,18,1,19,1,19,1,19,
-		5,19,213,8,19,10,19,12,19,216,9,19,1,20,1,20,1,21,1,21,1,22,1,22,1,23,
-		1,23,1,24,1,24,1,24,1,24,5,24,230,8,24,10,24,12,24,233,9,24,1,24,1,24,
-		1,24,1,24,3,24,239,8,24,1,25,1,25,1,25,1,25,1,26,1,26,1,26,1,26,1,26,1,
-		26,1,26,1,26,1,26,3,26,254,8,26,1,26,1,26,1,26,1,26,5,26,260,8,26,10,26,
-		12,26,263,9,26,1,27,1,27,1,27,1,27,1,28,1,28,1,29,1,29,1,30,1,30,1,30,
-		1,30,1,30,1,30,3,30,279,8,30,1,31,1,31,1,31,3,31,284,8,31,1,31,0,2,28,
-		52,32,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,
-		46,48,50,52,54,56,58,60,62,0,5,1,0,42,44,1,0,40,41,1,0,5,6,1,0,24,25,1,
-		0,27,33,302,0,67,1,0,0,0,2,79,1,0,0,0,4,98,1,0,0,0,6,102,1,0,0,0,8,111,
-		1,0,0,0,10,113,1,0,0,0,12,120,1,0,0,0,14,128,1,0,0,0,16,132,1,0,0,0,18,
-		138,1,0,0,0,20,140,1,0,0,0,22,144,1,0,0,0,24,149,1,0,0,0,26,158,1,0,0,
-		0,28,166,1,0,0,0,30,182,1,0,0,0,32,184,1,0,0,0,34,198,1,0,0,0,36,207,1,
-		0,0,0,38,209,1,0,0,0,40,217,1,0,0,0,42,219,1,0,0,0,44,221,1,0,0,0,46,223,
-		1,0,0,0,48,238,1,0,0,0,50,240,1,0,0,0,52,253,1,0,0,0,54,264,1,0,0,0,56,
-		268,1,0,0,0,58,270,1,0,0,0,60,278,1,0,0,0,62,283,1,0,0,0,64,66,3,10,5,
-		0,65,64,1,0,0,0,66,69,1,0,0,0,67,65,1,0,0,0,67,68,1,0,0,0,68,74,1,0,0,
-		0,69,67,1,0,0,0,70,73,3,2,1,0,71,73,3,8,4,0,72,70,1,0,0,0,72,71,1,0,0,
-		0,73,76,1,0,0,0,74,72,1,0,0,0,74,75,1,0,0,0,75,77,1,0,0,0,76,74,1,0,0,
-		0,77,78,5,0,0,1,78,1,1,0,0,0,79,80,5,10,0,0,80,81,5,11,0,0,81,82,3,52,
-		26,0,82,83,5,12,0,0,83,92,3,24,12,0,84,91,3,14,7,0,85,91,3,16,8,0,86,91,
-		3,20,10,0,87,91,3,12,6,0,88,91,3,22,11,0,89,91,3,6,3,0,90,84,1,0,0,0,90,
-		85,1,0,0,0,90,86,1,0,0,0,90,87,1,0,0,0,90,88,1,0,0,0,90,89,1,0,0,0,91,
-		94,1,0,0,0,92,90,1,0,0,0,92,93,1,0,0,0,93,96,1,0,0,0,94,92,1,0,0,0,95,
-		97,3,4,2,0,96,95,1,0,0,0,96,97,1,0,0,0,97,3,1,0,0,0,98,99,5,1,0,0,99,100,
-		5,10,0,0,100,101,3,24,12,0,101,5,1,0,0,0,102,103,5,2,0,0,103,104,3,24,
-		12,0,104,7,1,0,0,0,105,112,3,14,7,0,106,112,3,16,8,0,107,112,3,20,10,0,
-		108,112,3,12,6,0,109,112,3,22,11,0,110,112,3,6,3,0,111,105,1,0,0,0,111,
-		106,1,0,0,0,111,107,1,0,0,0,111,108,1,0,0,0,111,109,1,0,0,0,111,110,1,
-		0,0,0,112,9,1,0,0,0,113,114,5,16,0,0,114,115,5,39,0,0,115,116,5,19,0,0,
-		116,117,3,26,13,0,117,118,3,24,12,0,118,11,1,0,0,0,119,121,5,18,0,0,120,
-		119,1,0,0,0,120,121,1,0,0,0,121,122,1,0,0,0,122,123,5,17,0,0,123,124,5,
-		39,0,0,124,125,5,19,0,0,125,126,3,26,13,0,126,127,3,24,12,0,127,13,1,0,
-		0,0,128,129,5,13,0,0,129,130,3,18,9,0,130,131,3,24,12,0,131,15,1,0,0,0,
-		132,133,5,14,0,0,133,134,3,18,9,0,134,135,3,24,12,0,135,17,1,0,0,0,136,
-		139,5,37,0,0,137,139,3,38,19,0,138,136,1,0,0,0,138,137,1,0,0,0,139,19,
-		1,0,0,0,140,141,5,15,0,0,141,142,3,38,19,0,142,143,3,24,12,0,143,21,1,
-		0,0,0,144,145,3,32,16,0,145,146,3,24,12,0,146,23,1,0,0,0,147,150,5,0,0,
-		1,148,150,4,12,0,0,149,147,1,0,0,0,149,148,1,0,0,0,150,25,1,0,0,0,151,
-		159,3,44,22,0,152,159,3,46,23,0,153,159,3,32,16,0,154,159,3,48,24,0,155,
-		159,3,38,19,0,156,159,3,28,14,0,157,159,3,40,20,0,158,151,1,0,0,0,158,
-		152,1,0,0,0,158,153,1,0,0,0,158,154,1,0,0,0,158,155,1,0,0,0,158,156,1,
-		0,0,0,158,157,1,0,0,0,159,27,1,0,0,0,160,161,6,14,-1,0,161,162,5,34,0,
-		0,162,163,3,28,14,0,163,164,5,35,0,0,164,167,1,0,0,0,165,167,3,30,15,0,
-		166,160,1,0,0,0,166,165,1,0,0,0,167,176,1,0,0,0,168,169,10,4,0,0,169,170,
-		7,0,0,0,170,175,3,28,14,5,171,172,10,3,0,0,172,173,7,1,0,0,173,175,3,28,
-		14,4,174,168,1,0,0,0,174,171,1,0,0,0,175,178,1,0,0,0,176,174,1,0,0,0,176,
-		177,1,0,0,0,177,29,1,0,0,0,178,176,1,0,0,0,179,183,1,0,0,0,180,183,5,36,
-		0,0,181,183,3,38,19,0,182,179,1,0,0,0,182,180,1,0,0,0,182,181,1,0,0,0,
-		183,31,1,0,0,0,184,185,5,45,0,0,185,194,5,34,0,0,186,191,3,34,17,0,187,
-		188,5,4,0,0,188,190,3,34,17,0,189,187,1,0,0,0,190,193,1,0,0,0,191,189,
-		1,0,0,0,191,192,1,0,0,0,192,195,1,0,0,0,193,191,1,0,0,0,194,186,1,0,0,
-		0,194,195,1,0,0,0,195,196,1,0,0,0,196,197,5,35,0,0,197,33,1,0,0,0,198,
-		199,5,39,0,0,199,200,5,3,0,0,200,201,3,36,18,0,201,35,1,0,0,0,202,208,
-		3,42,21,0,203,208,3,40,20,0,204,208,3,44,22,0,205,208,3,46,23,0,206,208,
-		3,38,19,0,207,202,1,0,0,0,207,203,1,0,0,0,207,204,1,0,0,0,207,205,1,0,
-		0,0,207,206,1,0,0,0,208,37,1,0,0,0,209,214,5,39,0,0,210,211,5,7,0,0,211,
-		213,5,39,0,0,212,210,1,0,0,0,213,216,1,0,0,0,214,212,1,0,0,0,214,215,1,
-		0,0,0,215,39,1,0,0,0,216,214,1,0,0,0,217,218,5,37,0,0,218,41,1,0,0,0,219,
-		220,5,36,0,0,220,43,1,0,0,0,221,222,7,2,0,0,222,45,1,0,0,0,223,224,5,38,
-		0,0,224,47,1,0,0,0,225,226,5,8,0,0,226,231,3,50,25,0,227,228,5,4,0,0,228,
-		230,3,50,25,0,229,227,1,0,0,0,230,233,1,0,0,0,231,229,1,0,0,0,231,232,
-		1,0,0,0,232,234,1,0,0,0,233,231,1,0,0,0,234,235,5,9,0,0,235,239,1,0,0,
-		0,236,237,5,8,0,0,237,239,5,9,0,0,238,225,1,0,0,0,238,236,1,0,0,0,239,
-		49,1,0,0,0,240,241,5,39,0,0,241,242,5,3,0,0,242,243,3,26,13,0,243,51,1,
-		0,0,0,244,245,6,26,-1,0,245,254,3,54,27,0,246,254,3,62,31,0,247,248,5,
-		34,0,0,248,249,3,52,26,0,249,250,5,35,0,0,250,254,1,0,0,0,251,252,5,26,
-		0,0,252,254,3,52,26,1,253,244,1,0,0,0,253,246,1,0,0,0,253,247,1,0,0,0,
-		253,251,1,0,0,0,254,261,1,0,0,0,255,256,10,3,0,0,256,257,3,56,28,0,257,
-		258,3,52,26,4,258,260,1,0,0,0,259,255,1,0,0,0,260,263,1,0,0,0,261,259,
-		1,0,0,0,261,262,1,0,0,0,262,53,1,0,0,0,263,261,1,0,0,0,264,265,3,60,30,
-		0,265,266,3,58,29,0,266,267,3,60,30,0,267,55,1,0,0,0,268,269,7,3,0,0,269,
-		57,1,0,0,0,270,271,7,4,0,0,271,59,1,0,0,0,272,279,3,38,19,0,273,279,3,
-		40,20,0,274,279,3,42,21,0,275,279,3,44,22,0,276,279,3,46,23,0,277,279,
-		3,32,16,0,278,272,1,0,0,0,278,273,1,0,0,0,278,274,1,0,0,0,278,275,1,0,
-		0,0,278,276,1,0,0,0,278,277,1,0,0,0,279,61,1,0,0,0,280,284,3,44,22,0,281,
-		284,3,38,19,0,282,284,3,32,16,0,283,280,1,0,0,0,283,281,1,0,0,0,283,282,
-		1,0,0,0,284,63,1,0,0,0,25,67,72,74,90,92,96,111,120,138,149,158,166,174,
-		176,182,191,194,207,214,231,238,253,261,278,283
+		2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,7,33,1,0,5,0,70,8,0,10,0,
+		12,0,73,9,0,1,0,1,0,5,0,77,8,0,10,0,12,0,80,9,0,1,0,1,0,1,1,1,1,1,1,1,
+		1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,95,8,1,10,1,12,1,98,9,1,1,1,3,1,101,
+		8,1,1,2,1,2,1,2,1,2,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,4,3,4,116,8,4,1,
+		5,1,5,1,5,1,5,1,5,1,5,1,6,3,6,125,8,6,1,6,1,6,1,6,1,6,1,6,1,6,1,7,1,7,
+		1,7,1,7,1,8,1,8,1,8,1,8,1,9,1,9,3,9,143,8,9,1,10,1,10,1,10,1,10,1,11,1,
+		11,1,11,1,12,1,12,3,12,154,8,12,1,13,1,13,1,13,1,13,1,13,1,13,1,13,1,13,
+		3,13,164,8,13,1,14,1,14,5,14,168,8,14,10,14,12,14,171,9,14,1,14,1,14,1,
+		15,1,15,1,15,1,15,1,15,3,15,180,8,15,1,16,1,16,1,16,1,16,1,16,1,16,3,16,
+		188,8,16,1,16,1,16,1,16,1,16,1,16,1,16,5,16,196,8,16,10,16,12,16,199,9,
+		16,1,17,1,17,1,17,3,17,204,8,17,1,18,1,18,1,18,1,18,1,18,5,18,211,8,18,
+		10,18,12,18,214,9,18,3,18,216,8,18,1,18,1,18,1,19,1,19,1,19,1,19,1,20,
+		1,20,1,20,1,20,1,20,1,20,3,20,230,8,20,1,21,1,21,1,21,5,21,235,8,21,10,
+		21,12,21,238,9,21,1,22,1,22,1,23,1,23,1,24,1,24,1,25,1,25,1,26,1,26,1,
+		26,1,26,5,26,252,8,26,10,26,12,26,255,9,26,1,26,1,26,1,26,1,26,3,26,261,
+		8,26,1,27,1,27,1,27,1,27,1,28,1,28,1,28,1,28,1,28,1,28,1,28,1,28,1,28,
+		3,28,276,8,28,1,28,1,28,1,28,1,28,5,28,282,8,28,10,28,12,28,285,9,28,1,
+		29,1,29,1,29,1,29,1,30,1,30,1,31,1,31,1,32,1,32,1,32,1,32,1,32,1,32,1,
+		32,3,32,302,8,32,1,33,1,33,1,33,3,33,307,8,33,1,33,0,2,32,56,34,0,2,4,
+		6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,
+		54,56,58,60,62,64,66,0,5,1,0,16,18,1,0,14,15,1,0,40,41,1,0,37,38,1,0,19,
+		25,328,0,71,1,0,0,0,2,83,1,0,0,0,4,102,1,0,0,0,6,106,1,0,0,0,8,115,1,0,
+		0,0,10,117,1,0,0,0,12,124,1,0,0,0,14,132,1,0,0,0,16,136,1,0,0,0,18,142,
+		1,0,0,0,20,144,1,0,0,0,22,148,1,0,0,0,24,153,1,0,0,0,26,163,1,0,0,0,28,
+		165,1,0,0,0,30,179,1,0,0,0,32,187,1,0,0,0,34,203,1,0,0,0,36,205,1,0,0,
+		0,38,219,1,0,0,0,40,229,1,0,0,0,42,231,1,0,0,0,44,239,1,0,0,0,46,241,1,
+		0,0,0,48,243,1,0,0,0,50,245,1,0,0,0,52,260,1,0,0,0,54,262,1,0,0,0,56,275,
+		1,0,0,0,58,286,1,0,0,0,60,290,1,0,0,0,62,292,1,0,0,0,64,301,1,0,0,0,66,
+		306,1,0,0,0,68,70,3,10,5,0,69,68,1,0,0,0,70,73,1,0,0,0,71,69,1,0,0,0,71,
+		72,1,0,0,0,72,78,1,0,0,0,73,71,1,0,0,0,74,77,3,2,1,0,75,77,3,8,4,0,76,
+		74,1,0,0,0,76,75,1,0,0,0,77,80,1,0,0,0,78,76,1,0,0,0,78,79,1,0,0,0,79,
+		81,1,0,0,0,80,78,1,0,0,0,81,82,5,0,0,1,82,1,1,0,0,0,83,84,5,29,0,0,84,
+		85,5,30,0,0,85,86,3,56,28,0,86,87,5,31,0,0,87,96,3,24,12,0,88,95,3,14,
+		7,0,89,95,3,16,8,0,90,95,3,20,10,0,91,95,3,12,6,0,92,95,3,22,11,0,93,95,
+		3,6,3,0,94,88,1,0,0,0,94,89,1,0,0,0,94,90,1,0,0,0,94,91,1,0,0,0,94,92,
+		1,0,0,0,94,93,1,0,0,0,95,98,1,0,0,0,96,94,1,0,0,0,96,97,1,0,0,0,97,100,
+		1,0,0,0,98,96,1,0,0,0,99,101,3,4,2,0,100,99,1,0,0,0,100,101,1,0,0,0,101,
+		3,1,0,0,0,102,103,5,32,0,0,103,104,5,29,0,0,104,105,3,24,12,0,105,5,1,
+		0,0,0,106,107,5,33,0,0,107,108,3,24,12,0,108,7,1,0,0,0,109,116,3,14,7,
+		0,110,116,3,16,8,0,111,116,3,20,10,0,112,116,3,12,6,0,113,116,3,22,11,
+		0,114,116,3,6,3,0,115,109,1,0,0,0,115,110,1,0,0,0,115,111,1,0,0,0,115,
+		112,1,0,0,0,115,113,1,0,0,0,115,114,1,0,0,0,116,9,1,0,0,0,117,118,5,26,
+		0,0,118,119,5,45,0,0,119,120,5,13,0,0,120,121,3,26,13,0,121,122,3,24,12,
+		0,122,11,1,0,0,0,123,125,5,28,0,0,124,123,1,0,0,0,124,125,1,0,0,0,125,
+		126,1,0,0,0,126,127,5,27,0,0,127,128,5,45,0,0,128,129,5,13,0,0,129,130,
+		3,26,13,0,130,131,3,24,12,0,131,13,1,0,0,0,132,133,5,34,0,0,133,134,3,
+		18,9,0,134,135,3,24,12,0,135,15,1,0,0,0,136,137,5,35,0,0,137,138,3,18,
+		9,0,138,139,3,24,12,0,139,17,1,0,0,0,140,143,5,43,0,0,141,143,3,42,21,
+		0,142,140,1,0,0,0,142,141,1,0,0,0,143,19,1,0,0,0,144,145,5,36,0,0,145,
+		146,3,42,21,0,146,147,3,24,12,0,147,21,1,0,0,0,148,149,3,36,18,0,149,150,
+		3,24,12,0,150,23,1,0,0,0,151,154,5,0,0,1,152,154,4,12,0,0,153,151,1,0,
+		0,0,153,152,1,0,0,0,154,25,1,0,0,0,155,164,3,48,24,0,156,164,3,50,25,0,
+		157,164,3,36,18,0,158,164,3,52,26,0,159,164,3,42,21,0,160,164,3,32,16,
+		0,161,164,3,44,22,0,162,164,3,28,14,0,163,155,1,0,0,0,163,156,1,0,0,0,
+		163,157,1,0,0,0,163,158,1,0,0,0,163,159,1,0,0,0,163,160,1,0,0,0,163,161,
+		1,0,0,0,163,162,1,0,0,0,164,27,1,0,0,0,165,169,5,47,0,0,166,168,3,30,15,
+		0,167,166,1,0,0,0,168,171,1,0,0,0,169,167,1,0,0,0,169,170,1,0,0,0,170,
+		172,1,0,0,0,171,169,1,0,0,0,172,173,5,47,0,0,173,29,1,0,0,0,174,180,5,
+		49,0,0,175,176,5,48,0,0,176,177,3,42,21,0,177,178,5,6,0,0,178,180,1,0,
+		0,0,179,174,1,0,0,0,179,175,1,0,0,0,180,31,1,0,0,0,181,182,6,16,-1,0,182,
+		183,5,8,0,0,183,184,3,32,16,0,184,185,5,9,0,0,185,188,1,0,0,0,186,188,
+		3,34,17,0,187,181,1,0,0,0,187,186,1,0,0,0,188,197,1,0,0,0,189,190,10,4,
+		0,0,190,191,7,0,0,0,191,196,3,32,16,5,192,193,10,3,0,0,193,194,7,1,0,0,
+		194,196,3,32,16,4,195,189,1,0,0,0,195,192,1,0,0,0,196,199,1,0,0,0,197,
+		195,1,0,0,0,197,198,1,0,0,0,198,33,1,0,0,0,199,197,1,0,0,0,200,204,1,0,
+		0,0,201,204,5,42,0,0,202,204,3,42,21,0,203,200,1,0,0,0,203,201,1,0,0,0,
+		203,202,1,0,0,0,204,35,1,0,0,0,205,206,5,46,0,0,206,215,5,8,0,0,207,212,
+		3,38,19,0,208,209,5,11,0,0,209,211,3,38,19,0,210,208,1,0,0,0,211,214,1,
+		0,0,0,212,210,1,0,0,0,212,213,1,0,0,0,213,216,1,0,0,0,214,212,1,0,0,0,
+		215,207,1,0,0,0,215,216,1,0,0,0,216,217,1,0,0,0,217,218,5,9,0,0,218,37,
+		1,0,0,0,219,220,5,45,0,0,220,221,5,10,0,0,221,222,3,40,20,0,222,39,1,0,
+		0,0,223,230,3,46,23,0,224,230,3,44,22,0,225,230,3,48,24,0,226,230,3,50,
+		25,0,227,230,3,42,21,0,228,230,3,32,16,0,229,223,1,0,0,0,229,224,1,0,0,
+		0,229,225,1,0,0,0,229,226,1,0,0,0,229,227,1,0,0,0,229,228,1,0,0,0,230,
+		41,1,0,0,0,231,236,5,45,0,0,232,233,5,12,0,0,233,235,5,45,0,0,234,232,
+		1,0,0,0,235,238,1,0,0,0,236,234,1,0,0,0,236,237,1,0,0,0,237,43,1,0,0,0,
+		238,236,1,0,0,0,239,240,5,43,0,0,240,45,1,0,0,0,241,242,5,42,0,0,242,47,
+		1,0,0,0,243,244,7,2,0,0,244,49,1,0,0,0,245,246,5,44,0,0,246,51,1,0,0,0,
+		247,248,5,5,0,0,248,253,3,54,27,0,249,250,5,11,0,0,250,252,3,54,27,0,251,
+		249,1,0,0,0,252,255,1,0,0,0,253,251,1,0,0,0,253,254,1,0,0,0,254,256,1,
+		0,0,0,255,253,1,0,0,0,256,257,5,7,0,0,257,261,1,0,0,0,258,259,5,5,0,0,
+		259,261,5,7,0,0,260,247,1,0,0,0,260,258,1,0,0,0,261,53,1,0,0,0,262,263,
+		5,45,0,0,263,264,5,10,0,0,264,265,3,26,13,0,265,55,1,0,0,0,266,267,6,28,
+		-1,0,267,276,3,58,29,0,268,276,3,66,33,0,269,270,5,8,0,0,270,271,3,56,
+		28,0,271,272,5,9,0,0,272,276,1,0,0,0,273,274,5,39,0,0,274,276,3,56,28,
+		1,275,266,1,0,0,0,275,268,1,0,0,0,275,269,1,0,0,0,275,273,1,0,0,0,276,
+		283,1,0,0,0,277,278,10,3,0,0,278,279,3,60,30,0,279,280,3,56,28,4,280,282,
+		1,0,0,0,281,277,1,0,0,0,282,285,1,0,0,0,283,281,1,0,0,0,283,284,1,0,0,
+		0,284,57,1,0,0,0,285,283,1,0,0,0,286,287,3,64,32,0,287,288,3,62,31,0,288,
+		289,3,64,32,0,289,59,1,0,0,0,290,291,7,3,0,0,291,61,1,0,0,0,292,293,7,
+		4,0,0,293,63,1,0,0,0,294,302,3,42,21,0,295,302,3,44,22,0,296,302,3,46,
+		23,0,297,302,3,48,24,0,298,302,3,50,25,0,299,302,3,36,18,0,300,302,3,32,
+		16,0,301,294,1,0,0,0,301,295,1,0,0,0,301,296,1,0,0,0,301,297,1,0,0,0,301,
+		298,1,0,0,0,301,299,1,0,0,0,301,300,1,0,0,0,302,65,1,0,0,0,303,307,3,48,
+		24,0,304,307,3,42,21,0,305,307,3,36,18,0,306,303,1,0,0,0,306,304,1,0,0,
+		0,306,305,1,0,0,0,307,67,1,0,0,0,27,71,76,78,94,96,100,115,124,142,153,
+		163,169,179,187,195,197,203,212,215,229,236,253,260,275,283,301,306
 	};
 
 	public static readonly ATN _ATN =

@@ -41,7 +41,7 @@ generalStatement
 letStmt
     : Let Identifier Assign expression eos  
     ;
-
+ 
 setStmt
     : (Partial)? Set Identifier Assign expression eos  
     ;
@@ -68,10 +68,10 @@ functionStmt
 
 eos
     : EOF
-    | {this.lineTerminatorAhead()}?
+    | {this.LineTerminatorAhead()}?
     ;
-
-
+   
+  
 expression
     : boolLeteral 
     | noneLiteral 
@@ -80,11 +80,20 @@ expression
     | objectIdentifier
     | arithmeticExpression 
     | stringLiteral 
+    | templateStringLiteral
     ;
-
-
-/** Arithmetic Expression */
-
+    
+templateStringLiteral
+    : BackTick templateStringAtom* BackTick
+    ;   
+   
+templateStringAtom   
+    : TemplateStringAtom
+    | TemplateStringStartExpression  objectIdentifier TemplateCloseBrace
+    ;
+  
+/** Arithmetic Expression */  
+  
 arithmeticExpression
    :  arithmeticExpression  (TimesOp | DivOp | ModuloOp)  arithmeticExpression  
    |  arithmeticExpression  (PlusOp | MinusOp) arithmeticExpression             
@@ -114,6 +123,7 @@ functionParameterValue
     | boolLeteral
     | noneLiteral
     | objectIdentifier
+    | arithmeticExpression
     ; 
 
 // Literals
@@ -150,18 +160,9 @@ pair
 
 // arr
 //    : '[' value (',' value)* ']'
-//    | '[' ']'
-//    ;
+//    | '[' ']' 
+//    ; 
 
-// value
-//    : boolLeteral
-//    | noneLiteral
-//    | numberLiteral
-//    | objectIdentifier
-//    | stringLiteral
-//    | jsonObj
-//    // | arr
-//    ;
 
 /**************************** */
 /** predicate - recursive rule */
@@ -200,6 +201,7 @@ operand
     | boolLeteral
     | noneLiteral
     | function
+    | arithmeticExpression
     ;
 
 unaryOperand
@@ -207,4 +209,7 @@ unaryOperand
     | objectIdentifier
     | function
     ;
+
+
+
 

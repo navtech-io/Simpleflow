@@ -8,7 +8,7 @@ using Simpleflow.Tests.Helpers;
 
 namespace Simpleflow.Tests.Scripting
 {
-    public class JsonObjectTypeTest
+    public class JsonObjectTypeAndInvokeFunctionTest
     {
 
         [Fact]
@@ -150,6 +150,43 @@ namespace Simpleflow.Tests.Scripting
             Assert.Equal(expected: "S123-20-0--False-NULL-0", actual: output.Output["w"].ToString());
         }
 
+
+
+        [Fact]
+        public void CheckArithEpxressionInFunctionParam()
+        {
+            // Arrange  
+            var script =
+                @"
+                    
+                    let w = { 
+                              Uid: ""S123"",  
+                              child:{ 
+                                      Id : 20 
+                                    },
+                              child2: {value: 10.5}  
+                            }
+                    
+                    let y = $MethodWithObjSuperArg ( s: w,  value: 5 + arg.value )
+                    
+                    output y
+                ";
+
+            var context = new SampleArgument() {  Value = 10.5M };
+            var register = new FunctionRegister()
+                .Add("MethodWithObjSuperArg", (Func<MethodSuperArgument, decimal, string>)MethodWithObjArg1);
+
+            // Act
+            FlowOutput output = new SimpleflowPipelineBuilder().AddCorePipelineServices(register).Build().Run(script, context);
+
+            // Assert
+            Assert.Equal(expected: "S123-20-0--False-NULL-0-15.5", actual: output.Output["y"].ToString());
+        }
+
+        private static string MethodWithObjArg1(MethodSuperArgument s, decimal value)
+        {
+            return s.ToString() + "-" + value;
+        }
 
 
         private static string MethodWithObjArg(MethodArgument s)

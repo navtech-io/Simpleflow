@@ -172,6 +172,26 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitExpression([NotNull] SimpleflowParser.ExpressionContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.templateStringLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterTemplateStringLiteral([NotNull] SimpleflowParser.TemplateStringLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.templateStringLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitTemplateStringLiteral([NotNull] SimpleflowParser.TemplateStringLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.templateStringAtom"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterTemplateStringAtom([NotNull] SimpleflowParser.TemplateStringAtomContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.templateStringAtom"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitTemplateStringAtom([NotNull] SimpleflowParser.TemplateStringAtomContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.arithmeticExpression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
