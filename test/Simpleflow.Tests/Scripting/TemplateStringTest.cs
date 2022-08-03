@@ -52,7 +52,9 @@ namespace Simpleflow.Tests.Scripting
             // Assert
             Assert.Single(output.Messages);
             Assert.Equal(actual: output.Messages[0], 
-                         expected: " Hi John,\r\n                                 .....\r\n                                 Thanks,\r\n                                 Chris\r\n                               ");
+                         expected:
+                         
+                         $" Hi John,{System.Environment.NewLine}                                 .....{System.Environment.NewLine}                                 Thanks,{System.Environment.NewLine}                                 Chris{System.Environment.NewLine}                               ");
 
         }
     }
