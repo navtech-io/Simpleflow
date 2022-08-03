@@ -12,7 +12,7 @@ nav_order: 2
 1. [Data Types](#data-types)
 1. [Operators](#operators)
 1. [Expressions](#expressions)
-1. [Template Strings](#string-template)
+1. [Template Strings](#template-strings)
 1. [Script Parameters](#script-parameters)
 1. [Rule Control Flow](#rule-control-flow)
 1. [Emitters](#emitters)
