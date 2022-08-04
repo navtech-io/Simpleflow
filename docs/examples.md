@@ -12,6 +12,7 @@ nav_order: 99
 /* Declare and initialize variables */
 let userId      = none
 let currentDate = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
+let emailMessage= ""
 
 /* Define Rules */
 rule when  arg.Name == "" 
@@ -41,6 +42,16 @@ partial set arg = {
 /* Save */
 set userId = $CustomerService.RegisterUser(user: arg) /* User defined function*/
 
+# Send email 
+set emailMessage  = `
+                        Hi {arg.Name},
+                        Your account has been created.
+
+                        Thank you for sign up.
+                        Date: {arg.RegistrationDate}
+                    `
+$SendEmail(message: emailMessage, to: arg.email)  /* User defined function */
+
 output userId  /*access this output using result.Output["userId"]*/
 
 ```
@@ -49,6 +60,7 @@ output userId  /*access this output using result.Output["userId"]*/
 ```csharp
 class User { 
     public string Name {get;set;}
+    public string Email {get;set;}
     public int Age {get;set;}
     public string Country {get;set;}
     public bool IsActive {get;set;}
