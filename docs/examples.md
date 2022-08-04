@@ -44,12 +44,12 @@ set userId = $CustomerService.RegisterUser(user: arg) /* User defined function*/
 
 # Compose and send email 
 set emailMessage  = `
-                        Hello {arg.Name},
-                        We would like to confirm that your account was created successfully.
+    Hello {arg.Name},
+    We would like to confirm that your account was created successfully.
 
-                        Thank you for joining.
-                        Date: {arg.RegistrationDate}
-                    `
+    Thank you for joining.
+    Date: {arg.RegistrationDate}
+`
 $SendEmail(message: emailMessage, to: arg.email)  /* User defined function */
 
 output userId  /*access this output using result.Output["userId"]*/
