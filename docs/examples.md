@@ -42,12 +42,12 @@ partial set arg = {
 /* Save */
 set userId = $CustomerService.RegisterUser(user: arg) /* User defined function*/
 
-# Send email 
+# Compose and send email 
 set emailMessage  = `
-                        Hi {arg.Name},
-                        Your account has been created.
+                        Hello {arg.Name},
+                        We would like to confirm that your account was created successfully.
 
-                        Thank you for sign up.
+                        Thank you for joining.
                         Date: {arg.RegistrationDate}
                     `
 $SendEmail(message: emailMessage, to: arg.email)  /* User defined function */
@@ -58,19 +58,11 @@ output userId  /*access this output using result.Output["userId"]*/
 **Sample simpleflow script execution from code**
 
 ```csharp
-class User { 
-    public string Name {get;set;}
-    public string Email {get;set;}
-    public int Age {get;set;}
-    public string Country {get;set;}
-    public bool IsActive {get;set;}
-    public DateTime RegistrationDate {get;set;} 
-}
-
 // Register custom function
 var register = 
     FunctionRegister.Default
         .Add("CustomerService.RegisterUser", (Func<User, int>)RegisterUser);
+        .Add("SendEmail", (Action<string, string>)SendEmail);
 
 // Execute Dynamic Script
 FlowOutput result = SimpleflowEngine.Run(rules /*above script*/, 
@@ -91,3 +83,25 @@ var userId =  result.Output["userId"];
 
 ```
 
+```csharp
+
+class User { 
+    public string Name {get;set;}
+    public string Email {get;set;}
+    public int Age {get;set;}
+    public string Country {get;set;}
+    public bool IsActive {get;set;}
+    public DateTime RegistrationDate {get;set;} 
+}
+
+static int RegisterUser(User user)
+{
+    return 1;
+}
+
+static void SendEmail(string message, string to)
+{
+    // Send email logic here
+}
+
+```
