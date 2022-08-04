@@ -13,6 +13,7 @@ nav_order: 3
 1. [Function Permissions](#function-permissions)
 1. [Register Functions at Context Level](#register-functions-at-context-level)
 1. [Cache Options](#cache-options)
+1. [Get Syntax Tree](#get-syntax-tree)
 
 ## Simpleflow Execution
 <a name="simpleflow-pipeline"></a>
@@ -152,4 +153,12 @@ var options = new FlowContextOptions {
 FlowOutput result = new SimpleflowEngine.Run(script, new object(), options);
 ```
 
-            
+## Get Syntax Tree 
+v1.0.3 {: .fs-1 }
+```csharp
+SyntaxTree st = Simpleflow.Ast
+                    .SimpleflowScript
+                        .GetAbstractSyntaxTree("<your Simpleflow script here>")
+```
+This API provides abstract syntax tree data structure  of Simpleflow script. If there are any syntax errors, this method reports that error using SyntaxTree.Errors property.
+
