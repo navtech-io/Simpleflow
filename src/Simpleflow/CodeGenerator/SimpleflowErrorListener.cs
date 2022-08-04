@@ -12,7 +12,6 @@ namespace Simpleflow.CodeGenerator
     {
         public readonly List<SyntaxError> Errors = new List<SyntaxError>();
 
-
         public override void SyntaxError(TextWriter output, IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine,
             string msg, RecognitionException e)
         {
@@ -25,11 +24,6 @@ namespace Simpleflow.CodeGenerator
             {
                 Errors.Add(new SyntaxError(recognizer, offendingSymbol, line, charPositionInLine, msg, e));
             }
-        }
-
-        public string GetAggregateMessages()
-        {
-            return string.Join(";\r\n", Errors);
         }
     }
 }

@@ -126,7 +126,7 @@ class Build : NukeBuild
                 .AddProperty("PackageIcon", @"PackageIcon.png")
                 .SetPackageRequireLicenseAcceptance(true)
                 .SetIncludeSymbols(true)
-                .SetDescription("A .NET library and a runtime engine to build dynamic rules and workflows with intuitive and simple Simpleflow scripting language.")
+                .SetDescription("A .NET library and a runtime engine to execute dynamic rules and workflows with intuitive and simple Simpleflow scripting language.")
                 .SetPackageTags("Simpleflow.NET Workflow RuleEngine DynamicValidations DynamicExpressionEvaluator")
                 .SetNoDependencies(true)
                 .SetOutputDirectory(ArtifactsDirectory / "nuget"));

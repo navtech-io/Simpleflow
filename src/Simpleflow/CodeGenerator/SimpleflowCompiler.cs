@@ -2,6 +2,7 @@
 // See License in the project root for license information.
 
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 
 using Antlr4.Runtime;
@@ -14,10 +15,28 @@ namespace Simpleflow.CodeGenerator
 {
     internal class SimpleflowCompiler
     {
-
-        public static Action<TArg, FlowOutput, ScriptHelperContext> Compile<TArg>(string code, 
+        internal static Action<TArg, FlowOutput, ScriptHelperContext> Compile<TArg>(string code, 
             IFunctionRegister activityRegister, 
             ParserEventPublisher eventPublisher)
+        {
+            var (programContext, errors) = ParseAndGetProgramContext(code);
+
+            // Find error if any detected
+            if (errors.Count > 0)
+            {
+                throw new SyntaxException(GetAggregateMessages(errors), errors);
+            }
+
+            // Generate code
+            var visitor = new SimpleflowCodeVisitor<TArg>(activityRegister, eventPublisher);
+            var program = visitor.Visit(programContext);
+
+            // Compile
+            var programExpression = (Expression<Action<TArg, FlowOutput, ScriptHelperContext>>)program;
+            return programExpression.CompileFast();
+        }
+
+        internal static (SimpleflowParser.ProgramContext, List<SyntaxError>) ParseAndGetProgramContext(string code)
         {
             var inputStream = new AntlrInputStream(code);
 
@@ -35,24 +54,16 @@ namespace Simpleflow.CodeGenerator
             simpleflowParser.RemoveErrorListeners();
             var errorListener = new SimpleflowErrorListener();
             simpleflowParser.AddErrorListener(errorListener);
-            
+
             // Parse
             SimpleflowParser.ProgramContext programContext = simpleflowParser.program();
 
-            // Find error if any detected
-            if (errorListener.Errors.Count > 0)
-            {
-                throw new SyntaxException(errorListener.GetAggregateMessages(), errorListener.Errors);
-            }
+            return (programContext, errorListener.Errors);
+        }
 
-            
-            // Generate code
-            var visitor = new SimpleflowCodeVisitor<TArg>(activityRegister, eventPublisher);
-            var program = visitor.Visit(programContext);
-
-            // Compile
-            var programExpression = (Expression<Action<TArg, FlowOutput, ScriptHelperContext>>)program;
-            return programExpression.CompileFast();
+        internal static string GetAggregateMessages(List<SyntaxError> syntaxErrors)
+        {
+            return string.Join(";\r\n", syntaxErrors);
         }
     }
 }
