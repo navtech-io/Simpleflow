@@ -52,8 +52,30 @@ namespace Simpleflow.Tests.Infrastructure
 
             ";
 
+            // Act
             var ast = SimpleflowScript.GetAbstractSyntaxTree(flowScript);
+
+            // Assert
+            Assert.Equal(9, ast.Children.Count);
             Assert.Empty(ast.SyntaxErrors);
+        }
+
+
+        [Fact]
+        public void SimpleflowAstWithErrors()
+        {
+            // Arrange
+            var flowScript =
+            @$" 
+                let userId      = none
+                test xyz
+            ";
+
+            // Act
+            var ast = SimpleflowScript.GetAbstractSyntaxTree(flowScript);
+
+            // Assert
+            Assert.Single(ast.SyntaxErrors);
         }
     }
 }

@@ -14,7 +14,6 @@ namespace Simpleflow.Ast
         {
             BlockNode node = new BlockNode() { Children = new List<BlockNode>() };
 
-            /* Process each statement */
             for (int i = 0; i < tree.ChildCount; i++)
             {
                 var c = tree.GetChild(i);
@@ -25,11 +24,13 @@ namespace Simpleflow.Ast
                     node.Children.Add(childResult);
                 }
             }
+
             node.Text = node.Children.Count == 0 ? tree.GetText() : GetStatement(node);
+
             return node;
         }
 
-        public string GetStatement(BlockNode node)
+        private string GetStatement(BlockNode node)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < node.Children.Count; i++)
