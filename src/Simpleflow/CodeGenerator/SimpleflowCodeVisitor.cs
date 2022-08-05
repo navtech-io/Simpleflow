@@ -42,7 +42,7 @@ namespace Simpleflow.CodeGenerator
             Input = Expression.Parameter(typeof(TArg));
             Output = Expression.Parameter(typeof(FlowOutput));
             // use context parameter name in order to access in script
-            ScriptHelperContext = Expression.Parameter(typeof(ScriptHelperContext), "context");  
+            ScriptHelperContext = Expression.Parameter(typeof(ScriptHelperContext), "context");
 
 
             /* A label expression of the void type that is the target for Expression.Return(). */
@@ -55,30 +55,11 @@ namespace Simpleflow.CodeGenerator
             if (context.exception != null)
                 throw context.exception;
 
-            var statementExpressions = CreateDefaultVariablesAndReturnVarAssignmentsStmts();
+            //Default var: arg, context
+            var statementExpressions = CreateDefaultVariablesAndAssign();
 
-            /* Process each statement */
-            for (int i = 0; i < context.ChildCount; i++)
-            {
-                var c = context.GetChild(i);
-                var childResult = c.Accept(this);
+            ProcessEachStatement(context, statementExpressions);
 
-                if (childResult != null)
-                {
-                    /* if current rule is variable statement then store the left expression
-                       as variable identifier in variable collection */
-                    if (c.GetType() == typeof(SimpleflowParser.LetStmtContext))
-                    {
-                        CreateUserDefinedVariableExpressions(statementExpressions, childResult);
-                    }
-                    else
-                    {
-                        statementExpressions.Add(childResult);
-                    }
-                }
-            }
-
-            // Inject smart variables
             InjectSmartVariables(statementExpressions);
 
             /* A label expression of the void type that is the target for Expression.Return(). */
@@ -97,19 +78,59 @@ namespace Simpleflow.CodeGenerator
             return program;
         }
 
-        private void CreateUserDefinedVariableExpressions(List<Expression> statementExpressions, Expression childResult)
+        private void ProcessEachStatement(SimpleflowParser.ProgramContext context, List<Expression> statementExpressions)
         {
-            if (childResult is BinaryExpression binaryExpression)
+            for (int i = 0; i < context.ChildCount; i++)
             {
-                var @var = binaryExpression.Left as ParameterExpression;
-                CheckForDuplicateVariable(@var.Name);
+                var c = context.GetChild(i);
+                var childResult = c.Accept(this);
 
-                Variables.Add(@var);
-                statementExpressions.Add(binaryExpression);
+                if (childResult != null)
+                {
+                    /* if current rule is variable statement then store the left expression
+                       as variable identifier in variable collection */
+                    if (c.GetType() == typeof(SimpleflowParser.LetStmtContext))
+                    {
+                        UnwrapVariableAssignment(statementExpressions, childResult);
+                    }
+                    else if (childResult is BlockExpression blockExpression)
+                    {
+                        UnwrapBlockExpression(statementExpressions, blockExpression);
+                    }
+                    else
+                    {
+                        statementExpressions.Add(childResult);
+                    }
+                }
             }
-            else if (childResult is SmartJsonObjectParameterExpression smartJsonParamExpression)
-            {
+        }
 
+        private void UnwrapBlockExpression(List<Expression> statementExpressions, BlockExpression blockExpression)
+        {
+            foreach (var item in blockExpression.Expressions)
+            {
+                statementExpressions.Add(item);
+            }
+        }
+
+        private void UnwrapVariableAssignment(List<Expression> statementExpressions, Expression childResult)
+        {
+            if (childResult is BinaryExpression binaryExpression) // x = expression
+            {
+                DeclareAndInitializeVar(statementExpressions, binaryExpression);
+            }
+            else if (childResult is BlockExpression blockExpression) // to handle tuple like let a, err = expression
+            {
+                foreach (var item in blockExpression.Expressions)
+                {
+                    if (item is BinaryExpression binaryExpression1)
+                    {
+                        DeclareAndInitializeVar(statementExpressions, binaryExpression1);
+                    }
+                }
+            }
+            else if (childResult is SmartJsonObjectParameterExpression smartJsonParamExpression) // x = {}
+            {
                 CheckForDuplicateVariable(smartJsonParamExpression.Name);
 
                 // To insert in exact location once smart variable is created
@@ -120,8 +141,41 @@ namespace Simpleflow.CodeGenerator
                 SmartJsonVariables.Add(smartJsonParamExpression);
 
                 // Adding this: to replace later with actual expression
-                statementExpressions.Add(smartJsonParamExpression); 
+                statementExpressions.Add(smartJsonParamExpression);
             }
+        }
+
+        private void DeclareAndInitializeVar(List<Expression> statementExpressions, BinaryExpression binaryExpression)
+        {
+            var @var = binaryExpression.Left as ParameterExpression;
+            DeclareVariable(@var);
+            statementExpressions.Add(binaryExpression);
+        }
+
+        private void DeclareVariable(ParameterExpression @var)
+        {
+            if (@var.Name != null)
+            {
+                CheckForDuplicateVariable(@var.Name);
+            }
+
+            Variables.Add(@var);
+        }
+
+        private ParameterExpression GetExistingOrAddVariableToGlobalScope(ParameterExpression @var)
+        {
+            var variable = GetVariable(@var.Name);
+            if (variable != null && variable.Type != @var.Type)
+            {
+                throw new SimpleflowException(Resources.Message.TypeMismatchWithExistingVar);
+            }
+
+            if (variable == null)
+            {
+                DeclareVariable(@var);
+                variable = @var;
+            }
+            return variable;
         }
 
         private void InjectSmartVariables(List<Expression> statementExpressions)
@@ -161,10 +215,10 @@ namespace Simpleflow.CodeGenerator
 
 
         /* Create basic set of variables to access in script */
-        private List<Expression> CreateDefaultVariablesAndReturnVarAssignmentsStmts()
+        private List<Expression> CreateDefaultVariablesAndAssign()
         {
             var argVar = Expression.Variable(typeof(TArg), "arg");
-            
+
             Variables.Add(argVar);               // arg
             Variables.Add(ScriptHelperContext);  // script
 

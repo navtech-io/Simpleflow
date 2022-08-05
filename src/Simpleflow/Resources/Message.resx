@@ -132,6 +132,9 @@
   <data name="ServiceCannotBeNull" xml:space="preserve">
     <value>Any one of the service cannot be null in array of services.</value>
   </data>
+  <data name="TypeMismatchWithExistingVar" xml:space="preserve">
+    <value>Type mismatch. Please choose a different name instead of using existing variable with a different type</value>
+  </data>
   <data name="VariableAlreadyDefined" xml:space="preserve">
     <value>A variable named '{0}' is already defined.</value>
   </data>
