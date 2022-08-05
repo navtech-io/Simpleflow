@@ -18,6 +18,7 @@ nav_order: 2
 1. [Emitters](#emitters)
 1. [Functions](#functions)
 1. [Comments](#comments)
+1. [Error Handling](#error-handling)
 1. [Script Guidelines](#script-guidelines)
 1. [Limitations](#limitations)
 
@@ -292,7 +293,27 @@ It supports single line and multi line comments.
     Multi-line comment
 */
 ```
-	
+## Error Handling
+v1.0.4
+{: .fs-1 }
+
+By specifying a second variable along with the first one in a `let` or `set` statement, you can capture error if occurred.
+
+```csharp
+let x, err = 2 / 0
+
+rule when err != none then
+    message `got an error {err.Message}`
+end rule
+
+set x, err2 = 5 + 3
+
+rule when err2 == none then
+    message "No error"
+
+```
+when you use `set` to update a variable and you want to catch the error as well if error is occurred then you don't need declare err2 using `let` as you declare to capture regular value.
+
 ## Script Guidelines
 * All `let` statements (declare and initialize variables) must be declared in the beginning of the script.
 * Each statement must end with a new line and a statement can be written in multiple lines.
