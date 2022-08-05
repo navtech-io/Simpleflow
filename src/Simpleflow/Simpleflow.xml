@@ -2046,6 +2046,11 @@
               Looks up a localized string similar to Any one of the service cannot be null in array of services..
             </summary>
         </member>
+        <member name="P:Simpleflow.Resources.Message.TypeMismatchWithExistingVar">
+            <summary>
+              Looks up a localized string similar to Type mismatch. Please choose a different name instead of using existing variable with a different type.
+            </summary>
+        </member>
         <member name="P:Simpleflow.Resources.Message.VariableAlreadyDefined">
             <summary>
               Looks up a localized string similar to A variable named &apos;{0}&apos; is already defined..

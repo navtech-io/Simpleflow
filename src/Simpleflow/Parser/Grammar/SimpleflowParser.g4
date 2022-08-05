@@ -4,7 +4,7 @@ options {
     tokenVocab=SimpleflowLexer;
     superClass=SimpleflowParserBase;
 }
-
+ 
 program
     : letStmt* 
      (ruleStmt | generalStatement)* EOF; 
@@ -36,16 +36,16 @@ generalStatement
     | setStmt 
     | functionStmt
     | exitStmt
-    ;
-   
+    ; 
+    
 letStmt
-    : Let Identifier Assign expression eos  
+    : Let Identifier (Comma Identifier)? Assign expression eos  
     ;
  
 setStmt
-    : (Partial)? Set Identifier Assign expression eos  
+    : (Partial)? Set Identifier (Comma Identifier)? Assign expression eos  
     ;
-
+   
 messageStmt
     : Message messageText eos
     ;
@@ -55,7 +55,7 @@ errorStmt
     ;
 
 messageText
-    : (String | objectIdentifier)
+    : (stringLiteral | templateStringLiteral | objectIdentifier)
     ;
 
 outputStmt
@@ -129,7 +129,7 @@ functionParameterValue
 // Literals
 
 objectIdentifier 
-    : Identifier (Dot Identifier)* 
+    : Identifier (Dot Identifier)*  
     ;
 
 stringLiteral

@@ -106,6 +106,15 @@ namespace Simpleflow.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type mismatch. Please choose a different name instead of using existing variable with a different type.
+        /// </summary>
+        internal static string TypeMismatchWithExistingVar {
+            get {
+                return ResourceManager.GetString("TypeMismatchWithExistingVar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A variable named &apos;{0}&apos; is already defined..
         /// </summary>
         internal static string VariableAlreadyDefined {

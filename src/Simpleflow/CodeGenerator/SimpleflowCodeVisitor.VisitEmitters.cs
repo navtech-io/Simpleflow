@@ -82,29 +82,13 @@ namespace Simpleflow.CodeGenerator
 
         private Expression HandleMessageText(SimpleflowParser.MessageTextContext messageToken, string outputProperty)
         {
-            // Syntax: (String | objectIdentifier)
+            var identifier = Visit(messageToken.GetChild(0));
 
-            // Handle objectIdentifier
-            if (messageToken.objectIdentifier() != null)
-            {
-                var identifier = Visit(messageToken.objectIdentifier());
+            identifier = identifier.NodeType != ExpressionType.Call && identifier.Type == typeof(string) ?
+                         identifier : ToStringExpression(identifier);
 
-                identifier = identifier.Type == typeof(string) ? 
-                             identifier : ToStringExpression(identifier);
+            return CallListAddMethod(identifier, outputProperty);
 
-                return CallListAddMethod(identifier, outputProperty);
-            }
-
-            // Handle string
-            else if (messageToken.String() != null)
-            {
-                var message = messageToken.String().GetText();
-                var strExp = GetStringExpression(message);
-
-                return CallListAddMethod(strExp, outputProperty);
-            }
-
-            return null;
         }
 
 
