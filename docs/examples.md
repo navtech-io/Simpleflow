@@ -42,8 +42,8 @@ partial set arg = {
 /* Save */
 set userId, err = $CustomerService.RegisterUser(user: arg) /* User defined function*/
 
-rule when err == none then # error handing feature available from 1.0.4...
-
+/* if no error then send email - Error handing feature available from 1.0.4...*/
+rule when err == none then 
     # Compose message
     set emailMessage  = `
         Hello {arg.Name},
@@ -55,11 +55,8 @@ rule when err == none then # error handing feature available from 1.0.4...
     # send email 
     set _, err = $SendEmail(message: emailMessage, to: arg.email)  
 
-    output err
-    output userId  /*access this output using result.Output["userId"]*/
-
-
-
+    output err     /*access this output using result.Output["err"]*/ 
+    output userId  /*result.Output["userId"]*/
 ```
 **Sample simpleflow script execution from code**
 
