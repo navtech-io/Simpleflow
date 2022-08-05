@@ -8,7 +8,7 @@ nav_order: 99
 
 **Sample Simpleflow Script**
 
-```javascript
+```csharp
 /* Declare and initialize variables */
 let userId      = none
 let currentDate = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
