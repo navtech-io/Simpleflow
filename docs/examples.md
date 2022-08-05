@@ -40,19 +40,25 @@ partial set arg = {
                   }
 
 /* Save */
-set userId = $CustomerService.RegisterUser(user: arg) /* User defined function*/
+set userId, err = $CustomerService.RegisterUser(user: arg) /* User defined function*/
 
-# Compose and send email 
-set emailMessage  = `
-    Hello {arg.Name},
-    We would like to confirm that your account was created successfully.
+rule when err == none then # error handing feature available from 1.0.4...
 
-    Thank you for joining.
-    Date: {arg.RegistrationDate}
-`
-$SendEmail(message: emailMessage, to: arg.email)  /* User defined function */
+    # Compose message
+    set emailMessage  = `
+        Hello {arg.Name},
+        We would like to confirm that your account was created successfully.
 
-output userId  /*access this output using result.Output["userId"]*/
+        Thank you for joining.
+        Date: {arg.RegistrationDate}
+    `
+    # send email 
+    set _, err = $SendEmail(message: emailMessage, to: arg.email)  
+
+    output err
+    output userId  /*access this output using result.Output["userId"]*/
+
+
 
 ```
 **Sample simpleflow script execution from code**
