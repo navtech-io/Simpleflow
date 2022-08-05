@@ -8,7 +8,7 @@ nav_order: 99
 
 **Sample Simpleflow Script**
 
-```csharp
+```javascript
 /* Declare and initialize variables */
 let userId      = none
 let currentDate = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
@@ -42,7 +42,8 @@ partial set arg = {
 /* Save */
 set userId, err = $CustomerService.RegisterUser(user: arg) /* User defined function*/
 
-/* if no error then send email - Error handing feature available from 1.0.4...*/
+/* Upon successful registration, send an email to user
+ - Error handing feature available from 1.0.4...*/
 rule when err == none then 
     # Compose message
     set emailMessage  = `
