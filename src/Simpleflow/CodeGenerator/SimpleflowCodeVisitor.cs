@@ -179,6 +179,17 @@ namespace Simpleflow.CodeGenerator
             Variables.Add(@var);
         }
 
+        private void CheckForDuplicateVariable(string name)
+        {
+            bool anyWithGivenName = Variables.Any(v => name != null && string.Equals(v.Name, name, StringComparison.OrdinalIgnoreCase)) ||
+                                    SmartJsonVariables.Any(v => name != null && string.Equals(v.Name, name, StringComparison.OrdinalIgnoreCase));
+
+            if (anyWithGivenName)
+            {
+                throw new DuplicateVariableDeclarationException(name);
+            }
+        }
+
         private ParameterExpression GetExistingOrAddVariableToGlobalScope(ParameterExpression @var)
         {
             var variable = GetVariable(@var.Name);
@@ -220,18 +231,6 @@ namespace Simpleflow.CodeGenerator
                 index++;
             }
         }
-
-        private void CheckForDuplicateVariable(string name)
-        {
-            bool anyWithGivenName = Variables.Any(v => name != null && string.Equals(v.Name, name, StringComparison.OrdinalIgnoreCase)) ||
-                                    SmartJsonVariables.Any(v => name != null &&  string.Equals(v.Name, name, StringComparison.OrdinalIgnoreCase));
-
-            if (anyWithGivenName)
-            {
-                throw new DuplicateVariableDeclarationException(name);
-            }
-        }
-
 
         /* Create basic set of variables to access in script */
         private List<Expression> CreateDefaultVariablesAndAssign()
