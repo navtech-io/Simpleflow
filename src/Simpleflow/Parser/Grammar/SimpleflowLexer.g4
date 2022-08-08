@@ -67,6 +67,7 @@ String:             '"' ( '\\"' | ~["\r\n] )*? '"';
 None:               'none' ;
 
 Identifier:         [_]*[a-zA-Z][_a-zA-Z0-9]* ;
+IgnoreIdentifier:  '_';
 
 FunctionName:       '$' NAME ('.' NAME)*;
 BackTick:           '`' {this.IncreaseTemplateDepth();} -> pushMode(TEMPLATE);

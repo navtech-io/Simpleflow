@@ -25,7 +25,7 @@ namespace Simpleflow.Tests.Scripting
 
                 set x, err2 = 5 + 3
 
-                rule when err2 == none then
+                rule when err2 then
                     message ""No error""
             ";
 

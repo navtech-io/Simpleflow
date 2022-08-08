@@ -44,8 +44,8 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		LessThanEqual=22, Equal=23, NotEqual=24, Contains=25, Let=26, Set=27, 
 		Partial=28, Rule=29, When=30, Then=31, End=32, Exit=33, Message=34, Error=35, 
 		Output=36, And=37, Or=38, Not=39, True=40, False=41, Number=42, String=43, 
-		None=44, Identifier=45, FunctionName=46, BackTick=47, TemplateStringStartExpression=48, 
-		TemplateStringAtom=49;
+		None=44, Identifier=45, IgnoreIdentifier=46, FunctionName=47, BackTick=48, 
+		TemplateStringStartExpression=49, TemplateStringAtom=50;
 	public const int
 		RULE_program = 0, RULE_ruleStmt = 1, RULE_endRuleStmt = 2, RULE_exitStmt = 3, 
 		RULE_generalStatement = 4, RULE_letStmt = 5, RULE_setStmt = 6, RULE_messageStmt = 7, 
@@ -73,7 +73,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		"'<'", "'<='", "'=='", "'!='", "'contains'", "'let'", "'set'", "'partial'", 
 		"'rule'", "'when'", "'then'", "'end'", "'exit'", "'message'", "'error'", 
 		"'output'", "'and'", "'or'", "'not'", "'true'", "'false'", null, null, 
-		"'none'"
+		"'none'", null, "'_'"
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, "WhiteSpaces", "LineTerminator", "MultiLineComment", "SingleLineComment", 
@@ -82,8 +82,8 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		"ModuloOp", "GreaterThan", "GreaterThanEqual", "LessThan", "LessThanEqual", 
 		"Equal", "NotEqual", "Contains", "Let", "Set", "Partial", "Rule", "When", 
 		"Then", "End", "Exit", "Message", "Error", "Output", "And", "Or", "Not", 
-		"True", "False", "Number", "String", "None", "Identifier", "FunctionName", 
-		"BackTick", "TemplateStringStartExpression", "TemplateStringAtom"
+		"True", "False", "Number", "String", "None", "Identifier", "IgnoreIdentifier", 
+		"FunctionName", "BackTick", "TemplateStringStartExpression", "TemplateStringAtom"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -617,10 +617,6 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 
 	internal partial class LetStmtContext : ParserRuleContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Let() { return GetToken(SimpleflowParser.Let, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] Identifier() { return GetTokens(SimpleflowParser.Identifier); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Identifier(int i) {
-			return GetToken(SimpleflowParser.Identifier, i);
-		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Assign() { return GetToken(SimpleflowParser.Assign, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
 			return GetRuleContext<ExpressionContext>(0);
@@ -628,6 +624,11 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		[System.Diagnostics.DebuggerNonUserCode] public EosContext eos() {
 			return GetRuleContext<EosContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] Identifier() { return GetTokens(SimpleflowParser.Identifier); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Identifier(int i) {
+			return GetToken(SimpleflowParser.Identifier, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IgnoreIdentifier() { return GetToken(SimpleflowParser.IgnoreIdentifier, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Comma() { return GetToken(SimpleflowParser.Comma, 0); }
 		public LetStmtContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -663,7 +664,14 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 			State = 117;
 			Match(Let);
 			State = 118;
-			Match(Identifier);
+			_la = TokenStream.LA(1);
+			if ( !(_la==Identifier || _la==IgnoreIdentifier) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
 			State = 121;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
@@ -697,10 +705,6 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 
 	internal partial class SetStmtContext : ParserRuleContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Set() { return GetToken(SimpleflowParser.Set, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] Identifier() { return GetTokens(SimpleflowParser.Identifier); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Identifier(int i) {
-			return GetToken(SimpleflowParser.Identifier, i);
-		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Assign() { return GetToken(SimpleflowParser.Assign, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
 			return GetRuleContext<ExpressionContext>(0);
@@ -708,6 +712,11 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		[System.Diagnostics.DebuggerNonUserCode] public EosContext eos() {
 			return GetRuleContext<EosContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] Identifier() { return GetTokens(SimpleflowParser.Identifier); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Identifier(int i) {
+			return GetToken(SimpleflowParser.Identifier, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IgnoreIdentifier() { return GetToken(SimpleflowParser.IgnoreIdentifier, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Partial() { return GetToken(SimpleflowParser.Partial, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Comma() { return GetToken(SimpleflowParser.Comma, 0); }
 		public SetStmtContext(ParserRuleContext parent, int invokingState)
@@ -754,7 +763,14 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 			State = 130;
 			Match(Set);
 			State = 131;
-			Match(Identifier);
+			_la = TokenStream.LA(1);
+			if ( !(_la==Identifier || _la==IgnoreIdentifier) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
 			State = 134;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
@@ -2831,7 +2847,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,49,318,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		4,1,50,318,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
 		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
 		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
 		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,28,
@@ -2855,33 +2871,33 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		28,1,28,5,28,291,8,28,10,28,12,28,294,9,28,1,29,1,29,1,29,1,29,1,30,1,
 		30,1,31,1,31,1,32,1,32,1,32,1,32,1,32,1,32,1,32,3,32,311,8,32,1,33,1,33,
 		1,33,3,33,316,8,33,1,33,0,2,32,56,34,0,2,4,6,8,10,12,14,16,18,20,22,24,
-		26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,0,5,1,0,
-		16,18,1,0,14,15,1,0,40,41,1,0,37,38,1,0,19,25,340,0,71,1,0,0,0,2,83,1,
-		0,0,0,4,102,1,0,0,0,6,106,1,0,0,0,8,115,1,0,0,0,10,117,1,0,0,0,12,128,
-		1,0,0,0,14,140,1,0,0,0,16,144,1,0,0,0,18,151,1,0,0,0,20,153,1,0,0,0,22,
-		157,1,0,0,0,24,162,1,0,0,0,26,172,1,0,0,0,28,174,1,0,0,0,30,188,1,0,0,
-		0,32,196,1,0,0,0,34,212,1,0,0,0,36,214,1,0,0,0,38,228,1,0,0,0,40,238,1,
-		0,0,0,42,240,1,0,0,0,44,248,1,0,0,0,46,250,1,0,0,0,48,252,1,0,0,0,50,254,
-		1,0,0,0,52,269,1,0,0,0,54,271,1,0,0,0,56,284,1,0,0,0,58,295,1,0,0,0,60,
-		299,1,0,0,0,62,301,1,0,0,0,64,310,1,0,0,0,66,315,1,0,0,0,68,70,3,10,5,
-		0,69,68,1,0,0,0,70,73,1,0,0,0,71,69,1,0,0,0,71,72,1,0,0,0,72,78,1,0,0,
-		0,73,71,1,0,0,0,74,77,3,2,1,0,75,77,3,8,4,0,76,74,1,0,0,0,76,75,1,0,0,
-		0,77,80,1,0,0,0,78,76,1,0,0,0,78,79,1,0,0,0,79,81,1,0,0,0,80,78,1,0,0,
-		0,81,82,5,0,0,1,82,1,1,0,0,0,83,84,5,29,0,0,84,85,5,30,0,0,85,86,3,56,
-		28,0,86,87,5,31,0,0,87,96,3,24,12,0,88,95,3,14,7,0,89,95,3,16,8,0,90,95,
-		3,20,10,0,91,95,3,12,6,0,92,95,3,22,11,0,93,95,3,6,3,0,94,88,1,0,0,0,94,
-		89,1,0,0,0,94,90,1,0,0,0,94,91,1,0,0,0,94,92,1,0,0,0,94,93,1,0,0,0,95,
-		98,1,0,0,0,96,94,1,0,0,0,96,97,1,0,0,0,97,100,1,0,0,0,98,96,1,0,0,0,99,
-		101,3,4,2,0,100,99,1,0,0,0,100,101,1,0,0,0,101,3,1,0,0,0,102,103,5,32,
-		0,0,103,104,5,29,0,0,104,105,3,24,12,0,105,5,1,0,0,0,106,107,5,33,0,0,
-		107,108,3,24,12,0,108,7,1,0,0,0,109,116,3,14,7,0,110,116,3,16,8,0,111,
-		116,3,20,10,0,112,116,3,12,6,0,113,116,3,22,11,0,114,116,3,6,3,0,115,109,
-		1,0,0,0,115,110,1,0,0,0,115,111,1,0,0,0,115,112,1,0,0,0,115,113,1,0,0,
-		0,115,114,1,0,0,0,116,9,1,0,0,0,117,118,5,26,0,0,118,121,5,45,0,0,119,
+		26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,0,6,1,0,
+		45,46,1,0,16,18,1,0,14,15,1,0,40,41,1,0,37,38,1,0,19,25,340,0,71,1,0,0,
+		0,2,83,1,0,0,0,4,102,1,0,0,0,6,106,1,0,0,0,8,115,1,0,0,0,10,117,1,0,0,
+		0,12,128,1,0,0,0,14,140,1,0,0,0,16,144,1,0,0,0,18,151,1,0,0,0,20,153,1,
+		0,0,0,22,157,1,0,0,0,24,162,1,0,0,0,26,172,1,0,0,0,28,174,1,0,0,0,30,188,
+		1,0,0,0,32,196,1,0,0,0,34,212,1,0,0,0,36,214,1,0,0,0,38,228,1,0,0,0,40,
+		238,1,0,0,0,42,240,1,0,0,0,44,248,1,0,0,0,46,250,1,0,0,0,48,252,1,0,0,
+		0,50,254,1,0,0,0,52,269,1,0,0,0,54,271,1,0,0,0,56,284,1,0,0,0,58,295,1,
+		0,0,0,60,299,1,0,0,0,62,301,1,0,0,0,64,310,1,0,0,0,66,315,1,0,0,0,68,70,
+		3,10,5,0,69,68,1,0,0,0,70,73,1,0,0,0,71,69,1,0,0,0,71,72,1,0,0,0,72,78,
+		1,0,0,0,73,71,1,0,0,0,74,77,3,2,1,0,75,77,3,8,4,0,76,74,1,0,0,0,76,75,
+		1,0,0,0,77,80,1,0,0,0,78,76,1,0,0,0,78,79,1,0,0,0,79,81,1,0,0,0,80,78,
+		1,0,0,0,81,82,5,0,0,1,82,1,1,0,0,0,83,84,5,29,0,0,84,85,5,30,0,0,85,86,
+		3,56,28,0,86,87,5,31,0,0,87,96,3,24,12,0,88,95,3,14,7,0,89,95,3,16,8,0,
+		90,95,3,20,10,0,91,95,3,12,6,0,92,95,3,22,11,0,93,95,3,6,3,0,94,88,1,0,
+		0,0,94,89,1,0,0,0,94,90,1,0,0,0,94,91,1,0,0,0,94,92,1,0,0,0,94,93,1,0,
+		0,0,95,98,1,0,0,0,96,94,1,0,0,0,96,97,1,0,0,0,97,100,1,0,0,0,98,96,1,0,
+		0,0,99,101,3,4,2,0,100,99,1,0,0,0,100,101,1,0,0,0,101,3,1,0,0,0,102,103,
+		5,32,0,0,103,104,5,29,0,0,104,105,3,24,12,0,105,5,1,0,0,0,106,107,5,33,
+		0,0,107,108,3,24,12,0,108,7,1,0,0,0,109,116,3,14,7,0,110,116,3,16,8,0,
+		111,116,3,20,10,0,112,116,3,12,6,0,113,116,3,22,11,0,114,116,3,6,3,0,115,
+		109,1,0,0,0,115,110,1,0,0,0,115,111,1,0,0,0,115,112,1,0,0,0,115,113,1,
+		0,0,0,115,114,1,0,0,0,116,9,1,0,0,0,117,118,5,26,0,0,118,121,7,0,0,0,119,
 		120,5,11,0,0,120,122,5,45,0,0,121,119,1,0,0,0,121,122,1,0,0,0,122,123,
 		1,0,0,0,123,124,5,13,0,0,124,125,3,26,13,0,125,126,3,24,12,0,126,11,1,
 		0,0,0,127,129,5,28,0,0,128,127,1,0,0,0,128,129,1,0,0,0,129,130,1,0,0,0,
-		130,131,5,27,0,0,131,134,5,45,0,0,132,133,5,11,0,0,133,135,5,45,0,0,134,
+		130,131,5,27,0,0,131,134,7,0,0,0,132,133,5,11,0,0,133,135,5,45,0,0,134,
 		132,1,0,0,0,134,135,1,0,0,0,135,136,1,0,0,0,136,137,5,13,0,0,137,138,3,
 		26,13,0,138,139,3,24,12,0,139,13,1,0,0,0,140,141,5,34,0,0,141,142,3,18,
 		9,0,142,143,3,24,12,0,143,15,1,0,0,0,144,145,5,35,0,0,145,146,3,18,9,0,
@@ -2894,17 +2910,17 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		3,42,21,0,169,173,3,32,16,0,170,173,3,44,22,0,171,173,3,28,14,0,172,164,
 		1,0,0,0,172,165,1,0,0,0,172,166,1,0,0,0,172,167,1,0,0,0,172,168,1,0,0,
 		0,172,169,1,0,0,0,172,170,1,0,0,0,172,171,1,0,0,0,173,27,1,0,0,0,174,178,
-		5,47,0,0,175,177,3,30,15,0,176,175,1,0,0,0,177,180,1,0,0,0,178,176,1,0,
-		0,0,178,179,1,0,0,0,179,181,1,0,0,0,180,178,1,0,0,0,181,182,5,47,0,0,182,
-		29,1,0,0,0,183,189,5,49,0,0,184,185,5,48,0,0,185,186,3,42,21,0,186,187,
+		5,48,0,0,175,177,3,30,15,0,176,175,1,0,0,0,177,180,1,0,0,0,178,176,1,0,
+		0,0,178,179,1,0,0,0,179,181,1,0,0,0,180,178,1,0,0,0,181,182,5,48,0,0,182,
+		29,1,0,0,0,183,189,5,50,0,0,184,185,5,49,0,0,185,186,3,42,21,0,186,187,
 		5,6,0,0,187,189,1,0,0,0,188,183,1,0,0,0,188,184,1,0,0,0,189,31,1,0,0,0,
 		190,191,6,16,-1,0,191,192,5,8,0,0,192,193,3,32,16,0,193,194,5,9,0,0,194,
 		197,1,0,0,0,195,197,3,34,17,0,196,190,1,0,0,0,196,195,1,0,0,0,197,206,
-		1,0,0,0,198,199,10,4,0,0,199,200,7,0,0,0,200,205,3,32,16,5,201,202,10,
-		3,0,0,202,203,7,1,0,0,203,205,3,32,16,4,204,198,1,0,0,0,204,201,1,0,0,
+		1,0,0,0,198,199,10,4,0,0,199,200,7,1,0,0,200,205,3,32,16,5,201,202,10,
+		3,0,0,202,203,7,2,0,0,203,205,3,32,16,4,204,198,1,0,0,0,204,201,1,0,0,
 		0,205,208,1,0,0,0,206,204,1,0,0,0,206,207,1,0,0,0,207,33,1,0,0,0,208,206,
 		1,0,0,0,209,213,1,0,0,0,210,213,5,42,0,0,211,213,3,42,21,0,212,209,1,0,
-		0,0,212,210,1,0,0,0,212,211,1,0,0,0,213,35,1,0,0,0,214,215,5,46,0,0,215,
+		0,0,212,210,1,0,0,0,212,211,1,0,0,0,213,35,1,0,0,0,214,215,5,47,0,0,215,
 		224,5,8,0,0,216,221,3,38,19,0,217,218,5,11,0,0,218,220,3,38,19,0,219,217,
 		1,0,0,0,220,223,1,0,0,0,221,219,1,0,0,0,221,222,1,0,0,0,222,225,1,0,0,
 		0,223,221,1,0,0,0,224,216,1,0,0,0,224,225,1,0,0,0,225,226,1,0,0,0,226,
@@ -2915,7 +2931,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		237,1,0,0,0,239,41,1,0,0,0,240,245,5,45,0,0,241,242,5,12,0,0,242,244,5,
 		45,0,0,243,241,1,0,0,0,244,247,1,0,0,0,245,243,1,0,0,0,245,246,1,0,0,0,
 		246,43,1,0,0,0,247,245,1,0,0,0,248,249,5,43,0,0,249,45,1,0,0,0,250,251,
-		5,42,0,0,251,47,1,0,0,0,252,253,7,2,0,0,253,49,1,0,0,0,254,255,5,44,0,
+		5,42,0,0,251,47,1,0,0,0,252,253,7,3,0,0,253,49,1,0,0,0,254,255,5,44,0,
 		0,255,51,1,0,0,0,256,257,5,5,0,0,257,262,3,54,27,0,258,259,5,11,0,0,259,
 		261,3,54,27,0,260,258,1,0,0,0,261,264,1,0,0,0,262,260,1,0,0,0,262,263,
 		1,0,0,0,263,265,1,0,0,0,264,262,1,0,0,0,265,266,5,7,0,0,266,270,1,0,0,
@@ -2927,8 +2943,8 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		284,282,1,0,0,0,285,292,1,0,0,0,286,287,10,3,0,0,287,288,3,60,30,0,288,
 		289,3,56,28,4,289,291,1,0,0,0,290,286,1,0,0,0,291,294,1,0,0,0,292,290,
 		1,0,0,0,292,293,1,0,0,0,293,57,1,0,0,0,294,292,1,0,0,0,295,296,3,64,32,
-		0,296,297,3,62,31,0,297,298,3,64,32,0,298,59,1,0,0,0,299,300,7,3,0,0,300,
-		61,1,0,0,0,301,302,7,4,0,0,302,63,1,0,0,0,303,311,3,42,21,0,304,311,3,
+		0,296,297,3,62,31,0,297,298,3,64,32,0,298,59,1,0,0,0,299,300,7,4,0,0,300,
+		61,1,0,0,0,301,302,7,5,0,0,302,63,1,0,0,0,303,311,3,42,21,0,304,311,3,
 		44,22,0,305,311,3,46,23,0,306,311,3,48,24,0,307,311,3,50,25,0,308,311,
 		3,36,18,0,309,311,3,32,16,0,310,303,1,0,0,0,310,304,1,0,0,0,310,305,1,
 		0,0,0,310,306,1,0,0,0,310,307,1,0,0,0,310,308,1,0,0,0,310,309,1,0,0,0,

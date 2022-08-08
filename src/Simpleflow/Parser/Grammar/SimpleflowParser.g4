@@ -39,11 +39,11 @@ generalStatement
     ; 
     
 letStmt
-    : Let Identifier (Comma Identifier)? Assign expression eos  
+    : Let (Identifier | IgnoreIdentifier) (Comma Identifier)? Assign expression eos  
     ;
- 
+
 setStmt
-    : (Partial)? Set Identifier (Comma Identifier)? Assign expression eos  
+    : (Partial)? Set (Identifier | IgnoreIdentifier) (Comma Identifier)? Assign expression eos  
     ;
    
 messageStmt

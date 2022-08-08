@@ -38,9 +38,25 @@ namespace Simpleflow.Tests.Scripting
             var arg = new SampleArgument { Id = 10 };
             var script =
                 @$"
+                  let _ = 2  # ignore
                   let Value = arg.Id
                   set value =  value + 10
                   message value
+                ";
+
+            // Act & Assert
+            var output = SimpleflowEngine.Run(script, arg);
+            Assert.Equal("20", output.Messages[0]);
+        }
+
+        [Fact]
+        public void IgnoreVariable()
+        {
+            // Arrange
+            var arg = new SampleArgument { Id = 10 };
+            var script =
+                @$"
+                  let _ = 2  # ignore
                 ";
 
             // Act & Assert
