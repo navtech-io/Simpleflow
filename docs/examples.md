@@ -44,7 +44,7 @@ set userId, err = $CustomerService.RegisterUser(user: arg) /* User defined funct
 
 /* Upon successful registration, send an email to user
  - Error handing feature available from 1.0.4...*/
-rule when err == none then 
+rule when not err then 
     # Compose message
     set emailMessage  = `
         Hello {arg.Name},

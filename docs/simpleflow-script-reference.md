@@ -302,13 +302,13 @@ By specifying a second variable along with the first one in a `let` or `set` sta
 ```csharp
 let x, err = 2 / 0
 
-rule when err != none then
-    message `got an error {err.Message}`
+rule when err then
+    message `Error has occurred:  {err.Message}`
 end rule
 
 set x, err2 = 5 + 3
 
-rule when err2 == none then
+rule when not err2 then
     message "No error"
 
 ```
