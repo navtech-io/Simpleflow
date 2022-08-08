@@ -17,5 +17,15 @@ namespace Simpleflow.CodeGenerator
         }
     }
 
+    internal class VarTuple
+    {
+        public readonly object Value;
+        public readonly Exception Error;
+
+        public VarTuple(Exception error)
+        {
+            Error = error;
+        }
+    }
 
 }

@@ -147,6 +147,27 @@ namespace Simpleflow.Tests.Scripting
 
         }
 
+        [Fact]
+        public void ThrowUsingDiscardableVariable()
+        {
+            // Arrange  
+            var script =
+                @"
+                    set _, err = $throwit()
+                    output err
+                ";
+
+            var context = new SampleArgument();
+            var register = new FunctionRegister().Add("ThrowIt", (Action)ThrowIt);
+
+            // Act
+            FlowOutput output = new SimpleflowPipelineBuilder().AddCorePipelineServices(register).Build().Run(script, context);
+
+            // Assert
+            Assert.IsType<InvalidOperationException>(output.Output["err"]);
+
+        }
+
         private static string MethodWithObjArg(MethodArgument s)
         {
             return s.ToString();
@@ -155,6 +176,11 @@ namespace Simpleflow.Tests.Scripting
         private static string MethodWithObjSuperArg(MethodSuperArgument s)
         {
             return s.ToString();
+        }
+
+        private static void ThrowIt()
+        {
+            throw new InvalidOperationException();
         }
     }
 }

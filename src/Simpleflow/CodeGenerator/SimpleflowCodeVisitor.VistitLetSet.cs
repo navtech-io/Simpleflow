@@ -17,9 +17,9 @@ namespace Simpleflow.CodeGenerator
             if (context.exception != null)
                 throw context.exception;
 
-            
+
             var letIdentifierList = context.Identifier();
-            var letIdentifier     = context.IgnoreIdentifier() != null ? null : letIdentifierList[0].GetText(); 
+            var letIdentifier = context.IgnoreIdentifier() != null ? null : letIdentifierList[0].GetText();
 
             // Validate variable name with reserved words
             if (SimpleflowKeywords.Keywords.Any(keyword => string.Equals(keyword, letIdentifier, StringComparison.Ordinal)))
@@ -30,10 +30,10 @@ namespace Simpleflow.CodeGenerator
             return GetLetVariableExpression(context.expression(),
                                             letIdentifier,
                                             errorVariableName: context.IgnoreIdentifier() != null &&
-                                                               letIdentifierList.Length == 1 
-                                                               ? letIdentifierList[0].GetText() 
-                                                               : letIdentifierList.Length == 2 
-                                                                    ? letIdentifierList[1].GetText() 
+                                                               letIdentifierList.Length == 1
+                                                               ? letIdentifierList[0].GetText()
+                                                               : letIdentifierList.Length == 2
+                                                                    ? letIdentifierList[1].GetText()
                                                                     : null);
         }
 
@@ -137,7 +137,7 @@ namespace Simpleflow.CodeGenerator
 
             // Declare before use
             DeclareVariable(varFortryExpression);
-            
+
             // Add variables
             if (variable == null)
             {
@@ -156,6 +156,11 @@ namespace Simpleflow.CodeGenerator
 
         private TryExpression AddTryCatchToExpression(Expression rightsideExpression)
         {
+            if (rightsideExpression.Type == typeof(void))
+            {
+                return AddTryCatchToExpressionForVoidValue(rightsideExpression);
+            }
+
             var varTupleConstructor = typeof(VarTuple<>)
                                           .MakeGenericType(rightsideExpression.Type)
                                           .GetConstructor(new Type[] { rightsideExpression.Type, typeof(Exception) });
@@ -163,21 +168,44 @@ namespace Simpleflow.CodeGenerator
             ParameterExpression ex = ParameterExpression.Parameter(typeof(Exception));
             TryExpression tryCatchExpr =
                 Expression.TryCatch(
-                        Expression.New(varTupleConstructor,
+                    Expression.New(varTupleConstructor,
                                        rightsideExpression, // it may throw
                                        Expression.Constant(null, typeof(Exception))
                     ),
                     Expression.Catch(
                         ex,
-                        Expression.Block(
-                            Expression.New(varTupleConstructor,
-                                          Expression.Default(rightsideExpression.Type),
-                                          ex))
+                        Expression.New(varTupleConstructor,
+                                       Expression.Default(rightsideExpression.Type), 
+                                       ex)
                     )
                 );
 
             return tryCatchExpr;
         }
+
+        private TryExpression AddTryCatchToExpressionForVoidValue(Expression rightsideExpression)
+        {
+            var varTupleConstructor = typeof(VarTuple).GetConstructor(new Type[] { typeof(Exception) });
+
+            ParameterExpression ex = ParameterExpression.Parameter(typeof(Exception));
+
+            TryExpression tryCatchExpr =
+               Expression.TryCatch(
+                    Expression.Block(
+                        rightsideExpression, // it may throw
+                        Expression.New(varTupleConstructor,
+                                       Expression.Constant(null, typeof(Exception))
+                        )
+                    ),
+                   Expression.Catch(
+                       ex,
+                       Expression.New(varTupleConstructor,ex)
+                   )
+               );
+
+            return tryCatchExpr;
+        }
+
 
         private Expression GetLetVariableExpression(SimpleflowParser.ExpressionContext context, string variableName, string errorVariableName)
         {
