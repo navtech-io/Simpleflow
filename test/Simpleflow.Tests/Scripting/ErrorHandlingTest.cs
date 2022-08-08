@@ -21,11 +21,12 @@ namespace Simpleflow.Tests.Scripting
                 
                 output err
 
-                error `got an error - {err.Message}`
+                rule when err then    
+                    error `got an error - {err.Message}`
 
                 set x, err2 = 5 + 3
 
-                rule when err2 then
+                rule when not err2 then
                     message ""No error""
             ";
 

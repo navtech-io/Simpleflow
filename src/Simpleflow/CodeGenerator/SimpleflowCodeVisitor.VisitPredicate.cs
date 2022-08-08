@@ -58,7 +58,7 @@ namespace Simpleflow.CodeGenerator
             {
                 return Expression.Equal(operandExpression, Expression.Constant(true));
             }
-            return Expression.Equal(operandExpression, Expression.Default(operandExpression.Type));
+            return Expression.NotEqual(operandExpression, Expression.Default(operandExpression.Type));
         }
 
         public override Expression VisitTestExpression(SimpleflowParser.TestExpressionContext context)

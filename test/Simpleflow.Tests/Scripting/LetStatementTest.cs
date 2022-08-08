@@ -38,7 +38,6 @@ namespace Simpleflow.Tests.Scripting
             var arg = new SampleArgument { Id = 10 };
             var script =
                 @$"
-                  let _ = 2  # ignore
                   let Value = arg.Id
                   set value =  value + 10
                   message value
