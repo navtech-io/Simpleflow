@@ -2021,6 +2021,11 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
+        <member name="P:Simpleflow.Resources.Message.CannotIgnoreIdentifierForJsonObj">
+            <summary>
+              Looks up a localized string similar to JSON object cannot be defined by ignoring variable. Either remove that statement or provide a proper name to it instead of using _..
+            </summary>
+        </member>
         <member name="P:Simpleflow.Resources.Message.InvalidInput">
             <summary>
               Looks up a localized string similar to Invalid input.

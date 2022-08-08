@@ -49,18 +49,36 @@ namespace Simpleflow.Tests.Scripting
         }
 
         [Fact]
-        public void IgnoreVariable()
+        public void IgnoreLetVariable()
         {
             // Arrange
-            var arg = new SampleArgument { Id = 10 };
+            var arg = new SampleArgument();
             var script =
-                @$"
+                @"
                   let _ = 2  # ignore
+                  let _, err = 2 / 0  # ignore
+
                 ";
 
             // Act & Assert
             var output = SimpleflowEngine.Run(script, arg);
-            Assert.Equal("20", output.Messages[0]);
+            
+        }
+
+        [Fact]
+        public void IgnoreSetVariable()
+        {
+            // Arrange
+            var arg = new SampleArgument();
+            var script =
+                @"
+                  set _ = 2  # ignore
+                  set _, err = 2 / 0  # ignore
+
+                ";
+
+            // Act & Assert
+            var output = SimpleflowEngine.Run(script, arg);
         }
 
 

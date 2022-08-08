@@ -61,6 +61,15 @@ namespace Simpleflow.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to JSON object cannot be defined by ignoring variable. Either remove that statement or provide a proper name to it instead of using _..
+        /// </summary>
+        internal static string CannotIgnoreIdentifierForJsonObj {
+            get {
+                return ResourceManager.GetString("CannotIgnoreIdentifierForJsonObj", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid input.
         /// </summary>
         internal static string InvalidInput {

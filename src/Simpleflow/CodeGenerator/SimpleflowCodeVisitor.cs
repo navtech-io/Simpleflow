@@ -60,7 +60,7 @@ namespace Simpleflow.CodeGenerator
 
             ProcessEachStatement(context, statementExpressions);
 
-            InjectSmartVariables(statementExpressions);
+            ReplaceVirtualSmartVariablesWithReal(statementExpressions);
 
             /* A label expression of the void type that is the target for Expression.Return(). */
             statementExpressions.Add(Expression.Label(TargetLabelToExitFunction));
@@ -121,44 +121,61 @@ namespace Simpleflow.CodeGenerator
             }
             else if (childResult is BlockExpression blockExpression) // to handle tuple like let a, err = expression
             {
-                foreach (var item in blockExpression.Expressions)
-                {
-                    if (item is BinaryExpression binaryExpression1)
-                    {
-                        DeclareAndInitializeVar(statementExpressions, binaryExpression1);
-                    }
-                }
+                AddVariablesFromBlockExpression(statementExpressions, blockExpression);
             }
             else if (childResult is SmartJsonObjectParameterExpression smartJsonParamExpression) // x = {}
             {
-                CheckForDuplicateVariable(smartJsonParamExpression.Name);
+                AddVariablesFromSmartVarExpressions(statementExpressions, smartJsonParamExpression);
+            }
+            else
+            {
+                statementExpressions.Add(childResult);
+            }
+        }
 
-                // To insert in exact location once smart variable is created
-                smartJsonParamExpression.PlaceholderIndexInVariables = Variables.Count;
+        private void AddVariablesFromSmartVarExpressions(List<Expression> statementExpressions, SmartJsonObjectParameterExpression smartJsonParamExpression)
+        {
+            CheckForDuplicateVariable(smartJsonParamExpression.Name);
 
-                // Adding this: to create a actual expression while compiling function that has used this variable.
-                // This will be created while visiting the function (CreateSmartVariableIfObjectIdentiferNotDefined)
-                SmartJsonVariables.Add(smartJsonParamExpression);
+            // To insert in exact location once smart variable is created
+            smartJsonParamExpression.PlaceholderIndexInVariables = Variables.Count;
 
-                // Adding this: to replace later with actual expression
-                statementExpressions.Add(smartJsonParamExpression);
+            // Adding this: to create a actual expression while compiling function that has used this variable.
+            // This will be created while visiting the function (CreateSmartVariableIfObjectIdentiferNotDefined)
+            SmartJsonVariables.Add(smartJsonParamExpression);
+
+            // Adding this: to replace later with actual expression
+            statementExpressions.Add(smartJsonParamExpression);
+        }
+
+        private void AddVariablesFromBlockExpression(List<Expression> statementExpressions, BlockExpression blockExpression)
+        {
+            foreach (var item in blockExpression.Expressions)
+            {
+                if (item is BinaryExpression binaryExpression1)
+                {
+                    DeclareAndInitializeVar(statementExpressions, binaryExpression1);
+                }
+                else
+                {
+                    statementExpressions.Add(item);
+                }
             }
         }
 
         private void DeclareAndInitializeVar(List<Expression> statementExpressions, BinaryExpression binaryExpression)
         {
             var @var = binaryExpression.Left as ParameterExpression;
-            DeclareVariable(@var);
+            if (@var != null) // Left expression maybe null if variable is ignored _
+            {
+                DeclareVariable(@var);
+            }
             statementExpressions.Add(binaryExpression);
         }
 
         private void DeclareVariable(ParameterExpression @var)
         {
-            if (@var.Name != null)
-            {
-                CheckForDuplicateVariable(@var.Name);
-            }
-
+            CheckForDuplicateVariable(@var.Name);
             Variables.Add(@var);
         }
 
@@ -178,7 +195,7 @@ namespace Simpleflow.CodeGenerator
             return variable;
         }
 
-        private void InjectSmartVariables(List<Expression> statementExpressions)
+        private void ReplaceVirtualSmartVariablesWithReal(List<Expression> statementExpressions)
         {
             int index = 0;
             while (index < SmartJsonVariables.Count)
@@ -189,7 +206,10 @@ namespace Simpleflow.CodeGenerator
                 // Insert JSON Object variables into main variables collection and replace assignment statement.
                 if (item.VariableExpression != null)
                 {
-                    Variables.Insert(item.PlaceholderIndexInVariables, item.VariableExpression.Left as ParameterExpression);
+                    if (item.VariableExpression.Left is ParameterExpression parameter)
+                    {
+                        Variables.Insert(item.PlaceholderIndexInVariables, parameter);
+                    }
                     statementExpressions[sindex] = item.VariableExpression;
                 }
                 else
@@ -197,15 +217,14 @@ namespace Simpleflow.CodeGenerator
                     // Remove it has not been created because its not been used by any function. 
                     statementExpressions.RemoveAt(sindex);
                 }
-
                 index++;
             }
         }
 
         private void CheckForDuplicateVariable(string name)
         {
-            bool anyWithGivenName = Variables.Any(v => string.Equals(v.Name, name, StringComparison.OrdinalIgnoreCase)) ||
-                                    SmartJsonVariables.Any(v => string.Equals(v.Name, name, StringComparison.OrdinalIgnoreCase));
+            bool anyWithGivenName = Variables.Any(v => name != null && string.Equals(v.Name, name, StringComparison.OrdinalIgnoreCase)) ||
+                                    SmartJsonVariables.Any(v => name != null &&  string.Equals(v.Name, name, StringComparison.OrdinalIgnoreCase));
 
             if (anyWithGivenName)
             {
