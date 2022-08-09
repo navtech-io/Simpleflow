@@ -5,6 +5,7 @@ using System;
 using Xunit;
 
 using Simpleflow.Tests.Helpers;
+using Simpleflow.Exceptions;
 
 namespace Simpleflow.Tests.Scripting
 {
@@ -92,6 +93,51 @@ namespace Simpleflow.Tests.Scripting
 
             // Assert
             Assert.Equal(expected: "0-0--False-NULL-0", actual: output.Output["w"].ToString());
+        }
+
+
+        [Fact]
+        public void CheckEnum()
+        {
+            // Arrange  
+            var script =
+                @"
+                    let w = { permission : ""Read"" }
+                    
+                    $MethodWithObjArg ( s: w )
+
+                    output w
+
+                ";
+
+            var context = new SampleArgument();
+            var register = new FunctionRegister().Add("MethodWithObjArg", (Func<MethodArgument, string>)MethodWithObjArg);
+
+            // Act
+            FlowOutput output = new SimpleflowPipelineBuilder().AddCorePipelineServices(register).Build().Run(script, context);
+
+            // Assert
+            Assert.Equal(expected: Permission.Read , actual: (output.Output["w"] as MethodArgument).Permission);
+        }
+
+
+        [Fact]
+        public void CheckIncorrectEnum()
+        {
+            // Arrange  
+            var script =
+                @"
+                    let w = { permission : ""ReadXyz"" }
+                    
+                    $MethodWithObjArg ( s: w )
+                ";
+
+            var context = new SampleArgument();
+            var register = new FunctionRegister().Add("MethodWithObjArg", (Func<MethodArgument, string>)MethodWithObjArg);
+
+            // Act & Assert
+            AssertEx.Throws<SimpleflowException>(String.Format(Resources.Message.RequestedEnumValueNotFound, "ReadXyz", "Permission"), 
+                                                () => new SimpleflowPipelineBuilder().AddCorePipelineServices(register).Build().Run(script, context));
         }
 
 

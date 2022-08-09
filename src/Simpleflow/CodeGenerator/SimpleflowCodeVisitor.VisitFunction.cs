@@ -89,7 +89,7 @@ namespace Simpleflow.CodeGenerator
 
             if (parameterValueContext is SimpleflowParser.ObjectIdentifierContext oic)
             {
-                return VisitParameterObjectIdentifer(oic, methodParameter.ParameterType);
+                return VisitObjectIdentiferAsPerTargetType(oic, methodParameter.ParameterType);
             }
 
             return VisitWithType(parameterValueContext, methodParameter.ParameterType);
@@ -120,7 +120,7 @@ namespace Simpleflow.CodeGenerator
             }
         }
 
-        private Expression VisitParameterObjectIdentifer(SimpleflowParser.ObjectIdentifierContext objectIdentifier, Type targetType)
+        private Expression VisitObjectIdentiferAsPerTargetType(SimpleflowParser.ObjectIdentifierContext objectIdentifier, Type targetType)
         {
             var objectIdentieferText = objectIdentifier.GetText();
             

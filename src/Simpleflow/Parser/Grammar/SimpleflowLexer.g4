@@ -36,7 +36,6 @@ Equal:              '==';
 NotEqual:           '!=';
 Contains:           'contains';
 
-
 // keywords
 
 Let:                'let';
@@ -66,8 +65,9 @@ False:              'false';
 Number:             ('+'|'-')?[0-9]+('.'[0-9]+)?;
 String:             '"' ( '\\"' | ~["\r\n] )*? '"';
 None:               'none' ;
-Identifier:         [_]*[a-zA-Z][_a-zA-Z0-9]* ;
 
+Identifier:         [_]*[a-zA-Z][_a-zA-Z0-9]* ;
+IgnoreIdentifier:  '_';
 
 FunctionName:       '$' NAME ('.' NAME)*;
 BackTick:           '`' {this.IncreaseTemplateDepth();} -> pushMode(TEMPLATE);

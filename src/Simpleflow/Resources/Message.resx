@@ -117,22 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CannotIgnoreIdentifierForJsonObj" xml:space="preserve">
+    <value>JSON object cannot be defined by ignoring variable. Either remove that statement or provide a proper name to it instead of using _</value>
+  </data>
   <data name="InvalidInput" xml:space="preserve">
     <value>Invalid input</value>
   </data>
   <data name="InvalidPartialKeywordUsage" xml:space="preserve">
-    <value>"'partial' keyword can only be used with JSON object to update properties."</value>
+    <value>'partial' keyword can only be used with JSON object to update properties</value>
   </data>
   <data name="RegisterNonStaticMethodError" xml:space="preserve">
-    <value>Provide static method only. It does not support non-static method.</value>
+    <value>Provide static method only. It does not support non-static method</value>
+  </data>
+  <data name="RequestedEnumValueNotFound" xml:space="preserve">
+    <value>Requested value '{0}' was not found in type '{1}'</value>
   </data>
   <data name="ReservedWordException" xml:space="preserve">
-    <value>variable name '{0}' is a reserved word, cannot be used for variable name.</value>
+    <value>variable name '{0}' is a reserved word, cannot be used for variable name</value>
   </data>
   <data name="ServiceCannotBeNull" xml:space="preserve">
     <value>Any one of the service cannot be null in array of services.</value>
   </data>
+  <data name="TypeMismatchWithExistingVar" xml:space="preserve">
+    <value>Type mismatch. Please choose a different name instead of using existing variable with a different type</value>
+  </data>
   <data name="VariableAlreadyDefined" xml:space="preserve">
-    <value>A variable named '{0}' is already defined.</value>
+    <value>A variable named '{0}' is already defined</value>
   </data>
 </root>

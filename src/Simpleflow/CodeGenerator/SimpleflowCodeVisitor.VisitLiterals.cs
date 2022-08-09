@@ -50,11 +50,19 @@ namespace Simpleflow.CodeGenerator
         {
             var targetType = TargetTypeParserContextAnnotation.Get(context);
 
-            var value = context.String().GetText();
+            var value = GetUnquotedText(context.String().GetText());
 
-            if (targetType == null || targetType == typeof(string))
+            if (targetType == null || targetType == typeof(string)) 
             {
-                return GetStringExpression(value);
+                return Expression.Constant(value);
+            }
+            else if (targetType != null && targetType.IsEnum) // Handle enum
+            {
+                if (!Enum.TryParse(targetType, value, out object result))
+                {
+                    throw new SimpleflowException(String.Format(Resources.Message.RequestedEnumValueNotFound, value, targetType.Name));
+                }
+                return Expression.Constant(result, targetType);
             }
 
             throw new ValueTypeMismatchException(value);

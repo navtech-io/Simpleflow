@@ -34,11 +34,6 @@ namespace Simpleflow.CodeGenerator
             throw new Exceptions.ValueTypeMismatchException(value, targetType.Name);
         }
 
-        private Expression GetStringExpression(string value)
-        {
-            return Expression.Constant(GetUnquotedText(value));
-        }
-
         private Expression GetBoolExpression(string value)
         {
             return Expression.Constant(Convert.ToBoolean(value), typeof(bool));

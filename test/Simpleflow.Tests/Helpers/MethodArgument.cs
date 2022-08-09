@@ -11,10 +11,21 @@ namespace Simpleflow.Tests.Helpers
         public bool IsValid { get; set; }
         public string NullCheck { get; set; }
         public int CheckIdentifer { get; set; }
+
+        public Permission Permission { get; set; }
+
         public override string ToString()
         {
             return $"{Id}-{Value}-{Text}-{IsValid}-{NullCheck ?? "NULL"}-{CheckIdentifer}";
         }
+    }
+
+    public enum Permission
+    {
+        None,
+        Read,
+        Write,
+        ReadWrite
     }
 
     public class MethodSuperArgument

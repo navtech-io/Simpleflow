@@ -53,9 +53,13 @@ namespace Simpleflow.CodeGenerator
 
         public override Expression VisitUnaryOperand(SimpleflowParser.UnaryOperandContext context)
         {
-            return Expression.Equal(Visit(context.GetChild(0)), Expression.Constant(true) );
+            var operandExpression = Visit(context.GetChild(0));
+            if (operandExpression.Type == typeof(bool))
+            {
+                return Expression.Equal(operandExpression, Expression.Constant(true));
+            }
+            return Expression.NotEqual(operandExpression, Expression.Default(operandExpression.Type));
         }
-
 
         public override Expression VisitTestExpression(SimpleflowParser.TestExpressionContext context)
         {
