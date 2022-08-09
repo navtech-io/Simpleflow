@@ -40,7 +40,7 @@ partial set arg = {
                   }
 
 # Save user data
-set userId, err = $CustomerService.RegisterUser(user: arg) /* User defined function*/
+set userId, err = $CustomerService.RegisterUser(user: arg) # User defined function
 
 rule when err then
     error `Registration Failed. {err.Message}`
@@ -63,7 +63,7 @@ set emailMessage  = `
 # send an email to registered user
 set _, err = $SendEmail(message: emailMessage, to: arg.email)  
 
-output userId  /*access this using result.Output["userId"]*/
+output userId  # access this using result.Output["userId"]
 ```
 **Sample simpleflow script execution from code**
 
