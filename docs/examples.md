@@ -45,22 +45,25 @@ set userId, err = $CustomerService.RegisterUser(user: arg) /* User defined funct
 rule when err then
     error "Registration Failed"
     output err
+    exit
+end rule
 
 /* Upon successful registration, send an email to user
- - Error handing feature available from 1.0.4...*/
-rule when not err then 
-    # Compose message
-    set emailMessage  = `
-        Hello {arg.Name},
-        We would like to confirm that your account was created successfully.
+ - Error handing feature available since 1.0.4...*/
 
-        Thank you for joining.
-        Date: {arg.RegistrationDate}
-    `
-    # send email 
-    set _, err = $SendEmail(message: emailMessage, to: arg.email)  
+# Compose email message
+set emailMessage  = `
+    Hello {arg.Name},
+    We would like to confirm that your account was created successfully.
 
-    output userId  /*access this using result.Output["userId"]*/
+    Thank you for joining.
+    Date: {arg.RegistrationDate}
+`
+
+# send email to registered user
+set _, err = $SendEmail(message: emailMessage, to: arg.email)  
+
+output userId  /*access this using result.Output["userId"]*/
 ```
 **Sample simpleflow script execution from code**
 
