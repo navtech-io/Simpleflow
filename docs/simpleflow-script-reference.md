@@ -85,10 +85,22 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
         </td>
     </tr>
     <tr>
-        <td>Object Type</td>
+        <td>Object</td>
         <td>
             Object type can be defined using JSON format. <br>
-            <code>let member = {name: 'alex', address: {city: 'ny'} }</code>
+            <pre><code>let member = {
+                name: "alex", 
+                type: "Director", # type is Enum
+                address: {
+                           city: "ny"
+                         } 
+              }</code></pre> Object will be created only when it will be supplied as parameter to a function. Until it gets created or activated by a function, you cannot use partial set on this object. 
+        </td>
+    </tr>
+     <tr>
+        <td>List</td>
+        <td>
+            Currently, list ([]) is not supported.
         </td>
     </tr>
 </table>
@@ -184,13 +196,7 @@ $<function_name>(param_name1: value1, param_name2: value2, ...)
 Function parameters can be written in any order. and if you omit a parameter it takes a default value of that type.
 Function cannot be an argument to another function. Store output of a function in a variable and use it.
 
-> Simpleflow binds a type with properties and primitive types parameters only. But if a function returns a type
-and that type can be passed to another function if a parameter type matches to it. For example, if a function returns an array and that array variable can be passed to another function which can accept same type of array.
-
-```csharp
-    let ar = $GetArray()                # GetArray function returns array of integers
-    $FindItem(collection: ar, value: 2) # Here type of collection parameter is array of integers
-```
+Please check the limitations of custom function parameter type in Limitations section.
 
 <table>
     <tr>
@@ -330,3 +336,14 @@ when you use `set` to update a variable and you want to catch the error as well 
 * Expressions, Objects ([], {}) cannot be used directly while passing parameters to a function.	But it accepts variables. There's a trick to use array in a function, if a function returns an array and that variable can be used to pass to another function.
 * Arrays are not supported (planned in future releases).
 
+* CustomFunction Parameter Type Limitation: 
+Simpleflow binds a type with properties and primitive types parameters only. But if a function returns a type
+and that type can be passed to another function if a parameter type matches to it. For example, if a function returns an array and that array variable can be passed to another function which can accept same type of array.
+
+```csharp
+    # GetArray function returns array of integers
+    let ar = $GetArray()                
+
+    # Here type of collection parameter is array of integers
+    $FindItem(collection: ar, value: 2) 
+```
