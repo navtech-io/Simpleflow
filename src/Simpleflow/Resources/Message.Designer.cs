@@ -61,7 +61,7 @@ namespace Simpleflow.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to JSON object cannot be defined by ignoring variable. Either remove that statement or provide a proper name to it instead of using _..
+        ///   Looks up a localized string similar to JSON object cannot be defined by ignoring variable. Either remove that statement or provide a proper name to it instead of using _.
         /// </summary>
         internal static string CannotIgnoreIdentifierForJsonObj {
             get {
@@ -79,7 +79,7 @@ namespace Simpleflow.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;&apos;partial&apos; keyword can only be used with JSON object to update properties.&quot;.
+        ///   Looks up a localized string similar to &apos;partial&apos; keyword can only be used with JSON object to update properties.
         /// </summary>
         internal static string InvalidPartialKeywordUsage {
             get {
@@ -88,7 +88,7 @@ namespace Simpleflow.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide static method only. It does not support non-static method..
+        ///   Looks up a localized string similar to Provide static method only. It does not support non-static method.
         /// </summary>
         internal static string RegisterNonStaticMethodError {
             get {
@@ -97,7 +97,16 @@ namespace Simpleflow.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to variable name &apos;{0}&apos; is a reserved word, cannot be used for variable name..
+        ///   Looks up a localized string similar to Requested value &apos;{0}&apos; was not found in type &apos;{1}&apos;.
+        /// </summary>
+        internal static string RequestedEnumValueNotFound {
+            get {
+                return ResourceManager.GetString("RequestedEnumValueNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to variable name &apos;{0}&apos; is a reserved word, cannot be used for variable name.
         /// </summary>
         internal static string ReservedWordException {
             get {
@@ -124,7 +133,7 @@ namespace Simpleflow.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A variable named &apos;{0}&apos; is already defined..
+        ///   Looks up a localized string similar to A variable named &apos;{0}&apos; is already defined.
         /// </summary>
         internal static string VariableAlreadyDefined {
             get {

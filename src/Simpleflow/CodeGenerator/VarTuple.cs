@@ -19,7 +19,8 @@ namespace Simpleflow.CodeGenerator
 
     internal class VarTuple
     {
-        public readonly object Value;
+        // Don't remove this field, it will be useful to get value from try catch expression without if
+        public readonly object Value; 
         public readonly Exception Error;
 
         public VarTuple(Exception error)

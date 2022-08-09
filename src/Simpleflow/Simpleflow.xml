@@ -2023,7 +2023,7 @@
         </member>
         <member name="P:Simpleflow.Resources.Message.CannotIgnoreIdentifierForJsonObj">
             <summary>
-              Looks up a localized string similar to JSON object cannot be defined by ignoring variable. Either remove that statement or provide a proper name to it instead of using _..
+              Looks up a localized string similar to JSON object cannot be defined by ignoring variable. Either remove that statement or provide a proper name to it instead of using _.
             </summary>
         </member>
         <member name="P:Simpleflow.Resources.Message.InvalidInput">
@@ -2033,17 +2033,22 @@
         </member>
         <member name="P:Simpleflow.Resources.Message.InvalidPartialKeywordUsage">
             <summary>
-              Looks up a localized string similar to &quot;&apos;partial&apos; keyword can only be used with JSON object to update properties.&quot;.
+              Looks up a localized string similar to &apos;partial&apos; keyword can only be used with JSON object to update properties.
             </summary>
         </member>
         <member name="P:Simpleflow.Resources.Message.RegisterNonStaticMethodError">
             <summary>
-              Looks up a localized string similar to Provide static method only. It does not support non-static method..
+              Looks up a localized string similar to Provide static method only. It does not support non-static method.
+            </summary>
+        </member>
+        <member name="P:Simpleflow.Resources.Message.RequestedEnumValueNotFound">
+            <summary>
+              Looks up a localized string similar to Requested value &apos;{0}&apos; was not found in type &apos;{1}&apos;.
             </summary>
         </member>
         <member name="P:Simpleflow.Resources.Message.ReservedWordException">
             <summary>
-              Looks up a localized string similar to variable name &apos;{0}&apos; is a reserved word, cannot be used for variable name..
+              Looks up a localized string similar to variable name &apos;{0}&apos; is a reserved word, cannot be used for variable name.
             </summary>
         </member>
         <member name="P:Simpleflow.Resources.Message.ServiceCannotBeNull">
@@ -2058,7 +2063,7 @@
         </member>
         <member name="P:Simpleflow.Resources.Message.VariableAlreadyDefined">
             <summary>
-              Looks up a localized string similar to A variable named &apos;{0}&apos; is already defined..
+              Looks up a localized string similar to A variable named &apos;{0}&apos; is already defined.
             </summary>
         </member>
         <member name="T:Simpleflow.Services.CacheService">

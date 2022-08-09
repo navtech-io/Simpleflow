@@ -2,6 +2,7 @@
 // See License in the project root for license information.
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -95,7 +96,7 @@ namespace Simpleflow.CodeGenerator
                 {
                     throw new SimpleflowException(Resources.Message.CannotIgnoreIdentifierForJsonObj);
                 }
-                rightSideSetExpression = CreateNewInstanceWithProps(variableExpression.Type, expression.jsonObj().pair());
+                rightSideSetExpression = CreateNewEntityInstance(variableExpression.Type, expression.jsonObj().pair());
             }
 
             else // visit simple type
@@ -254,6 +255,22 @@ namespace Simpleflow.CodeGenerator
                            Expression.Assign(Expression.Variable(typeof(Exception), errorVariableName), Expression.Field(varFortryExpression, "Error"))
                      );
             }
+        }
+
+        private Expression VisitPartialSet(SimpleflowParser.SetStmtContext context, Expression variable)
+        {
+            // variable.Left.Type
+            var pairs = context.expression().jsonObj().pair();
+            List<Expression> propExpressions = new List<Expression>();
+
+            // set values to each declared property
+            BindProperties(variable.Type,
+                                 pairs,
+                                 (propInfo, valueExp) =>
+                                        propExpressions.Add(Expression.Assign(Expression.Property(variable, propInfo), valueExp)));
+
+            // context.expression
+            return Expression.Block(propExpressions);
         }
     }
 }
