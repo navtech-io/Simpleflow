@@ -42,6 +42,10 @@ partial set arg = {
 /* Save */
 set userId, err = $CustomerService.RegisterUser(user: arg) /* User defined function*/
 
+rule when err then
+    error "Registration Failed"
+    output err
+
 /* Upon successful registration, send an email to user
  - Error handing feature available from 1.0.4...*/
 rule when not err then 
@@ -56,8 +60,7 @@ rule when not err then
     # send email 
     set _, err = $SendEmail(message: emailMessage, to: arg.email)  
 
-    output err     /*access this output using result.Output["err"]*/ 
-    output userId  /*result.Output["userId"]*/
+    output userId  /*access this using result.Output["userId"]*/
 ```
 **Sample simpleflow script execution from code**
 
