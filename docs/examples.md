@@ -9,12 +9,12 @@ nav_order: 99
 **Sample Simpleflow Script**
 
 ```csharp
-/* Declare and initialize variables */
+# Declare and initialize variables 
 let userId      = none
 let currentDate = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
 let emailMessage= ""
 
-/* Define Rules */
+# Define Rules 
 rule when  arg.Name == "" 
            or arg.Name == none then
     error "Name cannot be empty"
@@ -26,20 +26,20 @@ rule when arg.Age < 18 and arg.Country == "US" then
     error "You cannot register"
 end rule
 
-/* Statements outside of the rules */
+# Statements outside of the rules 
 message "validations-completed"
 
 rule when context.HasErrors then
     exit
 end rule
 
-/* Set current date time */
+# Set current date time 
 partial set arg = { 
                     RegistrationDate: currentDate, 
                     IsActive: true 
                   }
 
-/* Save */
+# Save user data
 set userId, err = $CustomerService.RegisterUser(user: arg) /* User defined function*/
 
 rule when err then
@@ -60,7 +60,7 @@ set emailMessage  = `
     Date: {arg.RegistrationDate}
 `
 
-# send email to registered user
+# send an email to registered user
 set _, err = $SendEmail(message: emailMessage, to: arg.email)  
 
 output userId  /*access this using result.Output["userId"]*/
