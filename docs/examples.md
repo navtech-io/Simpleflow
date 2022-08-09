@@ -43,7 +43,7 @@ partial set arg = {
 set userId, err = $CustomerService.RegisterUser(user: arg) /* User defined function*/
 
 rule when err then
-    error "Registration Failed"
+    error `Registration Failed. {err.Message}`
     output err
     exit
 end rule
