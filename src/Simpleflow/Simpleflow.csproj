@@ -2,8 +2,8 @@
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
     <PackageIcon>PackageIcon.png</PackageIcon>
-    <VersionPrefix>1.0.3</VersionPrefix>
-    <VersionSuffix></VersionSuffix>
+    <VersionPrefix>1.0.4</VersionPrefix>
+    <VersionSuffix>beta1</VersionSuffix>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
