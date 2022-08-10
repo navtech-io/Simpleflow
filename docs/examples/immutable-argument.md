@@ -7,6 +7,8 @@ parent: Examples
 # Examples
 
 **Immutable argument example**
+Since v1.0.4
+{: .fs-1 }
 
 ```csharp
 # Declare and initialize variables 
@@ -14,7 +16,6 @@ let address = arg.address
 
 /* try to modify, but it does not allow and throws exception 
    since we run this script under immutable context */
-
 partial set address, err = {
     city: 'ny'
 }
@@ -22,15 +23,11 @@ partial set address, err = {
 /* this condition will be passed since we set the 
    AllowArgumentToMutate to false for the  current 
    execution context */
-
 rule when err then 
     output err
-
 ```
 **Execute**
-
 ```csharp
-
 var customer =  new Customer 
                 { 
                     Name = "John",  
@@ -39,7 +36,6 @@ var customer =  new Customer
                         State = "CA"
                     }
                 },
-
 // Execute 
 FlowOutput result = SimpleflowEngine.Run(rules,     // Above script
                                          customer,  // argument
