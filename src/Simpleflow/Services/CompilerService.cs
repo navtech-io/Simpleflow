@@ -15,6 +15,7 @@ namespace Simpleflow.Services
     public class CompilerService : IFlowPipelineService
     {
         private readonly IFunctionRegister _functionRegister;
+        private readonly IOptions _options;
 
         /// <summary>
         /// 
@@ -24,6 +25,7 @@ namespace Simpleflow.Services
         public CompilerService(IFunctionRegister functionRegister, IOptions options = null)
         {
             _functionRegister = functionRegister ?? throw new ArgumentNullException(nameof(functionRegister));
+            _options = options;
         }
 
         /// <inheritdoc />
@@ -58,25 +60,27 @@ namespace Simpleflow.Services
             next?.Invoke(context);
         }
 
-        private static void CheckFunctionExecutionPermissions<TArg>(FlowContext<TArg> context, ParserEventPublisher eventPublisher)
+        private void CheckFunctionExecutionPermissions<TArg>(FlowContext<TArg> context, ParserEventPublisher eventPublisher)
         {
             eventPublisher.OnVisit = (type, data) =>
             {
+                var options = context.Options ?? _options;
+
                 if (type == EventType.VisitFunctionOnAvail
-                    && context.Options?.DenyFunctions != null)
+                    && options?.DenyFunctions != null)
                 {
                     var functionName = data.ToString();
-                    if (context.Options.DenyFunctions.Contains(functionName, StringComparer.OrdinalIgnoreCase))
+                    if (options.DenyFunctions.Contains(functionName, StringComparer.OrdinalIgnoreCase))
                     {
                         throw new AccessDeniedException($"Function '{functionName}' cannot be allowed to run in this context.");
                     }
                 }
 
                 if (type == EventType.VisitFunctionOnAvail
-                    && context.Options?.AllowFunctions != null)
+                    && options?.AllowFunctions != null)
                 {
                     var functionName = data.ToString();
-                    if (!context.Options.AllowFunctions.Contains(functionName, StringComparer.OrdinalIgnoreCase))
+                    if (!options.AllowFunctions.Contains(functionName, StringComparer.OrdinalIgnoreCase))
                     {
                         throw new AccessDeniedException($"Function '{functionName}' cannot be allowed to run in this context.");
                     }

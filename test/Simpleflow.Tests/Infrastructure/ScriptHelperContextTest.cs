@@ -21,7 +21,7 @@ namespace Simpleflow.Tests.Infrastructure
             
             // Act 
             var result = SimpleflowEngine.Run(script, new object());
-            var scriptHelperContext = new ScriptHelperContext(result, System.Threading.CancellationToken.None);
+            var scriptHelperContext = new ScriptHelperContext(result, true, System.Threading.CancellationToken.None);
 
             // Assert
             Assert.True(scriptHelperContext.HasErrors);
@@ -41,7 +41,7 @@ namespace Simpleflow.Tests.Infrastructure
 
             // Act 
             var result = SimpleflowEngine.Run(script, new object());
-            var scriptHelperContext = new ScriptHelperContext(result, System.Threading.CancellationToken.None);
+            var scriptHelperContext = new ScriptHelperContext(result, true, System.Threading.CancellationToken.None);
 
             // Assert
             Assert.False(scriptHelperContext.HasErrors);

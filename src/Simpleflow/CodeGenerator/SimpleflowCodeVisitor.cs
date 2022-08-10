@@ -23,9 +23,9 @@ namespace Simpleflow.CodeGenerator
         protected readonly List<ParameterExpression> Variables;  // program variables
         protected readonly List<SmartJsonObjectParameterExpression> SmartJsonVariables;  // program variables
 
-        protected readonly ParameterExpression Input;  // script main function parameter 1
-        protected readonly ParameterExpression Output; // script main function parameter 2
-        protected readonly ParameterExpression ScriptHelperContext; //script main function  parameter 3
+        protected readonly ParameterExpression InputParam;  // script main function parameter 1
+        protected readonly ParameterExpression OutputParam; // script main function parameter 2
+        protected readonly ParameterExpression ScriptHelperContextParam; //script main function  parameter 3
 
         protected readonly ParserEventPublisher EventPublisher;
 
@@ -39,10 +39,10 @@ namespace Simpleflow.CodeGenerator
             SmartJsonVariables = new List<SmartJsonObjectParameterExpression>();
 
             /* Initialize Function parameters */
-            Input = Expression.Parameter(typeof(TArg));
-            Output = Expression.Parameter(typeof(FlowOutput));
+            InputParam = Expression.Parameter(typeof(TArg));
+            OutputParam = Expression.Parameter(typeof(FlowOutput));
             // use context parameter name in order to access in script
-            ScriptHelperContext = Expression.Parameter(typeof(ScriptHelperContext), "context");
+            ScriptHelperContextParam = Expression.Parameter(typeof(ScriptHelperContext), "context");
 
 
             /* A label expression of the void type that is the target for Expression.Return(). */
@@ -72,7 +72,7 @@ namespace Simpleflow.CodeGenerator
             Expression<Action<TArg, FlowOutput, ScriptHelperContext>> program =
                 Expression.Lambda<Action<TArg /*input-context*/, FlowOutput, ScriptHelperContext>>(
                     body,
-                    new ParameterExpression[] { Input, Output, ScriptHelperContext }
+                    new ParameterExpression[] { InputParam, OutputParam, ScriptHelperContextParam }
                 );
 
             return program;
@@ -238,11 +238,11 @@ namespace Simpleflow.CodeGenerator
             var argVar = Expression.Variable(typeof(TArg), "arg");
 
             Variables.Add(argVar);               // arg
-            Variables.Add(ScriptHelperContext);  // script
+            Variables.Add(ScriptHelperContextParam);  // script
 
             return new List<Expression>()
             {
-                Expression.Assign(argVar, Input)
+                Expression.Assign(argVar, InputParam)
             };
         }
 
