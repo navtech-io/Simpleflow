@@ -6,7 +6,7 @@ parent: Examples
 
 # Examples
 
-##### Immutable argument example
+#### Immutable Argument Example
 Since v1.0.4
 {: .fs-1 }
 
@@ -26,7 +26,7 @@ partial set address, err = {
 rule when err then 
     output err
 ```
-##### Execute
+#### Execute
 ```csharp
 var customer =  new Customer 
                 { 
