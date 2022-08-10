@@ -57,7 +57,7 @@ var scriptExecutionTime =  result.Output["today"];
 Hello, World! 🌄
 
 ```
-Please see [this](docs/examples/) example with most of the simpleflow script features.
+Please see [this](docs/examples) example with most of the simpleflow script features.
 
 ---
 
