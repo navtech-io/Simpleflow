@@ -8,7 +8,7 @@ permalink: docs/examples
 
 # Examples
 
-#### Sample Simpleflow Script
+### Sample Simpleflow Script
 
 ```csharp
 # Declare and initialize variables 
@@ -67,7 +67,7 @@ set _, err = $SendEmail(message: emailMessage, to: arg.email)
 
 output userId  # access this using result.Output["userId"]
 ```
-#### Execute
+### Execute
 
 ```csharp
 // Register custom function
