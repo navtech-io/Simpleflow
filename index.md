@@ -64,7 +64,7 @@ Please see [this](docs/examples/) example with most of the simpleflow script fea
 * [Script Outline](docs/simpleflow-script-reference/#script-outline)
 * [Reference](docs/simpleflow-script-reference/#script-outline)
 * [API](docs/api/)
-* [Examples](docs/examples/)
+* [Examples](docs/examples)
 * [Limitations](docs/simpleflow-script-reference/#limitations)
 
 
