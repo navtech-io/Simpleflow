@@ -43,7 +43,7 @@ namespace Simpleflow.CodeGenerator
             var name = context.objectIdentifier().GetText();
 
             Expression callExpr = Expression.Call(
-                instance: Expression.Property(Output, nameof(FlowOutput.Output)),
+                instance: Expression.Property(OutputParam, nameof(FlowOutput.Output)),
                 
                 // ReSharper disable once AssignNullToNotNullAttribute
                 method: typeof(Dictionary<string, object>).GetMethod(
@@ -70,7 +70,7 @@ namespace Simpleflow.CodeGenerator
         {
 
             Expression callExpr = Expression.Call(
-                Expression.Property(Output, propertyName),
+                Expression.Property(OutputParam, propertyName),
                 // ReSharper disable once AssignNullToNotNullAttribute
                 typeof(List<string>).GetMethod(nameof(List<string>.Add), new Type[] { typeof(string) }),
                 message
