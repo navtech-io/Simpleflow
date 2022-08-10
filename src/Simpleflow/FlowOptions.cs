@@ -10,7 +10,7 @@ namespace Simpleflow
         /// <summary>
         /// Gets or sets AllowArgumentToMutate
         /// </summary>
-        // public bool AllowArgumentToMutate { get; set; }  // Implement in next release
+        public bool AllowArgumentToMutate { get; set; } 
 
         /// <summary>
         /// Gets or sets AllowFunctions

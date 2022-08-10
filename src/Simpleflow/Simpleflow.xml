@@ -51,6 +51,18 @@
             </summary>
             <param name="message">The message that describes the error</param>
         </member>
+        <member name="T:Simpleflow.Exceptions.ArgumentImmutableExeception">
+            <summary>
+            Represents base exception for all Simpleflow exceptions
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Exceptions.ArgumentImmutableExeception.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.SimpleflowException"/> class with
+            a specified variable name.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
         <member name="T:Simpleflow.Exceptions.DuplicateFunctionException">
             <summary>
             The exception is thrown when a function with a name is already registered.
@@ -268,6 +280,11 @@
         <member name="T:Simpleflow.FlowOptions">
             <inheritdoc />
         </member>
+        <member name="P:Simpleflow.FlowOptions.AllowArgumentToMutate">
+            <summary>
+            Gets or sets AllowArgumentToMutate
+            </summary>
+        </member>
         <member name="P:Simpleflow.FlowOptions.AllowFunctions">
             <summary>
             Gets or sets AllowFunctions
@@ -398,6 +415,11 @@
         <member name="T:Simpleflow.IOptions">
             <summary>
             
+            </summary>
+        </member>
+        <member name="P:Simpleflow.IOptions.AllowArgumentToMutate">
+            <summary>
+            Gets or sets AllowArgumentToMutate
             </summary>
         </member>
         <member name="P:Simpleflow.IOptions.AllowFunctions">
@@ -2114,6 +2136,17 @@
             <summary>
             A service to run the machine code instructions
             </summary>
+        </member>
+        <member name="M:Simpleflow.Services.ExecutionService.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Services.ExecutionService.#ctor(Simpleflow.IOptions)">
+            <summary>
+            
+            </summary>
+            <param name="options"></param>
         </member>
         <member name="M:Simpleflow.Services.ExecutionService.Run``1(Simpleflow.FlowContext{``0},Simpleflow.NextPipelineService{``0})">
             <inheritdoc />
