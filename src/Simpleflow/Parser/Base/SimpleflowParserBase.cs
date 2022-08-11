@@ -23,6 +23,22 @@ namespace Simpleflow.Parser
         {
         }
 
+        protected bool NotLineTerminator()
+        {
+            return !Here(LineTerminator);
+        }
+
+        protected bool Here(int type)
+        {
+            // Get the token ahead of the current index.
+            int possibleIndexEosToken = CurrentToken.TokenIndex - 1;
+            IToken ahead = ((ITokenStream)this.InputStream).Get(possibleIndexEosToken);
+
+            // Check if the token resides on the Hidden channel and if it's of the
+            // provided type.
+            return ahead.Channel == Lexer.Hidden && ahead.Type == type;
+        }
+
         protected bool LineTerminatorAhead()
         {
             // Get the token ahead of the current index.

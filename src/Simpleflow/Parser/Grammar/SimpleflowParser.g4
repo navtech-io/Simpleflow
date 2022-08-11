@@ -3,32 +3,22 @@ parser grammar SimpleflowParser;
 options {
     tokenVocab=SimpleflowLexer;
     superClass=SimpleflowParserBase;
-}
+} 
  
 program
     : letStmt* 
      (ruleStmt | generalStatement)* EOF; 
- 
-ruleStmt
-    : Rule When predicate Then eos 
-          (  messageStmt  
-           | errorStmt       
-           | outputStmt  
-           | setStmt 
-           | functionStmt
-           | exitStmt
-          )*
-       (endRuleStmt)?
+
+letStmt
+    : Let (Identifier | IgnoreIdentifier) (Comma Identifier)? Assign expression eos  
     ; 
 
-endRuleStmt
-    : End Rule eos
-    ;
-
-exitStmt
-    : Exit eos
-    ;
-
+ruleStmt
+    : Rule When predicate Then eos 
+         generalStatement+
+      endRuleStmt?
+    ; 
+    
 generalStatement
     : messageStmt
     | errorStmt
@@ -37,9 +27,9 @@ generalStatement
     | functionStmt
     | exitStmt
     ; 
-    
-letStmt
-    : Let (Identifier | IgnoreIdentifier) (Comma Identifier)? Assign expression eos  
+
+endRuleStmt
+    : End Rule eos
     ;
 
 setStmt
@@ -54,10 +44,6 @@ errorStmt
     : Error messageText eos
     ;
 
-messageText
-    : (stringLiteral | templateStringLiteral | objectIdentifier)
-    ;
-
 outputStmt
     : Output objectIdentifier eos
     ;
@@ -66,12 +52,14 @@ functionStmt
     : function eos
     ;    
 
-eos
-    : EOF
-    | {this.LineTerminatorAhead()}?
+exitStmt
+    : Exit eos
     ;
-   
-  
+
+messageText
+    : (stringLiteral | templateStringLiteral | objectIdentifier)
+    ; 
+
 expression
     : boolLeteral 
     | noneLiteral 
@@ -81,6 +69,7 @@ expression
     | arithmeticExpression 
     | stringLiteral 
     | templateStringLiteral
+    | arrayLiteral
     ;
     
 templateStringLiteral
@@ -129,7 +118,22 @@ functionParameterValue
 // Literals
 
 objectIdentifier 
-    : Identifier (Dot Identifier)*  
+    : identifierIndex {this.NotLineTerminator()}? (Dot {this.NotLineTerminator()}? identifierIndex)*
+    ;  
+ 
+
+identifierIndex
+    : Identifier {this.NotLineTerminator()}? index?
+    ;
+
+index
+    : OpenBracket {this.NotLineTerminator()}? indexNumber {this.NotLineTerminator()}? CloseBracket
+    ;
+
+indexNumber
+    : numberLiteral 
+    | objectIdentifier 
+    | function
     ;
 
 stringLiteral
@@ -148,6 +152,21 @@ noneLiteral
     : None
     ;
 
+arrayLiteral
+   : '[' arrayValue (',' arrayValue)* ']'
+   | '[' ']' 
+   ; 
+
+arrayValue
+    : boolLeteral 
+    | noneLiteral 
+    | function 
+    | objectIdentifier
+    | arithmeticExpression 
+    | stringLiteral 
+    | templateStringLiteral
+    ;
+    
 // JSON
 jsonObj
    : OpenBrace pair (Comma pair)* CloseBrace
@@ -157,12 +176,6 @@ jsonObj
 pair
    : Identifier Colon expression
    ;
-
-// arr
-//    : '[' value (',' value)* ']'
-//    | '[' ']' 
-//    ; 
-
 
 /**************************** */
 /** predicate - recursive rule */
@@ -192,7 +205,7 @@ relationalOperator
     | LessThanEqual
     | Equal
     | NotEqual
-    | Contains
+    
     ;
 operand
     : objectIdentifier
@@ -210,6 +223,9 @@ unaryOperand
     | function
     ;
 
-
+eos
+    : EOF
+    | {this.LineTerminatorAhead()}?
+    ;
 
 

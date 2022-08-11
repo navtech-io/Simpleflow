@@ -39,23 +39,17 @@ internal interface ISimpleflowParserVisitor<Result> : IParseTreeVisitor<Result> 
 	/// <return>The visitor result.</return>
 	Result VisitProgram([NotNull] SimpleflowParser.ProgramContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.letStmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitLetStmt([NotNull] SimpleflowParser.LetStmtContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.ruleStmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitRuleStmt([NotNull] SimpleflowParser.RuleStmtContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.endRuleStmt"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitEndRuleStmt([NotNull] SimpleflowParser.EndRuleStmtContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.exitStmt"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExitStmt([NotNull] SimpleflowParser.ExitStmtContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.generalStatement"/>.
 	/// </summary>
@@ -63,11 +57,11 @@ internal interface ISimpleflowParserVisitor<Result> : IParseTreeVisitor<Result> 
 	/// <return>The visitor result.</return>
 	Result VisitGeneralStatement([NotNull] SimpleflowParser.GeneralStatementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.letStmt"/>.
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.endRuleStmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitLetStmt([NotNull] SimpleflowParser.LetStmtContext context);
+	Result VisitEndRuleStmt([NotNull] SimpleflowParser.EndRuleStmtContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.setStmt"/>.
 	/// </summary>
@@ -87,12 +81,6 @@ internal interface ISimpleflowParserVisitor<Result> : IParseTreeVisitor<Result> 
 	/// <return>The visitor result.</return>
 	Result VisitErrorStmt([NotNull] SimpleflowParser.ErrorStmtContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.messageText"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitMessageText([NotNull] SimpleflowParser.MessageTextContext context);
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.outputStmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -105,11 +93,17 @@ internal interface ISimpleflowParserVisitor<Result> : IParseTreeVisitor<Result> 
 	/// <return>The visitor result.</return>
 	Result VisitFunctionStmt([NotNull] SimpleflowParser.FunctionStmtContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.exitStmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitEos([NotNull] SimpleflowParser.EosContext context);
+	Result VisitExitStmt([NotNull] SimpleflowParser.ExitStmtContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.messageText"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMessageText([NotNull] SimpleflowParser.MessageTextContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.expression"/>.
 	/// </summary>
@@ -165,6 +159,24 @@ internal interface ISimpleflowParserVisitor<Result> : IParseTreeVisitor<Result> 
 	/// <return>The visitor result.</return>
 	Result VisitObjectIdentifier([NotNull] SimpleflowParser.ObjectIdentifierContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.identifierIndex"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIdentifierIndex([NotNull] SimpleflowParser.IdentifierIndexContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.index"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIndex([NotNull] SimpleflowParser.IndexContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.indexNumber"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIndexNumber([NotNull] SimpleflowParser.IndexNumberContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.stringLiteral"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -188,6 +200,18 @@ internal interface ISimpleflowParserVisitor<Result> : IParseTreeVisitor<Result> 
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitNoneLiteral([NotNull] SimpleflowParser.NoneLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.arrayLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitArrayLiteral([NotNull] SimpleflowParser.ArrayLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.arrayValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitArrayValue([NotNull] SimpleflowParser.ArrayValueContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.jsonObj"/>.
 	/// </summary>
@@ -236,5 +260,11 @@ internal interface ISimpleflowParserVisitor<Result> : IParseTreeVisitor<Result> 
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitUnaryOperand([NotNull] SimpleflowParser.UnaryOperandContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEos([NotNull] SimpleflowParser.EosContext context);
 }
 } // namespace Simpleflow.Parser

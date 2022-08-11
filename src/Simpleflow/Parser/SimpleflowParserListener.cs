@@ -42,6 +42,16 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitProgram([NotNull] SimpleflowParser.ProgramContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.letStmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterLetStmt([NotNull] SimpleflowParser.LetStmtContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.letStmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitLetStmt([NotNull] SimpleflowParser.LetStmtContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.ruleStmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -51,26 +61,6 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitRuleStmt([NotNull] SimpleflowParser.RuleStmtContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="SimpleflowParser.endRuleStmt"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterEndRuleStmt([NotNull] SimpleflowParser.EndRuleStmtContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SimpleflowParser.endRuleStmt"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitEndRuleStmt([NotNull] SimpleflowParser.EndRuleStmtContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="SimpleflowParser.exitStmt"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterExitStmt([NotNull] SimpleflowParser.ExitStmtContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SimpleflowParser.exitStmt"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitExitStmt([NotNull] SimpleflowParser.ExitStmtContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.generalStatement"/>.
 	/// </summary>
@@ -82,15 +72,15 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitGeneralStatement([NotNull] SimpleflowParser.GeneralStatementContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SimpleflowParser.letStmt"/>.
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.endRuleStmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLetStmt([NotNull] SimpleflowParser.LetStmtContext context);
+	void EnterEndRuleStmt([NotNull] SimpleflowParser.EndRuleStmtContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="SimpleflowParser.letStmt"/>.
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.endRuleStmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLetStmt([NotNull] SimpleflowParser.LetStmtContext context);
+	void ExitEndRuleStmt([NotNull] SimpleflowParser.EndRuleStmtContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.setStmt"/>.
 	/// </summary>
@@ -122,16 +112,6 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitErrorStmt([NotNull] SimpleflowParser.ErrorStmtContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SimpleflowParser.messageText"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterMessageText([NotNull] SimpleflowParser.MessageTextContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SimpleflowParser.messageText"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitMessageText([NotNull] SimpleflowParser.MessageTextContext context);
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.outputStmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -152,15 +132,25 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitFunctionStmt([NotNull] SimpleflowParser.FunctionStmtContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.exitStmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterEos([NotNull] SimpleflowParser.EosContext context);
+	void EnterExitStmt([NotNull] SimpleflowParser.ExitStmtContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.exitStmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitEos([NotNull] SimpleflowParser.EosContext context);
+	void ExitExitStmt([NotNull] SimpleflowParser.ExitStmtContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.messageText"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMessageText([NotNull] SimpleflowParser.MessageTextContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.messageText"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMessageText([NotNull] SimpleflowParser.MessageTextContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.expression"/>.
 	/// </summary>
@@ -252,6 +242,36 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitObjectIdentifier([NotNull] SimpleflowParser.ObjectIdentifierContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.identifierIndex"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterIdentifierIndex([NotNull] SimpleflowParser.IdentifierIndexContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.identifierIndex"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitIdentifierIndex([NotNull] SimpleflowParser.IdentifierIndexContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.index"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterIndex([NotNull] SimpleflowParser.IndexContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.index"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitIndex([NotNull] SimpleflowParser.IndexContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.indexNumber"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterIndexNumber([NotNull] SimpleflowParser.IndexNumberContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.indexNumber"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitIndexNumber([NotNull] SimpleflowParser.IndexNumberContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.stringLiteral"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -291,6 +311,26 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitNoneLiteral([NotNull] SimpleflowParser.NoneLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.arrayLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterArrayLiteral([NotNull] SimpleflowParser.ArrayLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.arrayLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitArrayLiteral([NotNull] SimpleflowParser.ArrayLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.arrayValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterArrayValue([NotNull] SimpleflowParser.ArrayValueContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.arrayValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitArrayValue([NotNull] SimpleflowParser.ArrayValueContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.jsonObj"/>.
 	/// </summary>
@@ -371,5 +411,15 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitUnaryOperand([NotNull] SimpleflowParser.UnaryOperandContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterEos([NotNull] SimpleflowParser.EosContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.eos"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitEos([NotNull] SimpleflowParser.EosContext context);
 }
 } // namespace Simpleflow.Parser
