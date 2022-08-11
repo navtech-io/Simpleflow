@@ -97,10 +97,17 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
               }</code></pre> Object will be created only when it will be supplied as parameter to a function. Until it gets created or activated by a function, you cannot use partial set on this object. 
         </td>
     </tr>
-     <tr>
-        <td>List</td>
+    <tr>
         <td>
-            Currently, list ([]) is not supported.
+            List <br>
+            Since v1.0.4-*
+            {: .fs-1 }
+        </td>
+        <td>
+            Simpleflow supports only list <br>
+<pre><code>let values = [100, 200, 300, 400]
+output values[ 0 ] #output first value
+</code></pre>
         </td>
     </tr>
 </table>
