@@ -21,11 +21,9 @@ namespace Simpleflow.CodeGenerator
             var statements = new List<Expression>();
 
             // Process predicate and statements
-            for (int i = 0; i < context.ChildCount; i++)
+            foreach (var statement in context.generalStatement())
             {
-                var c = context.GetChild(i);
-
-                // Stop at end statement and return block outside of if else
+                var c = statement. GetChild(0);
 
                 if (c.GetType() != typeof(SimpleflowParser.PredicateContext))
                 {
@@ -38,6 +36,5 @@ namespace Simpleflow.CodeGenerator
             }
             return Expression.IfThen(testExpression, Expression.Block(statements));
         }
-
     }
 }

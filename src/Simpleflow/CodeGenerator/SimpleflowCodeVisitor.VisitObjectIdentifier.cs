@@ -1,11 +1,8 @@
 ﻿// Copyright (c) navtech.io. All rights reserved.
 // See License in the project root for license information.
 
-using System;
 using System.Linq;
 using System.Linq.Expressions;
-
-using Antlr4.Runtime.Tree;
 
 using Simpleflow.Exceptions;
 using Simpleflow.Parser;
@@ -16,17 +13,63 @@ namespace Simpleflow.CodeGenerator
     {
         public override Expression VisitObjectIdentifier(SimpleflowParser.ObjectIdentifierContext context)
         {
-            var objectPathProperties = context.GetText().Split('.');
-            
-            var propName = objectPathProperties[0];
-            Expression identifier = GetVariable(propName) ?? GetSmartVariable(propName)?.VariableExpression?.Left;
+            // Get initial object
+            var variableName = context.identifierIndex()[0].Identifier().GetText();
+            Expression objectExp = GetVariable(variableName) ?? GetSmartVariable(variableName)?.VariableExpression?.Left;
 
-            if (identifier == null)
+            if (objectExp == null)
             {
-                throw new UndeclaredVariableException(objectPathProperties[0]);
+                throw new UndeclaredVariableException(variableName);
             }
 
-            return GetEndProperty(identifier, objectPathProperties, startIndex: 1);
+            // Get index object if specified
+            var indexObjectExp = GetIndexObjectExpIfDefined(objectExp, context.identifierIndex()[0]);
+
+            // Traverse through and get final object
+            return GetFinalPropertyValue(indexObjectExp, context.identifierIndex());
+        }
+
+        private Expression GetIndexObjectExpIfDefined(Expression objectExp, SimpleflowParser.IdentifierIndexContext context)
+        {
+            if (context.index() != null)
+            {
+                var indexExpression = Visit(context.index().indexExpression().GetChild(0)); // represents index 
+
+                var indexProperty
+                    = objectExp
+                        .Type
+                        .GetProperties()
+                        .SingleOrDefault(p => p.GetIndexParameters().Length == 1 &&
+                                              p.GetIndexParameters()[0].ParameterType == indexExpression.Type);
+                
+                return Expression.MakeIndex(objectExp, indexProperty, new[] { indexExpression });
+            }
+
+            return objectExp;
+        }
+
+        private Expression GetFinalPropertyValue(Expression propExp, SimpleflowParser.IdentifierIndexContext[] propertiesHierarchy)
+        {
+            for (int i = 1; i < propertiesHierarchy.Length; i++)
+            {
+                var property = propertiesHierarchy[i];
+
+                // Get next property name
+                var propName = property.Identifier().GetText();
+                var prop = GetPropertyInfo(propExp.Type, propName);
+
+                if (prop == null)
+                {
+                    throw new InvalidPropertyException($"Invalid property '{propName}'");
+                }
+
+                // Get indexed object
+                propExp = GetIndexObjectExpIfDefined(propExp, property);
+
+                // Get property of indexed object
+                propExp = Expression.Property(propExp, prop);
+            }
+            return propExp;
         }
     }
 }

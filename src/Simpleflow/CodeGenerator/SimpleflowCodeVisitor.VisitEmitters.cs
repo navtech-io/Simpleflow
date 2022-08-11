@@ -58,28 +58,6 @@ namespace Simpleflow.CodeGenerator
             return callExpr;
         }
 
-
-        /// <summary>
-        ///  Trim first and last quotes
-        /// </summary>
-        /// <param name="string"></param>
-        /// <returns></returns>
-      
-
-        private Expression CallListAddMethod(Expression message, string propertyName)
-        {
-
-            Expression callExpr = Expression.Call(
-                Expression.Property(OutputParam, propertyName),
-                // ReSharper disable once AssignNullToNotNullAttribute
-                typeof(List<string>).GetMethod(nameof(List<string>.Add), new Type[] { typeof(string) }),
-                message
-            );
-
-            // Call function to to add message 
-            return callExpr;
-        }
-
         private Expression HandleMessageText(SimpleflowParser.MessageTextContext messageToken, string outputProperty)
         {
             var identifier = Visit(messageToken.GetChild(0));
@@ -88,9 +66,19 @@ namespace Simpleflow.CodeGenerator
                          identifier : ToStringExpression(identifier);
 
             return CallListAddMethod(identifier, outputProperty);
-
         }
 
+        private Expression CallListAddMethod(Expression message, string outputProperty)
+        {
+            Expression callExpr = Expression.Call(
+                Expression.Property(OutputParam, outputProperty),
+                // ReSharper disable once AssignNullToNotNullAttribute
+                typeof(List<string>).GetMethod(nameof(List<string>.Add), new Type[] { typeof(string) }),
+                message
+            );
 
+            // Call function to add message 
+            return callExpr;
+        }
     }
 }

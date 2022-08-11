@@ -28,6 +28,31 @@ namespace Simpleflow.Tests
         }
 
         [Fact]
+        public void Try1()
+        {
+            // Arrange
+            var flowScript =
+            @$" 
+
+                let today = $GetCurrentDateTime ( timezone: ""{TestsHelper.Timezone}"" )
+
+                # Write rules
+                rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
+                     message `Hello, World! 🌄, Universal Id {{arg.UniversalId}}`
+                end rule
+
+                # Output
+                output today
+            ";
+
+            // Act
+            FlowOutput output = SimpleflowEngine.Run(flowScript, new { UniversalId = 2, New = true, Verified = false });
+
+            // Assert
+            Assert.Equal("Hello, World! 🌄, Universal Id 2", output.Messages[0]);
+        }
+
+        [Fact]
         public void Try2()
         {
             // Arrange

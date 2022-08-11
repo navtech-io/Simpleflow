@@ -3,16 +3,16 @@ lexer grammar SimpleflowLexer;
 channels { ERROR }
 options { superClass=SimpleflowLexerBase; }
 
-WhiteSpaces:        [\t\u000B\u000C\u0020\u00A0]+ -> channel(HIDDEN);
-LineTerminator:     [\r\n\u2028\u2029] -> channel(HIDDEN);
 MultiLineComment:   '/*' .*? '*/'  -> channel(HIDDEN);
 SingleLineComment:  '#' ~[\r\n\u2028\u2029]*  -> channel(HIDDEN);
 
+OpenBracket:        '[';
+CloseBracket:       ']';
+OpenParen:          '(';
+CloseParen:         ')'; 
 OpenBrace:          '{';
 TemplateCloseBrace: {this.IsInTemplateString()}? '}' -> popMode;
 CloseBrace:         '}';
-OpenParen:          '(';
-CloseParen:         ')'; 
 
 Colon:              ':' ;
 Comma :             ',';
@@ -34,7 +34,6 @@ LessThan:           '<';
 LessThanEqual:      '<=';
 Equal:              '==';
 NotEqual:           '!=';
-Contains:           'contains';
 
 // keywords
 
@@ -55,6 +54,8 @@ Output:             'output';
 
 // relational operators
 
+Semicolon: ';';
+
 And:                'and';
 Or:                 'or';
 Not:                'not';
@@ -63,14 +64,20 @@ Not:                'not';
 True:               'true';
 False:              'false';
 Number:             ('+'|'-')?[0-9]+('.'[0-9]+)?;
+ 
 String:             '"' ( '\\"' | ~["\r\n] )*? '"';
 None:               'none' ;
 
 Identifier:         [_]*[a-zA-Z][_a-zA-Z0-9]* ;
 IgnoreIdentifier:  '_';
 
+Indexer:             OpenBracket Number CloseBracket;
+
 FunctionName:       '$' NAME ('.' NAME)*;
 BackTick:           '`' {this.IncreaseTemplateDepth();} -> pushMode(TEMPLATE);
+
+WhiteSpaces:        [\t\u000B\u000C\u0020\u00A0]+ -> channel(HIDDEN);
+LineTerminator:     [\r\n\u2028\u2029] -> channel(HIDDEN);
 
 mode TEMPLATE;
 
