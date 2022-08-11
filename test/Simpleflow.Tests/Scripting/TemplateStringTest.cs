@@ -35,8 +35,8 @@ namespace Simpleflow.Tests.Scripting
             // Arrange
             var script =
                 @"
-                    let to   = ""John""; 
-                    let from = ""Chris""; 
+                    let to   = ""John"" 
+                    let from = ""Chris""
 
                     let v    = ` Hi {to},
                                  .....

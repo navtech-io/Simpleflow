@@ -32,13 +32,6 @@
             </summary>
             <typeparam name="TArg"></typeparam>
         </member>
-        <member name="M:Simpleflow.CodeGenerator.SimpleflowCodeVisitor`1.CallListAddMethod(System.Linq.Expressions.Expression,System.String)">
-            <summary>
-             Trim first and last quotes
-            </summary>
-            <param name="string"></param>
-            <returns></returns>
-        </member>
         <member name="T:Simpleflow.Exceptions.AccessDeniedException">
             <summary>
             This exception is thrown when a script uses a denied function.
@@ -508,6 +501,20 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterRuleStmt(Simpleflow.Parser.SimpleflowParser.RuleStmtContext)">
             <summary>
             Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.ruleStmt"/>.
@@ -518,34 +525,6 @@
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitRuleStmt(Simpleflow.Parser.SimpleflowParser.RuleStmtContext)">
             <summary>
             Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.ruleStmt"/>.
-            <para>The default implementation does nothing.</para>
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
-            <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
-            <para>The default implementation does nothing.</para>
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
-            <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
-            <para>The default implementation does nothing.</para>
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
-            <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
-            <para>The default implementation does nothing.</para>
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
-            <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
             <para>The default implementation does nothing.</para>
             </summary>
             <param name="context">The parse tree.</param>
@@ -564,16 +543,16 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
             <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
             <para>The default implementation does nothing.</para>
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
             <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
             <para>The default implementation does nothing.</para>
             </summary>
             <param name="context">The parse tree.</param>
@@ -620,20 +599,6 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
-            <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
-            <para>The default implementation does nothing.</para>
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
-            <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
-            <para>The default implementation does nothing.</para>
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterOutputStmt(Simpleflow.Parser.SimpleflowParser.OutputStmtContext)">
             <summary>
             Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.outputStmt"/>.
@@ -662,16 +627,30 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
             <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
             <para>The default implementation does nothing.</para>
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
             <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
             <para>The default implementation does nothing.</para>
             </summary>
             <param name="context">The parse tree.</param>
@@ -802,6 +781,48 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterIdentifierIndex(Simpleflow.Parser.SimpleflowParser.IdentifierIndexContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.identifierIndex"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitIdentifierIndex(Simpleflow.Parser.SimpleflowParser.IdentifierIndexContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.identifierIndex"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterIndex(Simpleflow.Parser.SimpleflowParser.IndexContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.index"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitIndex(Simpleflow.Parser.SimpleflowParser.IndexContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.index"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterIndexExpression(Simpleflow.Parser.SimpleflowParser.IndexExpressionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.indexExpression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitIndexExpression(Simpleflow.Parser.SimpleflowParser.IndexExpressionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.indexExpression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterStringLiteral(Simpleflow.Parser.SimpleflowParser.StringLiteralContext)">
             <summary>
             Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.stringLiteral"/>.
@@ -854,6 +875,34 @@
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitNoneLiteral(Simpleflow.Parser.SimpleflowParser.NoneLiteralContext)">
             <summary>
             Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.noneLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterArrayLiteral(Simpleflow.Parser.SimpleflowParser.ArrayLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitArrayLiteral(Simpleflow.Parser.SimpleflowParser.ArrayLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayLiteral"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterArrayValue(Simpleflow.Parser.SimpleflowParser.ArrayValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayValue"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitArrayValue(Simpleflow.Parser.SimpleflowParser.ArrayValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayValue"/>.
             <para>The default implementation does nothing.</para>
             </summary>
             <param name="context">The parse tree.</param>
@@ -970,6 +1019,20 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterEveryRule(Antlr4.Runtime.ParserRuleContext)">
             <inheritdoc/>
             <remarks>The default implementation does nothing.</remarks>
@@ -1005,31 +1068,20 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitRuleStmt(Simpleflow.Parser.SimpleflowParser.RuleStmtContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.ruleStmt"/>.
-            <para>
-            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
-            on <paramref name="context"/>.
-            </para>
-            </summary>
-            <param name="context">The parse tree.</param>
-            <return>The visitor result.</return>
-        </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
-            <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
-            <para>
-            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
-            on <paramref name="context"/>.
-            </para>
-            </summary>
-            <param name="context">The parse tree.</param>
-            <return>The visitor result.</return>
-        </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
-            <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
             <para>
             The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
             on <paramref name="context"/>.
@@ -1049,9 +1101,9 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
             <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
             <para>
             The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
             on <paramref name="context"/>.
@@ -1093,17 +1145,6 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
-            <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
-            <para>
-            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
-            on <paramref name="context"/>.
-            </para>
-            </summary>
-            <param name="context">The parse tree.</param>
-            <return>The visitor result.</return>
-        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitOutputStmt(Simpleflow.Parser.SimpleflowParser.OutputStmtContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.outputStmt"/>.
@@ -1126,9 +1167,20 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
             <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
             <para>
             The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
             on <paramref name="context"/>.
@@ -1236,6 +1288,39 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitIdentifierIndex(Simpleflow.Parser.SimpleflowParser.IdentifierIndexContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.identifierIndex"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitIndex(Simpleflow.Parser.SimpleflowParser.IndexContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.index"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitIndexExpression(Simpleflow.Parser.SimpleflowParser.IndexExpressionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.indexExpression"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitStringLiteral(Simpleflow.Parser.SimpleflowParser.StringLiteralContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.stringLiteral"/>.
@@ -1272,6 +1357,28 @@
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitNoneLiteral(Simpleflow.Parser.SimpleflowParser.NoneLiteralContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.noneLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitArrayLiteral(Simpleflow.Parser.SimpleflowParser.ArrayLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayLiteral"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitArrayValue(Simpleflow.Parser.SimpleflowParser.ArrayValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayValue"/>.
             <para>
             The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
             on <paramref name="context"/>.
@@ -1368,6 +1475,17 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
         <member name="T:Simpleflow.Parser.ISimpleflowParserListener">
             <summary>
             This interface defines a complete listener for a parse tree produced by
@@ -1386,6 +1504,18 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
         <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterRuleStmt(Simpleflow.Parser.SimpleflowParser.RuleStmtContext)">
             <summary>
             Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.ruleStmt"/>.
@@ -1395,30 +1525,6 @@
         <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitRuleStmt(Simpleflow.Parser.SimpleflowParser.RuleStmtContext)">
             <summary>
             Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.ruleStmt"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
-            <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
-            <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
-            <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
-            <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
             </summary>
             <param name="context">The parse tree.</param>
         </member>
@@ -1434,15 +1540,15 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
             <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
             <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
             </summary>
             <param name="context">The parse tree.</param>
         </member>
@@ -1482,18 +1588,6 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
-            <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
-            <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
         <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterOutputStmt(Simpleflow.Parser.SimpleflowParser.OutputStmtContext)">
             <summary>
             Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.outputStmt"/>.
@@ -1518,15 +1612,27 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
             <summary>
-            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
             <summary>
-            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
             </summary>
             <param name="context">The parse tree.</param>
         </member>
@@ -1638,6 +1744,42 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterIdentifierIndex(Simpleflow.Parser.SimpleflowParser.IdentifierIndexContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.identifierIndex"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitIdentifierIndex(Simpleflow.Parser.SimpleflowParser.IdentifierIndexContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.identifierIndex"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterIndex(Simpleflow.Parser.SimpleflowParser.IndexContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.index"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitIndex(Simpleflow.Parser.SimpleflowParser.IndexContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.index"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterIndexExpression(Simpleflow.Parser.SimpleflowParser.IndexExpressionContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.indexExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitIndexExpression(Simpleflow.Parser.SimpleflowParser.IndexExpressionContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.indexExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
         <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterStringLiteral(Simpleflow.Parser.SimpleflowParser.StringLiteralContext)">
             <summary>
             Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.stringLiteral"/>.
@@ -1683,6 +1825,30 @@
         <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitNoneLiteral(Simpleflow.Parser.SimpleflowParser.NoneLiteralContext)">
             <summary>
             Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterArrayLiteral(Simpleflow.Parser.SimpleflowParser.ArrayLiteralContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitArrayLiteral(Simpleflow.Parser.SimpleflowParser.ArrayLiteralContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterArrayValue(Simpleflow.Parser.SimpleflowParser.ArrayValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayValue"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitArrayValue(Simpleflow.Parser.SimpleflowParser.ArrayValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayValue"/>.
             </summary>
             <param name="context">The parse tree.</param>
         </member>
@@ -1782,6 +1948,18 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
         <member name="T:Simpleflow.Parser.ISimpleflowParserVisitor`1">
             <summary>
             This interface defines a complete generic visitor for a parse tree produced
@@ -1796,23 +1974,16 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
         <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitRuleStmt(Simpleflow.Parser.SimpleflowParser.RuleStmtContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.ruleStmt"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-            <return>The visitor result.</return>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
-            <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-            <return>The visitor result.</return>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
-            <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
             </summary>
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
@@ -1824,9 +1995,9 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitLetStmt(Simpleflow.Parser.SimpleflowParser.LetStmtContext)">
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitEndRuleStmt(Simpleflow.Parser.SimpleflowParser.EndRuleStmtContext)">
             <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.letStmt"/>.
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.endRuleStmt"/>.
             </summary>
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
@@ -1852,13 +2023,6 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
-            <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-            <return>The visitor result.</return>
-        </member>
         <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitOutputStmt(Simpleflow.Parser.SimpleflowParser.OutputStmtContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.outputStmt"/>.
@@ -1873,9 +2037,16 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitExitStmt(Simpleflow.Parser.SimpleflowParser.ExitStmtContext)">
             <summary>
-            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.exitStmt"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitMessageText(Simpleflow.Parser.SimpleflowParser.MessageTextContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.messageText"/>.
             </summary>
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
@@ -1943,6 +2114,27 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitIdentifierIndex(Simpleflow.Parser.SimpleflowParser.IdentifierIndexContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.identifierIndex"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitIndex(Simpleflow.Parser.SimpleflowParser.IndexContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.index"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitIndexExpression(Simpleflow.Parser.SimpleflowParser.IndexExpressionContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.indexExpression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
         <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitStringLiteral(Simpleflow.Parser.SimpleflowParser.StringLiteralContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.stringLiteral"/>.
@@ -1967,6 +2159,20 @@
         <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitNoneLiteral(Simpleflow.Parser.SimpleflowParser.NoneLiteralContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.noneLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitArrayLiteral(Simpleflow.Parser.SimpleflowParser.ArrayLiteralContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayLiteral"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitArrayValue(Simpleflow.Parser.SimpleflowParser.ArrayValueContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.arrayValue"/>.
             </summary>
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
@@ -2023,6 +2229,13 @@
         <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitUnaryOperand(Simpleflow.Parser.SimpleflowParser.UnaryOperandContext)">
             <summary>
             Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.unaryOperand"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitEos(Simpleflow.Parser.SimpleflowParser.EosContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:Simpleflow.Parser.SimpleflowParser.eos"/>.
             </summary>
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>

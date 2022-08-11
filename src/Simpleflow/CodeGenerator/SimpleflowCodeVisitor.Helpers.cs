@@ -44,24 +44,6 @@ namespace Simpleflow.CodeGenerator
             return @string.Substring(1, @string.Length - 2); // Trim first and last quotes
         }
 
-        private Expression GetEndProperty(Expression rootObjectExp, string[] propertiesHierarchy, int startIndex = 0)
-        {
-            for (int index = startIndex; index < propertiesHierarchy.Length; index++)
-            {
-                var propertyName = propertiesHierarchy[index];
-                var prop = GetPropertyInfo(rootObjectExp.Type, propertyName);
-
-                if (prop == null)
-                {
-                    throw new InvalidPropertyException($"Invalid property '{propertyName}'");
-                }
-
-                rootObjectExp = Expression.Property(rootObjectExp, prop);
-            }
-
-            return rootObjectExp;
-        }
-
         private ParameterExpression GetVariable(string name)
         {
            return  Variables.SingleOrDefault(@var => string.Equals(@var.Name , name, StringComparison.OrdinalIgnoreCase));
