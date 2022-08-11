@@ -12,7 +12,7 @@ Since v1.0.4
 
 ```csharp
 # space around key is needed to provide key within brackets to access value in dictionary
-let name = arg[ ""name"" ] 
+let name = arg[ "name" ] 
 output name
 ```
 ### Execute
