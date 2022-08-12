@@ -61,10 +61,8 @@ Please see [this](docs/examples) example with most of the simpleflow script feat
 
 ---
 
-* [Script Outline](docs/simpleflow-script-reference/#script-outline)
-* [Reference](docs/simpleflow-script-reference/#script-outline)
+* [Simpleflow Script Reference](docs/simpleflow-script-reference/#script-outline)
 * [API](docs/api/)
 * [Examples](docs/examples)
-* [Limitations](docs/simpleflow-script-reference/#limitations)
 
 

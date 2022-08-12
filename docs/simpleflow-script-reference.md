@@ -191,15 +191,12 @@ Condition does not allow expression. If you need to write expression declare var
 `exit` can be used to terminate the script execution.
 
 ## Functions
-Functions can be invoked from script that have been registered with engine in host language, but you cannot create functions in this script.
+Functions can be invoked from script that have been registered with this engine in host language.
 
 ```csharp
 $<function_name>(param_name1: value1, param_name2: value2, ...)
 ```
 Function parameters can be written in any order. and if you omit a parameter it takes a default value of that type.
-Function cannot be an argument to another function. Store output of a function in a variable and use it.
-
-Please check the limitations of custom function parameter type in Limitations section.
 
 <table>
     <tr>
