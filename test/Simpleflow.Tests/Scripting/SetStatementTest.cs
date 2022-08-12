@@ -207,6 +207,28 @@ namespace Simpleflow.Tests.Scripting
             Assert.Equal("test", arg["name"]);
         }
 
+        [Fact]
+        public void SetWithPredicate()
+        {
+            // Arrange
+            var script =
+                @"
+                  let x = false
+
+                  set x = true == false
+                  message x
+
+                  set x = (""aa"" == ""b"") or true
+                  message x
+                ";
+
+            // Act 
+            var result = SimpleflowEngine.Run(script, new object());
+
+            // Assert
+            Assert.Equal("False", result.Messages[0]);
+            Assert.Equal("True", result.Messages[1]);
+        }
 
         private static string MethodWithObjArg(MethodArgument s)
         {
