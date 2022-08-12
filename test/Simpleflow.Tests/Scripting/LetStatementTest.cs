@@ -32,6 +32,30 @@ namespace Simpleflow.Tests.Scripting
         }
 
         [Fact]
+        public void LetWithPredicate()
+        {
+            // Arrange
+            var script =
+                @"
+                  let x = 23 == 23
+                  let y = true == false
+                  let z = (""aa"" == ""b"") or true
+                  
+                  output x  
+                  output y
+                  output z
+                ";
+
+            // Act 
+            var result = SimpleflowEngine.Run(script, new object());
+
+            // Assert
+            Assert.True((bool)result.Output["x"]);
+            Assert.False((bool)result.Output["y"]);
+            Assert.True((bool)result.Output["z"]);
+        }
+        
+        [Fact]
         public void CaseInsensitiveVariableName()
         {
             // Arrange

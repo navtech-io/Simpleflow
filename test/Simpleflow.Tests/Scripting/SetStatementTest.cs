@@ -6,6 +6,7 @@ using Xunit;
 
 using Simpleflow.Tests.Helpers;
 using Simpleflow.Exceptions;
+using System.Collections.Generic;
 
 namespace Simpleflow.Tests.Scripting
 {
@@ -167,6 +168,45 @@ namespace Simpleflow.Tests.Scripting
             Assert.IsType<InvalidOperationException>(output.Output["err"]);
 
         }
+
+        [Fact]
+        public void SetValuesToIndexerProperties()
+        {
+            // Arrange
+            var script =
+                @"
+                  let values = [1,2,3]
+
+                  set values[ 0 ] = 5 
+                    
+                  output values  
+                ";
+
+            // Act
+            var result = SimpleflowEngine.Run(script, new SampleArgument());
+
+            // Assert
+            Assert.Equal(5, (result.Output["values"] as List<int>)[0]);
+        }
+
+
+        [Fact]
+        public void SetValueToIndexerPropertiesOfDictionary()
+        {
+            // Arrange
+            var arg = new Dictionary<string, string>() { { "name", "none" } };
+            var script =
+                @"
+                  set arg[ ""name"" ] = ""test""
+                ";
+
+            // Act
+            var result = SimpleflowEngine.Run(script, arg);
+
+            // Assert
+            Assert.Equal("test", arg["name"]);
+        }
+
 
         private static string MethodWithObjArg(MethodArgument s)
         {

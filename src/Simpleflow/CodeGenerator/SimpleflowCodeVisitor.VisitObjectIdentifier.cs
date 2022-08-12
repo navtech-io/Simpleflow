@@ -23,17 +23,17 @@ namespace Simpleflow.CodeGenerator
             }
 
             // Get index object if specified
-            var indexObjectExp = GetIndexObjectExpIfDefined(objectExp, context.identifierIndex()[0]);
+            var indexObjectExp = GetIndexObjectExpIfDefined(objectExp, context.identifierIndex()[0].index());
 
             // Traverse through and get final object
             return GetFinalPropertyValue(indexObjectExp, context.identifierIndex());
         }
 
-        private Expression GetIndexObjectExpIfDefined(Expression objectExp, SimpleflowParser.IdentifierIndexContext context)
+        private Expression GetIndexObjectExpIfDefined(Expression objectExp, SimpleflowParser.IndexContext context)
         {
-            if (context.index() != null)
+            if (context != null)
             {
-                var indexExpression = Visit(context.index().indexExpression().GetChild(0)); // represents index 
+                var indexExpression = Visit(context.indexExpression().GetChild(0)); // represents index 
 
                 var indexProperty
                     = objectExp
@@ -64,7 +64,7 @@ namespace Simpleflow.CodeGenerator
                 }
 
                 // Get indexed object
-                propExp = GetIndexObjectExpIfDefined(propExp, property);
+                propExp = GetIndexObjectExpIfDefined(propExp, property.index());
 
                 // Get property of indexed object
                 propExp = Expression.Property(propExp, prop);

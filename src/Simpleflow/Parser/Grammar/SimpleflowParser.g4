@@ -1,3 +1,6 @@
+// Copyright (c) navtech.io. All rights reserved. 
+// See License in the project root for license information.
+
 parser grammar SimpleflowParser;
 
 options {
@@ -33,7 +36,7 @@ endRuleStmt
     ;
 
 setStmt
-    : (Partial)? Set (Identifier | IgnoreIdentifier) (Comma Identifier)? Assign expression eos  
+    : (Partial)? Set (Identifier index? | IgnoreIdentifier) (Comma Identifier)? Assign expression eos
     ;
    
 messageStmt
@@ -70,6 +73,7 @@ expression
     | stringLiteral 
     | templateStringLiteral
     | arrayLiteral
+    | predicate
     ;
     
 templateStringLiteral
@@ -102,17 +106,7 @@ function
     ;
 
 functionParameter
-    : Identifier Colon functionParameterValue
-    ; 
-  
-
-functionParameterValue
-    : numberLiteral 
-    | stringLiteral 
-    | boolLeteral
-    | noneLiteral
-    | objectIdentifier
-    | arithmeticExpression
+    : Identifier Colon expression
     ; 
 
 // Literals

@@ -226,16 +226,6 @@ internal partial class SimpleflowParserBaseVisitor<Result> : AbstractParseTreeVi
 	/// <return>The visitor result.</return>
 	public virtual Result VisitFunctionParameter([NotNull] SimpleflowParser.FunctionParameterContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.functionParameterValue"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitFunctionParameterValue([NotNull] SimpleflowParser.FunctionParameterValueContext context) { return VisitChildren(context); }
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.objectIdentifier"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
