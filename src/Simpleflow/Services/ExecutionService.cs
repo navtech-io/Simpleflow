@@ -36,7 +36,6 @@ namespace Simpleflow.Services
             context.Trace?.CreateNewTracePoint(nameof(ExecutionService));
 
             var scriptHelperContext = new ScriptHelperContext(context.Output,
-                                                             (context.Options?.AllowArgumentToMutate ?? _options?.AllowArgumentToMutate) ?? true,
                                                              context.Options?.CancellationToken ?? default);
 
             context.Internals.CompiledScript?.Invoke(context.Argument, context.Output, scriptHelperContext);
