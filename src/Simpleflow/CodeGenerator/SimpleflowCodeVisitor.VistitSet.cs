@@ -146,24 +146,8 @@ namespace Simpleflow.CodeGenerator
                                  (propInfo, valueExp) =>
                                         propExpressions.Add(Expression.Assign(Expression.Property(variable, propInfo), valueExp)));
 
-            /*
-             *  Check for script argument immutability, exception case: if a function change property of script arg, 
-             *  simppleflow does not control.
-             */
-            var referenceProperties = new List<Expression>();
-            var checkForSameReference = Expression.Call(null,
-                                                    typeof(ArgumentImmutabilityCheck).GetMethod(nameof(ArgumentImmutabilityCheck.CheckForSameReference)),
-                                                    arg0: InputParam,
-                                                    arg1: variable);
-
-            return
-            Expression.IfThenElse(
-                    Expression.Or(
-                           Expression.IsTrue(Expression.Property(ScriptHelperContextParam, nameof(ScriptHelperContext.IsArgumentMutable))),
-                           Expression.IsFalse(checkForSameReference)),
-                    Expression.Block(propExpressions),
-                    Expression.Throw(Expression.New(typeof(ArgumentImmutableExeception))) 
-                );
+            return Expression.Block(propExpressions);
+                   
         }
     }
 }
