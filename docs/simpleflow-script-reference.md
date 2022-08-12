@@ -20,8 +20,6 @@ nav_order: 2
 1. [Comments](#comments)
 1. [Error Handling](#error-handling)
 1. [Script Guidelines](#script-guidelines)
-1. [Limitations](#limitations)
-
 
 ## Script Outline
 
@@ -99,19 +97,17 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
     </tr>
     <tr>
         <td>
-            List <br>
-            Since v1.0.4-*
-            {: .fs-1 }
+            List
         </td>
         <td>
-            Simpleflow supports only list <br>
-<pre><code>let values = [100, 200, 300, 400]
+            Simpleflow supports only list type<br>
+<pre><code>let values = [100, 200, 300, 400]  # creates list of integers
 output values[ 0 ] #output first value
 </code></pre>
         </td>
     </tr>
 </table>
-If a value cannot be assigned while declaring you can assign <code>none</code> and then you can set value to it using <code>set</code> statement.
+
 
 ```csharp
 # Example
@@ -339,18 +335,3 @@ when you use `set` to update a variable and you want to catch the error as well 
 * variable, property and function names are not case sensitive.
 
 
-## Limitations
-* Expressions, Objects ([], {}) cannot be used directly while passing parameters to a function.	But it accepts variables. There's a trick to use array in a function, if a function returns an array and that variable can be used to pass to another function.
-* Arrays are not supported (planned in future releases).
-
-* CustomFunction Parameter Type Limitation: 
-Simpleflow binds a type with properties and primitive types parameters only. But if a function returns a type
-and that type can be passed to another function if a parameter type matches to it. For example, if a function returns an array and that array variable can be passed to another function which can accept same type of array.
-
-```csharp
-    # GetArray function returns array of integers
-    let ar = $GetArray()                
-
-    # Here type of collection parameter is array of integers
-    $FindItem(collection: ar, value: 2) 
-```
