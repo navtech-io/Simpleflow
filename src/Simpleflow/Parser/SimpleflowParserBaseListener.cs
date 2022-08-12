@@ -265,18 +265,6 @@ internal partial class SimpleflowParserBaseListener : ISimpleflowParserListener 
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitFunctionParameter([NotNull] SimpleflowParser.FunctionParameterContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SimpleflowParser.functionParameterValue"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterFunctionParameterValue([NotNull] SimpleflowParser.FunctionParameterValueContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SimpleflowParser.functionParameterValue"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitFunctionParameterValue([NotNull] SimpleflowParser.FunctionParameterValueContext context) { }
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.objectIdentifier"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

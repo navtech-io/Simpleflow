@@ -8,11 +8,6 @@ namespace Simpleflow
     public class FlowOptions : IOptions
     {
         /// <summary>
-        /// Gets or sets AllowArgumentToMutate
-        /// </summary>
-        public bool AllowArgumentToMutate { get; set; } 
-
-        /// <summary>
         /// Gets or sets AllowFunctions
         /// </summary>
         public string[] AllowFunctions { get; set; }

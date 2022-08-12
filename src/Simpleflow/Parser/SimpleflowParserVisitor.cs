@@ -147,12 +147,6 @@ internal interface ISimpleflowParserVisitor<Result> : IParseTreeVisitor<Result> 
 	/// <return>The visitor result.</return>
 	Result VisitFunctionParameter([NotNull] SimpleflowParser.FunctionParameterContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.functionParameterValue"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFunctionParameterValue([NotNull] SimpleflowParser.FunctionParameterValueContext context);
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.objectIdentifier"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

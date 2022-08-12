@@ -85,7 +85,7 @@ namespace Simpleflow.CodeGenerator
 
         private Expression CreateFunctionParameterExpression(ParameterInfo methodParameter, SimpleflowParser.FunctionParameterContext scriptArgument)
         {
-            var parameterValueContext = scriptArgument.functionParameterValue().GetChild(0);
+            var parameterValueContext = scriptArgument.expression().GetChild(0);
 
             if (parameterValueContext is SimpleflowParser.ObjectIdentifierContext oic)
             {

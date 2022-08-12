@@ -12,14 +12,12 @@ namespace Simpleflow
 
         private ScriptHelperContext() { }
 
-        internal ScriptHelperContext(FlowOutput flowOutput, bool isArgumentMutable, CancellationToken token)
+        internal ScriptHelperContext(FlowOutput flowOutput,  CancellationToken token)
         {
             _flowOutput = flowOutput;
             _token = token;
-            IsArgumentMutable = isArgumentMutable;
         }
-
-        public bool IsArgumentMutable { get; }
+        
         public bool HasErrors => _flowOutput.Errors.Count > 0;
         public bool HasMessages => _flowOutput.Messages.Count > 0;
         public bool HasOutputs => _flowOutput.Output.Count > 0;

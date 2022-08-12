@@ -222,16 +222,6 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitFunctionParameter([NotNull] SimpleflowParser.FunctionParameterContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SimpleflowParser.functionParameterValue"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterFunctionParameterValue([NotNull] SimpleflowParser.FunctionParameterValueContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SimpleflowParser.functionParameterValue"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitFunctionParameterValue([NotNull] SimpleflowParser.FunctionParameterValueContext context);
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.objectIdentifier"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

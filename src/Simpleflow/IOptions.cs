@@ -9,11 +9,6 @@ namespace Simpleflow
     public interface IOptions
     {
         /// <summary>
-        /// Gets or sets AllowArgumentToMutate
-        /// </summary>
-        bool AllowArgumentToMutate { get;  }
-
-        /// <summary>
         /// Gets or sets AllowFunctions
         /// </summary>
         public string[] AllowFunctions { get; set; }
