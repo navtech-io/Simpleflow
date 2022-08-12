@@ -8,17 +8,17 @@ namespace Simpleflow.Tests
         [Fact]
         public void Try()
         {
-            // Arrange
-            var flowScript =
-            @$" 
-                let text  = ""Hello, विश्वम्‌""
-                let today = $GetCurrentDateTime ( timezone: ""{TestsHelper.Timezone}"" )
+// Arrange -- Don't change the indentation of variable, its written for a type of testing of parser
+var flowScript =
+@$"
+let text  = ""Hello, विश्वम्‌""
+let today = $GetCurrentDateTime ( timezone: ""{TestsHelper.Timezone}"" )
 
-                /* Comment: Message when UniversalId is 2 and New is true */
-                rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
-                     message text
-    	             message today
-            ";
+/* Comment: Message when UniversalId is 2 and New is true */
+rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
+        message text
+    	message today
+";
 
             // Act
             FlowOutput output = SimpleflowEngine.Run(flowScript, new { UniversalId = 2, New = true, Verified = false });

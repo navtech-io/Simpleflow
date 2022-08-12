@@ -112,16 +112,15 @@ functionParameter
 // Literals
 
 objectIdentifier 
-    : identifierIndex {this.NotLineTerminator()}? (Dot {this.NotLineTerminator()}? identifierIndex)*
+    : identifierIndex (Dot identifierIndex)*
     ;  
- 
 
 identifierIndex
-    : Identifier {this.NotLineTerminator()}? index?
+    : Identifier index?
     ;
 
 index
-    : OpenBracket {this.NotLineTerminator()}? indexExpression {this.NotLineTerminator()}? CloseBracket
+    : OpenBracket indexExpression CloseBracket
     ;
 
 indexExpression
