@@ -102,7 +102,7 @@ namespace Simpleflow.Tests.Scripting
             var script =
                 @"
                  let i = 1
-                 let x=arg[i]
+                 let x=arg[i] # don't provide space here, like arg [ i ], intended this way for testing
                  output x
 
                 ";
