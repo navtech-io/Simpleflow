@@ -49,6 +49,18 @@ internal partial class SimpleflowParserBaseListener : ISimpleflowParserListener 
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitProgram([NotNull] SimpleflowParser.ProgramContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SimpleflowParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterExpression([NotNull] SimpleflowParser.ExpressionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SimpleflowParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitExpression([NotNull] SimpleflowParser.ExpressionContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.letStmt"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -180,18 +192,6 @@ internal partial class SimpleflowParserBaseListener : ISimpleflowParserListener 
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitMessageText([NotNull] SimpleflowParser.MessageTextContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="SimpleflowParser.expression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterExpression([NotNull] SimpleflowParser.ExpressionContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SimpleflowParser.expression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitExpression([NotNull] SimpleflowParser.ExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SimpleflowParser.templateStringLiteral"/>.
 	/// <para>The default implementation does nothing.</para>

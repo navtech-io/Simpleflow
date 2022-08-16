@@ -12,6 +12,20 @@ program
     : letStmt* 
      (ruleStmt | generalStatement)* EOF; 
 
+expression
+    : boolLeteral 
+    | noneLiteral 
+    | function 
+    | jsonObj 
+    | objectIdentifier
+    | arithmeticExpression 
+    | stringLiteral 
+    | templateStringLiteral
+    | arrayLiteral
+    | predicate
+    ;
+    
+    
 letStmt
     : Let (Identifier | IgnoreIdentifier) (Comma Identifier)? Assign expression eos  
     ; 
@@ -63,19 +77,7 @@ messageText
     : (stringLiteral | templateStringLiteral | objectIdentifier)
     ; 
 
-expression
-    : boolLeteral 
-    | noneLiteral 
-    | function 
-    | jsonObj 
-    | objectIdentifier
-    | arithmeticExpression 
-    | stringLiteral 
-    | templateStringLiteral
-    | arrayLiteral
-    | predicate
-    ;
-    
+
 templateStringLiteral
     : BackTick templateStringAtom* BackTick
     ;   
