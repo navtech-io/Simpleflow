@@ -7,7 +7,7 @@ nav_order: 2
 # Simpleflow Script Reference
 {: .fs-9 }
 
-1. [Script Outline](#script-outline)
+1. [Script Outline and Guidelines](#script-outline)
 1. [Variables](#variables)
 1. [Data Types](#data-types)
 1. [Operators](#operators)
@@ -19,7 +19,7 @@ nav_order: 2
 1. [Functions](#functions)
 1. [Comments](#comments)
 1. [Error Handling](#error-handling)
-1. [Script Guidelines](#script-guidelines)
+
 
 ## Script Outline
 
@@ -30,6 +30,11 @@ nav_order: 2
  or <functions> 
  or <set statements> )* 
 ```
+### Guidelines
+* All `let` statements (declare and initialize variables) must be declared in the beginning of the script. you must declare variables if you wish to modify further in the script using set statement. Set statement does not work on undeclared variable. 
+* Each statement must end with a new line and a statement can be written in multiple lines.
+* All keywords must be written in lower case (`let, set, message, error, output, rule, when, then, exit, end rule, partial, true, false `). Variable names, property names and function names are not case sensitive.
+
 
 ## Variables <a name="variables"></a>
 ```fsharp
@@ -324,9 +329,3 @@ rule when not err2 then
 
 ```
 when you use `set` to update a variable and you want to catch the error as well if error is occurred then you don't need declare err2 using `let` as you declare to capture regular value.
-
-## Script Guidelines
-* All `let` statements (declare and initialize variables) must be declared in the beginning of the script. you must declare variable first using let in order to use set statement
-* Each statement must end with a new line and a statement can be written in multiple lines.
-* All keywords must be written in lower case (case sensitive) (`let, set, message, error, output, rule, when, then, exit, end rule, partial, true, false `)
-* Variable names, property names and function names are not case sensitive.
