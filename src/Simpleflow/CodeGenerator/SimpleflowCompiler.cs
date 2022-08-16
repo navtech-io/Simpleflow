@@ -4,9 +4,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-
-using Antlr4.Runtime;
 using FastExpressionCompiler;
+using Antlr4.Runtime;
 
 using Simpleflow.Exceptions;
 using Simpleflow.Parser;
