@@ -102,7 +102,7 @@ namespace Simpleflow.Tests.Scripting
             var script =
                 @"
                  let i = 1
-                 let x=arg [ i ]
+                 let x=arg[i]
                  output x
 
                 ";
@@ -120,7 +120,7 @@ namespace Simpleflow.Tests.Scripting
             // Arrange
             var script =
                 @"
-                 let x=arg [ ""c"" ]
+                 let x=arg[""c""]
                  output x
                 ";
 

@@ -39,6 +39,12 @@ internal interface ISimpleflowParserVisitor<Result> : IParseTreeVisitor<Result> 
 	/// <return>The visitor result.</return>
 	Result VisitProgram([NotNull] SimpleflowParser.ProgramContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="SimpleflowParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExpression([NotNull] SimpleflowParser.ExpressionContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.letStmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -104,12 +110,6 @@ internal interface ISimpleflowParserVisitor<Result> : IParseTreeVisitor<Result> 
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitMessageText([NotNull] SimpleflowParser.MessageTextContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="SimpleflowParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExpression([NotNull] SimpleflowParser.ExpressionContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SimpleflowParser.templateStringLiteral"/>.
 	/// </summary>
