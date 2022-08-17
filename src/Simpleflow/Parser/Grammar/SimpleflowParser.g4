@@ -94,7 +94,7 @@ templateStringLiteral
    
 templateStringAtom   
     : TemplateStringAtom
-    | TemplateStringStartExpression  objectIdentifier TemplateCloseBrace
+    | TemplateStringStartExpression  expression TemplateCloseBrace
     ;
   
 /** Function */
@@ -157,4 +157,3 @@ eos
     : EOF
     | {this.LineTerminatorAhead()}?
     ;
-
