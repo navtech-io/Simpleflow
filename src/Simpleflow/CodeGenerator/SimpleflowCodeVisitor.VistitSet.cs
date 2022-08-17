@@ -38,7 +38,6 @@ namespace Simpleflow.CodeGenerator
 
             // return expression
             return GetSetStmtExpression(context, variableName, variableExpression, valueExpression);
-
         }
 
         private Expression GetValueExpressionOfSetStmt(SimpleflowParser.SetStmtContext context, 
@@ -114,24 +113,24 @@ namespace Simpleflow.CodeGenerator
 
             // Add error variable without declare using let, error is exceptional case
             var errorVar = GetExistingOrAddVariableToGlobalScope(Expression.Variable(typeof(Exception), errorVariable));
-            var varFortryExpression = Expression.Variable(tryExpression.Type);
+            var varForTryExpression = Expression.Variable(tryExpression.Type);
 
             // Declare before use
-            DeclareVariable(varFortryExpression);
+            DeclareVariable(varForTryExpression);
 
             // Add variables
             if (variable == null)
             {
                 return Expression.Block(
-                     Expression.Assign(varFortryExpression, tryExpression), // run expression with try catch and capture value
-                     Expression.Assign(errorVar, Expression.Field(varFortryExpression, "Error"))
+                     Expression.Assign(varForTryExpression, tryExpression), // run expression with try catch and capture value
+                     Expression.Assign(errorVar, Expression.Field(varForTryExpression, "Error"))
                );
             }
 
             return Expression.Block(
-                        Expression.Assign(varFortryExpression, tryExpression), // run expression with try catch and capture value
-                        Expression.Assign(variable, Expression.Field(varFortryExpression, "Value")),
-                        Expression.Assign(errorVar, Expression.Field(varFortryExpression, "Error"))
+                        Expression.Assign(varForTryExpression, tryExpression), // run expression with try catch and capture value
+                        Expression.Assign(variable, Expression.Field(varForTryExpression, "Value")),
+                        Expression.Assign(errorVar, Expression.Field(varForTryExpression, "Error"))
                   );
         }
 

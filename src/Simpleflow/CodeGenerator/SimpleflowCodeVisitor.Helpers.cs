@@ -39,9 +39,12 @@ namespace Simpleflow.CodeGenerator
             return Expression.Constant(Convert.ToBoolean(value), typeof(bool));
         }
 
-        private string GetUnquotedText(string @string)
+        private string GetUnquotedEscapeText(string @string)
         {
-            return @string.Substring(1, @string.Length - 2); // Trim first and last quotes
+            var text = @string.Substring(1, @string.Length - 2); // Trim first and last quotes
+            text = text.Replace("\\\"", "\"");
+            text = text.Replace("\\'", "'");
+            return text;
         }
 
         private ParameterExpression GetVariable(string name)

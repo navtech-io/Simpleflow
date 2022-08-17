@@ -68,7 +68,9 @@ True:               'true';
 False:              'false';
 Number:             ('+'|'-')?[0-9]+('.'[0-9]+)?;
  
-String:             '"' ( '\\"' | ~["\r\n] )*? '"';
+String:             '"' ( '\\"' | ~["\r\n] )*? '"'
+      |             '\'' ( '\\\'' | ~['\r\n] )*? '\'' ;
+      
 None:               'none' ;
 
 Identifier:         [_]*[a-zA-Z][_a-zA-Z0-9]* ;

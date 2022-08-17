@@ -60,7 +60,7 @@ namespace Simpleflow.CodeGenerator
         {
             var targetType = TargetTypeParserContextAnnotation.Get(context);
 
-            var value = GetUnquotedText(context.String().GetText());
+            var value = GetUnquotedEscapeText(context.String().GetText());
 
             if (targetType == null || targetType == typeof(string)) 
             {
@@ -100,11 +100,12 @@ namespace Simpleflow.CodeGenerator
             StringBuilder sb = new StringBuilder();
             int index = 1; // First and last characters are back ticks
 
-            while(index < context.children.Count-1)
+
+            while (index < context.children.Count-1)
             {
                 var child = context.children[index];
 
-                if (child.GetChild(1) is SimpleflowParser.ObjectIdentifierContext)
+                if (child.GetChild(1) is SimpleflowParser.ExpressionContext)
                 {
                     if (sb.Length > 0)
                     {

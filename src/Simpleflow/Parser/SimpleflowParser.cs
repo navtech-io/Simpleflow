@@ -1647,8 +1647,8 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 	internal partial class TemplateStringAtomContext : ParserRuleContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TemplateStringAtom() { return GetToken(SimpleflowParser.TemplateStringAtom, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TemplateStringStartExpression() { return GetToken(SimpleflowParser.TemplateStringStartExpression, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ObjectIdentifierContext objectIdentifier() {
-			return GetRuleContext<ObjectIdentifierContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
+			return GetRuleContext<ExpressionContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TemplateCloseBrace() { return GetToken(SimpleflowParser.TemplateCloseBrace, 0); }
 		public TemplateStringAtomContext(ParserRuleContext parent, int invokingState)
@@ -1695,7 +1695,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 				State = 193;
 				Match(TemplateStringStartExpression);
 				State = 194;
-				objectIdentifier();
+				expression(0);
 				State = 195;
 				Match(TemplateCloseBrace);
 				}
@@ -2689,7 +2689,7 @@ internal partial class SimpleflowParser : SimpleflowParserBase {
 		181,179,1,0,0,0,181,180,1,0,0,0,182,25,1,0,0,0,183,187,5,49,0,0,184,186,
 		3,28,14,0,185,184,1,0,0,0,186,189,1,0,0,0,187,185,1,0,0,0,187,188,1,0,
 		0,0,188,190,1,0,0,0,189,187,1,0,0,0,190,191,5,49,0,0,191,27,1,0,0,0,192,
-		198,5,53,0,0,193,194,5,52,0,0,194,195,3,36,18,0,195,196,5,8,0,0,196,198,
+		198,5,53,0,0,193,194,5,52,0,0,194,195,3,22,11,0,195,196,5,8,0,0,196,198,
 		1,0,0,0,197,192,1,0,0,0,197,193,1,0,0,0,198,29,1,0,0,0,199,200,5,48,0,
 		0,200,201,3,32,16,0,201,31,1,0,0,0,202,211,5,5,0,0,203,208,3,34,17,0,204,
 		205,5,11,0,0,205,207,3,34,17,0,206,204,1,0,0,0,207,210,1,0,0,0,208,206,

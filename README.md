@@ -26,8 +26,8 @@ using Simpleflow;
 var script = 
 @" 
     # Declare and initialize variables
-    let text  = ""Hello, World! 🌄""
-    let today = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
+    let text  = 'Hello, World! 🌄'
+    let today = $GetCurrentDateTime ( timezone: 'Eastern Standard Time' )
 
     # Write rules
     rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
