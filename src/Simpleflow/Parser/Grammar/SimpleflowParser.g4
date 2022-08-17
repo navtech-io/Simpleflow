@@ -6,36 +6,23 @@ parser grammar SimpleflowParser;
 options {
     tokenVocab=SimpleflowLexer;
     superClass=SimpleflowParserBase;
-} 
- 
+}  
+
 program
     : letStmt* 
      (ruleStmt | generalStatement)* EOF; 
 
-expression
-    : boolLeteral 
-    | noneLiteral 
-    | function 
-    | jsonObj 
-    | objectIdentifier
-    | arithmeticExpression 
-    | stringLiteral 
-    | templateStringLiteral
-    | arrayLiteral
-    | predicate
-    ;
-    
-    
+
 letStmt
     : Let (Identifier | IgnoreIdentifier) (Comma Identifier)? Assign expression eos  
     ; 
 
 ruleStmt
-    : Rule When predicate Then eos 
+    : Rule When expression Then eos 
          generalStatement+
       endRuleStmt?
     ; 
-    
+
 generalStatement
     : messageStmt
     | errorStmt
@@ -54,11 +41,11 @@ setStmt
     ;
    
 messageStmt
-    : Message messageText eos
+    : Message expression eos
     ;
 
 errorStmt
-    : Error messageText eos
+    : Error expression eos
     ;
 
 outputStmt
@@ -67,16 +54,39 @@ outputStmt
 
 functionStmt
     : function eos
-    ;    
+    ; 
 
 exitStmt
     : Exit eos
     ;
 
-messageText
-    : (stringLiteral | templateStringLiteral | objectIdentifier)
-    ; 
+expression
+    : expression (TimesOp | DivOp | ModuloOp)  expression   #MultiplicativeExpression 
+    | expression (PlusOp | MinusOp) expression              #AdditiveExpression 
+    | expression ( GreaterThan 
+                 | LessThan 
+                 | GreaterThanEqual 
+                 | LessThanEqual
+                 | Equal 
+                 | NotEqual 
+                 ) expression                               #RelationalExpression
+    | expression (And | Or ) expression                     #LogicalExpression
+    | Not expression                                        #NotExpression
+    | objectIdentifier                                      #ObjectIdentiferExpression
+    | simpleLiteral                                         #SimpleLiteralExpression
+    | arrayLiteral                                          #ArrayLiteralExpression
+    | jsonObjLiteral                                        #JsonObjLiteralExpression
+    | function                                              #FunctionExpression
+    | OpenParen expression CloseParen                       #ParenthesizedExpression
+    ;
 
+simpleLiteral
+    :  noneLiteral
+    |  boolLeteral
+    |  numberLiteral
+    |  stringLiteral 
+    |  templateStringLiteral
+    ;  
 
 templateStringLiteral
     : BackTick templateStringAtom* BackTick
@@ -87,31 +97,18 @@ templateStringAtom
     | TemplateStringStartExpression  objectIdentifier TemplateCloseBrace
     ;
   
-/** Arithmetic Expression */  
-  
-arithmeticExpression
-   :  arithmeticExpression  (TimesOp | DivOp | ModuloOp)  arithmeticExpression  
-   |  arithmeticExpression  (PlusOp | MinusOp) arithmeticExpression             
-   |  OpenParen arithmeticExpression CloseParen                                 
-   |  atom                                                                      
-   ;
-
-atom:
-   | Number
-   | objectIdentifier
-   ;
-
 /** Function */
-
 function
-    : FunctionName OpenParen (functionParameter (Comma functionParameter)*)? CloseParen
+    : FunctionName functionArguments
     ;
 
-functionParameter
+functionArguments
+    : OpenParen (functionArgument (Comma functionArgument)*)? CloseParen
+    ;
+    
+functionArgument
     : Identifier Colon expression
     ; 
-
-// Literals
 
 objectIdentifier 
     : identifierIndex (Dot identifierIndex)*
@@ -122,16 +119,7 @@ identifierIndex
     ;
 
 index
-    : OpenBracket indexExpression CloseBracket
-    ;
-
-indexExpression
-    : numberLiteral 
-    | objectIdentifier 
-    | function
-    | stringLiteral
-    | templateStringLiteral
-    | boolLeteral
+    : OpenBracket expression CloseBracket
     ;
 
 stringLiteral
@@ -151,22 +139,12 @@ noneLiteral
     ;
 
 arrayLiteral
-   : '[' arrayValue (',' arrayValue)* ']'
+   : '[' expression (',' expression)* ']'
    | '[' ']' 
    ; 
-
-arrayValue
-    : boolLeteral 
-    | noneLiteral 
-    | function 
-    | objectIdentifier
-    | arithmeticExpression 
-    | stringLiteral 
-    | templateStringLiteral
-    ;
     
 // JSON
-jsonObj
+jsonObjLiteral
    : OpenBrace pair (Comma pair)* CloseBrace
    | OpenBrace CloseBrace
    ;
@@ -175,55 +153,8 @@ pair
    : Identifier Colon expression
    ;
 
-/**************************** */
-/** predicate - recursive rule */
-/**************************** */
-
-predicate
-    : testExpression
-    | unaryOperand
-    | predicate logicalOperator predicate
-    | OpenParen predicate CloseParen
-    | Not predicate
-    ;
-
-testExpression
-    :operand relationalOperator operand 
-    ;
-
-logicalOperator
-    : And
-    | Or
-    ;
-    
-relationalOperator
-    : GreaterThan
-    | LessThan
-    | GreaterThanEqual
-    | LessThanEqual
-    | Equal
-    | NotEqual
-    
-    ;
-operand
-    : objectIdentifier
-    | stringLiteral
-    | numberLiteral
-    | boolLeteral
-    | noneLiteral
-    | function
-    | arithmeticExpression
-    ;
-
-unaryOperand
-    : boolLeteral
-    | objectIdentifier
-    | function
-    ;
-
 eos
     : EOF
     | {this.LineTerminatorAhead()}?
     ;
-
 

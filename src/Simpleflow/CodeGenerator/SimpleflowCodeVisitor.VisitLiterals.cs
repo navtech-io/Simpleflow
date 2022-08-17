@@ -5,12 +5,12 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Reflection;
 using System.Text;
 using Antlr4.Runtime.Misc;
 
 using Simpleflow.Exceptions;
 using Simpleflow.Parser;
+
 
 namespace Simpleflow.CodeGenerator
 {
@@ -19,6 +19,16 @@ namespace Simpleflow.CodeGenerator
 
         // Use this field to add additional attributes to use in visitors methods
         Antlr4.Runtime.Tree.ParseTreeProperty<Type> TargetTypeParserContextAnnotation = new Antlr4.Runtime.Tree.ParseTreeProperty<Type>();
+
+        public override Expression VisitSimpleLiteralExpression([NotNull] SimpleflowParser.SimpleLiteralExpressionContext context)
+        {
+            return TransferAnnotationToDescendent(context);
+        }
+
+        public override Expression VisitSimpleLiteral([NotNull] SimpleflowParser.SimpleLiteralContext context)
+        {
+            return TransferAnnotationToDescendent(context);
+        }
 
         public override Expression VisitNumberLiteral([NotNull] SimpleflowParser.NumberLiteralContext context)
         {
@@ -129,5 +139,7 @@ namespace Simpleflow.CodeGenerator
 
             return Expression.Call(concatMethod, newArrayExpression);
         }
+
+        
     }
 }

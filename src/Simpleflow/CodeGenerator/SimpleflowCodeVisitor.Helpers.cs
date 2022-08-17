@@ -4,7 +4,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using Simpleflow.Exceptions;
+using Antlr4.Runtime.Tree;
 
 namespace Simpleflow.CodeGenerator
 {
@@ -49,7 +49,7 @@ namespace Simpleflow.CodeGenerator
            return  Variables.SingleOrDefault(@var => string.Equals(@var.Name , name, StringComparison.OrdinalIgnoreCase));
         }
 
-        private SmartJsonObjectParameterExpression GetSmartVariable(string name)
+        private SmartJsonObjectExpression GetSmartVariable(string name)
         {
             return SmartJsonVariables.SingleOrDefault(s => string.Equals(s.Name, name, StringComparison.OrdinalIgnoreCase));
         }
@@ -63,6 +63,37 @@ namespace Simpleflow.CodeGenerator
         private Expression ToStringExpression(Expression obj)
         {
             return Expression.Call(obj, "ToString", typeArguments: null, arguments: null);
+        }
+
+        private Expression HandleNonBooleanExpression(Expression testExpression)
+        {
+            if (testExpression.Type != typeof(bool))
+            {
+                return Expression.NotEqual(testExpression, Expression.Default(testExpression.Type));
+            }
+            return testExpression;
+        }
+
+        private Expression TransferAnnotationToDescendent(IParseTree parserTree)
+        {
+            var child = parserTree.GetChild(0);
+
+            // transfer current tree node to child
+            var targetType = TargetTypeParserContextAnnotation.Get(parserTree);
+
+            if (targetType != null)
+            {
+                TargetTypeParserContextAnnotation.Put(child, targetType);
+            }
+
+            var exp = Visit(child);
+
+            if (targetType != null)
+            {
+                TargetTypeParserContextAnnotation.RemoveFrom(child);
+            }
+
+            return exp;
         }
     }
 }

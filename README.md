@@ -23,7 +23,7 @@ Install-Package Simpleflow
 using Simpleflow;
 
 // Simpleflow Script
-var flowScript = 
+var script = 
 @" 
     # Declare and initialize variables
     let text  = ""Hello, World! 🌄""
@@ -39,7 +39,7 @@ var flowScript =
 ";
 
 // Execute Script
-FlowOutput result = SimpleflowEngine.Run(flowScript, new {UniversalId = 2, New=true, Verified=false} );
+FlowOutput result = SimpleflowEngine.Run(script, new {UniversalId = 2, New=true, Verified=false} );
 
 // Access result
 Console.WriteLine(result.Messages[0]); 

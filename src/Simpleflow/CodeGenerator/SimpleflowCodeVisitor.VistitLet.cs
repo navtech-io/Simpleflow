@@ -39,16 +39,19 @@ namespace Simpleflow.CodeGenerator
 
         private Expression GetLetVariableExpression(SimpleflowParser.ExpressionContext context, string variableName, string errorVariableName)
         {
-            if (context.jsonObj() != null)
+
+            // Handle smart/unknown type object
+            if (context is SimpleflowParser.JsonObjLiteralExpressionContext jsonObjContext)
             {
                 if (variableName == null)
                 {
                     throw new SimpleflowException(Resources.Message.CannotIgnoreIdentifierForJsonObj);
                 }
-
-                return new SmartJsonObjectParameterExpression(context, variableName);
+                return new SmartJsonObjectExpression(jsonObjContext, variableName);
             }
-            var expression = Visit(context.GetChild(0));
+
+            // Handle known type variables
+            var expression = Visit(context);
 
             // if there's a error variable not declared then return value, else catch it and return
             if (string.IsNullOrWhiteSpace(errorVariableName))
