@@ -7,21 +7,20 @@ using Simpleflow.Parser;
 
 namespace Simpleflow.CodeGenerator
 {
-    internal class SmartJsonObjectParameterExpression : Expression 
+    internal class SmartJsonObjectExpression : Expression 
     {
-        public readonly SimpleflowParser.ExpressionContext Context;
+        public readonly SimpleflowParser.JsonObjLiteralExpressionContext Context;
 
         public BinaryExpression VariableExpression;
         public int PlaceholderIndexInVariables;
 
         public readonly string Name;
 
-        public SmartJsonObjectParameterExpression(SimpleflowParser.ExpressionContext context, string variableName)
+        public SmartJsonObjectExpression(SimpleflowParser.JsonObjLiteralExpressionContext context, string variableName)
         {
             Name = variableName;
             Context = context;
         }
-
     
     }
 }

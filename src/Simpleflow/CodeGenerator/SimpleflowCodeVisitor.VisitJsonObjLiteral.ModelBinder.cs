@@ -45,11 +45,11 @@ namespace Simpleflow.CodeGenerator
                 }
 
                 // Get Property Text Value
-                var value = pair.expression().GetChild(0);
+                var value = pair.expression();
 
                 // Create Property Expression
-                Expression valueExpression;
-                if (value is SimpleflowParser.ObjectIdentifierContext oic)  
+                Expression valueExpression = null;
+                if (value is SimpleflowParser.ObjectIdentiferExpressionContext oic)  
                 {
                     // Handle Child Object
                     valueExpression = VisitObjectIdentiferAsPerTargetType(oic, member.PropertyType);
@@ -65,6 +65,7 @@ namespace Simpleflow.CodeGenerator
             }
         }
 
+        
         private Expression VisitWithType(IParseTree tree, Type type)
         {
             TargetTypeParserContextAnnotation.Put(tree, type);

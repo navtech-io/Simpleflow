@@ -3,7 +3,7 @@
 
 using System.Linq;
 using System.Linq.Expressions;
-
+using Antlr4.Runtime.Misc;
 using Simpleflow.Exceptions;
 using Simpleflow.Parser;
 
@@ -11,6 +11,16 @@ namespace Simpleflow.CodeGenerator
 {
     partial class SimpleflowCodeVisitor<TArg>
     {
+        public override Expression VisitObjectIdentiferExpression([NotNull] SimpleflowParser.ObjectIdentiferExpressionContext context)
+        {
+            return TransferAnnotationToDescendent(context);
+        }
+
+        public override Expression VisitJsonObjLiteralExpression([NotNull] SimpleflowParser.JsonObjLiteralExpressionContext context)
+        {
+            return TransferAnnotationToDescendent(context);
+        }
+
         public override Expression VisitObjectIdentifier(SimpleflowParser.ObjectIdentifierContext context)
         {
             // Get initial object
@@ -33,7 +43,7 @@ namespace Simpleflow.CodeGenerator
         {
             if (context != null)
             {
-                var indexExpression = Visit(context.indexExpression().GetChild(0)); // represents index 
+                var indexExpression = Visit(context.expression()); // represents index 
 
                 var indexProperty
                     = objectExp

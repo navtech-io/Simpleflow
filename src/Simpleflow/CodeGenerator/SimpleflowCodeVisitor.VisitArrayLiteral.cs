@@ -15,12 +15,12 @@ namespace Simpleflow.CodeGenerator
     {
         public override Expression VisitArrayLiteral([NotNull] SimpleflowParser.ArrayLiteralContext context)
         {
-            var arrayValue = context.arrayValue();
-            var ilArrayValue = new List<Expression>(arrayValue.Length);
+            SimpleflowParser.ExpressionContext[] arrayValues = context.expression();
+            var ilArrayValue = new List<Expression>(arrayValues.Length);
             Type ilArrayType = null;
 
             // process each value in array
-            foreach (var value in arrayValue)
+            foreach (var value in arrayValues)
             {
                 var ilexp = value.Accept(this);
                 if (ilexp != null)
@@ -52,11 +52,6 @@ namespace Simpleflow.CodeGenerator
                                                 .GetConstructor(new Type[] { typeof(IEnumerable<>).MakeGenericType(ilArrayType) });
 
             return Expression.New(constructorInfo, Expression.NewArrayInit(ilArrayType, ilArrayValue));
-        }
-
-        public override Expression VisitArrayValue([NotNull] SimpleflowParser.ArrayValueContext context)
-        {
-            return Visit(context.GetChild(0));
         }
     }
 }
