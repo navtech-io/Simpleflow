@@ -30,12 +30,12 @@ using Simpleflow;
 var script = 
 @" 
     # Declare and initialize variables
-    let text  = 'Hello, World! 🌄'
-    let today = $GetCurrentDateTime ( timezone: 'Eastern Standard Time' )
+    let today = $GetCurrentDateTime()
 
     # Write rules
-    rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
-         message text
+    rule when arg.UniversalId == 2 
+              and (arg.New or arg.Verified)  then
+        message 'Hello, World! 🌄'
     end rule
 
     # Output
