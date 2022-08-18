@@ -23,11 +23,11 @@ Install-Package Simpleflow
 using Simpleflow;
 
 // Simpleflow Script
-var flowScript = 
+var script = 
 @" 
     # Declare and initialize variables
-    let text  = ""Hello, World! 🌄""
-    let today = $GetCurrentDateTime ( timezone: ""Eastern Standard Time"" )
+    let text  = 'Hello, World! 🌄'
+    let today = $GetCurrentDateTime ( timezone: 'Eastern Standard Time' )
 
     # Write rules
     rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
@@ -39,7 +39,7 @@ var flowScript =
 ";
 
 // Execute Script
-FlowOutput result = SimpleflowEngine.Run(flowScript, new {UniversalId = 2, New=true, Verified=false} );
+FlowOutput result = SimpleflowEngine.Run(script, new {UniversalId = 2, New=true, Verified=false} );
 
 // Access result
 Console.WriteLine(result.Messages[0]); 

@@ -60,7 +60,7 @@ namespace Simpleflow.Tests.Scripting
             // Act & Assert
             AssertEx.Throws<SyntaxException>(s =>
                 {
-                    Assert.Contains("newline expected", s.Message);
+                    Assert.Contains("no viable alternative at input 'let'", s.Message);
                 }, 
                 () => SimpleflowEngine.Run(script, new SampleArgument())
             );

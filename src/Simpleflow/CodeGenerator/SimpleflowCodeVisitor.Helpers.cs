@@ -4,7 +4,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using Simpleflow.Exceptions;
+using Antlr4.Runtime.Tree;
 
 namespace Simpleflow.CodeGenerator
 {
@@ -39,9 +39,12 @@ namespace Simpleflow.CodeGenerator
             return Expression.Constant(Convert.ToBoolean(value), typeof(bool));
         }
 
-        private string GetUnquotedText(string @string)
+        private string GetUnquotedEscapeText(string @string)
         {
-            return @string.Substring(1, @string.Length - 2); // Trim first and last quotes
+            var text = @string.Substring(1, @string.Length - 2); // Trim first and last quotes
+            text = text.Replace("\\\"", "\"");
+            text = text.Replace("\\'", "'");
+            return text;
         }
 
         private ParameterExpression GetVariable(string name)
@@ -49,7 +52,7 @@ namespace Simpleflow.CodeGenerator
            return  Variables.SingleOrDefault(@var => string.Equals(@var.Name , name, StringComparison.OrdinalIgnoreCase));
         }
 
-        private SmartJsonObjectParameterExpression GetSmartVariable(string name)
+        private SmartJsonObjectExpression GetSmartVariable(string name)
         {
             return SmartJsonVariables.SingleOrDefault(s => string.Equals(s.Name, name, StringComparison.OrdinalIgnoreCase));
         }
@@ -63,6 +66,37 @@ namespace Simpleflow.CodeGenerator
         private Expression ToStringExpression(Expression obj)
         {
             return Expression.Call(obj, "ToString", typeArguments: null, arguments: null);
+        }
+
+        private Expression HandleNonBooleanExpression(Expression testExpression)
+        {
+            if (testExpression.Type != typeof(bool))
+            {
+                return Expression.NotEqual(testExpression, Expression.Default(testExpression.Type));
+            }
+            return testExpression;
+        }
+
+        private Expression TransferAnnotationToDescendent(IParseTree parserTree)
+        {
+            var child = parserTree.GetChild(0);
+
+            // transfer current tree node to child
+            var targetType = TargetTypeParserContextAnnotation.Get(parserTree);
+
+            if (targetType != null)
+            {
+                TargetTypeParserContextAnnotation.Put(child, targetType);
+            }
+
+            var exp = Visit(child);
+
+            if (targetType != null)
+            {
+                TargetTypeParserContextAnnotation.RemoveFrom(child);
+            }
+
+            return exp;
         }
     }
 }

@@ -47,31 +47,31 @@ namespace Simpleflow.CodeGenerator
         private List<Expression> GetArgumentExpressions(SimpleflowParser.FunctionContext context, MethodInfo methodInfo)
         {
             var actualMethodParameters = methodInfo.GetParameters();
-            var parameters = context.functionParameter();
+            var arguments = context.functionArguments().functionArgument();
             var argumentsExpressions = new List<Expression>();
 
-            if (parameters == null)
+            if (arguments == null)
             {
                 return argumentsExpressions;
             }
 
-            CheckInvalidParameters(actualMethodParameters, parameters);
-            CheckRepeatedParameters(parameters);
+            CheckInvalidParameters(actualMethodParameters, arguments);
+            CheckRepeatedParameters(arguments);
 
             foreach (var methodParameter in actualMethodParameters)
             {
 
                 //Parameter Syntax:  ParmeterName ':' (Number|String|Bool|None|objectIdentifier)
-                var scriptArgument = parameters.SingleOrDefault(parameter => string.Equals(parameter.Identifier().GetText(), methodParameter.Name, System.StringComparison.OrdinalIgnoreCase));
+                var funcArgument = arguments.SingleOrDefault(parameter => string.Equals(parameter.Identifier().GetText(), methodParameter.Name, System.StringComparison.OrdinalIgnoreCase));
 
-                if (scriptArgument == null)
+                if (funcArgument == null)
                 {
                     argumentsExpressions.Add(Expression.Default(methodParameter.ParameterType));
                     // AddDefaultIfMatches(argumentsExpressions, methodParameter, parameterValueContext: null);
                     continue;
                 }
 
-                var parameterExpression = CreateFunctionParameterExpression(methodParameter, scriptArgument);
+                var parameterExpression = CreateFunctionArgumentExpression(methodParameter, funcArgument);
 
                 // Add result expression
                 if (parameterExpression != null)
@@ -83,19 +83,19 @@ namespace Simpleflow.CodeGenerator
             return argumentsExpressions;
         }
 
-        private Expression CreateFunctionParameterExpression(ParameterInfo methodParameter, SimpleflowParser.FunctionParameterContext scriptArgument)
+        private Expression CreateFunctionArgumentExpression(ParameterInfo methodParameter, SimpleflowParser.FunctionArgumentContext funcArgument)
         {
-            var parameterValueContext = scriptArgument.expression().GetChild(0);
+            var argValueExp = funcArgument.expression();
 
-            if (parameterValueContext is SimpleflowParser.ObjectIdentifierContext oic)
+            if (argValueExp is SimpleflowParser.ObjectIdentiferExpressionContext oic)
             {
                 return VisitObjectIdentiferAsPerTargetType(oic, methodParameter.ParameterType);
             }
 
-            return VisitWithType(parameterValueContext, methodParameter.ParameterType);
+            return VisitWithType(argValueExp, methodParameter.ParameterType);
         }
 
-        private void CheckRepeatedParameters(SimpleflowParser.FunctionParameterContext[] parameters)
+        private void CheckRepeatedParameters(SimpleflowParser.FunctionArgumentContext[] parameters)
         {
             var repeatedParameters = (from parameter in parameters
                                      group parameter by parameter.Identifier().GetText() into g
@@ -108,7 +108,7 @@ namespace Simpleflow.CodeGenerator
             }
         }
 
-        private void CheckInvalidParameters(ParameterInfo[] actualMethodParameters, SimpleflowParser.FunctionParameterContext[] parameters)
+        private void CheckInvalidParameters(ParameterInfo[] actualMethodParameters, SimpleflowParser.FunctionArgumentContext[] parameters)
         {
             foreach (var parameter in parameters)
             {
@@ -120,7 +120,7 @@ namespace Simpleflow.CodeGenerator
             }
         }
 
-        private Expression VisitObjectIdentiferAsPerTargetType(SimpleflowParser.ObjectIdentifierContext objectIdentifier, Type targetType)
+        private Expression VisitObjectIdentiferAsPerTargetType(SimpleflowParser.ObjectIdentiferExpressionContext objectIdentifier, Type targetType)
         {
             var objectIdentieferText = objectIdentifier.GetText();
             
@@ -132,5 +132,29 @@ namespace Simpleflow.CodeGenerator
 
             return CreateSmartVariableIfObjectIdentiferNotDefined(targetType, objectIdentieferText);
         }
+
+        private Expression CreateSmartVariableIfObjectIdentiferNotDefined(Type targetType, string name)
+        {
+            // Variable names are not case sensitive
+            var smartVar = GetSmartVariable(name);
+
+            if (smartVar == null)
+            {
+                throw new InvalidFunctionParameterNameException(name);
+            }
+
+            // Return if already created
+            if (smartVar.VariableExpression != null)
+            {
+                return smartVar.VariableExpression;
+            }
+
+            var instanceExpressionWithMembers = CreateNewEntityInstance(targetType, smartVar.Context.jsonObjLiteral().pair());
+
+            // Store created smart variable to further reuse and replace.
+            return smartVar.VariableExpression = Expression.Assign(Expression.Variable(targetType), instanceExpressionWithMembers);
+
+        }
+
     }
 }

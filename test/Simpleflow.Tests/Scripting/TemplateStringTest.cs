@@ -30,6 +30,25 @@ namespace Simpleflow.Tests.Scripting
         }
 
         [Fact]
+        public void TemplateStringWithExpression()
+        {
+            // Arrange
+            var script =
+                @"
+                  let text = `abc {arg.id + 2} {arg.value} xyz`
+                  message text  
+                ";
+
+            // Act 
+            FlowOutput output = SimpleflowEngine.Run(script, new SampleArgument() { Id = 1, Value = 2 });
+
+            // Assert
+            Assert.Single(output.Messages);
+            Assert.Equal(actual: output.Messages[0], expected: "abc 3 2 xyz");
+
+        }
+
+        [Fact]
         public void MultilineTemplateString()
         {
             // Arrange
@@ -57,5 +76,6 @@ namespace Simpleflow.Tests.Scripting
                          $" Hi John,{System.Environment.NewLine}                                 .....{System.Environment.NewLine}                                 Thanks,{System.Environment.NewLine}                                 Chris{System.Environment.NewLine}                               ");
 
         }
+
     }
 }

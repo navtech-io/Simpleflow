@@ -38,7 +38,6 @@ namespace Simpleflow.CodeGenerator
 
             // return expression
             return GetSetStmtExpression(context, variableName, variableExpression, valueExpression);
-
         }
 
         private Expression GetValueExpressionOfSetStmt(SimpleflowParser.SetStmtContext context, 
@@ -50,7 +49,7 @@ namespace Simpleflow.CodeGenerator
 
             if (context.Partial() != null) // visit complex type partially 
             {
-                if (expression.jsonObj() == null)
+                if (!(expression is SimpleflowParser.JsonObjLiteralExpressionContext))
                 {
                     throw new SimpleflowException(Resources.Message.InvalidPartialKeywordUsage);
                 }
@@ -70,18 +69,18 @@ namespace Simpleflow.CodeGenerator
                 variableExpression = null;
             }
 
-            else if (expression.jsonObj() != null) // visit complex type fully - complete replace of reference -- 
+            else if (expression is SimpleflowParser.JsonObjLiteralExpressionContext jsonObj) // visit complex type fully - complete replace of reference -- 
             {
                 if (variableName == null)
                 {
                     throw new SimpleflowException(Resources.Message.CannotIgnoreIdentifierForJsonObj);
                 }
-                rightSideSetExpression = CreateNewEntityInstance(variableExpression.Type, expression.jsonObj().pair());
+                rightSideSetExpression = CreateNewEntityInstance(variableExpression.Type, jsonObj.jsonObjLiteral().pair());
             }
 
             else // visit simple type
             {
-                rightSideSetExpression = Visit(expression.GetChild(0));
+                rightSideSetExpression = Visit(expression);
             }
 
             return rightSideSetExpression;
@@ -114,30 +113,30 @@ namespace Simpleflow.CodeGenerator
 
             // Add error variable without declare using let, error is exceptional case
             var errorVar = GetExistingOrAddVariableToGlobalScope(Expression.Variable(typeof(Exception), errorVariable));
-            var varFortryExpression = Expression.Variable(tryExpression.Type);
+            var varForTryExpression = Expression.Variable(tryExpression.Type);
 
             // Declare before use
-            DeclareVariable(varFortryExpression);
+            DeclareVariable(varForTryExpression);
 
             // Add variables
             if (variable == null)
             {
                 return Expression.Block(
-                     Expression.Assign(varFortryExpression, tryExpression), // run expression with try catch and capture value
-                     Expression.Assign(errorVar, Expression.Field(varFortryExpression, "Error"))
+                     Expression.Assign(varForTryExpression, tryExpression), // run expression with try catch and capture value
+                     Expression.Assign(errorVar, Expression.Field(varForTryExpression, "Error"))
                );
             }
 
             return Expression.Block(
-                        Expression.Assign(varFortryExpression, tryExpression), // run expression with try catch and capture value
-                        Expression.Assign(variable, Expression.Field(varFortryExpression, "Value")),
-                        Expression.Assign(errorVar, Expression.Field(varFortryExpression, "Error"))
+                        Expression.Assign(varForTryExpression, tryExpression), // run expression with try catch and capture value
+                        Expression.Assign(variable, Expression.Field(varForTryExpression, "Value")),
+                        Expression.Assign(errorVar, Expression.Field(varForTryExpression, "Error"))
                   );
         }
 
         private Expression VisitPartialSet(SimpleflowParser.SetStmtContext context, Expression variable)
         {
-            var pairs = context.expression().jsonObj().pair();
+            var pairs = (context.expression() as SimpleflowParser.JsonObjLiteralExpressionContext).jsonObjLiteral().pair();
             List<Expression> propExpressions = new List<Expression>();
 
             // set values to each declared property
@@ -147,7 +146,7 @@ namespace Simpleflow.CodeGenerator
                                         propExpressions.Add(Expression.Assign(Expression.Property(variable, propInfo), valueExp)));
 
             return Expression.Block(propExpressions);
-                   
+
         }
     }
 }

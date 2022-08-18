@@ -4,7 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Simpleflow.Exceptions;
 using Simpleflow.Parser;
 
 namespace Simpleflow.CodeGenerator
@@ -17,8 +16,8 @@ namespace Simpleflow.CodeGenerator
             if (context.exception != null)
                 throw context.exception;
 
-            var messageToken = context.messageText();
-            return HandleMessageText(messageToken, nameof(FlowOutput.Messages));
+            var expression = Visit(context.expression());
+            return EmitMessageText(expression, nameof(FlowOutput.Messages));
         }
 
         public override Expression VisitExitStmt(SimpleflowParser.ExitStmtContext context)
@@ -31,8 +30,8 @@ namespace Simpleflow.CodeGenerator
             if (context.exception != null)
                 throw context.exception;
 
-            var messageToken = context.messageText();
-            return HandleMessageText(messageToken, nameof(FlowOutput.Errors));
+            var expression = Visit(context.expression());
+            return EmitMessageText(expression, nameof(FlowOutput.Errors));
         }
 
         public override Expression VisitOutputStmt(SimpleflowParser.OutputStmtContext context)
@@ -58,14 +57,13 @@ namespace Simpleflow.CodeGenerator
             return callExpr;
         }
 
-        private Expression HandleMessageText(SimpleflowParser.MessageTextContext messageToken, string outputProperty)
+        private Expression EmitMessageText(Expression messageExpression, string outputProperty)
         {
-            var identifier = Visit(messageToken.GetChild(0));
+            messageExpression = messageExpression.NodeType != ExpressionType.Call && messageExpression.Type == typeof(string) 
+                                ? messageExpression 
+                                : ToStringExpression(messageExpression);
 
-            identifier = identifier.NodeType != ExpressionType.Call && identifier.Type == typeof(string) ?
-                         identifier : ToStringExpression(identifier);
-
-            return CallListAddMethod(identifier, outputProperty);
+            return CallListAddMethod(messageExpression, outputProperty);
         }
 
         private Expression CallListAddMethod(Expression message, string outputProperty)

@@ -21,7 +21,7 @@ namespace Simpleflow.CodeGenerator
         protected readonly LabelTarget TargetLabelToExitFunction;
 
         protected readonly List<ParameterExpression> Variables;  // program variables
-        protected readonly List<SmartJsonObjectParameterExpression> SmartJsonVariables;  // program variables
+        protected readonly List<SmartJsonObjectExpression> SmartJsonVariables;  // program variables
 
         protected readonly ParameterExpression InputParam;  // script main function parameter 1
         protected readonly ParameterExpression OutputParam; // script main function parameter 2
@@ -36,7 +36,7 @@ namespace Simpleflow.CodeGenerator
 
             /* Initialize smart variables and smart json variables */
             Variables = new List<ParameterExpression>();
-            SmartJsonVariables = new List<SmartJsonObjectParameterExpression>();
+            SmartJsonVariables = new List<SmartJsonObjectExpression>();
 
             /* Initialize Function parameters */
             InputParam = Expression.Parameter(typeof(TArg));
@@ -121,7 +121,7 @@ namespace Simpleflow.CodeGenerator
             {
                 AddVariablesFromBlockExpression(statementExpressions, blockExpression);
             }
-            else if (childResult is SmartJsonObjectParameterExpression smartJsonParamExpression) // x = {}
+            else if (childResult is SmartJsonObjectExpression smartJsonParamExpression) // x = {}
             {
                 AddVariablesFromSmartVarExpressions(statementExpressions, smartJsonParamExpression);
             }
@@ -131,7 +131,7 @@ namespace Simpleflow.CodeGenerator
             }
         }
 
-        private void AddVariablesFromSmartVarExpressions(List<Expression> statementExpressions, SmartJsonObjectParameterExpression smartJsonParamExpression)
+        private void AddVariablesFromSmartVarExpressions(List<Expression> statementExpressions, SmartJsonObjectExpression smartJsonParamExpression)
         {
             CheckForDuplicateVariable(smartJsonParamExpression.Name);
 
@@ -209,8 +209,8 @@ namespace Simpleflow.CodeGenerator
             int index = 0;
             while (index < SmartJsonVariables.Count)
             {
-                var sindex = statementExpressions.FindIndex(e => e is SmartJsonObjectParameterExpression);
-                var item = statementExpressions[sindex] as SmartJsonObjectParameterExpression;
+                var sindex = statementExpressions.FindIndex(e => e is SmartJsonObjectExpression);
+                var item = statementExpressions[sindex] as SmartJsonObjectExpression;
 
                 // Insert JSON Object variables into main variables collection and replace assignment statement.
                 if (item.VariableExpression != null)

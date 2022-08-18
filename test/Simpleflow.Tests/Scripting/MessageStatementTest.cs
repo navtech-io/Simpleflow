@@ -91,5 +91,24 @@ namespace Simpleflow.Tests.Scripting
             // Act  & Assert
             Assert.Throws<SyntaxException>(() => SimpleflowEngine.Run(script, new object()));
         }
+
+        [Fact]
+        public void MessageWithExpression()
+        {
+            // Arrange
+            var context = new SampleArgument() { Id = 10 };
+
+            var script =
+                @"
+                    let value  = 2 * 3
+                    message value + 2
+                ";
+
+            // Act
+            FlowOutput output = SimpleflowEngine.Run<SampleArgument>(script, context);
+
+            // Assert
+            Assert.Equal("8", output.Messages[0]);
+        }
     }
 }
