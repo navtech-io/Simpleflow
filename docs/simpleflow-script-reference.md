@@ -125,7 +125,7 @@ set user = 2
 
 | Operator Type | Operators             |
 |---------------|-----------------------|
-| Arithmetic    | + (Addition), - (Subtraction), * (Multiplication), / (Division), % (Modulo)|
+| Arithmetic    | + (Addition), - (Subtraction), * (Multiplication), / (Division), % (Remainder)|
 | Logical       | and, or, not          |
 | Relational    | <, <=, >, >=, == , != |
 
@@ -176,7 +176,7 @@ SimpleflowEngine.Run(script, <argument>,
 
 ## Rule Control Flow
 ```csharp
-rule when <predicate> then
+rule when expression then
 	<statement..1>	
 	<statement..2>
 	<statement..N>
@@ -189,12 +189,12 @@ Condition does not allow expression. If you need to write expression declare var
 
 | Emitter Type | Syntax                      	|
 |--------------|--------------------------------|
-| message      | `message <string/identifier>`  |
-| error        | `error <string/identifier>`    |
-| output       | `output <identifier>`    	|
+| message      | `message <expression>`         |
+| error        | `error <expression>`           |
+| output       | `output <variable/property>`   |
 | exit         | `exit`                         |
 
-`exit` can be used to terminate the script execution.
+`exit` can be used to terminate the script execution. `output` does not support expression.
 
 ## Functions
 Functions can be invoked from script that have been registered with this engine in host language.
@@ -329,4 +329,4 @@ rule when not err2 then
     message "No error"
 
 ```
-when you use `set` to update a variable and you want to catch the error as well if error is occurred then you don't need declare err2 using `let` as you declare to capture regular value.
+when you use `set` to update a variable and you want to catch the error as well, if error is occurred then you don't need declare err2 using `let` as you declare to capture regular value.
