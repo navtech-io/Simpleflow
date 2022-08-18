@@ -70,7 +70,8 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
     <tr>
         <td>String</td>
         <td>
-            <code>let name = "test"</code>
+             In Simpleflow, single quotes (' ') or double quotes (" ") can be used to create string literals.
+            <code>let name = 'test'</code>
         </td>
     </tr>
     <tr>
