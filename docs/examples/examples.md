@@ -12,9 +12,9 @@ permalink: docs/examples
 
 ```csharp
 # Declare and initialize variables 
-let userId      = none
-let currentDate = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
-let emailMessage= ""
+let userId       = 0
+let currentDate  = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
+let emailMessage = ""
 
 # Define Rules 
 rule when  arg.Name == "" 
@@ -25,7 +25,7 @@ rule when not $match(input: arg.Name, pattern: "^[a-zA-z]+$") then
     error "Invalid name. Name should contain only alphabets."
     
 rule when arg.Age < 18 and arg.Country == "US" then
-    error "You cannot register"
+    error "You are not allowed to use this site."
 end rule
 
 # Statements outside of the rules 
@@ -42,7 +42,7 @@ partial set arg = {
                   }
 
 # Save user data
-set userId, err = $CustomerService.RegisterUser(user: arg) # User defined function
+set userId, err = $CustomerService.RegisterUser(user: arg) 
 
 rule when err then
     error `Registration Failed. {err.Message}`
@@ -50,22 +50,19 @@ rule when err then
     exit
 end rule
 
-/* Upon successful registration, send an email to user
- - Error handing feature available since 1.0.4...*/
+/* Send an email to user, 
+   once the record is saved successfully.  */
 
-# Compose email message
-set emailMessage  = `
-    Hello {arg.Name},
-    We would like to confirm that your account was created successfully.
+set emailMessage  = ` Hello {arg.Name},
+                      We would like to confirm that your account 
+                      was created successfully.
 
-    Thank you for joining.
-    Date: {arg.RegistrationDate}
-`
-
-# send an email to registered user
+                      Thank you for joining.
+                      Date: {arg.RegistrationDate}
+                    `
 set _, err = $SendEmail(message: emailMessage, to: arg.email)  
 
-output userId  # access this using result.Output["userId"]
+output userId 
 ```
 ### Execute
 
@@ -81,7 +78,7 @@ FlowOutput result = SimpleflowEngine.Run(rules /*above script*/,
                                          new User {Name = "John", Age=22, Country="US" } );
 
 // Log messages
-Logger.Info(result.Messages.ToCsv());
+Logger.Debug(result.Messages);
 
 // Check errors
 if (result.Errors.Count > 0 )
