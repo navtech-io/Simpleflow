@@ -13,6 +13,7 @@ nav_order: 3
 1. [Function Permissions](#function-permissions)
 1. [Register Functions at Context Level](#register-functions-at-context-level)
 1. [Cache Options](#cache-options)
+1. [Handle Parser Errors](#handle-parser-errors)
 1. [Get Syntax Tree](#get-syntax-tree)
 
 ## Simpleflow Execution
@@ -152,6 +153,24 @@ var options = new FlowContextOptions {
 
 FlowOutput result = new SimpleflowEngine.Run(script, new object(), options);
 ```
+
+## Handle Parser Errors
+Handle parser/compilation/execution errors
+```csharp
+try
+{
+    var result = new SimpleflowEngine.Run(script, ...);
+}
+catch(SyntaxException syntaxException)
+{
+    // syntaxException.Errors
+}
+catch(SimpleflowException exception)
+{
+    //exception
+}  
+```
+
 
 ## Get Syntax Tree 
 v1.0.3 
