@@ -25,7 +25,7 @@ rule when not $match(input: arg.Name, pattern: "^[a-zA-z]+$") then
     error "Invalid name. Name should contain only alphabets."
     
 rule when arg.Age < 18 and arg.Country == "US" then
-    error "You are not allowed to use this site."
+    error "You are not allowed to register."
 end rule
 
 # Statements outside of the rules 
@@ -50,9 +50,7 @@ rule when err then
     exit
 end rule
 
-/* Send an email to user, 
-   once the record is saved successfully.  */
-
+# Send an email to user, once the record is saved successfully.
 set emailMessage  = ` Hello {arg.Name},
                       We would like to confirm that your account 
                       was created successfully.
