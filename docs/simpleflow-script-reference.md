@@ -161,7 +161,6 @@ let v    = ` Hi {to},
 |---------------------------------------------------|------------------------------------------------------------------|
 | context.HasErrors                                 | Returns true if there are any errors emitted                     |
 | context.HasMessages                               | Returns true if there are any messages emitted                    |
-| context.HasOutputs                                 | Returns true if there are any outputs emitted                     |
 | context.CancellationToken                         | Returns cancellation token that has been supplied to a script    |
 | context.CancellationToken.IsCancellationRequested | Returns true if cancellation has been requested for that context |
 
