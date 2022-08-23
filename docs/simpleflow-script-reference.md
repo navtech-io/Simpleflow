@@ -216,8 +216,7 @@ Functions can be invoked from script that have been registered with this engine 
 $<function_name>(param_name1: value1, param_name2: value2, ...)
 ```
 Function arguments can be written in any order. and if you omit an argument it takes a default value of that type. 
-You can use your custom functions in Simpleflow script. Please refer these sections of documentation to register and use custom functions.
-[Register Custom Function](api/#register-custom-functions) |  [Examples](examples)
+You can use your custom functions in Simpleflow script. 
 
 <table>
     <tr>
