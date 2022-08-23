@@ -146,6 +146,17 @@ internal partial class SimpleflowParserBaseVisitor<Result> : AbstractParseTreeVi
 	/// <return>The visitor result.</return>
 	public virtual Result VisitExitStmt([NotNull] SimpleflowParser.ExitStmtContext context) { return VisitChildren(context); }
 	/// <summary>
+	/// Visit a parse tree produced by the <c>UniaryMinusExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitUniaryMinusExpression([NotNull] SimpleflowParser.UniaryMinusExpressionContext context) { return VisitChildren(context); }
+	/// <summary>
 	/// Visit a parse tree produced by the <c>ParenthesizedExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
 	/// <para>
@@ -178,6 +189,28 @@ internal partial class SimpleflowParserBaseVisitor<Result> : AbstractParseTreeVi
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitRelationalExpression([NotNull] SimpleflowParser.RelationalExpressionContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ArrayLiteralExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitArrayLiteralExpression([NotNull] SimpleflowParser.ArrayLiteralExpressionContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>NotExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitNotExpression([NotNull] SimpleflowParser.NotExpressionContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>LogicalExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
@@ -212,7 +245,7 @@ internal partial class SimpleflowParserBaseVisitor<Result> : AbstractParseTreeVi
 	/// <return>The visitor result.</return>
 	public virtual Result VisitFunctionExpression([NotNull] SimpleflowParser.FunctionExpressionContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by the <c>ArrayLiteralExpression</c>
+	/// Visit a parse tree produced by the <c>UniaryPlusExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
@@ -221,7 +254,7 @@ internal partial class SimpleflowParserBaseVisitor<Result> : AbstractParseTreeVi
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitArrayLiteralExpression([NotNull] SimpleflowParser.ArrayLiteralExpressionContext context) { return VisitChildren(context); }
+	public virtual Result VisitUniaryPlusExpression([NotNull] SimpleflowParser.UniaryPlusExpressionContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>SimpleLiteralExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
@@ -233,17 +266,6 @@ internal partial class SimpleflowParserBaseVisitor<Result> : AbstractParseTreeVi
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitSimpleLiteralExpression([NotNull] SimpleflowParser.SimpleLiteralExpressionContext context) { return VisitChildren(context); }
-	/// <summary>
-	/// Visit a parse tree produced by the <c>NotExpression</c>
-	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitNotExpression([NotNull] SimpleflowParser.NotExpressionContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>JsonObjLiteralExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.

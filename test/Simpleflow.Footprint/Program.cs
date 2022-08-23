@@ -24,7 +24,7 @@ namespace Simpleflow.Footprint
             _flowScript =
                 @"
                     let x = 233
-                    rule when context.Id == x then
+                    rule when arg.Id == x then
                         message ""test""
                 ";
 
@@ -34,8 +34,8 @@ namespace Simpleflow.Footprint
                 let b = 5
                 let text = ""Welcome to new विश्वम्‌""
                 let liberate = true
-                let date = $GetDate()
-                let value = ( 2+3 ) * context.Id - 1  /* 5 x 233 -1 = 1164*/
+                let date = $GetCurrentDate()
+                let value = ( 2 + 3 ) * arg.Id - 1  /* 5 x 233 -1 = 1164*/
                     
                 rule when  a == 2 then
                     message ""Valid-1""
@@ -43,7 +43,7 @@ namespace Simpleflow.Footprint
                 rule when  ""x"" == text then
                     message ""Valid-xy""
                           
-                rule when context.Id == 233 and a == 2 then
+                rule when arg.Id == 233 and a == 2 then
                     message ""Valid-2""
                     message ""Valid-3""
                 end rule
@@ -56,15 +56,15 @@ namespace Simpleflow.Footprint
                     otherwise it runs as functional scripting
                 */
 
-                mutate a = 3
+                set a = 3
 
                 output a
                 output text
                 output b
-                output context.Id
+                output arg.Id
                 output value
                 
-                rule when (context.Id == 233 and a == 3) or 2 == 3 then
+                rule when (arg.Id == 233 and a == 3) or 2 == 3 then
                       error ""Invalid-""
             ";
         }

@@ -121,15 +121,16 @@ class Build : NukeBuild
                 .SetTitle("Simpleflow")
                 .SetAuthors("navtech.io")
                 .SetCopyright("navtech.io")
-                .SetPackageProjectUrl("https://github.com/navtech-io/Simpleflow")
+                .SetPackageProjectUrl("https://navtech-io.github.io/Simpleflow/")
+                .SetRepositoryUrl("https://github.com/navtech-io/Simpleflow")
                 .AddProperty("PackageLicenseExpression", "Apache-2.0")
                 .AddProperty("PackageIcon", @"PackageIcon.png")
                 .SetPackageRequireLicenseAcceptance(true)
                 .SetIncludeSymbols(true)
-                .SetDescription("A .NET library and a runtime engine to execute dynamic rules and workflows with intuitive and simple Simpleflow scripting language.")
-                .SetPackageTags("Simpleflow.NET Workflow RuleEngine DynamicValidations DynamicExpressionEvaluator")
+                .SetDescription("A .NET library and a runtime engine to execute dynamic rules and workflows with intuitive and simple declarative Simpleflow scripting language.")
+                .SetPackageTags("Simpleflow.NET Workflow Rule-Engine Dynamic-Validations Dynamic-Expression-Evaluator")
                 .SetNoDependencies(true)
-                .SetOutputDirectory(ArtifactsDirectory / "nuget"));
+                .SetOutputDirectory(ArtifactsDirectory / "nuget")); ;
         });
 
     Target Publish => _ => _

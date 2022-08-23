@@ -619,6 +619,22 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterUniaryMinusExpression(Simpleflow.Parser.SimpleflowParser.UniaryMinusExpressionContext)">
+            <summary>
+            Enter a parse tree produced by the <c>UniaryMinusExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitUniaryMinusExpression(Simpleflow.Parser.SimpleflowParser.UniaryMinusExpressionContext)">
+            <summary>
+            Exit a parse tree produced by the <c>UniaryMinusExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterParenthesizedExpression(Simpleflow.Parser.SimpleflowParser.ParenthesizedExpressionContext)">
             <summary>
             Enter a parse tree produced by the <c>ParenthesizedExpression</c>
@@ -662,6 +678,38 @@
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitRelationalExpression(Simpleflow.Parser.SimpleflowParser.RelationalExpressionContext)">
             <summary>
             Exit a parse tree produced by the <c>RelationalExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+            <summary>
+            Enter a parse tree produced by the <c>ArrayLiteralExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+            <summary>
+            Exit a parse tree produced by the <c>ArrayLiteralExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
+            <summary>
+            Enter a parse tree produced by the <c>NotExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
+            <summary>
+            Exit a parse tree produced by the <c>NotExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             <para>The default implementation does nothing.</para>
             </summary>
@@ -715,17 +763,17 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterUniaryPlusExpression(Simpleflow.Parser.SimpleflowParser.UniaryPlusExpressionContext)">
             <summary>
-            Enter a parse tree produced by the <c>ArrayLiteralExpression</c>
+            Enter a parse tree produced by the <c>UniaryPlusExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             <para>The default implementation does nothing.</para>
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitUniaryPlusExpression(Simpleflow.Parser.SimpleflowParser.UniaryPlusExpressionContext)">
             <summary>
-            Exit a parse tree produced by the <c>ArrayLiteralExpression</c>
+            Exit a parse tree produced by the <c>UniaryPlusExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             <para>The default implementation does nothing.</para>
             </summary>
@@ -742,22 +790,6 @@
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitSimpleLiteralExpression(Simpleflow.Parser.SimpleflowParser.SimpleLiteralExpressionContext)">
             <summary>
             Exit a parse tree produced by the <c>SimpleLiteralExpression</c>
-            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
-            <para>The default implementation does nothing.</para>
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.EnterNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
-            <summary>
-            Enter a parse tree produced by the <c>NotExpression</c>
-            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
-            <para>The default implementation does nothing.</para>
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseListener.ExitNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
-            <summary>
-            Exit a parse tree produced by the <c>NotExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             <para>The default implementation does nothing.</para>
             </summary>
@@ -1178,6 +1210,18 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitUniaryMinusExpression(Simpleflow.Parser.SimpleflowParser.UniaryMinusExpressionContext)">
+            <summary>
+            Visit a parse tree produced by the <c>UniaryMinusExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitParenthesizedExpression(Simpleflow.Parser.SimpleflowParser.ParenthesizedExpressionContext)">
             <summary>
             Visit a parse tree produced by the <c>ParenthesizedExpression</c>
@@ -1205,6 +1249,30 @@
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitRelationalExpression(Simpleflow.Parser.SimpleflowParser.RelationalExpressionContext)">
             <summary>
             Visit a parse tree produced by the <c>RelationalExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+            <summary>
+            Visit a parse tree produced by the <c>ArrayLiteralExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
+            <summary>
+            Visit a parse tree produced by the <c>NotExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             <para>
             The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
@@ -1250,9 +1318,9 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitUniaryPlusExpression(Simpleflow.Parser.SimpleflowParser.UniaryPlusExpressionContext)">
             <summary>
-            Visit a parse tree produced by the <c>ArrayLiteralExpression</c>
+            Visit a parse tree produced by the <c>UniaryPlusExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             <para>
             The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
@@ -1265,18 +1333,6 @@
         <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitSimpleLiteralExpression(Simpleflow.Parser.SimpleflowParser.SimpleLiteralExpressionContext)">
             <summary>
             Visit a parse tree produced by the <c>SimpleLiteralExpression</c>
-            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
-            <para>
-            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
-            on <paramref name="context"/>.
-            </para>
-            </summary>
-            <param name="context">The parse tree.</param>
-            <return>The visitor result.</return>
-        </member>
-        <member name="M:Simpleflow.Parser.SimpleflowParserBaseVisitor`1.VisitNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
-            <summary>
-            Visit a parse tree produced by the <c>NotExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             <para>
             The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
@@ -1635,6 +1691,20 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterUniaryMinusExpression(Simpleflow.Parser.SimpleflowParser.UniaryMinusExpressionContext)">
+            <summary>
+            Enter a parse tree produced by the <c>UniaryMinusExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitUniaryMinusExpression(Simpleflow.Parser.SimpleflowParser.UniaryMinusExpressionContext)">
+            <summary>
+            Exit a parse tree produced by the <c>UniaryMinusExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
         <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterParenthesizedExpression(Simpleflow.Parser.SimpleflowParser.ParenthesizedExpressionContext)">
             <summary>
             Enter a parse tree produced by the <c>ParenthesizedExpression</c>
@@ -1673,6 +1743,34 @@
         <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitRelationalExpression(Simpleflow.Parser.SimpleflowParser.RelationalExpressionContext)">
             <summary>
             Exit a parse tree produced by the <c>RelationalExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+            <summary>
+            Enter a parse tree produced by the <c>ArrayLiteralExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+            <summary>
+            Exit a parse tree produced by the <c>ArrayLiteralExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
+            <summary>
+            Enter a parse tree produced by the <c>NotExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
+            <summary>
+            Exit a parse tree produced by the <c>NotExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             </summary>
             <param name="context">The parse tree.</param>
@@ -1719,16 +1817,16 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterUniaryPlusExpression(Simpleflow.Parser.SimpleflowParser.UniaryPlusExpressionContext)">
             <summary>
-            Enter a parse tree produced by the <c>ArrayLiteralExpression</c>
+            Enter a parse tree produced by the <c>UniaryPlusExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitUniaryPlusExpression(Simpleflow.Parser.SimpleflowParser.UniaryPlusExpressionContext)">
             <summary>
-            Exit a parse tree produced by the <c>ArrayLiteralExpression</c>
+            Exit a parse tree produced by the <c>UniaryPlusExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             </summary>
             <param name="context">The parse tree.</param>
@@ -1743,20 +1841,6 @@
         <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitSimpleLiteralExpression(Simpleflow.Parser.SimpleflowParser.SimpleLiteralExpressionContext)">
             <summary>
             Exit a parse tree produced by the <c>SimpleLiteralExpression</c>
-            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.EnterNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
-            <summary>
-            Enter a parse tree produced by the <c>NotExpression</c>
-            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserListener.ExitNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
-            <summary>
-            Exit a parse tree produced by the <c>NotExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             </summary>
             <param name="context">The parse tree.</param>
@@ -2077,6 +2161,14 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitUniaryMinusExpression(Simpleflow.Parser.SimpleflowParser.UniaryMinusExpressionContext)">
+            <summary>
+            Visit a parse tree produced by the <c>UniaryMinusExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
         <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitParenthesizedExpression(Simpleflow.Parser.SimpleflowParser.ParenthesizedExpressionContext)">
             <summary>
             Visit a parse tree produced by the <c>ParenthesizedExpression</c>
@@ -2096,6 +2188,22 @@
         <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitRelationalExpression(Simpleflow.Parser.SimpleflowParser.RelationalExpressionContext)">
             <summary>
             Visit a parse tree produced by the <c>RelationalExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+            <summary>
+            Visit a parse tree produced by the <c>ArrayLiteralExpression</c>
+            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
+            <summary>
+            Visit a parse tree produced by the <c>NotExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             </summary>
             <param name="context">The parse tree.</param>
@@ -2125,9 +2233,9 @@
             <param name="context">The parse tree.</param>
             <return>The visitor result.</return>
         </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitArrayLiteralExpression(Simpleflow.Parser.SimpleflowParser.ArrayLiteralExpressionContext)">
+        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitUniaryPlusExpression(Simpleflow.Parser.SimpleflowParser.UniaryPlusExpressionContext)">
             <summary>
-            Visit a parse tree produced by the <c>ArrayLiteralExpression</c>
+            Visit a parse tree produced by the <c>UniaryPlusExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             </summary>
             <param name="context">The parse tree.</param>
@@ -2136,14 +2244,6 @@
         <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitSimpleLiteralExpression(Simpleflow.Parser.SimpleflowParser.SimpleLiteralExpressionContext)">
             <summary>
             Visit a parse tree produced by the <c>SimpleLiteralExpression</c>
-            labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
-            </summary>
-            <param name="context">The parse tree.</param>
-            <return>The visitor result.</return>
-        </member>
-        <member name="M:Simpleflow.Parser.ISimpleflowParserVisitor`1.VisitNotExpression(Simpleflow.Parser.SimpleflowParser.NotExpressionContext)">
-            <summary>
-            Visit a parse tree produced by the <c>NotExpression</c>
             labeled alternative in <see cref="M:Simpleflow.Parser.SimpleflowParser.expression"/>.
             </summary>
             <param name="context">The parse tree.</param>
@@ -2343,6 +2443,11 @@
         <member name="P:Simpleflow.Resources.Message.VariableAlreadyDefined">
             <summary>
               Looks up a localized string similar to A variable named &apos;{0}&apos; is already defined.
+            </summary>
+        </member>
+        <member name="T:Simpleflow.RuntimeContext">
+            <summary>
+            This class is for internal purpose only
             </summary>
         </member>
         <member name="T:Simpleflow.Services.CacheService">

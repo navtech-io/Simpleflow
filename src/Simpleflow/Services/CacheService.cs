@@ -98,7 +98,7 @@ namespace Simpleflow.Services
 
         private bool GetAndSetToContextTheCompiledScript<TArg>(FlowContext<TArg> context, string id)
         {
-            var compiledScript = _cache.Get<Action<TArg, FlowOutput, ScriptHelperContext>>(key: id);
+            var compiledScript = _cache.Get<Action<TArg, FlowOutput, RuntimeContext>>(key: id);
             var isAvailableInCache = compiledScript != null;
 
             if (isAvailableInCache)

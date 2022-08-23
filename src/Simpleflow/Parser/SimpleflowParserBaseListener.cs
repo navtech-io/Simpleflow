@@ -169,6 +169,20 @@ internal partial class SimpleflowParserBaseListener : ISimpleflowParserListener 
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitExitStmt([NotNull] SimpleflowParser.ExitStmtContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by the <c>UniaryMinusExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUniaryMinusExpression([NotNull] SimpleflowParser.UniaryMinusExpressionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>UniaryMinusExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUniaryMinusExpression([NotNull] SimpleflowParser.UniaryMinusExpressionContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by the <c>ParenthesizedExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -210,6 +224,34 @@ internal partial class SimpleflowParserBaseListener : ISimpleflowParserListener 
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitRelationalExpression([NotNull] SimpleflowParser.RelationalExpressionContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>ArrayLiteralExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterArrayLiteralExpression([NotNull] SimpleflowParser.ArrayLiteralExpressionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>ArrayLiteralExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitArrayLiteralExpression([NotNull] SimpleflowParser.ArrayLiteralExpressionContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>NotExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterNotExpression([NotNull] SimpleflowParser.NotExpressionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>NotExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitNotExpression([NotNull] SimpleflowParser.NotExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>LogicalExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
@@ -253,19 +295,19 @@ internal partial class SimpleflowParserBaseListener : ISimpleflowParserListener 
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitFunctionExpression([NotNull] SimpleflowParser.FunctionExpressionContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by the <c>ArrayLiteralExpression</c>
+	/// Enter a parse tree produced by the <c>UniaryPlusExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterArrayLiteralExpression([NotNull] SimpleflowParser.ArrayLiteralExpressionContext context) { }
+	public virtual void EnterUniaryPlusExpression([NotNull] SimpleflowParser.UniaryPlusExpressionContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>ArrayLiteralExpression</c>
+	/// Exit a parse tree produced by the <c>UniaryPlusExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitArrayLiteralExpression([NotNull] SimpleflowParser.ArrayLiteralExpressionContext context) { }
+	public virtual void ExitUniaryPlusExpression([NotNull] SimpleflowParser.UniaryPlusExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>SimpleLiteralExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
@@ -280,20 +322,6 @@ internal partial class SimpleflowParserBaseListener : ISimpleflowParserListener 
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitSimpleLiteralExpression([NotNull] SimpleflowParser.SimpleLiteralExpressionContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by the <c>NotExpression</c>
-	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterNotExpression([NotNull] SimpleflowParser.NotExpressionContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>NotExpression</c>
-	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitNotExpression([NotNull] SimpleflowParser.NotExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>JsonObjLiteralExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.

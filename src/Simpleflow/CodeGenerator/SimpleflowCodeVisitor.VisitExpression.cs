@@ -11,6 +11,16 @@ namespace Simpleflow.CodeGenerator
     partial class SimpleflowCodeVisitor<TArg>
     {
 
+        public override Expression VisitUniaryPlusExpression([NotNull] SimpleflowParser.UniaryPlusExpressionContext context)
+        {
+            return Expression.UnaryPlus(Visit(context.expression()));
+        }
+
+        public override Expression VisitUniaryMinusExpression([NotNull] SimpleflowParser.UniaryMinusExpressionContext context)
+        {
+            return Expression.Negate(Visit(context.expression()));
+        }
+
         public override Expression VisitMultiplicativeExpression([NotNull] SimpleflowParser.MultiplicativeExpressionContext context)
         {
             var symbolNode = (ITerminalNode)context.GetChild(1); // exp(0) operator(1) exp(2)

@@ -35,7 +35,7 @@ namespace Simpleflow.Services
             // Add trace for debugging
             context.Trace?.CreateNewTracePoint(nameof(ExecutionService));
 
-            var scriptHelperContext = new ScriptHelperContext(context.Output,
+            var scriptHelperContext = new RuntimeContext(context.Output,
                                                              context.Options?.CancellationToken ?? default);
 
             context.Internals.CompiledScript?.Invoke(context.Argument, context.Output, scriptHelperContext);

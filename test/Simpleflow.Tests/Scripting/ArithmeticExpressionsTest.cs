@@ -18,10 +18,12 @@ namespace Simpleflow.Tests.Scripting
             // TODO negative and with different data types (int,float,decimal)
             // TODO module % operator 
 
+            int a = - 1;
+
             var script =
                 @"
-                    let value  =   2 + 3   * 2 - 1
-                    let value2 = ( 2 + 3 ) * 2 - 1
+                    let value  =   2+(+3)*2-1
+                    let value2 = (2+3) * 2 - 1
                     let value3 = ( 2 + 3 ) * arg.Id - 1
                     let value4 = ( 2 + 3 * 2 ) * 2 - 1
                     let value5 = ( (4 + 3) * 2 ) * 2 - 1

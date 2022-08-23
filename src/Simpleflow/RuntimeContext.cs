@@ -1,18 +1,22 @@
 ﻿// Copyright (c) navtech.io. All rights reserved.
 // See License in the project root for license information.
 
+using System;
 using System.Threading;
 
 namespace Simpleflow
 {
-    public sealed class ScriptHelperContext
+    /// <summary>
+    /// This class is for internal purpose only
+    /// </summary>
+    public sealed class RuntimeContext
     {
         readonly FlowOutput _flowOutput;
         readonly CancellationToken _token;
 
-        private ScriptHelperContext() { }
+        private RuntimeContext() { }
 
-        internal ScriptHelperContext(FlowOutput flowOutput,  CancellationToken token)
+        internal RuntimeContext(FlowOutput flowOutput,  CancellationToken token)
         {
             _flowOutput = flowOutput;
             _token = token;
@@ -20,6 +24,8 @@ namespace Simpleflow
         
         public bool HasErrors => _flowOutput.Errors.Count > 0;
         public bool HasMessages => _flowOutput.Messages.Count > 0;
+
+        [Obsolete(null, true)]
         public bool HasOutputs => _flowOutput.Output.Count > 0;
         public CancellationToken CancellationToken => _token;
     }
