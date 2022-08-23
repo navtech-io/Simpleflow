@@ -181,10 +181,24 @@ rule when expression then
 	<statement..N>
 [end rule]
 ```
+ `end rule` is optional and it can be used to terminate the rule scope.
+Simpleflow does not support nested rules. if you need to perform nested rules, declare a variable and write expression and use it in rules.
 
-Condition does not allow expression. If you need to write expression declare variable and write expression and use that variable in predicate. This does not support nested rules to avoid code complexity. `end rule` is optional and it can be used to terminate the rule scope.
+Example:
+```csharp
+let highPriority = arg.priority == true
+
+# run rules when highPriority is true
+rule when highPriority and arg.type == 'Gold' then
+    $ProcessGoldCustomer(customer: arg)
+
+rule when highPriority and arg.type == 'Silver' then
+    $ProcessSilverCustomer(customer: arg)
+```
+
 
 ## Emitters
+Emitters are a kind of special functions to collect the stream of data and outputs, which are helpful to read the data from script execution.
 
 | Emitter Type | Syntax                      	|
 |--------------|--------------------------------|
@@ -193,15 +207,15 @@ Condition does not allow expression. If you need to write expression declare var
 | output       | `output <variable/property>`   |
 | exit         | `exit`                         |
 
-`exit` can be used to terminate the script execution. `output` does not support expression.
+Note: `exit` can be used to terminate the script execution, and `output` does not support expression.
 
 ## Functions
-Functions can be invoked from script that have been registered with this engine in host language.
+Functions can be invoked from script that have been registered with this engine in a host language.
 
 ```csharp
 $<function_name>(param_name1: value1, param_name2: value2, ...)
 ```
-Function parameters can be written in any order. and if you omit a parameter it takes a default value of that type.
+Function arguments can be written in any order. and if you omit an argument it takes a default value of that type.
 
 <table>
     <tr>
