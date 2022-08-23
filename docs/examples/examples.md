@@ -25,7 +25,8 @@ rule when not $match(input: arg.Name, pattern: "^[a-zA-z]+$") then
     error "Invalid name. Name should contain only alphabets."
     
 rule when arg.Age < 18 and arg.Country == "US" then
-    error "You are not allowed to register."
+    error `Your age must be greater than 18 years 
+           in order to register in the united states.`
 end rule
 
 # Statements outside of the rules 
