@@ -38,12 +38,12 @@ nav_order: 2
 
 ## Variables <a name="variables"></a>
 ```fsharp
-let <variablename> = expression
+let <variable_name> [, <error_handler_variable_name>] = expression
 ```
 
 **Modify value of a variable** <br>
 ```csharp
-[partial] set <variablename> = expression
+[partial] set <variable_name> [, <error_handler_variable_name>] = expression
 ```
 `set` statement can be used to modify the value of variable that has been declared using let statement. `partial` keyword can be used to modify certain properties of an object.
 
