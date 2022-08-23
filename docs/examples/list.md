@@ -4,18 +4,16 @@ title: List
 parent: Examples
 ---
 
-# Examples
-
-
-### List
+# List
 
 ```csharp
 let values  = [1 ,2 ,3 , 4 ]
 let objects = [1 , "test", `test {values[ 1 ]}`, $GetCurrentDate() ]
+
 output objects
 output values
 ```
-### Execute array example script
+### Execute
 ```csharp
 
 // Execute 
