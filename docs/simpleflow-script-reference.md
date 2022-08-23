@@ -182,11 +182,11 @@ rule when expression then
 [end rule]
 ```
  `end rule` is optional and it can be used to terminate the rule scope.
-Simpleflow does not support nested rules. if you need to perform nested rules, declare a variable and write expression and use it in rules.
+Simpleflow does not support nested rules. if you need to write nested rules, declare a variable and write conditional expression and use it in rules.
 
 Example:
 ```csharp
-let highPriority = arg.priority == true
+let highPriority = arg.priority == 'high'
 
 # run rules when highPriority is true
 rule when highPriority and arg.type == 'Gold' then
@@ -215,7 +215,9 @@ Functions can be invoked from script that have been registered with this engine 
 ```csharp
 $<function_name>(param_name1: value1, param_name2: value2, ...)
 ```
-Function arguments can be written in any order. and if you omit an argument it takes a default value of that type.
+Function arguments can be written in any order. and if you omit an argument it takes a default value of that type. 
+You can use your custom functions in Simpleflow script. Please refer these sections of documentation to register and use custom functions.
+[Register Custom Function](api/#register-custom-functions) | [Examples](examples)
 
 <table>
     <tr>
