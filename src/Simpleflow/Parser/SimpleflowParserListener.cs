@@ -142,6 +142,18 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitExitStmt([NotNull] SimpleflowParser.ExitStmtContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>UniaryMinusExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterUniaryMinusExpression([NotNull] SimpleflowParser.UniaryMinusExpressionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>UniaryMinusExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitUniaryMinusExpression([NotNull] SimpleflowParser.UniaryMinusExpressionContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>ParenthesizedExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
 	/// </summary>
@@ -177,6 +189,30 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitRelationalExpression([NotNull] SimpleflowParser.RelationalExpressionContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>ArrayLiteralExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterArrayLiteralExpression([NotNull] SimpleflowParser.ArrayLiteralExpressionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>ArrayLiteralExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitArrayLiteralExpression([NotNull] SimpleflowParser.ArrayLiteralExpressionContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>NotExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterNotExpression([NotNull] SimpleflowParser.NotExpressionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>NotExpression</c>
+	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitNotExpression([NotNull] SimpleflowParser.NotExpressionContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>LogicalExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
@@ -214,17 +250,17 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitFunctionExpression([NotNull] SimpleflowParser.FunctionExpressionContext context);
 	/// <summary>
-	/// Enter a parse tree produced by the <c>ArrayLiteralExpression</c>
+	/// Enter a parse tree produced by the <c>UniaryPlusExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterArrayLiteralExpression([NotNull] SimpleflowParser.ArrayLiteralExpressionContext context);
+	void EnterUniaryPlusExpression([NotNull] SimpleflowParser.UniaryPlusExpressionContext context);
 	/// <summary>
-	/// Exit a parse tree produced by the <c>ArrayLiteralExpression</c>
+	/// Exit a parse tree produced by the <c>UniaryPlusExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitArrayLiteralExpression([NotNull] SimpleflowParser.ArrayLiteralExpressionContext context);
+	void ExitUniaryPlusExpression([NotNull] SimpleflowParser.UniaryPlusExpressionContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>SimpleLiteralExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
@@ -237,18 +273,6 @@ internal interface ISimpleflowParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitSimpleLiteralExpression([NotNull] SimpleflowParser.SimpleLiteralExpressionContext context);
-	/// <summary>
-	/// Enter a parse tree produced by the <c>NotExpression</c>
-	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterNotExpression([NotNull] SimpleflowParser.NotExpressionContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>NotExpression</c>
-	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitNotExpression([NotNull] SimpleflowParser.NotExpressionContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>JsonObjLiteralExpression</c>
 	/// labeled alternative in <see cref="SimpleflowParser.expression"/>.

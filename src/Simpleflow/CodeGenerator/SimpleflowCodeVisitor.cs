@@ -42,7 +42,7 @@ namespace Simpleflow.CodeGenerator
             InputParam = Expression.Parameter(typeof(TArg));
             OutputParam = Expression.Parameter(typeof(FlowOutput));
             // use context parameter name in order to access in script
-            ScriptHelperContextParam = Expression.Parameter(typeof(ScriptHelperContext));
+            ScriptHelperContextParam = Expression.Parameter(typeof(RuntimeContext));
 
             /* A label expression of the void type that is the target for Expression.Return(). */
             TargetLabelToExitFunction = Expression.Label();
@@ -67,8 +67,8 @@ namespace Simpleflow.CodeGenerator
             Expression body = Expression.Block(Variables, statementExpressions);
 
             /* Create function with input and output parameters */
-            Expression<Action<TArg, FlowOutput, ScriptHelperContext>> program =
-                Expression.Lambda<Action<TArg /*input-context*/, FlowOutput, ScriptHelperContext>>(
+            Expression<Action<TArg, FlowOutput, RuntimeContext>> program =
+                Expression.Lambda<Action<TArg /*input-context*/, FlowOutput, RuntimeContext>>(
                     body,
                     new ParameterExpression[] { InputParam, OutputParam, ScriptHelperContextParam }
                 );
@@ -234,7 +234,7 @@ namespace Simpleflow.CodeGenerator
         private List<Expression> CreateDefaultVariablesAndAssign()
         {
             var argVar = Expression.Variable(typeof(TArg), "arg");
-            var contextVar = Expression.Variable(typeof(ScriptHelperContext), "context");
+            var contextVar = Expression.Variable(typeof(RuntimeContext), "context");
 
             Variables.Add(argVar);      
             Variables.Add(contextVar);  

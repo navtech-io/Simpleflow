@@ -61,7 +61,10 @@ exitStmt
     ;
 
 expression
-    : expression (TimesOp | DivOp | ModuloOp)  expression   #MultiplicativeExpression 
+    : PlusOp expression                                     #UniaryPlusExpression 
+    | MinusOp expression                                    #UniaryMinusExpression
+    | Not expression                                        #NotExpression
+    | expression (TimesOp | DivOp | ModuloOp)  expression   #MultiplicativeExpression 
     | expression (PlusOp | MinusOp) expression              #AdditiveExpression 
     | expression ( GreaterThan 
                  | LessThan 
@@ -71,7 +74,6 @@ expression
                  | NotEqual 
                  ) expression                               #RelationalExpression
     | expression (And | Or ) expression                     #LogicalExpression
-    | Not expression                                        #NotExpression
     | objectIdentifier                                      #ObjectIdentiferExpression
     | simpleLiteral                                         #SimpleLiteralExpression
     | arrayLiteral                                          #ArrayLiteralExpression

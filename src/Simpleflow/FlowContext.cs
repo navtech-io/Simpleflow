@@ -34,7 +34,7 @@ namespace Simpleflow
 
         public class FlowInternals
         {
-            public Action<TArg, FlowOutput, ScriptHelperContext> CompiledScript { get; set; }
+            public Action<TArg, FlowOutput, RuntimeContext> CompiledScript { get; set; }
         }
     }
 }
