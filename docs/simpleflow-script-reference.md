@@ -133,7 +133,6 @@ set user = 2
 ```csharp
 let v = 2 + 3 * (3 * arg.value); 
 ```
-Use a space between each operand and operator.
 
 ## Template Strings
 Template strings are strings delimited with backtick (`) characters, allowing for multi-line strings for string interpolation with embedded object identifiers.
