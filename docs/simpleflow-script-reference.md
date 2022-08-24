@@ -31,9 +31,13 @@ nav_order: 2
  or <set statements> )* 
 ```
 ### Guidelines
-* All `let` statements (declare and initialize variables) must be declared in the beginning of the script. you must declare variables if you wish to modify further in the script using set statement. Set statement does not work on undeclared variable. 
+* All `let` statements (declare and initialize variables) must be declared in the beginning of the script. you must declare variables if you wish to modify further in the script using set statement.
 * Each statement must end with a new line and a statement can be written in multiple lines.
-* All keywords must be written in lower case (`let, set, message, error, output, rule, when, then, exit, end rule, partial, true, false `). Variable names, property names and function names are not case sensitive.
+* All keywords must be written in lower case (`let, set, message, error, output, rule, when, then, exit, end rule, partial, true, false, none,... `). 
+Variable name, property name, function's parameter name and function name are not case sensitive.
+* Keywords cannot be used for variable name, function's parameter name and property name.
+  Example: `arg.message` or `$Send(message: '')` are not valid,
+  it will throw exception, but you can use keywords by changing the letter case. `arg.Message` is valid but not `arg.message`.
 
 
 ## Variables <a name="variables"></a>
