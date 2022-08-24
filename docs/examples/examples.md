@@ -61,7 +61,7 @@ set emailMessage  = ` Hello {arg.Name},
                       Date: {arg.RegistrationDate}
                     `
 set _, err = $SendEmail(to      : arg.email, 
-                        subject : "Account Registration"
+                        subject : "Thanks for signing up"
                         message : emailMessage)
 
 output userId 
