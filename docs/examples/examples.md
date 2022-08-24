@@ -70,13 +70,14 @@ output userId
 
 ```csharp
 // Register custom function
-FunctionRegister.Default
+var register = new FunctionRegister()
     .Add("CustomerService.RegisterUser", (Func<User, int>)RegisterUser);
     .Add("SendEmail", (Action<string, string, string>)SendEmail);
 
 // Execute Script
 FlowOutput result = SimpleflowEngine.Run(script /*above script*/, 
-                                         new User {Name = "John", Age=22, Country="US" } );
+                                         new User {Name = "John", Age=22, Country="US" },
+                                         register);
 
 // Log messages
 Logger.Debug(result.Messages);

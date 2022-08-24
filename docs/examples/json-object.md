@@ -20,11 +20,13 @@ $SaveConfig(config: {
 
 ```csharp
 // Register custom function
-FunctionRegister.Default
+var register = new FunctionRegister()
     .Add("SaveConfig", (Action<Config>)SaveConfig);
 
 // Execute 
-SimpleflowEngine.Run(script, new {Token = "e2fc714c4727ee9395f324cd2e7f331f"});
+SimpleflowEngine.Run(script, 
+                     new {Token = "e2fc714c4727ee9395f324cd2e7f331f"},
+                     register);
 ```
 
 ```csharp
