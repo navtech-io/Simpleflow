@@ -45,7 +45,7 @@ partial set arg = {
 # Save user's data
 set userId, err = $CustomerService.RegisterUser(user: arg) 
 
-# if the RegisterUser function throws an exception then stop executing
+# *if the above function has thrown an exception then stop executing
 rule when err then
     error `Registration Failed. {err.Message}`
     output err
