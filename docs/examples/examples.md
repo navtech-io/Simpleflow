@@ -29,22 +29,23 @@ rule when arg.Age < 18 and arg.Country == "US" then
            in order to register in the united states.`
 end rule
 
-# Statements outside of the rules 
+# debug message
 message "validations-completed"
 
 rule when context.HasErrors then
     exit
 end rule
 
-# Set current date time 
+# Update RegistrationDate and IsActive flag
 partial set arg = { 
                     RegistrationDate: currentDate, 
                     IsActive: true 
                   }
 
-# Save user data
+# Save user's data
 set userId, err = $CustomerService.RegisterUser(user: arg) 
 
+# if the RegisterUser function throws an exception then stop executing
 rule when err then
     error `Registration Failed. {err.Message}`
     output err
@@ -59,7 +60,9 @@ set emailMessage  = ` Hello {arg.Name},
                       Thank you for joining.
                       Date: {arg.RegistrationDate}
                     `
-set _, err = $SendEmail(message: emailMessage, to: arg.email)  
+set _, err = $SendEmail(to      : arg.email, 
+                        subject : "Account Registration"
+                        message : emailMessage)
 
 output userId 
 ```
@@ -107,7 +110,7 @@ static int RegisterUser(User user)
     return 1;
 }
 
-static void SendEmail(string message, string to)
+static void SendEmail(string message, string subject, string to)
 {
     // Send email logic here
 }
