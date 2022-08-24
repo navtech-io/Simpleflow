@@ -62,7 +62,7 @@ set emailMessage  = ` Hello {arg.Name},
                     `
 set _, err = $SendEmail(to      : arg.email, 
                         subject : "Thanks for signing up"
-                        message : emailMessage)
+                        body    : emailMessage)
 
 output userId 
 ```
@@ -70,13 +70,12 @@ output userId
 
 ```csharp
 // Register custom function
-var register = 
-    FunctionRegister.Default
-        .Add("CustomerService.RegisterUser", (Func<User, int>)RegisterUser);
-        .Add("SendEmail", (Action<string, string>)SendEmail);
+FunctionRegister.Default
+    .Add("CustomerService.RegisterUser", (Func<User, int>)RegisterUser);
+    .Add("SendEmail", (Action<string, string, string>)SendEmail);
 
-// Execute Dynamic Script
-FlowOutput result = SimpleflowEngine.Run(rules /*above script*/, 
+// Execute Script
+FlowOutput result = SimpleflowEngine.Run(script /*above script*/, 
                                          new User {Name = "John", Age=22, Country="US" } );
 
 // Log messages
@@ -110,7 +109,7 @@ static int RegisterUser(User user)
     return 1;
 }
 
-static void SendEmail(string message, string subject, string to)
+static void SendEmail(string body, string subject, string to)
 {
     // Send email logic here
 }
