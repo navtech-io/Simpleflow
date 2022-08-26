@@ -7,7 +7,7 @@ nav_order: 2
 # Simpleflow Script Reference
 {: .fs-9 }
 
-1. [Script Outline and Guidelines](#script-outline)
+1. [Script Outline and Guidelines](#simpleflow-script-outline)
 1. [Variables](#variables)
 1. [Data Types](#data-types)
 1. [Operators](#operators)
@@ -21,15 +21,22 @@ nav_order: 2
 1. [Error Handling](#error-handling)
 
 
-## Script Outline
+## Simpleflow Script Outline
 
 ```
-<let statements>* 
-( <rule statements> 
- or <emitters> 
- or <functions> 
- or <set statements> )* 
+  <let_statement>* 
+  <general_statement>*
+  <rule_statement>
+        <general_statement>* 
+  [<end_rule>]
+  <general_statement>*
+
+  general_statement:
+        <emitter>* 
+     or <invoke_function>*
+     or <set statement>*
 ```
+
 ### Guidelines
 * All `let` statements (declare and initialize variables) must be declared in the beginning of the script. you must declare variables if you wish to modify further in the script using set statement.
 * Each statement must end with a new line and a statement can be written in multiple lines.
