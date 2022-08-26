@@ -26,8 +26,8 @@ nav_order: 2
 ```
   <let_statement>* 
   <general_statement>*
-  <rule_statement>
-        <general_statement>* 
+  <rule_statement_block>*
+    <general_statement>* 
   [<end_rule>]
   <general_statement>*
 
