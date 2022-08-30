@@ -18,7 +18,7 @@ permalink: docs/simpleflow-script-reference
 1. [Script Parameters](#script-parameters)
 1. [Rule Control Flow](#rule-control-flow)
 1. [Emitters](#emitters)
-1. [Functions](functions)
+1. [Functions](simpleflow-script-reference/functions)
 1. [Comments](#comments)
 1. [Error Handling](#error-handling)
 

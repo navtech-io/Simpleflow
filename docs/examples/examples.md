@@ -23,7 +23,7 @@ let emailMessage = ""
 # │ user     │    arg.Name == "" or arg.Name == none                    │ error "Name cannot be empty"                              │
 # │ user     │    not $match(input: arg.Name, pattern: "^[a-zA-z]+$")   │ error "Invalid name. Name should contain only alphabets." │
 # │ user     │    arg.Age < 18 and arg.Country == "US"                  │ error "Your age must be greater than 18 years             │
-# │ _        │ _                                                        │    in order to register in the united states."            │
+# │          │                                                          │    in order to register in the united states."            │
 # └──────────┴──────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────┘
 
 rule when  arg.Name == "" 
