@@ -10,16 +10,36 @@ permalink: docs/examples
 
 ### Sample Simpleflow Script
 
-
-Sample set of rules and actions to be executed on entity user
-| Entity   |                         Rule                          |                                           Action                                          |
-|----------|-------------------------------------------------------|-------------------------------------------------------------------------------------------|
-| user     | arg.Name == "" or arg.Name == none                    | error "Name cannot be empty"                                                              |
-| user     | not \$match(input: arg.Name, pattern: "^[a-zA-z]+$")   | error "Invalid name. Name should contain only alphabets."                                 |
-| user     | arg.Age < 18 and arg.Country == "US"                  | error "Your age must be greater than 18 years in order to register in the united states." |
-| user     | not context.HasErrors                                 | $CustomerService.RegisterUser(user: arg)                                                  |
-
-
+You can maintain set of rules and actions to be executed in a database table and then generate Simpleflow code that you can execute dynamically.
+<table>
+    <tbody>
+        <tr>
+            <th>Entity </th>
+            <th>Rule </th>
+            <th> Action</th>
+        </tr>
+        <tr>
+            <td>user </td>
+            <td>arg.Name == "" or arg.Name == none </td>
+            <td>error "Name cannot be empty"</td>
+        </tr>
+        <tr>
+            <td>user</td>
+            <td>not $match(input: arg.Name, pattern: "^[a-zA-z]+$") </td>
+            <td>error "Invalid name. Name should contain only alphabets."</td>
+        </tr>
+        <tr>
+            <td>user</td>
+            <td>arg.Age &lt; 18 and arg.Country == "US" </td>
+            <td>error "Your age must be greater than 18 years in order to register in the united states."</td>
+        </tr>
+        <tr>
+            <td>user</td>
+            <td>not context.HasErrors </td>
+            <td>$CustomerService.RegisterUser(user: arg)</td>
+        </tr>
+    </tbody>
+</table>
 
 
 
