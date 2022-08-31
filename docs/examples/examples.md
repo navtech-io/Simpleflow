@@ -34,8 +34,8 @@ You can maintain set of rules and actions to be executed in a database table and
             <td>error "Your age must be greater than 18 years in order to register in the united states."</td>
         </tr>
         <tr>
-            <td>user</td>
-            <td>not context.HasErrors </td>
+            <td>...</td>
+            <td>...</td>
             <td>$CustomerService.RegisterUser(user: arg)</td>
         </tr>
     </tbody>
@@ -46,7 +46,6 @@ You can maintain set of rules and actions to be executed in a database table and
 ```csharp
 # Declare and initialize variables 
 let userId       = 0
-let currentDate  = $GetCurrentDateTime ( timezone: "Eastern Standard Time" )
 let emailMessage = ""
 
 # Define Rules 
@@ -71,7 +70,7 @@ end rule
 
 # Update RegistrationDate and IsActive flag
 partial set arg = { 
-                    RegistrationDate: currentDate, 
+                    RegistrationDate: $GetCurrentDateTime(),
                     IsActive: true 
                   }
 
