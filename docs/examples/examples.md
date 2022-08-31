@@ -18,35 +18,29 @@ Sample rules defined in a table
             <th>Entity </th>
             <th>Rule </th>
             <th>Action</th>
-            <th>...</th>
         </tr>
         <tr>
             <td>User </td>
             <td><pre><code>arg.Name == "" or arg.Name == none</code></pre></td>
             <td>error "Name cannot be empty"</td>
-            <td>...</td>
         </tr>
         <tr>
             <td>User</td>
             <td><pre><code>not $match(input: arg.Name, 
            pattern: "^[a-zA-z]+$")</code></pre></td>
             <td>error "Invalid name. Name should contain only alphabets."</td>
-            <td>...</td>
         </tr>
         <tr>
             <td>User</td>
             <td><pre><code>arg.Age &lt; 18 and arg.Country == "US"</code></pre></td>
             <td>error "Your age must be greater than 18 years in order to register in the united states."</td>
-            <td>...</td>
         </tr>
         <tr>
             <td>...</td>
             <td>...</td>
             <td>$CustomerService.RegisterUser(user: arg)</td>
-            <td>...</td>
         </tr>
         <tr>
-            <td>...</td>
             <td>...</td>
             <td>...</td>
             <td>...</td>
