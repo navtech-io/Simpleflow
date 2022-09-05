@@ -59,8 +59,13 @@ Hello, World! 🌄
 ```
 Please see [this](docs/examples) example with most of the simpleflow script features.
 
+
+## How it works
+![Simpleflow Pipeline](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/navtech-io/Simpleflow/main/HowSimpleflowWorks.puml)
+
+
 ---
 
-* [Simpleflow Script Reference](docs/simpleflow-script-reference/#script-outline)
+* [Simpleflow Script Reference](docs/simpleflow-script-reference)
 * [API](docs/api/)
 * [Examples](docs/examples)

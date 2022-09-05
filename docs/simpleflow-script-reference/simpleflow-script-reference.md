@@ -12,6 +12,7 @@ permalink: docs/simpleflow-script-reference
 1. [Script Outline and Guidelines](#simpleflow-script-outline)
 1. [Variables](#variables)
 1. [Data Types](#data-types)
+1. [Type Casting](#type-casting)
 1. [Operators](#operators)
 1. [Expressions](#expressions)
 1. [Template Strings](#template-strings)
@@ -130,17 +131,56 @@ output values[ 0 ] #output first value
 
 ```csharp
 # Example
-let user = none
+let user = none #inferred to be of type object
 
 set user = 2
 ```
+
+## Type Casting
+Simpleflow does not offer any built-in type casting functionality but this can
+be achieved by registering custom functions to convert a type to another type.
+
+**Example**
+
+```csharp
+var script =
+    @"
+        let int = 10 #inferred to be of type int
+        let decimal = 20.0 #inferred to be of type decimal
+
+        # convert decimal to int
+        set int = $decimal_to_int(value: decimal)
+
+        output int
+    ";
+
+var functionRegister = new FunctionRegister().Add("decimal_to_int", (Func<decimal, int>)DecimalToInt);
+
+var output = SimpleflowEngine.Run(script, new object(), functionRegister);
+```
+```csharp
+private static int DecimalToInt(decimal value)
+{
+    return Convert.ToInt32(value);
+}
+```
+
 ## Operators
 
 | Operator Type | Operators             |
 |---------------|-----------------------|
 | Arithmetic    | + (Addition), - (Subtraction), * (Multiplication), / (Division), % (Remainder)|
 | Logical       | and, or, not          |
-| Relational    | <, <=, >, >=, == , != |
+| Relational    | <, <=, >, >=, == , !=, in |
+
+**Example - in operator**
+```csharp
+rule when 5 in [2,3,5] then
+    message 'exists'
+
+rule when not (5 in [2,3]) then
+    message "doesn't exist"
+```
 
 ## Expressions
 ```csharp
