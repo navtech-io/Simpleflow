@@ -14,69 +14,62 @@ namespace Simpleflow
     /// </summary>
     public partial class FunctionRegister : IFunctionRegister // ,IActivityInvoker
     {
-        // Key is name, and  value is index, an index represents block (type store/method store)
-        // and index of store. 30th bit represents block, and rest of them as index (2**29) in block
-        // block - 1 represents _typeStore and 0 represents _methodStore
+        // Key is name, and  value is index, an index represents block (type store/method store/function provider Store)
+        // and index of store. 29th and 30th bit represent block/store, and rest of them as index (2**28) in block
+        // block - 0 represents _methodStore
+        // block - 1 represents _providerStore 
+        // block - 2 represents ..unused..
+        // block - 3 represents ..unused..
+
+        private const int MethodStoreIndex = 0;
+        private const int ProviderStoreIndex = 1;
 
         private readonly Dictionary<string, int> _bitmapIndex =
             new Dictionary<string, int>(StringComparer.InvariantCultureIgnoreCase);
 
-        private readonly List<Type> _typeStore = new List<Type>();
-        private readonly List<Delegate> _methodStore = new List<Delegate>();
+        private readonly List<Delegate> _methodStore = new List<Delegate>(); 
+        private readonly List<IFunctionProvider> _providerStore = new List<IFunctionProvider>(); 
 
         private readonly object _sync = new object();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="activity"></param>
-        /// <returns></returns>
-        /// 
-        // Need to enable this later once this feature is implemented
-        private IFunctionRegister Add(string name, Type activity)
-        {
-            // TODO : able to invoke methods of the Type 
-            // find all methods and add it
-            // let customer = $customer.new()
-            // $MethodName (p1: value, ...) on customer
-
-            ValidateFunctionName(name);
-
-            if (_bitmapIndex.ContainsKey(name))
-            {
-                throw new DuplicateFunctionException(name);
-            }
-
-            int index;
-            lock (_sync)
-            {
-                Debug.Assert(_bitmapIndex.Count == _typeStore.Count + _methodStore.Count);
-
-                _typeStore.Add(activity);
-                index = _typeStore.Count - 1;
-            }
-
-            _bitmapIndex.Add(name, 1 << 29 | index);
-
-            return this;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="delegate"></param>
-        /// <returns></returns>
+        
         public IFunctionRegister Add(string name, Delegate @delegate)
         {
+            ValidateFunctionName(name);
+
             //Allow only static methods
             if (@delegate.Target != null)
             {
                 throw new SimpleflowException(Resources.Message.RegisterNonStaticMethodError);
             }
 
+            if (_bitmapIndex.ContainsKey(name))
+            {
+                throw new DuplicateFunctionException(name);
+            }
+
+            int index;
+            lock (_sync)
+            {
+                Debug.Assert(_bitmapIndex.Count == _methodStore.Count + _providerStore.Count);
+
+                _methodStore.Add(@delegate);
+                index = _methodStore.Count - 1;
+            }
+            _bitmapIndex.Add(name, CreateBitmapIndex(storeIndex: MethodStoreIndex, valueIndex: index));
+
+            return this;
+        }
+
+
+        public IFunctionRegister Add(string name, IFunctionProvider functionProvider)
+        {
             ValidateFunctionName(name);
+
+            if (functionProvider == null)
+            {
+                throw new ArgumentNullException(nameof(functionProvider));
+            }
 
             if (_bitmapIndex.ContainsKey(name))
             {
@@ -86,61 +79,61 @@ namespace Simpleflow
             int index;
             lock (_sync)
             {
-                Debug.Assert(_bitmapIndex.Count == _typeStore.Count + _methodStore.Count);
+                Debug.Assert(_bitmapIndex.Count == _methodStore.Count + _providerStore.Count);
 
-                _methodStore.Add(@delegate);
-                index = _methodStore.Count - 1;
+                _providerStore.Add(functionProvider);
+                index = _providerStore.Count - 1;
             }
-            // 0 << 29 | index , since 0 << 29 is 0,
-            // so here we don't need to use bitwise operation to add up together
-            _bitmapIndex.Add(name, index);
+            _bitmapIndex.Add(name, CreateBitmapIndex(storeIndex: ProviderStoreIndex, valueIndex: index));
 
             return this;
         }
 
+
         /// <inheritdoc />
-        public Delegate GetFunction(string name)
+        public FunctionPointer GetFunction(string name, ArgumentInfo[] argumentInfo) // ArgumentInfo
         {
             if (_bitmapIndex.ContainsKey(name))
             {
                 var bitmapIndex = _bitmapIndex[name];
+                (int storeIndex, int valueIndex) = GetStoreAndValueIndex(bitmapIndex);
 
-                var firstBit = bitmapIndex >> 29;
-                var index = (firstBit << 29) ^ bitmapIndex;
-
-                // ReSharper disable once InconsistentlySynchronizedField
-                return firstBit == 1 ? null : _methodStore[index];
+                return storeIndex switch
+                {
+                    MethodStoreIndex   => new FunctionPointer { Reference = _methodStore[valueIndex] },
+                    ProviderStoreIndex => _providerStore[valueIndex].GetFunction(name, argumentInfo),
+                    _ => null
+                };
             }
             return null;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-
-        private bool? IsFunctionAvailableInClass(string name)
+        private (int storeIndex, int valueIndex) GetStoreAndValueIndex(int bitmapIndex)
         {
-            if (_bitmapIndex.ContainsKey(name))
-            {
-                var bitmapIndex = _bitmapIndex[name];
-                var firstBit = bitmapIndex >> 29;
+            var storeIndex = bitmapIndex >> 28;
+            var valueIndex = (storeIndex << 28) ^ bitmapIndex;
 
-                return firstBit == 1;
-            }
-            return false;
+            return (storeIndex, valueIndex);
+        }
+
+        private int CreateBitmapIndex(int storeIndex, int valueIndex)
+        {
+            return storeIndex << 28 | valueIndex;
         }
 
         private void ValidateFunctionName(string name)
         {
-           var pattern = "^[_]*[a-zA-Z][_a-zA-Z0-9]*([.][_]*[a-zA-Z][_a-zA-Z0-9]*)*$";
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
 
-            if (!System.Text.RegularExpressions.Regex.Match(name,pattern).Success)
+            var pattern = "^[_]*[a-zA-Z][_a-zA-Z0-9]*([.][_]*[a-zA-Z][_a-zA-Z0-9]*)*$";
+
+            if (!System.Text.RegularExpressions.Regex.Match(name, pattern).Success)
             {
                 throw new InvalidFunctionNameException(name);
             }
         }
-
     }
 }

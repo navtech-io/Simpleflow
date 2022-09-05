@@ -172,5 +172,25 @@ namespace Simpleflow.Tests.Functions
             Assert.Equal(actual: output.Output["val"], expected: "its here abc");
         }
 
+        [Fact]
+        public void CheckSubStringAndIndexOf()
+        {
+            // Arrange
+            var script =
+                @"
+
+                    let text  = $Substring(input: arg.Text, 
+                                           startIndex: $IndexOf(input: arg.Text, value: '@') + 1
+                                          )
+                    output text
+                ";
+
+            // Act
+            FlowOutput output = SimpleflowEngine.Run(script, new { Text = " its here@com" });
+
+            // Assert
+            Assert.Equal(expected: "com", actual: output.Output["text"]);
+        }
+
     }
 }

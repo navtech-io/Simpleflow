@@ -34,9 +34,15 @@ namespace Simpleflow
         {
             return Simpleflow.Run(script, context, options);
         }
-       
+
+        public static FlowOutput Run<TArg>(string script, TArg argument, IFunctionRegister register)
+        {
+            return Simpleflow.Run(script, argument, register);
+        }
+
+        public static FlowOutput Run<TArg>(string script, TArg argument, IContextOptions options, IFunctionRegister register)
+        {
+            return Simpleflow.Run(script, argument, options, register);
+        }
     }
-
-   
-
 }

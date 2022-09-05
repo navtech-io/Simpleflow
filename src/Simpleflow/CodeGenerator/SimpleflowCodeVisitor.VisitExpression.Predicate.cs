@@ -1,8 +1,7 @@
 ﻿// Copyright (c) navtech.io. All rights reserved.
 // See License in the project root for license information.
 
-using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
@@ -25,6 +24,9 @@ namespace Simpleflow.CodeGenerator
             {
                 case SimpleflowLexer.Equal:
                     return Expression.Equal(left, right);
+
+                case SimpleflowLexer.In:
+                    return InOperatorExpression(left, right);
 
                 case SimpleflowLexer.NotEqual:
                     return Expression.NotEqual(left, right);
@@ -69,6 +71,21 @@ namespace Simpleflow.CodeGenerator
         public override Expression VisitNotExpression([NotNull] SimpleflowParser.NotExpressionContext context)
         {
             return Expression.Not( HandleNonBooleanExpression( Visit(context.expression()) ));
+        }
+
+        private Expression InOperatorExpression(Expression left, Expression right)
+        {
+            if (right.Type.GenericTypeArguments.Length == 0 
+               || right.Type != typeof(List<>).MakeGenericType(right.Type.GenericTypeArguments[0]))
+            {
+                throw new Exceptions.SimpleflowException(Resources.Message.InOperatorOnList);
+            }
+            
+            return Expression.Call(
+                right,
+                right.Type.GetMethod("Contains", right.Type.GenericTypeArguments),
+                left
+            );
         }
     }
 }

@@ -21,10 +21,15 @@ namespace Simpleflow
             throw new NotImplementedException();
         }
 
-        public Delegate GetFunction(string name)
+        public IFunctionRegister Add(string name, IFunctionProvider provider)
         {
-            return _contextFunctionRegister?.GetFunction(name) ??
-                    _globalFunctionRegister.GetFunction(name);
+            throw new NotImplementedException();
+        }
+
+        FunctionPointer IFunctionRegister.GetFunction(string name, ArgumentInfo[] argumentInfo)
+        {
+            return _contextFunctionRegister?.GetFunction(name, argumentInfo) ??
+                   _globalFunctionRegister.GetFunction(name, argumentInfo);
         }
     }
 }

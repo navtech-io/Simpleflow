@@ -38,7 +38,8 @@ namespace Simpleflow
                             .Add("IndexOf", (Func<string, string, int, int>)StringFunctions.IndexOf)
                             .Add("Length", (Func<string, int>)StringFunctions.Length)
                             .Add("Match", (Func<string, string, bool>)StringFunctions.Match)
-                            .Add("Concat", (Func<string, string, string, string, string, string>)StringFunctions.Concat);
+                            .Add("Concat", (Func<string, string, string, string, string, string>)StringFunctions.Concat)
+                            ;
                     }
                 }
 

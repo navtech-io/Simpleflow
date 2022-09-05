@@ -84,8 +84,7 @@ rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
             @$" 
                 /* Declare and initialize variables */
                 let userId      = none
-                let currentDate = $GetCurrentDateTime ( 
-                                        timezone: ""{TestsHelper.Timezone}"" )
+                
 
                 /* Define Rules */
                 rule when  arg.Name == """" 
@@ -111,11 +110,20 @@ rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
 
                 /* Set current date time */
                 partial set arg = {{ 
-                                     RegistrationDate: currentDate, 
+                                     RegistrationDate: $GetCurrentDateTime ( 
+                                        timezone: ""{TestsHelper.Timezone}"" ), 
                                      IsActive: true 
                                    }}
 
+                set _, err = $SendEmail(body: 'test', 
+                                          to: arg.email)  
+
+
             ";
+
+            FunctionRegister.Default
+                 .Add("SendEmail", (System.Action<string, string>)SendEmail);
+
 
             // Act & Assert
             var user = new User { Name = "John", Age = 22, Country = "US" };
@@ -132,9 +140,15 @@ rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
 
         }
 
+        static void SendEmail(string body, string to)
+        {
+            // Send email logic here
+        }
+
         class User
         {
             public string Name { get; set; }
+            public string Email { get; set; }
             public int Age { get; set; }
             public string Country { get; set; }
             public bool IsActive { get; set; }

@@ -47,6 +47,35 @@ namespace Simpleflow.Tests.Scripting
             Assert.Equal(actual: output.Messages[0], expected: "Arithmetic");
         }
 
+        [Fact]
+        public void NonEqualOperators()
+        {
+            // Arrange
+
+            var script =
+                @"
+                   rule when 5 > 2 then
+                      message '5>2'
+                   rule when 5 >= 5 then
+                      message '5>=5'
+                    rule when 2 < 5 then
+                      message '2<5'
+                    rule when 3 <= 3 then
+                      message '3<=3'
+                    rule when 3 != 5 then
+                      message '3!=5'
+                ";
+
+            // Act 
+            FlowOutput output = SimpleflowEngine.Run(script, new SampleArgument());
+
+            // Assert
+            Assert.Equal(actual: output.Messages[0], expected: "5>2");
+            Assert.Equal(actual: output.Messages[1], expected: "5>=5");
+            Assert.Equal(actual: output.Messages[2], expected: "2<5");
+            Assert.Equal(actual: output.Messages[3], expected: "3<=3");
+            Assert.Equal(actual: output.Messages[4], expected: "3!=5");
+        }
 
         [Fact] 
         public void FunctionInPredicate()
@@ -67,6 +96,42 @@ namespace Simpleflow.Tests.Scripting
         // TODO write test cases for all types of relational operators
         // TODO write test cases for all types of logical operators
 
+        [Fact]
+        public void InOperator()
+        {
+            // Arrange
+
+            var script =
+                @"
+                   rule when 5 in [2,3,5] then
+                      message '5in2,3,5'
+
+                   rule when not (5 in [2,3]) then
+                      message '5notin2,3'
+                ";
+
+            // Act 
+            FlowOutput output = SimpleflowEngine.Run(script, new object());
+
+            // Assert
+            Assert.Equal(actual: output.Messages[0], expected: "5in2,3,5");
+            Assert.Equal(actual: output.Messages[1], expected: "5notin2,3");
+        }
+
+        [Fact]
+        public void InvalidInOperatorUsage()
+        {
+            // Arrange
+
+            var script =
+                @"
+                   rule when 5 in 10 then
+                      message 'invalid'
+                ";
+
+            // Act & Assert
+            Assert.Throws<Exceptions.SimpleflowException>(() => SimpleflowEngine.Run(script, new object()));
+        }
 
         [Fact]
         public void CheckDateComparision()

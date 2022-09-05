@@ -72,6 +72,7 @@ expression
                  | LessThanEqual
                  | Equal 
                  | NotEqual 
+                 | In
                  ) expression                               #RelationalExpression
     | expression (And | Or ) expression                     #LogicalExpression
     | objectIdentifier                                      #ObjectIdentiferExpression

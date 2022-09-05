@@ -4,6 +4,16 @@
         <name>Simpleflow</name>
     </assembly>
     <members>
+        <member name="T:Simpleflow.ArgumentInfo">
+            <summary>
+            Represents argument information of a function
+            </summary>
+        </member>
+        <member name="P:Simpleflow.ArgumentInfo.ArgumentName">
+            <summary>
+            Gets or sets name of argument 
+            </summary>
+        </member>
         <member name="T:Simpleflow.CacheOptions">
             <summary>
             Represents the cache options that applied to <see cref="T:Simpleflow.Services.CacheService"/>
@@ -306,52 +316,8 @@
             
             </summary>
         </member>
-        <member name="M:Simpleflow.FunctionRegister.Add(System.String,System.Type)">
-            <summary>
-            
-            </summary>
-            <param name="name"></param>
-            <param name="activity"></param>
-            <returns></returns>
-            
-        </member>
-        <member name="M:Simpleflow.FunctionRegister.Add(System.String,System.Delegate)">
-            <summary>
-            
-            </summary>
-            <param name="name"></param>
-            <param name="delegate"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Simpleflow.FunctionRegister.GetFunction(System.String)">
+        <member name="M:Simpleflow.FunctionRegister.GetFunction(System.String,Simpleflow.ArgumentInfo[])">
             <inheritdoc />
-        </member>
-        <member name="M:Simpleflow.FunctionRegister.IsFunctionAvailableInClass(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Simpleflow.IFunctionRegister">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Simpleflow.IFunctionRegister.Add(System.String,System.Delegate)">
-            <summary>
-            
-            </summary>
-            <param name="name"></param>
-            <param name="delegate"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Simpleflow.IFunctionRegister.GetFunction(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
         </member>
         <member name="T:Simpleflow.IContextOptions">
             <summary>
@@ -386,6 +352,41 @@
             </summary>
             <param name="context"></param>
             <param name="next"><paramref name="next"/> would be null if no service in queue after the current one</param>
+            <returns></returns>
+        </member>
+        <member name="T:Simpleflow.IFunctionProvider">
+            <summary>
+            Use to provide appropriate delegate based on name 
+            and argument information
+            </summary>
+        </member>
+        <member name="M:Simpleflow.IFunctionProvider.GetFunction(System.String,Simpleflow.ArgumentInfo[])">
+            <summary>
+            Get function reference to invoke
+            </summary>
+            <param name="name"></param>
+            <param name="argumentInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Simpleflow.IFunctionRegister">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Simpleflow.IFunctionRegister.Add(System.String,System.Delegate)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="delegate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Simpleflow.IFunctionRegister.GetFunction(System.String,Simpleflow.ArgumentInfo[])">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="argumentInfo"></param>
             <returns></returns>
         </member>
         <member name="T:Simpleflow.IOptions">
@@ -2403,6 +2404,11 @@
         <member name="P:Simpleflow.Resources.Message.CannotIgnoreIdentifierForJsonObj">
             <summary>
               Looks up a localized string similar to JSON object cannot be defined by ignoring variable. Either remove that statement or provide a proper name to it instead of using _.
+            </summary>
+        </member>
+        <member name="P:Simpleflow.Resources.Message.InOperatorOnList">
+            <summary>
+              Looks up a localized string similar to &apos;in&apos; operator cannot be applied on non-list types.
             </summary>
         </member>
         <member name="P:Simpleflow.Resources.Message.InvalidInput">

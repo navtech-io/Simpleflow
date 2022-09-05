@@ -23,8 +23,13 @@ namespace Simpleflow.CodeGenerator
         {
             var functionName = context.FunctionName().GetText().Substring(1); // Remove $ symbol
 
+            var argumentNames = context.functionArguments()
+                                       .functionArgument()
+                                       .Select(arg => new ArgumentInfo { ArgumentName = arg.Identifier().GetText() })
+                                       .ToArray();
+
             // Get registered function
-            var function = FunctionRegister.GetFunction(functionName); 
+            var function = FunctionRegister.GetFunction(functionName, argumentNames); 
 
             if (function == null)
             {
@@ -35,7 +40,7 @@ namespace Simpleflow.CodeGenerator
             EventPublisher.Publish(EventType.VisitFunctionOnAvail, functionName);
 
             // Get actual method meta-data info and parameters
-            var methodInfo = function.GetMethodInfo();
+            var methodInfo = function.Reference.GetMethodInfo();
 
             // Map script arguments to method parameters
             var argumentsExpressions = GetArgumentExpressions(context, methodInfo);
