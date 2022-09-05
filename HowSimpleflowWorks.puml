@@ -15,20 +15,24 @@ skinparam component {
   ArrowFontName Impact
   ArrowColor #1d3ddb
 }
-: Input (Script, Argument);
-: Determine cache key of the given script: \n Get cache key based on hash of the script \n or with the user supplied cache id;
+: Input (Script, Argument)/
+: Determine cache key of the given script: \n Determine cache key based on hash value of the script \n or with the user supplied cache id;
 
-if (if the function is\n avilable in cache?) then (yes)
-  :Get function from cache;
+if (Is the function \navilable in cache?) then (yes)
+  :Get the function from cache;
 else (no)
-partition Compile {
+partition "   Compile \n& Cache" {
  : Parse;
   : Generate IL code;
+  note right: Uses\nFunction\nRegister
+  
   : Compile as a function\n with an input parameter;
-  : Store in cache;
-}  
+  : Store generated function in cache;
+}
 endif
-:Execute function (with given argument);
-:Output;
+
+
+:Execute the function (with given argument);
+:Output/
 
 @enduml    
