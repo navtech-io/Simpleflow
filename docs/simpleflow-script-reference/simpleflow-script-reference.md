@@ -154,7 +154,9 @@ var script =
         output int
     ";
 
-var functionRegister = new FunctionRegister().Add("decimal_to_int", (Func<decimal, int>)DecimalToInt);
+var functionRegister = new FunctionRegister()
+                      .Add("decimal_to_int", 
+                           (Func<decimal, int>)DecimalToInt);
 
 var output = SimpleflowEngine.Run(script, new object(), functionRegister);
 ```
