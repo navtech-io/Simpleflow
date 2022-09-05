@@ -26,17 +26,17 @@ permalink: docs/simpleflow-script-reference
 ## Simpleflow Script Outline
 
 ```
-  <let_statement>* 
-  <general_statement>*
-  <rule_statement_block>*
-    <general_statement>* 
-  [<end_rule>]
-  <general_statement>*
+<let_statement>* 
+<general_statement>*
+<rule_statement_block>*
+<general_statement>* 
+[<end_rule>]
+<general_statement>*
 
-  general_statement:
-        <emitter>* 
-     or <invoke_function>*
-     or <set statement>*
+general_statement:
+    <emitter>* 
+    or <invoke_function>*
+    or <set statement>*
 ```
 
 ### Guidelines
@@ -75,9 +75,9 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
     <tr>
         <td>Number</td>
         <td>
-                <code>let x = 1 </code><br>
-                <code>let y = 2.3 </code><br>
-                <code>let z = -442.33 </code><br>
+                <code>let x = 1 #Inferred to be of type int</code><br>
+                <code>let y = 2.3 #Inferred to be of type decimal</code><br>
+                <code>let z = -442.33 #Inferred to be of type decimal</code><br>
         </td>
     </tr>
     <tr>
@@ -111,7 +111,7 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
                 address: {
                            city: "ny"
                          } 
-              }</code></pre> Object will be created only when it will be supplied as parameter to a function. Until it gets created or activated by a function, you cannot use partial set on this object. 
+              }</code></pre> Object will be created and evaluated only when it will be supplied as parameter to a function. Until it gets created or activated by a function call, you cannot use partial set on this object. 
         </td>
     </tr>
     <tr>
