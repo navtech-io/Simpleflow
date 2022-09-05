@@ -55,14 +55,14 @@ var scriptExecutionTime =  result.Output["today"];
 
 ```
 Hello, World! 🌄
-
 ```
 Please see [this](docs/examples) example with most of the simpleflow script features.
 
 
-## How it works
-![Simpleflow Pipeline](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/navtech-io/Simpleflow/main/HowSimpleflowWorks.puml)
+## How It Works
+---
 
+![Simpleflow Pipeline](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/navtech-io/Simpleflow/main/HowSimpleflowWorks.puml)
 
 ---
 
