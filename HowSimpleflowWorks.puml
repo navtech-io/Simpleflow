@@ -1,0 +1,34 @@
+@startuml HowSimpleflowWorks
+
+skinparam partition {
+  BorderColor #dddddd
+  BorderThickness 1
+  FontColor grey
+  RoundCorner 10
+}
+
+skinparam component {
+  FontSize 15
+  FontName Courier
+  BorderColor black
+  BackgroundColor white
+  ArrowFontName Impact
+  ArrowColor #1d3ddb
+}
+: Input (Script, Argument);
+: Determine cache key of the given script: \n Get cache key based on hash of the script \n or with the user supplied cache id;
+
+if (if the function is\n avilable in cache?) then (yes)
+  :Get function from cache;
+else (no)
+partition Compile {
+ : Parse;
+  : Generate IL code;
+  : Compile as a function\n with an input parameter;
+  : Store in cache;
+}  
+endif
+:Execute function (with given argument);
+:Output;
+
+@enduml    

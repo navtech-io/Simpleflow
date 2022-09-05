@@ -70,6 +70,15 @@ namespace Simpleflow.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;in&apos; operator cannot be applied on non-list types.
+        /// </summary>
+        internal static string InOperatorOnList {
+            get {
+                return ResourceManager.GetString("InOperatorOnList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid input.
         /// </summary>
         internal static string InvalidInput {

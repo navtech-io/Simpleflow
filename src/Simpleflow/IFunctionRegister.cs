@@ -26,11 +26,15 @@ namespace Simpleflow
         /// <returns></returns>
         IFunctionRegister Add(string name, Delegate @delegate);
 
+
+        IFunctionRegister Add(string name, IFunctionProvider provider);
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="argumentInfo"></param>
         /// <returns></returns>
-        Delegate GetFunction(string name);
+        FunctionPointer GetFunction(string name, ArgumentInfo[] argumentInfo);
     }
 }

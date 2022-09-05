@@ -37,7 +37,7 @@ LessThan:           '<';
 LessThanEqual:      '<=';
 Equal:              '==';
 NotEqual:           '!=';
-
+In:                 'in';
 // keywords
 
 Let:                'let';

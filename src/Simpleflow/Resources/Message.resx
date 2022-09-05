@@ -120,6 +120,9 @@
   <data name="CannotIgnoreIdentifierForJsonObj" xml:space="preserve">
     <value>JSON object cannot be defined by ignoring variable. Either remove that statement or provide a proper name to it instead of using _</value>
   </data>
+  <data name="InOperatorOnList" xml:space="preserve">
+    <value>'in' operator cannot be applied on non-list types</value>
+  </data>
   <data name="InvalidInput" xml:space="preserve">
     <value>Invalid input</value>
   </data>

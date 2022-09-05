@@ -18,13 +18,13 @@ namespace Simpleflow.Tests
             functionsConfig.Add("test4",    (Action<int>)TestActivityMethod);
 
             // Act
-            var test4Activity = functionsConfig.GetFunction("test4");
+            var test4Activity = functionsConfig.GetFunction("test4", null);
 
             // Assert
-            Assert.Equal(TestActivityMethod, (Action<int>)test4Activity);
+            Assert.Equal(TestActivityMethod, (Action<int>)test4Activity.Reference);
 
             // test
-            test4Activity.DynamicInvoke(2);
+            test4Activity.Reference.DynamicInvoke(2);
         }
 
         [Fact]
