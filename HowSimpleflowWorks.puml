@@ -16,7 +16,7 @@ skinparam component {
   ArrowColor #1d3ddb
 }
 : Input (Script, Argument)/
-: Determine cache key of the given script: \n Determine cache key based on hash value of the script \n or with the user supplied cache id;
+: Determine the cache key based on hash value of the script \n or with the user supplied cache ID \n [[api/#cache-options]];
 
 if (Is the function \navilable in cache?) then (yes)
   :Get the function from cache;
@@ -27,7 +27,15 @@ partition "   Compile \n& Cache" {
   note right: Uses\nFunction\nRegister
   
   : Compile as a function\n with an input parameter;
-  : Store generated function in cache;
+  : Store generated function\n in cache;
+  note right
+    Default it uses 
+    sliding expiration 
+    caching strategy 
+    and with 3 minutes 
+    duration.
+    [[api/#cache-options]]
+  end note
 }
 endif
 
