@@ -40,6 +40,7 @@ var script =
 
     # Output
     output today
+    message 'execution completed'
 ";
 
 // Execute Script
