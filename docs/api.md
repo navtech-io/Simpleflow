@@ -132,7 +132,7 @@ FlowOutput result = new SimpleflowEngine.Run(script,
 
 
 ## Cache Options
-Specify cache options that suit your requirement. Cache options can be specified Simpleflow builder level as well context level.
+Specify cache options based on frequency of executing Simpleflow code. Cache options can be specified at Simpleflow builder level as well running context level. Recommend to set id at FlowContextOptions level in order to avoid hashing.
 
 ```csharp
 string id = "7bfd56c8ca354307b6cb9e0805a7ae4c";
@@ -142,7 +142,7 @@ var options = new FlowContextOptions {
     // it creates using hashing algorithm
     Id = id, 
     // This allows to reset the cache entry if script needs to recompile
-    // ResetCache = true 
+    // ResetCache = isModified 
     CacheOptions = new CacheOptions { 
                         AbsoluteExpiration = System.DateTimeOffset.Now.AddHours(1),
                         SlidingExpiration = System.TimeSpan.FromMinutes(3),
@@ -152,6 +152,8 @@ var options = new FlowContextOptions {
 };
 
 FlowOutput result = new SimpleflowEngine.Run(script, new object(), options);
+
+// isModified = false
 ```
 
 ## Handle Parser Errors
