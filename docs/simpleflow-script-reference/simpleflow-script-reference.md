@@ -47,7 +47,7 @@ general_statement:
 Variable name, property name, function's parameter name and function name are not case sensitive.
 * Keywords cannot be used for variable name, function's parameter name and property name.
   Example: `arg.message` or `$Send(message: '')` are not valid,
-  it will throw exception, but you can use keywords by changing the letter case. `arg.Message` is valid but not `arg.message`.
+  it will throw an exception, but you can use keywords by changing the letter case. `arg.Message` is valid but not `arg.message`.
 
 
 ## Variables <a name="variables"></a>
@@ -59,7 +59,7 @@ let <variable_name> [, <error_handler_variable_name>] = expression
 ```csharp
 [partial] set <variable_name> [, <error_handler_variable_name>] = expression
 ```
-`set` statement can be used to modify the value of variable that has been declared using let statement. `partial` keyword can be used to modify certain properties of an object.
+`set` statement can be used to modify the value of a variable that has been declared using let statement. `partial` keyword can be used to modify certain properties of an object.
 
 Update properties of an object:
 ```csharp
@@ -112,7 +112,7 @@ partial set arg = { RegistrationDate: currentDate, IsActive: true }
                 address: {
                            city: "ny"
                          } 
-              }</code></pre> Object will be created and evaluated only when it will be supplied as parameter to a function. Until it gets created or activated by a function call, you cannot use partial set on this object. 
+              }</code></pre> Object will be created and evaluated only when it will be supplied as a parameter to a function. Until it gets created or activated by a function call, you cannot use a partial set on this object. 
         </td>
     </tr>
     <tr>
@@ -236,7 +236,7 @@ rule when expression then
 [end rule]
 ```
  `end rule` is optional and it can be used to terminate the rule scope.
-Simpleflow does not support nested rules. if you need to write nested rules, declare a variable and write conditional expression and use it in rules.
+Simpleflow does not support nested rules. if you need to write nested rules, declare a variable and write a conditional expression and use it in rules.
 
 Example:
 ```csharp
@@ -252,7 +252,7 @@ rule when highPriority and arg.type == 'Silver' then
 
 
 ## Emitters
-Emitters are a kind of special functions to collect the stream of data and outputs, which are helpful to read the data from script execution.
+Emitters are a kind of special function to collect the stream of data and outputs, which are helpful to read the data from script execution.
 
 | Emitter Type | Syntax                      	|
 |--------------|--------------------------------|
@@ -292,4 +292,4 @@ rule when not err2 then
     message "No error"
 
 ```
-when you use `set` to update a variable and you want to catch the error as well, if error is occurred then you don't need declare err2 using `let` as you declare to capture regular value.
+When you use `set` to update a variable and you want to catch the error as well, if an error occurs then you don't need declare the error variable using `let` as you declare to capture regular value.

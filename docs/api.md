@@ -73,7 +73,7 @@ public class LoggingService : IFlowPipelineService
 ```
 
 ## Compile Script
-By adding only CompilerService to build pipeline, script can be compiled and reported if there are any errors.
+By adding only CompilerService to build a pipeline, script can be compiled and reported if there are any errors.
 ```csharp
 var engine
     = new SimpleflowPipelineBuilder()
@@ -132,7 +132,7 @@ FlowOutput result = new SimpleflowEngine.Run(script,
 
 
 ## Cache Options
-Specify cache options based on frequency of executing Simpleflow code. Cache options can be specified at Simpleflow builder level as well running context level. Recommend to set id at FlowContextOptions level in order to avoid hashing.
+Specify cache options based on frequency of executing Simpleflow code. Cache options can be specified at Simpleflow builder level as well as running-context level. Recommend to set ID at FlowContextOptions level in order to avoid hashing.
 
 ```csharp
 string id = "7bfd56c8ca354307b6cb9e0805a7ae4c";
