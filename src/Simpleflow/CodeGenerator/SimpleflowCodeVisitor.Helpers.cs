@@ -62,6 +62,11 @@ namespace Simpleflow.CodeGenerator
            return  type.GetProperties().FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.OrdinalIgnoreCase));
         }
 
+        private System.Reflection.FieldInfo GetFieldInfo(Type type, string name)
+        {
+            return type.GetFields().FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.OrdinalIgnoreCase));
+        }
+
 
         private Expression ToStringExpression(Expression obj)
         {

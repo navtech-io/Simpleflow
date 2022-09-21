@@ -18,7 +18,7 @@ namespace Simpleflow.Tests.Compiler
             // Arrange
             var context = new SampleArgument { Id = 233 };
             var script =
-            @$"
+            @"
                 /* Declare variable */
                 let a        = 2
                 let b        = 5
@@ -29,7 +29,7 @@ namespace Simpleflow.Tests.Compiler
                 let value   = ( 2 + 3 ) * arg.Id - 1.5  
 
                 let date    = $GetCurrentDate()
-                let date1   = $GetCurrentDateTime ( timezone: ""{TestsHelper.Timezone}"" )
+                let date1   = $GetCurrentDateTime ( timezone: '" + TestsHelper.Timezone + @"' )
 
 
                 /* Rules */

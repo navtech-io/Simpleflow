@@ -8,7 +8,11 @@ namespace Simpleflow
 {
     internal static class ArgumentException
     {
-        public static void ThrowIfNull(object argument, [CallerArgumentExpression("argument")]string paramName = default)
+        public static void ThrowIfNull(object argument,
+#if NETCOREAPP
+                                       [CallerArgumentExpression("argument")]
+#endif
+                                       string paramName = default)
         {
             if (argument == null)
             {
@@ -23,7 +27,11 @@ namespace Simpleflow
             }
         }
 
-        public static void ThrowIfNullOrEmpty(string argument, [CallerArgumentExpression("argument")] string paramName = default)
+        public static void ThrowIfNullOrEmpty(string argument,
+#if NETCOREAPP
+                                             [CallerArgumentExpression("argument")]
+#endif
+                                             string paramName = default)
         {
             if (string.IsNullOrWhiteSpace(argument))
             {

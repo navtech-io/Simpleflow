@@ -21,8 +21,8 @@ namespace Simpleflow.Tests.Scripting
         {
             // Arrange
             var script =
-                @$"
-                  let {value1} = 5
+                @"
+                  let " + value1 + @" = 5
                   message arg
                 ";
 
@@ -61,7 +61,7 @@ namespace Simpleflow.Tests.Scripting
             // Arrange
             var arg = new SampleArgument { Id = 10 };
             var script =
-                @$"
+                @"
                   let Value = arg.Id
                   set value =  value + 10
                   message value

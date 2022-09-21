@@ -11,17 +11,17 @@ namespace Simpleflow
         /// <summary>
         /// Gets or sets AllowFunctions
         /// </summary>
-        public string[] AllowFunctions { get; set; }
+        string[] AllowFunctions { get; set; }
 
 
         /// <summary>
         /// Gets or sets DenyFunctions
         /// </summary>
-        public string[] DenyFunctions { get; set; }
+        string[] DenyFunctions { get; set; }
 
         /// <summary>
         /// Gets or sets cache options
         /// </summary>
-        public CacheOptions CacheOptions { get; set; }
+        CacheOptions CacheOptions { get; set; }
     }
 }

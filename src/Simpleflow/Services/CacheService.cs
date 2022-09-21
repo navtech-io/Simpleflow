@@ -24,7 +24,7 @@ namespace Simpleflow.Services
         /// </param>
         public CacheService(CacheOptions cacheOptions)
         {
-            _cacheOptions = cacheOptions ?? throw new ArgumentNullException(nameof(cacheOptions)); 
+            _cacheOptions = cacheOptions ?? throw new ArgumentNullException(nameof(cacheOptions));
 
             // validate hashing algorithm for unique id generation
             if (string.IsNullOrWhiteSpace(cacheOptions.HashingAlgToIdentifyScriptUniquely))
@@ -43,7 +43,7 @@ namespace Simpleflow.Services
         public CacheService() : this(new CacheOptions())
         {
         }
-        
+
         /// <inheritdoc />
         public void Run<TArg>(FlowContext<TArg> context, NextPipelineService<TArg> next)
         {
@@ -78,8 +78,10 @@ namespace Simpleflow.Services
         protected virtual string GetScriptUniqueId(CacheOptions contextCacheOptions, string script)
         {
             // Calculate id for script
-            using var sha1 = HashAlgorithm.Create(contextCacheOptions?.HashingAlgToIdentifyScriptUniquely ?? _cacheOptions.HashingAlgToIdentifyScriptUniquely);
-            return System.Convert.ToBase64String(sha1.ComputeHash(Encoding.UTF8.GetBytes(script)));
+            using (var sha1 = HashAlgorithm.Create(contextCacheOptions?.HashingAlgToIdentifyScriptUniquely ?? _cacheOptions.HashingAlgToIdentifyScriptUniquely))
+            {
+                return System.Convert.ToBase64String(sha1.ComputeHash(Encoding.UTF8.GetBytes(script)));
+            }
         }
 
 

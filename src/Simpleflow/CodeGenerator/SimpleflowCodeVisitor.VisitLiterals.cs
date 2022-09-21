@@ -68,7 +68,7 @@ namespace Simpleflow.CodeGenerator
             }
             else if (targetType != null && targetType.IsEnum) // Handle enum
             {
-                if (!Enum.TryParse(targetType, value, out object result))
+                if (!TryParseEnum(targetType, value, out object result))
                 {
                     throw new SimpleflowException(String.Format(Resources.Message.RequestedEnumValueNotFound, value, targetType.Name));
                 }
@@ -141,6 +141,22 @@ namespace Simpleflow.CodeGenerator
             return Expression.Call(concatMethod, newArrayExpression);
         }
 
-        
+        private bool TryParseEnum(Type targetType, string value, out object result)
+        {
+#if NETCOREAPP
+            return Enum.TryParse(targetType, value, out result);
+#else
+            try 
+            {
+                result = Enum.Parse(targetType, value);
+                return true;
+            }
+            catch 
+            {
+                result = null;
+                return false;
+            }
+#endif
+        }
     }
 }
