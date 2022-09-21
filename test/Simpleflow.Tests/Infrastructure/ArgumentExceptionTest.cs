@@ -3,6 +3,7 @@ using Xunit;
 
 namespace Simpleflow.Tests.Infrastructure
 {
+#if !NET48
     public class ArgumentExceptionTest
     {
         [Fact]
@@ -31,4 +32,5 @@ namespace Simpleflow.Tests.Infrastructure
             Assert.Throws<ArgumentNullException>("name", () => ArgumentException.ThrowIfNullOrEmpty(name));
         }
     }
+#endif
 }

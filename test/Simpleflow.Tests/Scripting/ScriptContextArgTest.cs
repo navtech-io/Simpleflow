@@ -12,7 +12,7 @@ namespace Simpleflow.Tests.Scripting
         {
             // Arrange
             var script =
-                @$"
+                @"
                     error ""test""
                     output context.haserrors
                 ";
@@ -27,7 +27,7 @@ namespace Simpleflow.Tests.Scripting
         {
             // Arrange
             var script =
-                @$"
+                @"
                     output context.HasErrors
                 ";
 

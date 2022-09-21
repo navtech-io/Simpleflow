@@ -16,11 +16,11 @@ namespace Simpleflow.Tests.Infrastructure
         {
             // Arrange
             var flowScript =
-            @$" 
+            @" 
                 /* Declare and initialize variables */
                 let userId      = none
                 let currentDate = $GetCurrentDateTime ( 
-                                        timezone: ""{TestsHelper.Timezone}"" )
+                                        timezone: """ + TestsHelper.Timezone + @""" )
 
                 /* Define Rules */
                 rule when  arg.Name == """" 
@@ -45,10 +45,10 @@ namespace Simpleflow.Tests.Infrastructure
                 end rule
 
                 /* Set current date time */
-                partial set arg = {{ 
+                partial set arg = { 
                                      RegistrationDate: currentDate, 
                                      IsActive: true 
-                                   }}
+                                  }
 
             ";
 
@@ -66,7 +66,7 @@ namespace Simpleflow.Tests.Infrastructure
         {
             // Arrange
             var flowScript =
-            @$" 
+            @" 
                 let userId      = none
                 test xyz
             ";

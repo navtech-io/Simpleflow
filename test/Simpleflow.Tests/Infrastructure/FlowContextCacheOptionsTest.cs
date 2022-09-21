@@ -8,6 +8,7 @@ namespace Simpleflow.Tests.Infrastructure
 {
     public class FlowContextCacheOptionsTest
     {
+#if !NET48
         [Fact]
         public void CheckFlowContextCacheOptions()
         {
@@ -38,6 +39,7 @@ namespace Simpleflow.Tests.Infrastructure
 
             // Assert
         }
+#endif
 
         class CacheService2 : Services.CacheService
         {
