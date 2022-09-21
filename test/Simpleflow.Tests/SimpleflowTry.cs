@@ -8,11 +8,11 @@ namespace Simpleflow.Tests
         [Fact]
         public void Try()
         {
-// Arrange -- Don't change the indentation of variable, its written for a type of testing of parser
-var flowScript =
-@$"
+            // Arrange -- Don't change the indentation of variable, its written for a type of testing of parser
+            var flowScript =
+            @"
 let text  = 'Hello, विश्वम्‌'
-let today = $GetCurrentDateTime ( timezone: '{TestsHelper.Timezone}' )
+let today = $GetCurrentDateTime ( timezone: '" + TestsHelper.Timezone + @"' )
 
 /* Comment: Message when UniversalId is 2 and New is true */
 rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
@@ -32,13 +32,13 @@ rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
         {
             // Arrange
             var flowScript =
-            @$" 
+            @" 
 
-                let today = $GetCurrentDateTime ( timezone: ""{TestsHelper.Timezone}"" )
+                let today = $GetCurrentDateTime ( timezone: """ + TestsHelper.Timezone + @""" )
 
                 # Write rules
                 rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
-                     message `Hello, World! 🌄, Universal Id {{arg.UniversalId}}`
+                     message `Hello, World! 🌄, Universal Id {arg.UniversalId}`
                 end rule
 
                 # Output
@@ -57,9 +57,9 @@ rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
         {
             // Arrange
             var flowScript =
-            @$" 
+            @" 
                 let text  = ""Hello, विश्वम्‌""
-                let today = $GetCurrentDateTime ( timezone: ""{TestsHelper.Timezone}"" )
+                let today = $GetCurrentDateTime ( timezone: """ + TestsHelper.Timezone + @""" )
 
                 /* Comment: Message when UniversalId is 2 and New is true */
                 rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
@@ -81,7 +81,7 @@ rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
         {
             // Arrange
             var flowScript =
-            @$" 
+            @" 
                 /* Declare and initialize variables */
                 let userId      = none
                 
@@ -109,11 +109,11 @@ rule when arg.UniversalId == 2 and (arg.New or arg.Verified)  then
                 end rule
 
                 /* Set current date time */
-                partial set arg = {{ 
+                partial set arg = { 
                                      RegistrationDate: $GetCurrentDateTime ( 
-                                        timezone: ""{TestsHelper.Timezone}"" ), 
+                                        timezone: """ + TestsHelper.Timezone + @""" ), 
                                      IsActive: true 
-                                   }}
+                                  }
 
                 set _, err = $SendEmail(body: 'test', 
                                           to: arg.email)  

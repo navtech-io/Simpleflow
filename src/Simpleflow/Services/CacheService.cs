@@ -4,7 +4,13 @@
 using System;
 using System.Text;
 using System.Security.Cryptography;
+
+#if NET48
+using System.Runtime.Caching;
+#else
 using Microsoft.Extensions.Caching.Memory;
+#endif
+
 
 namespace Simpleflow.Services
 {
@@ -14,7 +20,12 @@ namespace Simpleflow.Services
     /// </summary>
     public class CacheService : IFlowPipelineService
     {
+#if NET48
+        private readonly MemoryCache _cache;
+#else
         private readonly IMemoryCache _cache;
+#endif
+
         private readonly CacheOptions _cacheOptions;
 
         /// <summary>
@@ -32,8 +43,13 @@ namespace Simpleflow.Services
                 throw new ArgumentNullException(nameof(cacheOptions.HashingAlgToIdentifyScriptUniquely));
             }
 
+
+#if NET48            
             //MemoryCache
+            _cache = MemoryCache.Default;
+#else
             _cache = new MemoryCache(new MemoryCacheOptions() { });
+#endif
 
         }
 
@@ -87,20 +103,34 @@ namespace Simpleflow.Services
 
         private void StoreIntoCacheCompiledScript<TArg>(FlowContext<TArg> context, string id)
         {
-            _cache.Set(key: id,
-                                       value: context.Internals.CompiledScript,
-                                       options: new MemoryCacheEntryOptions
-                                       {
-                                           AbsoluteExpiration = context.Options?.CacheOptions?.AbsoluteExpiration ?? _cacheOptions.AbsoluteExpiration,
-                                           SlidingExpiration = context.Options?.CacheOptions?.SlidingExpiration ?? _cacheOptions.SlidingExpiration
-                                       });
 
+#if NET48
+            _cache.Set(key: id,
+                       value: context.Internals.CompiledScript,
+                       policy: new CacheItemPolicy
+                       {
+                           AbsoluteExpiration = context.Options?.CacheOptions?.AbsoluteExpiration ?? _cacheOptions.AbsoluteExpiration ?? DateTimeOffset.MaxValue,
+                           SlidingExpiration = context.Options?.CacheOptions?.SlidingExpiration ?? _cacheOptions.SlidingExpiration ?? CacheOptions.DefaultSlidingExpiration
+                       });
+#else
+            _cache.Set(key: id,
+                       value: context.Internals.CompiledScript,
+                       options: new MemoryCacheEntryOptions
+                       {
+                           AbsoluteExpiration = context.Options?.CacheOptions?.AbsoluteExpiration ?? _cacheOptions.AbsoluteExpiration,
+                           SlidingExpiration = context.Options?.CacheOptions?.SlidingExpiration ?? _cacheOptions.SlidingExpiration
+                       });
+#endif
             context.Trace?.Write($"Saved into cache {id} - Succeeded");
         }
 
         private bool GetAndSetToContextTheCompiledScript<TArg>(FlowContext<TArg> context, string id)
         {
+#if NET48            
+            var compiledScript = _cache.Get(key: id) as Action<TArg, FlowOutput, RuntimeContext>;
+#else
             var compiledScript = _cache.Get<Action<TArg, FlowOutput, RuntimeContext>>(key: id);
+#endif
             var isAvailableInCache = compiledScript != null;
 
             if (isAvailableInCache)

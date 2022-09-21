@@ -8,11 +8,12 @@ namespace Simpleflow
     /// </summary>
     public class CacheOptions
     {
+        internal static readonly System.TimeSpan DefaultSlidingExpiration = System.TimeSpan.FromMinutes(3);
         /// <summary>
         /// Gets or sets how long a cache entry can be inactive (e.g. not accessed) before it will be removed.
         /// This will not extend the entry lifetime beyond the absolute expiration (if set).
         /// </summary>
-        public System.TimeSpan? SlidingExpiration { get; set; } = System.TimeSpan.FromMinutes(3);
+        public System.TimeSpan? SlidingExpiration { get; set; } = DefaultSlidingExpiration;
 
         /// <summary>
         /// Gets or sets an absolute expiration date for the cache entry.

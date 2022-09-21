@@ -33,16 +33,16 @@ namespace Simpleflow.Tests
         public void BuildAndRunSimpleflow_CheckWhetherEachServiceIsInvoked(int id, string expect)
         {
             // Arrange
-            string script = @$"rule when arg.Id > 0 then 
+            string script = @"rule when arg.Id > 0 then 
                                     message ""Member exists""
                                /*end rule*/
-                               rule when arg.Id == {id} then 
-                                    message ""The {expect} Member""
+                               rule when arg.Id == " + id + @" then 
+                                    message ""The " + expect + @" Member""
                                
                           ";
 
             // Act
-            FlowOutput result = _flow.Run(script, new Member { Id = id});
+            FlowOutput result = _flow.Run(script, new Member { Id = id });
 
 
             // Assert
@@ -83,7 +83,7 @@ namespace Simpleflow.Tests
 
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1 }, config: null));
-            Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1, Abc=2 }, options: null));
+            Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1, Abc = 2 }, options: null));
             Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1 }, options: null, config: null));
             Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1 }, options: new FlowContextOptions(), config: null));
             Assert.Throws<ArgumentNullException>(() => _flow.Run(script, new { Test = 1 }, options: null, config: new FunctionRegister()));
