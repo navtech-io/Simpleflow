@@ -20,11 +20,11 @@ namespace Simpleflow
         /// <summary>
         /// Reset cache allows to remove the item from cache if exists and add it once its compiled.
         /// </summary>
-        public bool ResetCache { get; set; }
+        bool ResetCache { get; set; }
 
         /// <summary>
         /// Gets or sets <see cref="System.Threading.CancellationToken"/>
         /// </summary>
-        public CancellationToken CancellationToken { get; set; }
+        CancellationToken CancellationToken { get; set; }
     }
 }

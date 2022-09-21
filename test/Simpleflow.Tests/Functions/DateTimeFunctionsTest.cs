@@ -63,10 +63,11 @@ namespace Simpleflow.Tests.Activities
             // Arrange
             var arg = new SampleArgument();
             var script =
-                @$"
-                    let date = $GetCurrentDateTime ( timezone: ""{TestsHelper.Timezone}"" )
+                string.Format(
+                @"
+                    let date = $GetCurrentDateTime ( timezone: ""{0}"" )
                     output date 
-                ";
+                ", TestsHelper.Timezone);
 
             // Act
             FlowOutput output = SimpleflowEngine.Run(script, arg);

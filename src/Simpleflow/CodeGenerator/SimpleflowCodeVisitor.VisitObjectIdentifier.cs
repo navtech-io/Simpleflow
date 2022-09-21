@@ -3,6 +3,7 @@
 
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using Antlr4.Runtime.Misc;
 using Simpleflow.Exceptions;
 using Simpleflow.Parser;
@@ -51,7 +52,7 @@ namespace Simpleflow.CodeGenerator
                         .GetProperties()
                         .SingleOrDefault(p => p.GetIndexParameters().Length == 1 &&
                                               p.GetIndexParameters()[0].ParameterType == indexExpression.Type);
-                
+
                 return Expression.MakeIndex(objectExp, indexProperty, new[] { indexExpression });
             }
 
@@ -68,16 +69,31 @@ namespace Simpleflow.CodeGenerator
                 var propName = property.Identifier().GetText();
                 var prop = GetPropertyInfo(propExp.Type, propName);
 
+                // Support property or field
+
+                FieldInfo field = null;
                 if (prop == null)
                 {
-                    throw new InvalidPropertyException($"Invalid property '{propName}'");
+                    field = GetFieldInfo(propExp.Type, propName);
+
+                    if (field == null)
+                    {
+                        throw new InvalidPropertyException($"Invalid property or field '{propName}'");
+                    }
                 }
 
                 // Get indexed object
                 propExp = GetIndexObjectExpIfDefined(propExp, property.index());
 
                 // Get property of indexed object
-                propExp = Expression.Property(propExp, prop);
+                if (prop != null)
+                {
+                    propExp = Expression.Property(propExp, prop);
+                }
+                else
+                {
+                    propExp = Expression.Field(propExp, field);
+                }
             }
             return propExp;
         }

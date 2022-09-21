@@ -16,6 +16,6 @@ namespace Simpleflow.Exceptions
         /// a specified function name.
         /// </summary>
         /// <param name="repeatedParameters">The repeated parameters that caused the exception.</param>
-        public DuplicateParametersException(IEnumerable<string> repeatedParameters) : base($"Duplicate parameters '{string.Join(',', repeatedParameters)}' cannot be allowed." ) { }
+        public DuplicateParametersException(IEnumerable<string> repeatedParameters) : base($"Duplicate parameters '{string.Join(",", repeatedParameters)}' cannot be allowed." ) { }
     }
 }

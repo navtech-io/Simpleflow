@@ -18,8 +18,8 @@ namespace Simpleflow.Tests.Scripting
             // Arrange
             
             var script =
-                @$"
-                  let exitBefore = {exit}  
+                @"
+                  let exitBefore = " + exit + @"
                   message ""before-exit""
 
                   rule when exitBefore then  
@@ -45,7 +45,7 @@ namespace Simpleflow.Tests.Scripting
             // Arrange
 
             var script =
-                @$"
+                @"
                   exit
                 ";
 

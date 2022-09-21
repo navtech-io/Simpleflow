@@ -98,12 +98,20 @@ namespace Simpleflow
                 var bitmapIndex = _bitmapIndex[name];
                 (int storeIndex, int valueIndex) = GetStoreAndValueIndex(bitmapIndex);
 
-                return storeIndex switch
-                {
-                    MethodStoreIndex   => new FunctionPointer { Reference = _methodStore[valueIndex] },
-                    ProviderStoreIndex => _providerStore[valueIndex].GetFunction(name, argumentInfo),
-                    _ => null
-                };
+                // Change this code, in order to support .NET 48
+                return storeIndex == MethodStoreIndex
+                        ? new FunctionPointer { Reference = _methodStore[valueIndex] }
+                        : storeIndex == ProviderStoreIndex
+                          ? _providerStore[valueIndex].GetFunction(name, argumentInfo)
+                          : null;
+
+                //return storeIndex switch
+                //{
+                //    MethodStoreIndex   => new FunctionPointer { Reference = _methodStore[valueIndex] },
+                //    ProviderStoreIndex => _providerStore[valueIndex].GetFunction(name, argumentInfo),
+                //    _ => null
+                //};
+
             }
             return null;
         }
