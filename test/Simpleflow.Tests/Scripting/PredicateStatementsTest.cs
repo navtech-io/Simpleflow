@@ -3,7 +3,7 @@
 
 using Xunit;
 using Simpleflow.Tests.Helpers;
-
+using System.Collections.Generic;
 
 namespace Simpleflow.Tests.Scripting
 {
@@ -151,6 +151,31 @@ namespace Simpleflow.Tests.Scripting
             FlowOutput output = SimpleflowEngine.Run(script, new object());
 
             Assert.Single(output.Messages);
+        }
+
+
+        [Fact]
+        public void CheckShortCircuitingAndOperator()
+        {
+            // Arrange
+
+            var script =
+                @"
+                 rule when $exists(dict: arg, key: 'ContentType') and arg['ContentType'] == none then
+                     message 'got it'
+                ";
+
+            FlowOutput output = SimpleflowEngine.Run(script, 
+                new Dictionary<string, object> { {"test", null } }
+                , 
+                new FunctionRegister().Add("exists", (System.Func<IDictionary<string, object>, string, bool>)Exists));
+
+            Assert.Empty(output.Messages);
+        }
+
+        public static bool Exists(IDictionary<string, object> dict, string key)
+        {
+            return dict.ContainsKey(key);
         }
 
     }

@@ -58,10 +58,10 @@ namespace Simpleflow.CodeGenerator
             switch (symbolType)
             {
                 case SimpleflowLexer.And:
-                    return Expression.And(left, right);
+                    return Expression.AndAlso(left, right);
 
                 case SimpleflowLexer.Or:
-                    return Expression.Or(left, right);
+                    return Expression.OrElse(left, right);
             }
 
             return null;
