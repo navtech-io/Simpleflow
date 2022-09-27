@@ -3,7 +3,7 @@
     <TargetFrameworks>net48;netcoreapp3.1;net6.0;</TargetFrameworks>
     <PackageIcon>PackageIcon.png</PackageIcon>
     <VersionPrefix>1.0.11</VersionPrefix>
-    <VersionSuffix>beta4</VersionSuffix>
+    <VersionSuffix></VersionSuffix>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
