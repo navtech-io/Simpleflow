@@ -21,7 +21,7 @@ namespace Simpleflow.Tests.Scripting
                 ";
 
             // Act 
-            FlowOutput output= SimpleflowEngine.Run(script, new SampleArgument());
+            FlowOutput output = SimpleflowEngine.Run(script, new SampleArgument());
 
             // Assert
             Assert.Equal(actual: output.Messages.Count, expected: 1);
@@ -77,11 +77,11 @@ namespace Simpleflow.Tests.Scripting
             Assert.Equal(actual: output.Messages[4], expected: "3!=5");
         }
 
-        [Fact] 
+        [Fact]
         public void FunctionInPredicate()
         {
             // Arrange
-            
+
             var script =
                 @"
                    rule when not $match(input: ""abc12"", pattern: ""^[a-zA-z]+$"")  then
@@ -89,7 +89,7 @@ namespace Simpleflow.Tests.Scripting
                 ";
 
             FlowOutput output = SimpleflowEngine.Run(script, new SampleArgument());
-            
+
             Assert.Single(output.Errors);
         }
 
@@ -108,14 +108,21 @@ namespace Simpleflow.Tests.Scripting
 
                    rule when not (5 in [2,3]) then
                       message '5notin2,3'
+
+                   rule when arg.data in ['new', 'test'] then
+                      message 'arg.data-exists-auto-conversion-object-to-string'
                 ";
 
             // Act 
-            FlowOutput output = SimpleflowEngine.Run(script, new object());
+            FlowOutput output = SimpleflowEngine.Run(script, new
+            {
+                Data = (object)"test" // type casted to object to checking auto conversion feature for 'in' operator
+            });
 
             // Assert
             Assert.Equal(actual: output.Messages[0], expected: "5in2,3,5");
             Assert.Equal(actual: output.Messages[1], expected: "5notin2,3");
+            Assert.Equal(actual: output.Messages[2], expected: "arg.data-exists-auto-conversion-object-to-string");
         }
 
         [Fact]
@@ -165,12 +172,31 @@ namespace Simpleflow.Tests.Scripting
                      message 'got it'
                 ";
 
-            FlowOutput output = SimpleflowEngine.Run(script, 
-                new Dictionary<string, object> { {"test", null } }
-                , 
+            FlowOutput output = SimpleflowEngine.Run(script,
+                new Dictionary<string, object> { { "test", null } }
+                ,
                 new FunctionRegister().Add("exists", (System.Func<IDictionary<string, object>, string, bool>)Exists));
 
             Assert.Empty(output.Messages);
+        }
+
+
+        [Fact]
+        public void CheckShortCircuitingAndOperatorWithFunctions()
+        {
+            // Arrange
+            var script =
+                @"
+                 rule when $exists(dict: arg, key: 'ContentType') and $str(value: arg['ContentType']) in ['test'] then
+                     message 'got it'
+                ";
+
+            FlowOutput output = SimpleflowEngine.Run(script,
+                new Dictionary<string, object> { { "ContentType", "test" } }
+                ,
+                new FunctionRegister().Add("exists", (System.Func<IDictionary<string, object>, string, bool>)Exists));
+
+            Assert.Equal("got it", output.Messages[0]);
         }
 
         public static bool Exists(IDictionary<string, object> dict, string key)
