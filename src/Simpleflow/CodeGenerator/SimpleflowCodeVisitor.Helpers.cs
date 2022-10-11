@@ -27,6 +27,7 @@ namespace Simpleflow.CodeGenerator
                targetType == typeof(decimal) ||
                targetType == typeof(double) ||
                targetType == typeof(float) ||
+               targetType == typeof(object) ||
                targetType == typeof(byte))
             {
                 return Expression.Constant(Convert.ChangeType(value, targetType), targetType);
@@ -34,9 +35,10 @@ namespace Simpleflow.CodeGenerator
             throw new Exceptions.ValueTypeMismatchException(value, targetType.Name);
         }
 
-        private Expression GetBoolExpression(string value)
+        private Expression GetBoolExpression(string value, Type targetType)
         {
-            return Expression.Constant(Convert.ToBoolean(value), typeof(bool));
+            return Expression.Constant(Convert.ToBoolean(value), targetType == null || targetType == typeof(bool) 
+                                                                 ? typeof(bool) : targetType );
         }
 
         private string GetUnquotedEscapeText(string @string)

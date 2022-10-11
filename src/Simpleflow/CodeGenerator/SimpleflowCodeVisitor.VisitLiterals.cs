@@ -48,9 +48,9 @@ namespace Simpleflow.CodeGenerator
 
             var value = context.GetText();
 
-            if (targetType == null || targetType == typeof(bool))
+            if (targetType == null || targetType == typeof(bool) || targetType == typeof(object))
             {
-                return GetBoolExpression(value);
+                return GetBoolExpression(value, targetType);
             }
 
             throw new ValueTypeMismatchException(value);
@@ -62,17 +62,18 @@ namespace Simpleflow.CodeGenerator
 
             var value = GetUnquotedEscapeText(context.String().GetText());
 
-            if (targetType == null || targetType == typeof(string)) 
-            {
-                return Expression.Constant(value);
-            }
-            else if (targetType != null && targetType.IsEnum) // Handle enum
+            if (targetType != null && targetType.IsEnum) // Handle Enum
             {
                 if (!TryParseEnum(targetType, value, out object result))
                 {
                     throw new SimpleflowException(String.Format(Resources.Message.RequestedEnumValueNotFound, value, targetType.Name));
                 }
                 return Expression.Constant(result, targetType);
+            }
+
+            if (targetType == null || targetType == typeof(string) || targetType == typeof(object))
+            {
+                return Expression.Constant(value);
             }
 
             throw new ValueTypeMismatchException(value);

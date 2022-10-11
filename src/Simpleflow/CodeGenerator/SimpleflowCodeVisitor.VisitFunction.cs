@@ -128,8 +128,9 @@ namespace Simpleflow.CodeGenerator
         private Expression VisitObjectIdentiferAsPerTargetType(SimpleflowParser.ObjectIdentiferExpressionContext objectIdentifier, Type targetType)
         {
             var objectIdentieferText = objectIdentifier.GetText();
-            
-            if (objectIdentieferText.Contains(".") 
+
+            if (   objectIdentieferText.Contains(".") // accessing property
+                || objectIdentifier.objectIdentifier()?.identifierIndex()[0]?.index() != null
                 || Variables.Any(v => string.Equals(v.Name,  objectIdentieferText, StringComparison.OrdinalIgnoreCase)))
             {
                 return Visit(objectIdentifier); // regular object identifier used from variables

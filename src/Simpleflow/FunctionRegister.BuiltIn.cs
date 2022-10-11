@@ -39,6 +39,9 @@ namespace Simpleflow
                             .Add("Length", (Func<string, int>)StringFunctions.Length)
                             .Add("Match", (Func<string, string, bool>)StringFunctions.Match)
                             .Add("Concat", (Func<string, string, string, string, string, string>)StringFunctions.Concat)
+
+                            .Add("Str", (Func<object, string>)DataTypeConversionFunctions.Str)
+
                             ;
                     }
                 }

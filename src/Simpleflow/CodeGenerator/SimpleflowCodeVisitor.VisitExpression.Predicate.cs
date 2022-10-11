@@ -76,11 +76,21 @@ namespace Simpleflow.CodeGenerator
         private Expression InOperatorExpression(Expression left, Expression right)
         {
             if (right.Type.GenericTypeArguments.Length == 0 
-               || right.Type != typeof(List<>).MakeGenericType(right.Type.GenericTypeArguments[0]))
+               || right.Type.IsAssignableFrom( typeof(IList<>).MakeGenericType(right.Type.GenericTypeArguments[0])))
             {
                 throw new Exceptions.SimpleflowException(Resources.Message.InOperatorOnList);
             }
-            
+
+            // Try perform automatic conversion TODO Handle nulls
+            if (right.Type.GenericTypeArguments[0] == typeof(string))
+            {
+                left = ToStringExpression(left);
+            }
+            else if (right.Type.GenericTypeArguments[0] != left.Type)
+            {
+                left = Expression.Convert(left, right.Type.GenericTypeArguments[0]);
+            }
+
             return Expression.Call(
                 right,
                 right.Type.GetMethod("Contains", right.Type.GenericTypeArguments),

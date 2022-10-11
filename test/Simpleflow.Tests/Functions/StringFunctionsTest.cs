@@ -8,189 +8,33 @@ using Xunit;
 
 namespace Simpleflow.Tests.Functions
 {
-    public class StringFunctionsTest
+    public class DataTypeConversionFunctions
     {
         [Fact]
-        public void CheckContains()
+        public void StrConversion()
         {
             // Arrange
             var script =
                 @"
+                    let v   = $str(value: 2)
+                    let v1  = $str(value: false)
+                    let v2  = $str(value: 'as')
+                    let v3  = $str(value: 2.3)
 
-                    let hasValue  = $Contains(input: arg.Text, value: ""here"" )
-                    let hasValue2 = $Contains(input: arg.Text, value: ""no"" )
-
-                    output hasValue 
-                    output hasValue2
+                    output v
+                    output v1
+                    output v2
+                    output v3
                 ";
 
             // Act
-            FlowOutput output = SimpleflowEngine.Run(script, new { Text = "its here" });
+            FlowOutput output = SimpleflowEngine.Run(script, new object());
 
             // Assert
-            Assert.True((bool)output.Output["hasValue"]);
-            Assert.False((bool)output.Output["hasValue2"]);
+            Assert.IsType<string>(output.Output["v"]);
+            Assert.IsType<string>(output.Output["v1"]);
+            Assert.IsType<string>(output.Output["v2"]);
+            Assert.IsType<string>(output.Output["v3"]);
         }
-
-        [Fact]
-        public void CheckStartsWithEndsWith()
-        {
-            // Arrange
-            var script =
-                @"
-
-                    let hasValue  = $StartsWith(input: arg.Text, value: ""its"" )
-                    let hasValue2 = $EndsWith(input: arg.Text, value: ""here"" )
-
-                    output hasValue 
-                    output hasValue2
-                ";
-
-            // Act
-            FlowOutput output = SimpleflowEngine.Run(script, new { Text = "its here" });
-
-            // Assert
-            Assert.True((bool)output.Output["hasValue"]);
-            Assert.True((bool)output.Output["hasValue2"]);
-        }
-
-        [Fact]
-        public void CheckTrim()
-        {
-            // Arrange
-            var script =
-                @"
-
-                    let trim = $Trim(input: arg.Text, value: "" @"" )
-
-                    output trim 
-                ";
-
-            // Act
-            FlowOutput output = SimpleflowEngine.Run(script, new { Text = " its here@ " });
-
-            // Assert
-            Assert.Equal(expected: "its here", actual: output.Output["trim"]);
-        }
-
-        [Fact]
-        public void CheckIndexOf()
-        {
-            // Arrange
-            var script =
-                @"
-
-                    let index = $IndexOf(input: arg.Text, value: ""here"" )
-
-                    output index
-                ";
-
-            // Act
-            FlowOutput output = SimpleflowEngine.Run(script, new { Text = " its here@ " });
-
-            // Assert
-            Assert.Equal(expected: 5, actual: output.Output["index"]);
-        }
-
-        [Fact]
-        public void CheckRegexMatch()
-        {
-            // Arrange
-            var script =
-                @"
-
-                    let matched = $match(input: arg.Text, pattern: ""[0-9]*"" )
-
-                    output matched
-                ";
-
-            // Act
-            FlowOutput output = SimpleflowEngine.Run(script, new { Text = " its here 995 " });
-
-            // Assert
-            Assert.True((bool)output.Output["matched"]);
-        }
-
-        [Fact]
-        public void CheckSubstring()
-        {
-            // Arrange
-            var script =
-                @"
-
-                    let text   = $Substring(input: arg.Text, startIndex: 4 )
-                    let text2  = $Substring(input: arg.Text, startIndex: 4, length: 2 )
-
-                    output text
-                    output text2
-                ";
-
-            // Act
-            FlowOutput output = SimpleflowEngine.Run(script, new { Text = "its here" });
-
-            // Assert
-            Assert.Equal(actual: output.Output["text"], expected: "here");
-            Assert.Equal(actual: output.Output["text2"], expected: "he");
-
-        }
-
-        [Fact]
-        public void CheckStringLength()
-        {
-            // Arrange
-            var script =
-                @"
-
-                    let len  = $Length(input: arg.Text)
-
-                    output len
-                ";
-
-            // Act
-            FlowOutput output = SimpleflowEngine.Run(script, new { Text = "its here" });
-
-            // Assert
-            Assert.Equal(actual: output.Output["len"], expected: 8);
-        }
-
-        [Fact]
-        public void CheckStringConcat()
-        {
-            // Arrange
-            var script =
-                @"
-
-                    let val  = $Concat(value1: arg.Text, value2: "" abc"")
-
-                    output val
-                ";
-
-            // Act
-            FlowOutput output = SimpleflowEngine.Run(script, new { Text = "its here" });
-
-            // Assert
-            Assert.Equal(actual: output.Output["val"], expected: "its here abc");
-        }
-
-        [Fact]
-        public void CheckSubStringAndIndexOf()
-        {
-            // Arrange
-            var script =
-                @"
-
-                    let text  = $Substring(input: arg.Text, 
-                                           startIndex: $IndexOf(input: arg.Text, value: '@') + 1
-                                          )
-                    output text
-                ";
-
-            // Act
-            FlowOutput output = SimpleflowEngine.Run(script, new { Text = " its here@com" });
-
-            // Assert
-            Assert.Equal(expected: "com", actual: output.Output["text"]);
-        }
-
     }
 }
