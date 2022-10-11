@@ -16,6 +16,10 @@ namespace Simpleflow.Tests.Functions
             // Arrange
             var script =
                 @"
+                    let v   = $str(value: 2)
+                    let v1  = $str(value: false)
+                    let v2  = $str(value: 'as')
+                    let v3  = $str(value: 2.3)
 
                     let hasValue  = $Contains(input: arg.Text, value: ""here"" )
                     let hasValue2 = $Contains(input: arg.Text, value: ""no"" )
