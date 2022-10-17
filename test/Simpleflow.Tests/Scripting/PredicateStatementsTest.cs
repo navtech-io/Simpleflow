@@ -187,12 +187,12 @@ namespace Simpleflow.Tests.Scripting
             // Arrange
             var script =
                 @"
-                 rule when $exists(dict: arg, key: 'ContentType') and $str(value: arg['ContentType']) in ['test'] then
+                 rule when $exists(dict: arg.data, key: 'ContentType') and $str(value: arg.data['ContentType']) in ['test'] then
                      message 'got it'
                 ";
 
             FlowOutput output = SimpleflowEngine.Run(script,
-                new Dictionary<string, object> { { "ContentType", "test" } }
+                new { Data = new Dictionary<string, object> { { "ContentType", "test" } } }
                 ,
                 new FunctionRegister().Add("exists", (System.Func<IDictionary<string, object>, string, bool>)Exists));
 

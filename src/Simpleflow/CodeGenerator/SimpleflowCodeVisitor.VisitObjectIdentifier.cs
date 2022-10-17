@@ -82,9 +82,6 @@ namespace Simpleflow.CodeGenerator
                     }
                 }
 
-                // Get indexed object
-                propExp = GetIndexObjectExpIfDefined(propExp, property.index());
-
                 // Get property of indexed object
                 if (prop != null)
                 {
@@ -94,6 +91,10 @@ namespace Simpleflow.CodeGenerator
                 {
                     propExp = Expression.Field(propExp, field);
                 }
+
+                // Get indexed object
+                propExp = GetIndexObjectExpIfDefined(propExp, property.index());
+
             }
             return propExp;
         }

@@ -2456,6 +2456,21 @@
             This class is for internal purpose only
             </summary>
         </member>
+        <member name="P:Simpleflow.RuntimeContext.HasErrors">
+            <summary>
+            Gets true if errors are emitted else false.
+            </summary>
+        </member>
+        <member name="P:Simpleflow.RuntimeContext.HasMessages">
+            <summary>
+            Gets true if messages are emitted else false.
+            </summary>
+        </member>
+        <member name="P:Simpleflow.RuntimeContext.CancellationToken">
+            <summary>
+            Gets cancellation token 
+            </summary>
+        </member>
         <member name="T:Simpleflow.Services.CacheService">
             <summary>
             A service to cache the generate code instructions
