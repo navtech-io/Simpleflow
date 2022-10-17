@@ -22,13 +22,23 @@ namespace Simpleflow.CodeGenerator
 
         private Expression GetNumberExpression(string value, Type targetType)
         {
-            if (targetType == typeof(int) ||
-               targetType == typeof(long) ||
-               targetType == typeof(decimal) ||
-               targetType == typeof(double) ||
-               targetType == typeof(float) ||
-               targetType == typeof(object) ||
-               targetType == typeof(byte))
+            if (  targetType == typeof(long)
+               || targetType == typeof(ulong)
+
+               || targetType == typeof(int)
+               || targetType == typeof(uint)
+
+               || targetType == typeof(short)
+               || targetType == typeof(ushort)
+
+               || targetType == typeof(byte)
+               || targetType == typeof(sbyte)
+
+               || targetType == typeof(decimal)
+               || targetType == typeof(double)
+               || targetType == typeof(float) 
+
+               || targetType == typeof(object) )
             {
                 return Expression.Constant(Convert.ChangeType(value, targetType), targetType);
             }
