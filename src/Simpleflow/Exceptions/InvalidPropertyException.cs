@@ -12,8 +12,8 @@ namespace Simpleflow.Exceptions
         /// Initializes a new instance of the <see cref="InvalidPropertyException"/> class with
         /// a specified variable name.
         /// </summary>
-        /// <param name="message">The message that describes the error.</param>
-        public InvalidPropertyException(string message): base(message)
+        /// <param name="propertyName">The message that describes the error.</param>
+        public InvalidPropertyException(string propertyName): base($"Invalid property or field '{propertyName}'")
         {
 
         }

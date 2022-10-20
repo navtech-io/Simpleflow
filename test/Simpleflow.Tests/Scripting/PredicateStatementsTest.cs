@@ -199,7 +199,33 @@ namespace Simpleflow.Tests.Scripting
             Assert.Equal("got it", output.Messages[0]);
         }
 
+        [Fact]
+        public void CheckShortCircuitingAndOperatorWithFunctions2()
+        {
+            // Arrange
+            var script =
+                @"
+                 rule when $exists(dict: arg.data, key: 'ContentType', fallbackdict: arg.data2) and $str(value: arg.data['ContentType']) in ['test'] then
+                      message 'got it'
+                ";
+
+            FlowOutput output = SimpleflowEngine.Run(script,
+                 new { 
+                     Data = new Dictionary<string, object> { { "ContentType", "test" } },
+                     Data2 = new Dictionary<string, object> { { "ContentType", "test" } }
+                 }
+                ,
+                new FunctionRegister().Add("exists", (System.Func<IDictionary<string, object>, IDictionary<string, object>, string, bool>)Exists));
+
+            Assert.Equal("got it", output.Messages[0]);
+        }
+
         public static bool Exists(IDictionary<string, object> dict, string key)
+        {
+            return dict.ContainsKey(key);
+        }
+
+        public static bool Exists(IDictionary<string, object> dict, IDictionary<string, object> fallbackDict, string key)
         {
             return dict.ContainsKey(key);
         }
