@@ -13,8 +13,8 @@ nav_order: 3
 1. [Function Permissions](#function-permissions)
 1. [Register Functions at Context Level](#register-functions-at-context-level)
 1. [Cache Options](#cache-options)
-1. [Handle Parser Errors](#handle-parser-errors)
-1. [Get Syntax Tree](#get-syntax-tree)
+1. [Handle Parser and Runtime Errors](#handle-parser-and-runtime-errors)
+3. [Get Syntax Tree](#get-syntax-tree)
 
 ## Simpleflow Execution
 <a name="simpleflow-pipeline"></a>
@@ -89,7 +89,7 @@ catch(SimpleflowException exception)
 }
 ```
 
-## Functions Permissions
+## Function Permissions
 By setting FlowContextOptions, you can permit specific functions to be executed.
 
 ```csharp
@@ -156,7 +156,7 @@ FlowOutput result = new SimpleflowEngine.Run(script, new object(), options);
 // isModified = false
 ```
 
-## Handle Parser Errors
+## Handle Parser and Runtime Errors
 Handle parser/compilation/execution errors
 ```csharp
 try
@@ -167,9 +167,15 @@ catch(SyntaxException syntaxException)
 {
     // syntaxException.Errors
 }
+catch(SimpleflowRuntimeException runtimeException)
+{
+    // runtime errors
+    // runtimeException.LineNumber
+    // runtimeException.Statement
+}
 catch(SimpleflowException exception)
 {
-    //exception
+    //any other compile time exception 
 }  
 ```
 
