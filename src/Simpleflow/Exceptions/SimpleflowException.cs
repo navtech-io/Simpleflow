@@ -20,5 +20,15 @@ namespace Simpleflow.Exceptions
         {
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="innerException"></param>
+        public SimpleflowException(string message, Exception innerException) : base(message, innerException)
+        {
+
+        }
     }
 }

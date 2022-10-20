@@ -146,10 +146,17 @@
         </member>
         <member name="M:Simpleflow.Exceptions.InvalidFunctionParameterNameException.#ctor(System.String)">
             <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Simpleflow.Exceptions.InvalidFunctionParameterNameException.#ctor(System.String,System.String)">
+            <summary>
             Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.InvalidFunctionException"/> class with
             a specified variable name.
             </summary>
-            <param name="message">The message that describes the error.</param>
+            <param name="parameterName">The message that describes the error.</param>
+            <param name="functionName"></param>
         </member>
         <member name="T:Simpleflow.Exceptions.InvalidPropertyException">
             <summary>
@@ -161,7 +168,7 @@
             Initializes a new instance of the <see cref="T:Simpleflow.Exceptions.InvalidPropertyException"/> class with
             a specified variable name.
             </summary>
-            <param name="message">The message that describes the error.</param>
+            <param name="propertyName">The message that describes the error.</param>
         </member>
         <member name="T:Simpleflow.Exceptions.SimpleflowException">
             <summary>
@@ -174,6 +181,37 @@
             a specified variable name.
             </summary>
             <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Simpleflow.Exceptions.SimpleflowException.#ctor(System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:Simpleflow.Exceptions.SimpleflowRuntimeException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Simpleflow.Exceptions.SimpleflowRuntimeException.#ctor(System.String,System.Int32,System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="lineNumber"></param>
+            <param name="statement"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="P:Simpleflow.Exceptions.SimpleflowRuntimeException.LineNumber">
+            <summary>
+            Gets line number where error has occurred
+            </summary>
+        </member>
+        <member name="P:Simpleflow.Exceptions.SimpleflowRuntimeException.Statement">
+            <summary>
+            Gets statement where error has occurred
+            </summary>
         </member>
         <member name="T:Simpleflow.Exceptions.SyntaxException">
             <summary>

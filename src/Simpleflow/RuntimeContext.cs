@@ -37,6 +37,8 @@ namespace Simpleflow
         /// Gets cancellation token 
         /// </summary>
         public CancellationToken CancellationToken => _token;
+
+        internal int LineNumber { get;set; }
     }
 }
 

@@ -27,6 +27,7 @@ namespace Simpleflow.CodeGenerator
 
                 if (childResult != null)
                 {
+                    statements.Add(SetRuntimeState(c));
                     statements.Add(childResult);
                 }
             }

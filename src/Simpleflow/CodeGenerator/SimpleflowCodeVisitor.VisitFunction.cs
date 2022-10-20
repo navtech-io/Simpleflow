@@ -54,13 +54,13 @@ namespace Simpleflow.CodeGenerator
             var actualMethodParameters = methodInfo.GetParameters();
             var arguments = context.functionArguments().functionArgument();
             var argumentsExpressions = new List<Expression>();
-
+            
             if (arguments == null)
             {
                 return argumentsExpressions;
             }
 
-            CheckInvalidParameters(actualMethodParameters, arguments);
+            CheckInvalidParameters(actualMethodParameters, arguments, context.FunctionName().GetText());
             CheckRepeatedParameters(arguments);
 
             foreach (var methodParameter in actualMethodParameters)
@@ -113,14 +113,16 @@ namespace Simpleflow.CodeGenerator
             }
         }
 
-        private void CheckInvalidParameters(ParameterInfo[] actualMethodParameters, SimpleflowParser.FunctionArgumentContext[] parameters)
+        private void CheckInvalidParameters(ParameterInfo[] actualMethodParameters, 
+                                            SimpleflowParser.FunctionArgumentContext[] parameters, 
+                                            string functionName)
         {
             foreach (var parameter in parameters)
             {
                 var paramterName = parameter.Identifier().GetText();
                 if (!actualMethodParameters.Any(p => string.Equals(p.Name, paramterName, System.StringComparison.OrdinalIgnoreCase)))
                 {
-                    throw new InvalidFunctionParameterNameException(paramterName);
+                    throw new InvalidFunctionParameterNameException(paramterName, functionName);
                 }
             }
         }
@@ -141,12 +143,14 @@ namespace Simpleflow.CodeGenerator
 
         private Expression CreateSmartVariableIfObjectIdentiferNotDefined(Type targetType, string name)
         {
-            // Variable names are not case sensitive
+            // Variable name is not case sensitive
             var smartVar = GetSmartVariable(name);
 
             if (smartVar == null)
             {
-                throw new InvalidFunctionParameterNameException(name);
+                // Since smart variable (JSON) can only be used with function argument, 
+                // so here we need to throw function related exception
+                throw new InvalidFunctionParameterNameException($"Invalid parameter or variable '{name}'");
             }
 
             // Return if already created

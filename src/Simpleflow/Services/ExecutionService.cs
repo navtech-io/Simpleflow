@@ -2,6 +2,7 @@
 // See License in the project root for license information.
 
 using System;
+using Simpleflow.Exceptions;
 
 namespace Simpleflow.Services
 {
@@ -35,10 +36,22 @@ namespace Simpleflow.Services
             // Add trace for debugging
             context.Trace?.CreateNewTracePoint(nameof(ExecutionService));
 
-            var scriptHelperContext = new RuntimeContext(context.Output,
+            var scriptContext = new RuntimeContext(context.Output,
                                                              context.Options?.CancellationToken ?? default);
 
-            context.Internals.CompiledScript?.Invoke(context.Argument, context.Output, scriptHelperContext);
+            try
+            {
+                context.Internals.CompiledScript?.Invoke(context.Argument, context.Output, scriptContext);
+            }
+            catch(Exception ex)
+            {
+                // Get statement where error has occurred
+                var lines = context.Script?.Split('\n') ?? new string[] { };
+                var code = lines.Length >= scriptContext.LineNumber && scriptContext.LineNumber > 0 ? lines[scriptContext.LineNumber-1] : context.Script;
+
+                // throw
+                throw new SimpleflowRuntimeException(ex.Message, scriptContext.LineNumber, code, ex);
+            }
 
             next?.Invoke(context);
         }

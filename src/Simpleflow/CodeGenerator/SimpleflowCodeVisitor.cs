@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Antlr4.Runtime.Tree;
 
 using Simpleflow.Parser;
 using Simpleflow.Exceptions;
@@ -85,6 +86,9 @@ namespace Simpleflow.CodeGenerator
 
                 if (childResult != null)
                 {
+                    // Set runtime state for debugging Simpleflow code
+                    statementExpressions.Add( SetRuntimeState(c) );
+
                     /* if current rule is variable statement then store the left expression
                        as variable identifier in variable collection */
                     if (c.GetType() == typeof(SimpleflowParser.LetStmtContext))
@@ -230,6 +234,7 @@ namespace Simpleflow.CodeGenerator
             }
         }
 
+
         /* Create basic set of variables to access in script */
         private List<Expression> CreateDefaultVariablesAndAssign()
         {
@@ -244,6 +249,17 @@ namespace Simpleflow.CodeGenerator
                 Expression.Assign(argVar, InputParam),
                 Expression.Assign(contextVar, ScriptHelperContextParam)
             };
+        }
+
+        private Expression SetRuntimeState(IParseTree node)
+        {
+            var codeLineNumber = ((Antlr4.Runtime.CommonToken)((Antlr4.Runtime.ParserRuleContext)node).Start).Line;
+
+            var property = typeof(RuntimeContext)
+                           .GetProperty("LineNumber", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+            var propertyExpression = Expression.Property(ScriptHelperContextParam, property);
+            return Expression.Assign(propertyExpression, Expression.Constant(codeLineNumber));
         }
 
     }

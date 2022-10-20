@@ -78,7 +78,7 @@ namespace Simpleflow.CodeGenerator
 
                     if (field == null)
                     {
-                        throw new InvalidPropertyException($"Invalid property or field '{propName}'");
+                        throw new InvalidPropertyException(propName);
                     }
                 }
 
