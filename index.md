@@ -5,7 +5,10 @@ nav_order: 1
 permalink: /
 ---
 
-# <img src="https://raw.githubusercontent.com/navtech-io/Simpleflow/develop/src/Simpleflow/PackageIcon.png" style="width:60px;vertical-align:middle" > Simpleflow .NET
+<!---
+<img src="https://raw.githubusercontent.com/navtech-io/Simpleflow/develop/src/Simpleflow/PackageIcon.png" style="width:60px;vertical-align:middle" >
+-->
+# Simpleflow .NET
 {: .fs-9 }
 
 Simpleflow is an open source .NET library and a runtime engine to execute dynamic rules and workflows using intuitive and simple Simpleflow scripting language. Simpleflow allows you to pass an argument to the script and can access registered methods in the script securely. .NET methods can be registered as activities or functions with Simpleflow engine. Simpleflow is extensible to enrich or monitor the execution flow. Simpleflow is secure and efficient to run dynamic rules and workflows.
