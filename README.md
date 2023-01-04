@@ -4,10 +4,11 @@
 Simpleflow is a lightweight dynamic rule engine to execute dynamic rules and workflows using intuitive script concepts. Simpleflow allows access to the process objects or methods in script securely. Methods can be registered as activities with Simpleflow engine, which is extensible to enrich or monitor the execution flow. Simpleflow is secure and efficient to run dynamic rules and workflow. 
 
 
-[![NuGet version (Simpleflow)](https://img.shields.io/nuget/vpre/Simpleflow?style=for-the-badge)](https://www.nuget.org/packages/Simpleflow/) [![Github Workflow (Simpleflow)](https://img.shields.io/github/workflow/status/navtech-io/simpleflow/ci?style=for-the-badge)](https://github.com/navtech-io/Simpleflow/actions)
+[![NuGet version (Simpleflow)](https://img.shields.io/nuget/vpre/Simpleflow?style=for-the-badge)](https://www.nuget.org/packages/Simpleflow/) [![Github Workflow (Simpleflow)](https://img.shields.io/github/actions/workflow/status/navtech-io/simpleflow/ci.yml?branch=main&style=for-the-badge)](https://github.com/navtech-io/Simpleflow/actions)
 
-![Simpleflow .NET Rule and Workflow Engine](https://raw.githubusercontent.com/navtech-io/Simpleflow/develop/src/Simpleflow/PackageIcon.png)
-
+<!---
+ ![Simpleflow .NET Rule and Workflow Engine](/src/Simpleflow/PackageIcon.png)
+--->
 
 ## Get Started
 
