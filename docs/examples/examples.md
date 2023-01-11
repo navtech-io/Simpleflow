@@ -16,17 +16,20 @@ let userId       = 0
 let emailMessage = ""
 
 # Define Rules 
-rule when  arg.Name == "" 
+rule when  arg.Name == '' 
            or arg.Name == none then
-    error "Name cannot be empty"
+    error 'Name cannot be empty'
     
-rule when not $match(input: arg.Name, pattern: "^[a-zA-z]+$") then
-    error "Invalid name. Name should contain only alphabets."
+rule when not $match(input: arg.Name, pattern: '^[a-zA-z]+$') then
+    error 'Invalid name. Name should contain only alphabets.'
     
-rule when arg.Age < 18 and arg.Country == "US" then
-    error `Your age must be greater than 18 years 
-           in order to register in the united states.`
+rule when arg.Age < 18 then
+    error `Your age must be greater than 18 years in order to register.`
+
+rule when not (arg.Country in ['US', 'UK', 'IN']) then
+    error 'Currently, this service is not providing out side of US, UK, IN'
 end rule
+
 
 # debug message
 message "validations-completed"
